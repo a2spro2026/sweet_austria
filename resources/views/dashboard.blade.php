@@ -856,7 +856,12 @@
             transition: transform 0.2s;
         }
 
-        .nav-dropdown:hover .nav-dropdown-toggle svg {
+        .nav-dropdown:not(.nav-dropdown-click):hover .nav-dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-pin:hover .nav-dropdown-toggle svg,
+        .nav-dropdown-pin.is-open .nav-dropdown-toggle svg {
             transform: rotate(180deg);
         }
 
@@ -865,21 +870,81 @@
             top: calc(100% + 8px);
             left: 50%;
             transform: translateX(-50%);
-            min-width: 320px;
+            min-width: 340px;
             list-style: none;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(8px);
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-            padding: 8px 0;
+            background: linear-gradient(165deg, rgba(255, 255, 255, 0.99) 0%, rgba(252, 250, 246, 0.98) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px;
+            border: 1px solid rgba(233, 197, 119, 0.28);
+            box-shadow:
+                0 4px 6px rgba(0, 40, 30, 0.04),
+                0 18px 40px rgba(0, 40, 30, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            padding: 10px;
             opacity: 0;
             visibility: hidden;
             transform: translateX(-50%) translateY(-6px);
-            transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
             z-index: 50;
         }
 
-        .nav-dropdown:hover .nav-dropdown-menu {
+        .nav-dropdown-pin .nav-dropdown-menu::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            border-radius: 0 0 2px 2px;
+            background: linear-gradient(90deg, transparent, #d4a86a 20%, #e9c577 50%, #d4a86a 80%, transparent);
+            opacity: 0.85;
+        }
+
+        .landing-nav-links .nav-dropdown-menu {
+            z-index: 4100;
+        }
+
+        .nav-dropdown-pin .nav-dropdown-menu {
+            top: 100%;
+            margin-top: 0;
+            padding-top: 14px;
+            min-width: 360px;
+        }
+
+        .nav-dropdown-pin .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+        }
+
+        .nav-dropdown-pin.is-open .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        .nav-dropdown-pin.is-open .nav-dropdown-menu .nav-sub-link {
+            pointer-events: auto;
+        }
+
+        .nav-dropdown-pin.is-open > .nav-dropdown-toggle {
+            color: #2a1a05;
+            background: linear-gradient(135deg, #e9c577 0%, #d4a86a 100%);
+            border-color: #e9c577;
+        }
+
+        .nav-dropdown:not(.nav-dropdown-pin):hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav-dropdown-click.is-open .nav-dropdown-menu {
             opacity: 1;
             visibility: visible;
             transform: translateX(-50%) translateY(0);
@@ -887,7 +952,7 @@
 
         .nav-dropdown-menu li a {
             display: block;
-            padding: 10px 18px;
+            padding: 0;
             border-radius: 0;
             background: transparent;
             box-shadow: none;
@@ -899,37 +964,217 @@
         }
 
         .nav-dropdown-menu li a:hover {
-            background: var(--nav-active-bg);
+            background: transparent;
             box-shadow: none;
             transform: none;
         }
 
+        .nav-dropdown-menu-label {
+            padding: 4px 12px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #9a8b72;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .nav-dropdown-pin .nav-dropdown-menu li + li:not(.nav-dropdown-menu-label) {
+            margin-top: 4px;
+        }
+
+        .nav-sub-link {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 12px !important;
+            border-radius: 11px !important;
+            border: 1px solid rgba(0, 50, 38, 0.06) !important;
+            background: rgba(255, 255, 255, 0.72) !important;
+            color: #003326 !important;
+            box-shadow: 0 1px 2px rgba(0, 40, 30, 0.04) !important;
+            transform: none !important;
+            transition:
+                background 0.22s ease,
+                border-color 0.22s ease,
+                color 0.22s ease,
+                box-shadow 0.22s ease,
+                transform 0.22s ease !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-sub-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #e9c577, #c49a4a);
+            opacity: 0;
+            transition: opacity 0.22s ease;
+            border-radius: 11px 0 0 11px;
+        }
+
+        .sub-link-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+            line-height: 1;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .nav-sub-link:hover .sub-link-icon,
+        .nav-sub-link.is-active .sub-link-icon {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 40, 30, 0.1);
+        }
+
+        .sub-link-icon.cat-coque    { background: linear-gradient(135deg, #f5ebe0 0%, #e8d5c0 100%); }
+        .sub-link-icon.cat-seche    { background: linear-gradient(135deg, #fde8ef 0%, #f5c6d6 100%); }
+        .sub-link-icon.cat-cacahuetes { background: linear-gradient(135deg, #fef3e2 0%, #f5d9a8 100%); }
+        .sub-link-icon.cat-graines  { background: linear-gradient(135deg, #fff8e1 0%, #ffe082 100%); }
+        .sub-link-icon.cat-enrobes  { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); }
+        .sub-link-icon.cat-ramadan  { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); }
+
+        .sub-link-content {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .sub-link-title {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #003326;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .sub-link-desc {
+            font-size: 11px;
+            font-weight: 400;
+            color: #6b7c76;
+            line-height: 1.35;
+        }
+
+        .sub-link-arrow {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 50, 38, 0.06);
+            color: #004236;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.22s ease, transform 0.22s ease, background 0.22s ease, color 0.22s ease;
+        }
+
+        .sub-link-arrow svg {
+            width: 12px;
+            height: 12px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link:hover,
+        .landing-nav-links .nav-dropdown-menu li:hover > .nav-sub-link,
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link.is-active,
+        .nav-dropdown-pin .nav-dropdown-menu li a.nav-sub-link:hover,
+        .nav-dropdown-pin .nav-dropdown-menu li:hover > a.nav-sub-link,
+        .nav-dropdown-pin .nav-dropdown-menu li a.nav-sub-link.is-active {
+            background: linear-gradient(135deg, rgba(255, 252, 245, 0.98) 0%, rgba(252, 241, 220, 0.95) 100%) !important;
+            border-color: rgba(212, 168, 106, 0.45) !important;
+            color: #2a1a05 !important;
+            box-shadow:
+                0 4px 14px rgba(212, 168, 106, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+            transform: translateX(2px) !important;
+        }
+
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link:hover::before,
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link.is-active::before,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link:hover::before,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link.is-active::before {
+            opacity: 1;
+        }
+
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link:hover .sub-link-title,
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link.is-active .sub-link-title,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link:hover .sub-link-title,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link.is-active .sub-link-title {
+            color: #2a1a05;
+            font-weight: 700;
+        }
+
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link:hover .sub-link-desc,
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link.is-active .sub-link-desc,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link:hover .sub-link-desc,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link.is-active .sub-link-desc {
+            color: #7a6348;
+        }
+
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link:hover .sub-link-arrow,
+        .landing-nav-links .nav-dropdown-menu .nav-sub-link.is-active .sub-link-arrow,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link:hover .sub-link-arrow,
+        .nav-dropdown-pin .nav-dropdown-menu .nav-sub-link.is-active .sub-link-arrow {
+            opacity: 1;
+            transform: translateX(0);
+            background: linear-gradient(135deg, #e9c577 0%, #d4a86a 100%);
+            color: #2a1a05;
+        }
+
         .nav-dropdown-menu li:first-child a {
-            border-radius: 12px 12px 0 0;
+            border-radius: 11px;
         }
 
         .nav-dropdown-menu li:last-child a {
-            border-radius: 0 0 12px 12px;
+            border-radius: 11px;
         }
 
-        .category-link {
-            cursor: pointer;
-        }
-
-        .nav-dropdown-menu li a.zone-link {
+        .nav-dropdown-menu li a.zone-link,
+        .nav-dropdown-menu li a.partner-link {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .zone-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+        .zone-icon,
+        .partner-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .nav-sub-link:hover .zone-icon,
+        .nav-sub-link:hover .partner-icon,
+        .nav-sub-link.is-active .zone-icon,
+        .nav-sub-link.is-active .partner-icon {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0, 40, 30, 0.12);
         }
 
         .zone-icon svg {
@@ -942,31 +1187,11 @@
             stroke-linejoin: round;
         }
 
-        .zone-est    { background: #E8F5EC; color: #2D8A4E; }
-        .zone-ouest  { background: #E8EEF8; color: #2B3E92; }
-        .zone-taza   { background: #FEF3E2; color: #C45B1C; }
-        .zone-gharb  { background: #F3E8FF; color: #7C3AED; }
-        .zone-casa   { background: #E0F2FE; color: #0284C7; }
-
-        .zone-link {
-            cursor: pointer;
-        }
-
-        .nav-dropdown-menu li a.partner-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .partner-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
+        .zone-est    { background: linear-gradient(135deg, #e8f5ec 0%, #c8e6d0 100%); color: #2D8A4E; }
+        .zone-ouest  { background: linear-gradient(135deg, #e8eef8 0%, #c5d4f0 100%); color: #2B3E92; }
+        .zone-taza   { background: linear-gradient(135deg, #fef3e2 0%, #f5d4a8 100%); color: #C45B1C; }
+        .zone-gharb  { background: linear-gradient(135deg, #f3e8ff 0%, #ddd0f5 100%); color: #7C3AED; }
+        .zone-casa   { background: linear-gradient(135deg, #e0f2fe 0%, #b3e0f7 100%); color: #0284C7; }
 
         .partner-icon svg {
             width: 17px;
@@ -978,9 +1203,9 @@
             stroke-linejoin: round;
         }
 
-        .partner-marjane    { background: #FDE8E8; color: #E30613; }
-        .partner-decathlon  { background: #E0F0FA; color: #0082C3; }
-        .partner-atacadaw   { background: #FFF4E0; color: #E65C19; }
+        .partner-marjane    { background: linear-gradient(135deg, #fde8e8 0%, #f5b8b8 100%); color: #E30613; }
+        .partner-decathlon  { background: linear-gradient(135deg, #e0f0fa 0%, #a8d4f0 100%); color: #0082C3; }
+        .partner-atacadaw   { background: linear-gradient(135deg, #fff4e0 0%, #f5c98a 100%); color: #E65C19; }
 
         /* ── Carte de visite Commercial ── */
         .visit-card-overlay {
@@ -988,7 +1213,7 @@
             inset: 0;
             background: rgba(0, 20, 15, 0.55);
             backdrop-filter: blur(4px);
-            z-index: 1000;
+            z-index: 5000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1179,9 +1404,9 @@
         .category-modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 20, 15, 0.55);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
+            background: rgba(0, 20, 15, 0.72);
+            backdrop-filter: blur(6px);
+            z-index: 5000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1200,12 +1425,12 @@
             background: var(--white);
             border-radius: 16px;
             width: 100%;
-            max-width: 920px;
+            max-width: 980px;
             max-height: 90vh;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
             transform: translateY(20px) scale(0.97);
             transition: transform 0.25s;
         }
@@ -1255,10 +1480,44 @@
             overflow-y: auto;
         }
 
+        .category-gallery-intro {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f8f6f0 0%, #f0ebe0 100%);
+            border: 1px solid var(--border);
+        }
+
+        .category-gallery-cover {
+            width: 88px;
+            height: 88px;
+            border-radius: 12px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .category-gallery-intro-text h3 {
+            margin: 0 0 4px;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .category-gallery-intro-text p {
+            margin: 0;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
         }
 
         .product-card {
@@ -1278,9 +1537,14 @@
 
         .product-image {
             width: 100%;
-            height: 160px;
+            height: 180px;
             object-fit: cover;
             background: var(--table-header);
+            transition: transform 0.25s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.03);
         }
 
         .product-info {
@@ -3037,7 +3301,7 @@
         }
 
         .landing-nav-links > li > a:hover,
-        .landing-nav-links > li.nav-dropdown:hover > .nav-dropdown-toggle {
+        .landing-nav-links > li.nav-dropdown-pin.is-open > .nav-dropdown-toggle {
             color: #2a1a05;
             background: linear-gradient(135deg, #e9c577 0%, #d4a86a 100%);
             border-color: #e9c577;
@@ -3092,9 +3356,91 @@
             text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
         }
 
-        .login-card {
+        .landing-connect-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: #2a1a05;
+            background: linear-gradient(135deg, #e9c577 0%, #d4a86a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(212, 168, 106, 0.4);
+            transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+            white-space: nowrap;
+        }
+
+        .landing-nav-links .landing-connect-btn {
+            margin: 0;
+        }
+
+        .landing-connect-btn svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .landing-connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 34px rgba(212, 168, 106, 0.55);
+            background: linear-gradient(135deg, #f0d08a 0%, #e0b878 100%);
+        }
+
+        .landing-connect-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-panel {
             width: 380px;
             max-width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(16px) scale(0.98);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+            pointer-events: none;
+        }
+
+        .login-panel.is-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .login-panel-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .login-panel-close:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .login-panel-close svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .login-card {
+            position: relative;
+            width: 100%;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -3303,92 +3649,187 @@
 
             <ul class="top-nav-links landing-nav-links">
                 <li><a href="#" translate="no">Home</a></li>
-                <li class="nav-dropdown">
-                    <a href="#" class="nav-dropdown-toggle">Catégories <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <li class="nav-dropdown nav-dropdown-pin" id="categoriesDropdown">
+                    <a href="#" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Catégories <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <ul class="nav-dropdown-menu">
-                        <li><a href="#" class="category-link" data-category="coque">🌰 Fruits à coque (Noix et graines nobles)</a></li>
-                        <li><a href="#" class="category-link" data-category="seche">🍇 Fruits séchés</a></li>
-                        <li><a href="#" class="category-link" data-category="cacahuetes">🥜 Cacahuètes et dérivés</a></li>
-                        <li><a href="#" class="category-link" data-category="graines">🌻 Graines alimentaires</a></li>
-                        <li><a href="#" class="category-link" data-category="enrobes">🍬 Fruits secs enrobés et confiseries</a></li>
-                        <li><a href="#" class="category-link" data-category="ramadan">🕌 Produits Ramadan et Fêtes</a></li>
+                        <li class="nav-dropdown-menu-label">Nos gammes produits</li>
+                        <li>
+                            <a href="#" class="category-link nav-sub-link" data-category="coque" onclick="return window.openCategoryGallery(event, 'coque')">
+                                <span class="sub-link-icon cat-coque">🌰</span>
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Fruits à coque</span>
+                                    <span class="sub-link-desc">Noix et graines nobles</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link nav-sub-link" data-category="seche" onclick="return window.openCategoryGallery(event, 'seche')">
+                                <span class="sub-link-icon cat-seche">🍇</span>
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Fruits séchés</span>
+                                    <span class="sub-link-desc">Dattes, figues &amp; abricots</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link nav-sub-link" data-category="cacahuetes" onclick="return window.openCategoryGallery(event, 'cacahuetes')">
+                                <span class="sub-link-icon cat-cacahuetes">🥜</span>
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Cacahuètes et dérivés</span>
+                                    <span class="sub-link-desc">Grillées, salées &amp; enrobées</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link nav-sub-link" data-category="graines" onclick="return window.openCategoryGallery(event, 'graines')">
+                                <span class="sub-link-icon cat-graines">🌻</span>
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Graines alimentaires</span>
+                                    <span class="sub-link-desc">Chia, lin, tournesol &amp; plus</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link nav-sub-link" data-category="enrobes" onclick="return window.openCategoryGallery(event, 'enrobes')">
+                                <span class="sub-link-icon cat-enrobes">🍬</span>
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Fruits secs enrobés</span>
+                                    <span class="sub-link-desc">Chocolat &amp; confiseries</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="category-link nav-sub-link" data-category="ramadan" onclick="return window.openCategoryGallery(event, 'ramadan')">
+                                <span class="sub-link-icon cat-ramadan">🕌</span>
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Produits Ramadan &amp; Fêtes</span>
+                                    <span class="sub-link-desc">Coffrets &amp; assortiments</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li class="nav-dropdown">
-                    <a href="#" class="nav-dropdown-toggle">Commercial <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <li class="nav-dropdown nav-dropdown-pin" id="commercialDropdown">
+                    <a href="#" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Commercial <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <ul class="nav-dropdown-menu">
+                        <li class="nav-dropdown-menu-label">Zones commerciales</li>
                         <li>
-                            <a href="#" class="zone-link" data-zone="est">
+                            <a href="#" class="zone-link nav-sub-link" data-zone="est" onclick="return window.openZoneVisitCard(event, 'est')">
                                 <span class="zone-icon zone-est">
                                     <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><path d="M16 7l2-2"/><path d="M18 7h-2"/></svg>
                                 </span>
-                                Zone Est
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Zone Est</span>
+                                    <span class="sub-link-desc">Carte de visite commercial</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="zone-link" data-zone="ouest">
+                            <a href="#" class="zone-link nav-sub-link" data-zone="ouest" onclick="return window.openZoneVisitCard(event, 'ouest')">
                                 <span class="zone-icon zone-ouest">
                                     <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><path d="M8 7L6 5"/><path d="M6 7h2"/></svg>
                                 </span>
-                                Zone Ouest
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Zone Ouest</span>
+                                    <span class="sub-link-desc">Carte de visite commercial</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="zone-link" data-zone="taza">
+                            <a href="#" class="zone-link nav-sub-link" data-zone="taza" onclick="return window.openZoneVisitCard(event, 'taza')">
                                 <span class="zone-icon zone-taza">
                                     <svg viewBox="0 0 24 24"><path d="M4 20 L8 8 L12 14 L16 6 L20 20 Z"/><path d="M4 20h16"/></svg>
                                 </span>
-                                Zone Taza, Fes
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Zone Taza, Fès</span>
+                                    <span class="sub-link-desc">Carte de visite commercial</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="zone-link" data-zone="gharb">
+                            <a href="#" class="zone-link nav-sub-link" data-zone="gharb" onclick="return window.openZoneVisitCard(event, 'gharb')">
                                 <span class="zone-icon zone-gharb">
                                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
                                 </span>
-                                Zone Elgharb
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Zone Elgharb</span>
+                                    <span class="sub-link-desc">Carte de visite commercial</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="zone-link" data-zone="casa">
+                            <a href="#" class="zone-link nav-sub-link" data-zone="casa" onclick="return window.openZoneVisitCard(event, 'casa')">
                                 <span class="zone-icon zone-casa">
                                     <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h1"/><path d="M14 9h1"/></svg>
                                 </span>
-                                Zone Casablanca
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Zone Casablanca</span>
+                                    <span class="sub-link-desc">Carte de visite commercial</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-dropdown">
-                    <a href="#" class="nav-dropdown-toggle">Nos Partenaires <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <li class="nav-dropdown nav-dropdown-pin" id="partnersDropdown">
+                    <a href="#" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Nos Partenaires <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
                     <ul class="nav-dropdown-menu">
+                        <li class="nav-dropdown-menu-label">Réseau de distribution</li>
                         <li>
-                            <a href="#" class="partner-link">
+                            <a href="#" class="partner-link nav-sub-link" data-partner="marjane" onclick="return window.openPartnerProfile(event, 'marjane')">
                                 <span class="partner-icon partner-marjane">
                                     <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                                 </span>
-                                Marjane
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Marjane</span>
+                                    <span class="sub-link-desc">Grande distribution nationale</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="partner-link">
+                            <a href="#" class="partner-link nav-sub-link" data-partner="decathlon" onclick="return window.openPartnerProfile(event, 'decathlon')">
                                 <span class="partner-icon partner-decathlon">
                                     <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M10 22V12l-2 4"/><path d="M14 22V12l2 4"/><path d="M8 12h8"/><path d="M12 7v5"/></svg>
                                 </span>
-                                Décathlon
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Décathlon</span>
+                                    <span class="sub-link-desc">Nutrition sportive &amp; bien-être</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="partner-link">
+                            <a href="#" class="partner-link nav-sub-link" data-partner="atacadaw" onclick="return window.openPartnerProfile(event, 'atacadaw')">
                                 <span class="partner-icon partner-atacadaw">
                                     <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
                                 </span>
-                                Atacadaw
+                                <span class="sub-link-content">
+                                    <span class="sub-link-title">Atacadaw</span>
+                                    <span class="sub-link-desc">Cash &amp; carry professionnel</span>
+                                </span>
+                                <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li><a href="#">Contacts</a></li>
+                <li>
+                    <button type="button" class="landing-connect-btn" id="openLoginBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                        Se Connecter
+                    </button>
+                </li>
             </ul>
 
             <div class="social-icons landing-social">
@@ -3413,7 +3854,11 @@
                 <p>La plateforme la plus proche des goûts de luxe</p>
             </div>
 
+            <div class="login-panel" id="loginPanel">
             <form class="login-card" id="loginForm" autocomplete="off">
+                <button type="button" class="login-panel-close" id="closeLoginBtn" aria-label="Fermer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
                 <h2 class="login-title">Connexion</h2>
                 <p class="login-subtitle">Accédez à votre espace de gestion</p>
 
@@ -3441,6 +3886,7 @@
                     Se connecter
                 </button>
             </form>
+            </div>
         </div>
 
         <div class="landing-footer">© {{ date('Y') }} Sweet Austria Enterprise — Tous droits réservés</div>
@@ -4394,6 +4840,7 @@
                 <button class="category-modal-close" id="closeCategoryModal" aria-label="Fermer">&times;</button>
             </div>
             <div class="category-modal-body">
+                <div class="category-gallery-intro" id="categoryGalleryIntro"></div>
                 <div class="products-grid" id="productsGrid"></div>
             </div>
         </div>
@@ -5198,6 +5645,17 @@
                 }
             }
         }
+
+        const SAISIES_RESET_VERSION = '2026-07-08-v1';
+
+        function resetLocalSaisiesIfNeeded() {
+            if (localStorage.getItem('saisiesResetVersion') === SAISIES_RESET_VERSION) return;
+            localStorage.removeItem('commandesAchats');
+            localStorage.removeItem('achatsBonCounter');
+            localStorage.setItem('saisiesResetVersion', SAISIES_RESET_VERSION);
+        }
+
+        resetLocalSaisiesIfNeeded();
 
         let achatsBonCounter = parseInt(localStorage.getItem('achatsBonCounter') || '0', 10);
         let fillingAchatsFournisseur = false;
@@ -6238,24 +6696,108 @@
 
         const categoryModal = document.getElementById('categoryModal');
         const categoryModalTitle = document.getElementById('categoryModalTitle');
+        const categoryGalleryIntro = document.getElementById('categoryGalleryIntro');
         const productsGrid = document.getElementById('productsGrid');
         const closeCategoryModal = document.getElementById('closeCategoryModal');
         const cartToast = document.getElementById('cartToast');
         let toastTimeout;
 
+        function restoreBodyScrollState() {
+            const landing = document.getElementById('landingScreen');
+            if (landing && !landing.classList.contains('is-hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function closeNavDropdowns() {
+            document.querySelectorAll('.landing-nav-links .nav-dropdown-pin.is-open').forEach(dropdown => {
+                dropdown.classList.remove('is-open');
+                const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        function openNavDropdown(dropdown) {
+            if (!dropdown) return;
+            document.querySelectorAll('.landing-nav-links .nav-dropdown-pin.is-open').forEach(openDropdown => {
+                if (openDropdown !== dropdown) {
+                    openDropdown.classList.remove('is-open');
+                    const toggle = openDropdown.querySelector('.nav-dropdown-toggle');
+                    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+            dropdown.classList.add('is-open');
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', 'true');
+        }
+
+        function bindNavSubLinks() {
+            document.querySelectorAll('.nav-sub-link').forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    const menu = link.closest('.nav-dropdown-menu');
+                    if (menu) {
+                        menu.querySelectorAll('.nav-sub-link.is-active').forEach(el => el.classList.remove('is-active'));
+                    }
+                    link.classList.add('is-active');
+                });
+
+                link.addEventListener('mouseleave', () => {
+                    link.classList.remove('is-active');
+                });
+            });
+        }
+
+        document.querySelectorAll('.landing-nav-links .nav-dropdown-pin').forEach(dropdown => {
+            const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+            if (!toggle) return;
+
+            toggle.addEventListener('click', e => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (dropdown.classList.contains('is-open')) {
+                    closeNavDropdowns();
+                } else {
+                    openNavDropdown(dropdown);
+                }
+            });
+        });
+
+        document.addEventListener('click', e => {
+            const openDropdown = document.querySelector('.landing-nav-links .nav-dropdown-pin.is-open');
+            if (!openDropdown) return;
+            if (!openDropdown.contains(e.target)) {
+                closeNavDropdowns();
+            }
+        });
+
         function openCategoryModal(categoryKey) {
             const category = categoryCatalog[categoryKey];
-            if (!category) return;
+            if (!category || !categoryModal || !productsGrid) return;
 
+            closeNavDropdowns();
             categoryModalTitle.textContent = category.title;
+
+            const coverImage = category.cover || category.products[0]?.image || '';
+            if (categoryGalleryIntro) {
+                categoryGalleryIntro.innerHTML = `
+                    <img class="category-gallery-cover" src="${escHtml(coverImage)}" alt="${escHtml(category.title)}">
+                    <div class="category-gallery-intro-text">
+                        <h3>${escHtml(category.title)}</h3>
+                        <p>${category.products.length} produit${category.products.length > 1 ? 's' : ''} — découvrez notre sélection avec photos</p>
+                    </div>
+                `;
+            }
+
             productsGrid.innerHTML = category.products.map(p => `
                 <article class="product-card">
-                    <img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy">
+                    <img class="product-image" src="${escHtml(p.image)}" alt="${escHtml(p.name)}" loading="lazy">
                     <div class="product-info">
-                        <h3 class="product-name">${p.name}</h3>
-                        <p class="product-desc">${p.desc}</p>
-                        <div class="product-price">${p.price}</div>
-                        <button class="btn-add-cart" data-product="${p.name}">
+                        <h3 class="product-name">${escHtml(p.name)}</h3>
+                        <p class="product-desc">${escHtml(p.desc)}</p>
+                        <div class="product-price">${escHtml(p.price)}</div>
+                        <button class="btn-add-cart" data-product="${escHtml(p.name)}">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                             Ajouter au panier
                         </button>
@@ -6267,9 +6809,19 @@
             document.body.style.overflow = 'hidden';
         }
 
+        window.openCategoryGallery = function (event, categoryKey) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            openCategoryModal(categoryKey);
+            return false;
+        };
+
         function closeCategoryModalFn() {
+            if (!categoryModal) return;
             categoryModal.classList.remove('active');
-            document.body.style.overflow = '';
+            restoreBodyScrollState();
         }
 
         function showCartToast(productName) {
@@ -6279,17 +6831,22 @@
             toastTimeout = setTimeout(() => cartToast.classList.remove('show'), 2800);
         }
 
-        document.querySelectorAll('.category-link').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                openCategoryModal(link.dataset.category);
+        bindNavSubLinks();
+
+        if (closeCategoryModal) {
+            closeCategoryModal.addEventListener('click', closeCategoryModalFn);
+        }
+
+        if (categoryModal) {
+            categoryModal.addEventListener('click', e => {
+                if (e.target === categoryModal) closeCategoryModalFn();
             });
-        });
+        }
 
-        closeCategoryModal.addEventListener('click', closeCategoryModalFn);
-
-        categoryModal.addEventListener('click', e => {
-            if (e.target === categoryModal) closeCategoryModalFn();
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && categoryModal?.classList.contains('active')) {
+                closeCategoryModalFn();
+            }
         });
 
         const zoneCatalog = {
@@ -6352,6 +6909,7 @@
             const c = zoneCatalog[zoneKey];
             if (!c) return;
 
+            closeNavDropdowns();
             visitCardTitle.textContent = `Carte de visite — ${c.zone}`;
             const qrData = buildVCard(c);
             visitCardBody.innerHTML = `
@@ -6394,17 +6952,98 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function closeVisitCardFn() {
-            visitCardModal.classList.remove('active');
-            document.body.style.overflow = '';
+        window.openZoneVisitCard = function (event, zoneKey) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            openVisitCard(zoneKey);
+            return false;
+        };
+
+        const partnerCatalog = {
+            marjane: {
+                name: 'Marjane',
+                type: 'Grande distribution',
+                since: '2018',
+                regions: 'Casablanca, Rabat, Fès, Tanger',
+                contact: 'partenariat@marjane.ma',
+                image: 'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=800&q=80',
+                desc: 'Distribution nationale de nos gammes fruits secs premium dans les hypermarchés Marjane.',
+            },
+            decathlon: {
+                name: 'Décathlon',
+                type: 'Retail sport & nutrition',
+                since: '2020',
+                regions: 'Maroc (12 magasins)',
+                contact: 'nutrition@decathlon.ma',
+                image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
+                desc: 'Partenaire nutrition sportive : mixes énergétiques et graines pour les rayons bien-être.',
+            },
+            atacadaw: {
+                name: 'Atacadaw',
+                type: 'Cash & carry',
+                since: '2019',
+                regions: 'Nador, Oujda, Tétouan',
+                contact: 'commercial@atacadaw.ma',
+                image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80',
+                desc: 'Approvisionnement en vrac pour professionnels : hôtellerie, restauration et revendeurs.',
+            },
+        };
+
+        function showPartnerProfile(partnerKey) {
+            const p = partnerCatalog[partnerKey];
+            if (!p || !visitCardModal) return;
+
+            closeNavDropdowns();
+            visitCardTitle.textContent = `Partenaire — ${p.name}`;
+            visitCardBody.innerHTML = `
+                <div class="visit-card-main">
+                    <div class="visit-photo-wrap" style="width:100%;max-width:320px;">
+                        <img class="visit-photo" src="${p.image}" alt="${p.name}" style="width:100%;height:180px;object-fit:cover;border-radius:12px;">
+                    </div>
+                    <div class="visit-info" style="flex:1;">
+                        <div class="visit-field">
+                            <div class="visit-field-label">Type de partenariat</div>
+                            <div class="visit-field-value">${p.type}</div>
+                        </div>
+                        <div class="visit-field">
+                            <div class="visit-field-label">Depuis</div>
+                            <div class="visit-field-value">${p.since}</div>
+                        </div>
+                        <div class="visit-field">
+                            <div class="visit-field-label">Zones couvertes</div>
+                            <div class="visit-field-value">${p.regions}</div>
+                        </div>
+                        <div class="visit-field">
+                            <div class="visit-field-label">Contact</div>
+                            <div class="visit-field-value phone">${p.contact}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visit-manager-section">
+                    <div class="visit-manager-title">À propos du partenariat</div>
+                    <p style="margin:0;color:#4a4a48;font-size:14px;line-height:1.6;">${p.desc}</p>
+                </div>
+            `;
+
+            visitCardModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
-        document.querySelectorAll('.zone-link').forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();
-                openVisitCard(link.dataset.zone);
-            });
-        });
+        window.openPartnerProfile = function (event, partnerKey) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            showPartnerProfile(partnerKey);
+            return false;
+        };
+
+        function closeVisitCardFn() {
+            visitCardModal.classList.remove('active');
+            restoreBodyScrollState();
+        }
 
         closeVisitCard.addEventListener('click', closeVisitCardFn);
 
@@ -6593,6 +7232,9 @@
         /* ===== Interface d'accueil / Connexion ===== */
         (function initLanding() {
             const landing = document.getElementById('landingScreen');
+            const loginPanel = document.getElementById('loginPanel');
+            const openLoginBtn = document.getElementById('openLoginBtn');
+            const closeLoginBtn = document.getElementById('closeLoginBtn');
             const loginForm = document.getElementById('loginForm');
             const eyeBtn = document.getElementById('loginEyeBtn');
             const userInput = document.getElementById('loginUser');
@@ -6604,16 +7246,40 @@
             const SUPER_ADMIN_1 = { user: 'superadmin@sweetaustria.com', pass: 'mot de passe' };
             const SUPER_ADMIN_OLD = { user: 'superadmin', pass: 'SweetAustria@2026' };
 
+            function openLoginPanel() {
+                if (!loginPanel) return;
+                loginPanel.classList.add('is-open');
+                if (userInput) {
+                    setTimeout(() => userInput.focus(), 200);
+                }
+            }
+
+            function closeLoginPanel() {
+                if (!loginPanel) return;
+                loginPanel.classList.remove('is-open');
+                if (loginError) loginError.hidden = true;
+            }
+
             function showLanding() {
                 if (!landing) return;
                 landing.classList.remove('is-hidden');
+                closeLoginPanel();
                 document.body.style.overflow = 'hidden';
             }
 
             function hideLanding() {
                 if (!landing) return;
                 landing.classList.add('is-hidden');
+                closeLoginPanel();
                 document.body.style.overflow = '';
+            }
+
+            if (openLoginBtn) {
+                openLoginBtn.addEventListener('click', openLoginPanel);
+            }
+
+            if (closeLoginBtn) {
+                closeLoginBtn.addEventListener('click', closeLoginPanel);
             }
 
             if (eyeBtn && passInput) {
