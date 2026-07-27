@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Sweet Austria — Tableau de Bord Exécutif</title>
+    <title>Sweet Austria — Tableau de bord exécutif</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
@@ -28,6 +27,7 @@
             --blue-card: #2B3E92;
             --orange-card: #E65C19;
             --brown-card: #BF571B;
+            --teal-card: #0D5C63;
             --orange-accent: #E65C19;
             --nav-active-bg: #FFF0E8;
             --text-dark: #1C1C1A;
@@ -321,16 +321,12 @@
         }
 
         .nav-subsubmenu .nav-subitem {
-            padding-left: 36px;
+            padding-left: 18px;
             font-size: 11.5px;
         }
 
-        .nav-subsubmenu .nav-subitem::before {
-            left: 22px;
-        }
-
         .nav-group.open > .nav-submenu {
-            max-height: 560px;
+            max-height: 720px;
             padding: 2px 0 8px 8px;
         }
 
@@ -340,8 +336,10 @@
         }
 
         .nav-subitem {
-            display: block;
-            padding: 7px 12px 7px 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px 8px 10px;
             font-size: 12px;
             font-weight: 500;
             color: #4A4845;
@@ -349,31 +347,62 @@
             border-radius: 8px;
             margin-bottom: 2px;
             letter-spacing: 0.02em;
-            transition: background 0.15s, color 0.15s;
+            transition: background 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s;
             position: relative;
+            border: 1px solid transparent;
         }
 
-        .nav-subitem::before {
-            content: '';
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: rgba(200, 149, 108, 0.55);
+        .nav-subitem .nav-subicon {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgba(0, 51, 38, 0.08) 0%, rgba(200, 149, 108, 0.14) 100%);
+            color: var(--green-dark);
+            border: 1px solid rgba(200, 149, 108, 0.22);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+            transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+        }
+
+        .nav-subitem .nav-subicon svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .nav-subitem:hover {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.78);
             color: var(--green-dark);
+            border-color: rgba(200, 149, 108, 0.2);
+            transform: translateX(2px);
+        }
+
+        .nav-subitem:hover .nav-subicon {
+            background: linear-gradient(145deg, rgba(0, 51, 38, 0.14) 0%, rgba(230, 92, 25, 0.16) 100%);
+            color: var(--orange-accent);
+            border-color: rgba(230, 92, 25, 0.28);
+            transform: scale(1.05);
         }
 
         .nav-subitem.active {
-            background: rgba(255, 240, 232, 0.85);
+            background: rgba(255, 240, 232, 0.9);
             color: var(--green-dark);
             font-weight: 600;
+            border-color: rgba(230, 92, 25, 0.25);
+        }
+
+        .nav-subitem.active .nav-subicon {
+            background: linear-gradient(145deg, var(--green-dark) 0%, #004d3a 100%);
+            color: #fff;
+            border-color: rgba(0, 51, 38, 0.35);
+            box-shadow: 0 2px 8px rgba(0, 51, 38, 0.2);
         }
 
         .nav-subgroup-toggle {
@@ -1700,7 +1729,7 @@
 
         /* ── Dashboard Content ── */
         .dashboard-content {
-            padding: 28px 32px 0;
+            padding: 0 32px 0;
             flex: 1;
         }
 
@@ -1717,6 +1746,7 @@
         /* ── Barre de saisie ── */
         .saisie-panel {
             animation: saisieFadeIn 0.3s ease;
+            padding-top: 16px;
         }
 
         @keyframes saisieFadeIn {
@@ -2204,11 +2234,11 @@
 
         #achatsView .achats-lignes-inline-row {
             display: grid;
-            grid-template-columns: 72px 132px minmax(120px, 1fr) 100px 88px 68px 130px 80px 96px;
+            grid-template-columns: 72px 132px minmax(120px, 1fr) 100px 88px 68px 130px 80px 96px 44px;
             gap: 6px 8px;
             align-items: end;
             width: 100%;
-            min-width: 900px;
+            min-width: 960px;
             padding: 10px 12px;
             border-radius: 12px;
             background: linear-gradient(180deg, rgba(249, 248, 243, 0.95) 0%, rgba(244, 241, 234, 0.9) 100%);
@@ -2230,6 +2260,64 @@
             min-height: 32px;
             font-size: 11px;
             padding: 6px 8px;
+        }
+
+        #achatsView .achats-add-article-wrap {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 1px;
+        }
+
+        #achatsView .btn-add-article {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 10px;
+            background: var(--green-dark);
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 51, 38, 0.22);
+            transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+        }
+
+        #achatsView .btn-add-article:hover {
+            background: #004d3a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 51, 38, 0.28);
+        }
+
+        #achatsView .btn-add-article svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            pointer-events: none;
+        }
+
+        #achatsView .achats-articles-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 10px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(0, 51, 38, 0.06) 0%, rgba(200, 149, 108, 0.08) 100%);
+        }
+
+        #achatsView .achats-articles-count {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        #achatsView .achats-articles-count strong {
+            color: var(--green-dark);
         }
 
         #achatsView .achats-saisie-ligne .achats-line-actions {
@@ -2282,13 +2370,15 @@
         }
 
         .achats-commandes-table thead th {
-            background: var(--green-dark);
+            background: linear-gradient(135deg, var(--green-dark) 0%, #004d3a 100%);
             color: white;
             font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
+            font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             white-space: nowrap;
+            border-bottom: 2px solid rgba(200, 149, 108, 0.55);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
 
         .achats-commandes-table tbody td {
@@ -2361,14 +2451,16 @@
         }
 
         .achats-lines-table thead th {
-            background: var(--green-dark);
+            background: linear-gradient(135deg, var(--green-dark) 0%, #004d3a 100%);
             color: white;
             padding: 10px 12px;
             font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             white-space: nowrap;
+            border-bottom: 2px solid rgba(200, 149, 108, 0.55);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
 
         .achats-lines-table tbody td {
@@ -2528,14 +2620,16 @@
         }
 
         .fournisseur-table thead th {
-            background: var(--green-dark);
+            background: linear-gradient(135deg, var(--green-dark) 0%, #004d3a 100%);
             color: white;
             padding: 12px 14px;
             font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             white-space: nowrap;
+            border-bottom: 2px solid rgba(200, 149, 108, 0.55);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
 
         .fournisseur-table tbody td {
@@ -2585,14 +2679,16 @@
         }
 
         .produits-table thead th {
-            background: var(--green-dark);
+            background: linear-gradient(135deg, var(--green-dark) 0%, #004d3a 100%);
             color: white;
             padding: 12px 10px;
             font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
+            font-weight: 700;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             white-space: nowrap;
+            border-bottom: 2px solid rgba(200, 149, 108, 0.55);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
 
         .produits-table tbody td {
@@ -2666,38 +2762,84 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             padding: 0;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid transparent;
             cursor: pointer;
-            transition: background 0.15s, transform 0.15s;
+            transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+            flex-shrink: 0;
         }
 
         .btn-icon-row svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            fill: none;
+            pointer-events: none;
         }
 
         .btn-icon-edit {
-            background: rgba(0, 51, 38, 0.08);
-            color: var(--green-dark);
+            background: #004236;
+            color: #fff;
+            border-color: #004236;
         }
 
         .btn-icon-edit:hover {
-            background: rgba(0, 51, 38, 0.18);
+            background: #003326;
             transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 51, 38, 0.25);
+        }
+
+        .btn-icon-view {
+            background: #2B3E92;
+            color: #fff;
+            border-color: #2B3E92;
+        }
+
+        .btn-icon-view:hover {
+            background: #1f2e6e;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(43, 62, 146, 0.3);
+        }
+
+        .btn-icon-pdf {
+            background: #E65C19;
+            color: #fff;
+            border-color: #E65C19;
+        }
+
+        .btn-icon-pdf:hover {
+            background: #c44d14;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(230, 92, 25, 0.3);
         }
 
         .btn-icon-delete {
-            background: rgba(155, 44, 44, 0.08);
-            color: #9B2C2C;
+            background: #9B2C2C;
+            color: #fff;
+            border-color: #9B2C2C;
         }
 
         .btn-icon-delete:hover {
-            background: rgba(155, 44, 44, 0.18);
+            background: #7f2424;
             transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(155, 44, 44, 0.3);
+        }
+
+        #fournisseursTable .col-actions {
+            position: sticky;
+            right: 0;
+            background: #fff;
+            z-index: 2;
+            min-width: 160px;
+            box-shadow: -6px 0 10px -8px rgba(0, 0, 0, 0.18);
+        }
+
+        #fournisseursTable thead th.col-actions {
+            background: linear-gradient(135deg, var(--green-dark) 0%, #004d3a 100%);
+            z-index: 7;
         }
 
         .produits-empty {
@@ -2899,8 +3041,17 @@
         }
 
         .solde-positive { color: var(--status-dispo); }
-        .solde-negative { color: var(--status-rupture); }
+        .solde-negative {
+            color: #DC2626 !important;
+            font-weight: 700;
+        }
         .solde-zero { color: var(--text-muted); }
+
+        /* Soldes — 5 derniers bons de ventes */
+        .table-card .stock-table td.solde-negative {
+            color: #DC2626 !important;
+            font-weight: 700;
+        }
 
         @media print {
             .col-actions { display: none !important; }
@@ -2956,22 +3107,23 @@
             }
         }
 
-        /* ── KPI Cards ── */
+        /* ── KPI Cards (collées sous le hero, bloquées au scroll) ── */
         .kpi-grid {
             position: sticky;
             top: var(--header-h);
-            z-index: 60;
+            z-index: 80;
             background: var(--main-bg);
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 0;
-            padding: 10px 0 16px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 0 -32px 16px;
+            padding: 10px 32px 12px;
+            box-shadow: 0 10px 20px -12px rgba(0, 51, 38, 0.18);
         }
 
         .kpi-card {
             border-radius: 12px;
-            padding: 20px 22px;
+            padding: 18px 16px;
             color: white;
             position: relative;
             overflow: hidden;
@@ -2981,6 +3133,7 @@
         .kpi-card.blue   { background: var(--blue-card); }
         .kpi-card.orange { background: var(--orange-card); }
         .kpi-card.brown  { background: var(--brown-card); }
+        .kpi-card.teal   { background: var(--teal-card); }
 
         .kpi-top {
             display: flex;
@@ -3035,7 +3188,7 @@
         }
 
         .kpi-value {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             letter-spacing: -0.02em;
         }
@@ -3071,12 +3224,16 @@
         }
 
         .stock-table thead th {
-            background: var(--table-header);
-            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--green-dark) 0%, #004d3a 100%);
+            color: white;
+            padding: 11px 16px;
             font-size: 11px;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 0.04em;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            border-bottom: 2px solid rgba(200, 149, 108, 0.55);
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
 
         .stock-table tbody td {
@@ -3099,50 +3256,6 @@
         .status-dispo   { background: var(--status-dispo-bg);   color: var(--status-dispo); }
         .status-faible  { background: var(--status-faible-bg);  color: var(--status-faible); }
         .status-rupture { background: var(--status-rupture-bg); color: var(--status-rupture); }
-
-        /* ── Charts Section ── */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .charts-grid .chart-section.span-full {
-            grid-column: 1 / -1;
-        }
-
-        .chart-section {
-            background: var(--white);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            padding: 20px 24px 16px;
-        }
-
-        .chart-section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-        }
-
-        .chart-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        .chart-container {
-            position: relative;
-            height: 260px;
-        }
-
-        .chart-container.tall {
-            height: 300px;
-        }
 
         /* ── Footer ── */
         .page-footer {
@@ -3648,10 +3761,9 @@
             </a>
 
             <ul class="top-nav-links landing-nav-links">
-                <li><a href="#" translate="no">Home</a></li>
+                <li><a href="#">Accueil</a></li>
                 <li class="nav-dropdown nav-dropdown-pin" id="categoriesDropdown">
-                    <a href="#" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Catégories <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>
-                    <ul class="nav-dropdown-menu">
+                    <a href="#" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Catégories <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></a>                    <ul class="nav-dropdown-menu">
                         <li class="nav-dropdown-menu-label">Nos gammes produits</li>
                         <li>
                             <a href="#" class="category-link nav-sub-link" data-category="coque" onclick="return window.openCategoryGallery(event, 'coque')">
@@ -3761,7 +3873,7 @@
                                     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
                                 </span>
                                 <span class="sub-link-content">
-                                    <span class="sub-link-title">Zone Elgharb</span>
+                                    <span class="sub-link-title">Zone El Gharb</span>
                                     <span class="sub-link-desc">Carte de visite commercial</span>
                                 </span>
                                 <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
@@ -3815,7 +3927,7 @@
                                     <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
                                 </span>
                                 <span class="sub-link-content">
-                                    <span class="sub-link-title">Atacadaw</span>
+                                    <span class="sub-link-title">Atacadao</span>
                                     <span class="sub-link-desc">Cash &amp; carry professionnel</span>
                                 </span>
                                 <span class="sub-link-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span>
@@ -3823,7 +3935,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="#">Contact</a></li>
                 <li>
                     <button type="button" class="landing-connect-btn" id="openLoginBtn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
@@ -3905,7 +4017,7 @@
         <nav class="sidebar-nav">
             <a class="nav-item active" href="#" data-view="dashboard">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-                <span class="nav-label">Dashboard</span>
+                <span class="nav-label">Tableau de bord</span>
             </a>
 
             <div class="nav-group">
@@ -3915,12 +4027,11 @@
                     <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#" class="nav-subitem" data-view="fiche-fournisseur">Fiche fournisseur</a></li>
-                    <li><a href="#" class="nav-subitem" data-view="commandes">Bon De Commande</a></li>
-                    <li><a href="#" class="nav-subitem" data-view="achats">Achats</a></li>
-                    <li><a href="#" class="nav-subitem">Règlement Achats</a></li>
-                    <li><a href="#" class="nav-subitem">Balance Achats</a></li>
-                    <li><a href="#" class="nav-subitem">Relevé Compte Frns</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="fiche-fournisseur"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="M9 15h6"/></svg></span>Fiche Fournisseur</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="achats"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>Bon d'Achat</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>Règlement Achats</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Balance Achats</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Relevé Compte Frns</a></li>
                 </ul>
             </div>
 
@@ -3931,10 +4042,10 @@
                     <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#" class="nav-subitem" data-view="fiche-produit">Fiche Produit</a></li>
-                    <li><a href="#" class="nav-subitem">Stock Produits</a></li>
-                    <li><a href="#" class="nav-subitem">Stock Produit Fini</a></li>
-                    <li><a href="#" class="nav-subitem">Stock Produit Divers</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="fiche-produit"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="12" cy="14" r="2"/><path d="M12 12v-1"/></svg></span>Fiche Produit</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Dépôt Produits Crus</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>Dépôt Produits Finis</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg></span>Dépôt Produits Divers</a></li>
                 </ul>
             </div>
 
@@ -3945,10 +4056,10 @@
                     <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#" class="nav-subitem">État Journalier Quantité</a></li>
-                    <li><a href="#" class="nav-subitem">État Journalier Production</a></li>
-                    <li><a href="#" class="nav-subitem">État Journalier Sortie</a></li>
-                    <li><a href="#" class="nav-subitem">État Journalier Dépense</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span>État Journalier Quantité</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>État Journalier Production</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>État Journalier Sortie</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>État Journalier Dépense</a></li>
                 </ul>
             </div>
 
@@ -3959,11 +4070,11 @@
                     <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#" class="nav-subitem">Fiche Client</a></li>
-                    <li><a href="#" class="nav-subitem">Vente</a></li>
-                    <li><a href="#" class="nav-subitem">Règlement</a></li>
-                    <li><a href="#" class="nav-subitem">Balance</a></li>
-                    <li><a href="#" class="nav-subitem">Relevé Compte Clt</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Fiche Client</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></span>Vente</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>Règlement</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>Balance</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Relevé Compte Clt</a></li>
                 </ul>
             </div>
 
@@ -3974,9 +4085,9 @@
                     <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#" class="nav-subitem">Débit</a></li>
-                    <li><a href="#" class="nav-subitem">Crédit</a></li>
-                    <li><a href="#" class="nav-subitem">Caisse</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></span>Débit</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></span>Crédit</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span>Caisse</a></li>
                 </ul>
             </div>
 
@@ -3987,10 +4098,10 @@
                     <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#" class="nav-subitem">État Achats</a></li>
-                    <li><a href="#" class="nav-subitem">État Vente</a></li>
-                    <li><a href="#" class="nav-subitem">État Stock</a></li>
-                    <li><a href="#" class="nav-subitem">État Paiement</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>État Achats</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>État Ventes</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>État Stock</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>État Paiement</a></li>
                 </ul>
             </div>
 
@@ -4001,16 +4112,16 @@
                     <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#" class="nav-subitem">Fiche Société</a></li>
-                    <li><a href="#" class="nav-subitem">Utilisateur</a></li>
-                    <li><a href="#" class="nav-subitem">Trésorerie</a></li>
-                    <li><a href="#" class="nav-subitem">Banque</a></li>
-                    <li><a href="#" class="nav-subitem">Caisse</a></li>
-                    <li><a href="#" class="nav-subitem">Unité de mesure</a></li>
-                    <li><a href="#" class="nav-subitem">Ville</a></li>
-                    <li><a href="#" class="nav-subitem">Commerciaux</a></li>
-                    <li><a href="#" class="nav-subitem">Transport</a></li>
-                    <li><a href="#" class="nav-subitem">Chauffeur</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h1"/><path d="M14 9h1"/></svg></span>Fiche Société</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Utilisateur</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>Trésorerie</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>Banque</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg></span>Caisse</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M8 19V9"/><path d="M12 19V5"/><path d="M16 19v-7"/></svg></span>Unité de Mesure</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>Ville</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Commerciaux</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>Transport</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/><path d="M12 11v4"/><path d="M9 14h6"/></svg></span>Chauffeur</a></li>
                 </ul>
             </div>
         </nav>
@@ -4059,19 +4170,6 @@
 
             {{-- KPI Cards --}}
             <div class="kpi-grid">
-                <div class="kpi-card green">
-                    <div class="kpi-top">
-                        <div class="kpi-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        </div>
-                        <span class="kpi-badge kpi-badge-up">
-                            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                            +12%
-                        </span>
-                    </div>
-                    <div class="kpi-label">Chiffre d'Affaires</div>
-                    <div class="kpi-value">452,000 MAD</div>
-                </div>
                 <div class="kpi-card blue">
                     <div class="kpi-top">
                         <div class="kpi-icon">
@@ -4082,8 +4180,21 @@
                             +5%
                         </span>
                     </div>
-                    <div class="kpi-label">Chiffre des Achats</div>
+                    <div class="kpi-label">Total Achats</div>
                     <div class="kpi-value">218,000 MAD</div>
+                </div>
+                <div class="kpi-card green">
+                    <div class="kpi-top">
+                        <div class="kpi-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <span class="kpi-badge kpi-badge-up">
+                            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            +12%
+                        </span>
+                    </div>
+                    <div class="kpi-label">Total Ventes</div>
+                    <div class="kpi-value">452,000 MAD</div>
                 </div>
                 <div class="kpi-card orange">
                     <div class="kpi-top">
@@ -4095,10 +4206,23 @@
                             -2%
                         </span>
                     </div>
-                    <div class="kpi-label">Chiffre des Charges</div>
+                    <div class="kpi-label">Total Charges</div>
                     <div class="kpi-value">128,300 MAD</div>
                 </div>
                 <div class="kpi-card brown">
+                    <div class="kpi-top">
+                        <div class="kpi-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        </div>
+                        <span class="kpi-badge kpi-badge-up">
+                            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                            +3%
+                        </span>
+                    </div>
+                    <div class="kpi-label">Caisse</div>
+                    <div class="kpi-value">84,500 MAD</div>
+                </div>
+                <div class="kpi-card teal">
                     <div class="kpi-top">
                         <div class="kpi-icon">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
@@ -4108,7 +4232,7 @@
                             +8%
                         </span>
                     </div>
-                    <div class="kpi-label">Bénéfice</div>
+                    <div class="kpi-label">Trésorerie</div>
                     <div class="kpi-value">105,700 MAD</div>
                 </div>
             </div>
@@ -4116,7 +4240,7 @@
             {{-- Stock Tables --}}
             <div class="tables-grid">
                 <div class="table-card">
-                    <div class="table-card-title">État Stock Produit</div>
+                    <div class="table-card-title">État Stock Produits</div>
                     <table class="stock-table">
                         <thead>
                             <tr>
@@ -4149,7 +4273,7 @@
                     </table>
                 </div>
                 <div class="table-card">
-                    <div class="table-card-title">État Stock Produit Fini</div>
+                    <div class="table-card-title">État Stock Produits Finis</div>
                     <table class="stock-table">
                         <thead>
                             <tr>
@@ -4183,28 +4307,109 @@
                 </div>
             </div>
 
-            {{-- Charts --}}
-            <div class="charts-grid">
-                <div class="chart-section span-full">
-                    <div class="chart-section-title">Ventes par mois</div>
-                    <div class="chart-subtitle">Ventes et charges mensuelles — année en cours (MAD)</div>
-                    <div class="chart-container tall">
-                        <canvas id="salesChart"></canvas>
-                    </div>
+            {{-- Derniers bons --}}
+            <div class="tables-grid">
+                <div class="table-card">
+                    <div class="table-card-title">5 Derniers Bons d'Achat</div>
+                    <table class="stock-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Fournisseur</th>
+                                <th>Bon N°</th>
+                                <th>Montant</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>27/07/2026</td>
+                                <td>Agro Fruits SARL</td>
+                                <td>BA-2026-0148</td>
+                                <td>42,800.00</td>
+                            </tr>
+                            <tr>
+                                <td>25/07/2026</td>
+                                <td>Nador Nuts Trading</td>
+                                <td>BA-2026-0147</td>
+                                <td>18,350.00</td>
+                            </tr>
+                            <tr>
+                                <td>22/07/2026</td>
+                                <td>Atlas Dattes &amp; Co</td>
+                                <td>BA-2026-0146</td>
+                                <td>31,200.00</td>
+                            </tr>
+                            <tr>
+                                <td>20/07/2026</td>
+                                <td>Med Import Fruits</td>
+                                <td>BA-2026-0145</td>
+                                <td>9,780.00</td>
+                            </tr>
+                            <tr>
+                                <td>18/07/2026</td>
+                                <td>Oriental Dry Food</td>
+                                <td>BA-2026-0144</td>
+                                <td>27,450.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="chart-section">
-                    <div class="chart-section-title">Villes les plus actives</div>
-                    <div class="chart-subtitle">Volume de commandes par ville</div>
-                    <div class="chart-container">
-                        <canvas id="citiesChart"></canvas>
-                    </div>
-                </div>
-                <div class="chart-section">
-                    <div class="chart-section-title">Articles — ventes & demande</div>
-                    <div class="chart-subtitle">Plus vendus / demandés vs moins vendus</div>
-                    <div class="chart-container">
-                        <canvas id="productsChart"></canvas>
-                    </div>
+                <div class="table-card">
+                    <div class="table-card-title">5 Derniers Bons de Vente</div>
+                    <table class="stock-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Client</th>
+                                <th>Ville</th>
+                                <th>Bon N°</th>
+                                <th>Montant</th>
+                                <th>Solde</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>27/07/2026</td>
+                                <td>Épicerie Al Amal</td>
+                                <td>Nador</td>
+                                <td>BV-2026-0321</td>
+                                <td>8,640.00</td>
+                                <td class="solde-negative">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>26/07/2026</td>
+                                <td>Palais Gourmet</td>
+                                <td>Casablanca</td>
+                                <td>BV-2026-0320</td>
+                                <td>22,150.00</td>
+                                <td class="solde-negative">4,200.00</td>
+                            </tr>
+                            <tr>
+                                <td>24/07/2026</td>
+                                <td>Souk Prestige</td>
+                                <td>Fès</td>
+                                <td>BV-2026-0319</td>
+                                <td>15,980.00</td>
+                                <td class="solde-negative">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>23/07/2026</td>
+                                <td>Casa Délices</td>
+                                <td>Rabat</td>
+                                <td>BV-2026-0318</td>
+                                <td>11,300.00</td>
+                                <td class="solde-negative">1,850.00</td>
+                            </tr>
+                            <tr>
+                                <td>21/07/2026</td>
+                                <td>Boutique Luxe Sec</td>
+                                <td>Tanger</td>
+                                <td>BV-2026-0317</td>
+                                <td>19,750.00</td>
+                                <td class="solde-negative">0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             </div>
@@ -4236,7 +4441,7 @@
                                     <select id="fr_type" name="type" class="form-select">
                                         <option value="">— Sélectionner —</option>
                                         <option value="Rev">Rev — Revendeur</option>
-                                        <option value="Ste">Ste — Société</option>
+                                        <option value="Ste">Sté — Société</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -4357,11 +4562,11 @@
             <div id="achatsView" class="saisie-panel hidden">
                 <div id="achatsConsultMode">
                     <div class="list-toolbar">
-                        <h2 class="list-toolbar-title">Bons d'achat — Consultation</h2>
+                        <h2 class="list-toolbar-title">Bons d'Achat — Consultation</h2>
                         <div class="list-toolbar-actions">
                             <button type="button" class="btn-list btn-list-add" id="nouveauBonAchatsBtn">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                                Nouveau Bon
+                                Nouveau Bon d'Achat
                             </button>
                             <button type="button" class="btn-list btn-list-print" id="printCommandesAchatsBtn">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -4374,7 +4579,7 @@
                         </div>
                     </div>
                     <div class="saisie-card" id="commandesPrintAreaAchats">
-                        <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#003326;margin-bottom:4px;padding:16px 16px 0;">SWEET AUSTRIA — Bons d'achat</p>
+                        <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#003326;margin-bottom:4px;padding:16px 16px 0;">SWEET AUSTRIA — Bons d'Achat</p>
                         <p style="font-size:11px;color:#6B6B68;margin-bottom:12px;padding:0 16px;" id="commandesPrintDateAchats"></p>
                         <div class="fournisseur-table-wrap">
                             <table class="achats-commandes-table" id="commandesListTableAchats">
@@ -4405,7 +4610,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="commandesListTableBodyAchats">
-                                    <tr><td colspan="10" class="achats-commandes-empty">Aucune commande saisie</td></tr>
+                                    <tr><td colspan="10" class="achats-commandes-empty">Aucun bon d'achat saisi</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -4509,7 +4714,7 @@
                         </div>
 
                         <div class="saisie-section achats-saisie-ligne">
-                            <h3 class="saisie-section-title">Lignes articles</h3>
+                            <h3 class="saisie-section-title">Articles</h3>
                             <div class="achats-lignes-scroll">
                             <div class="achats-lignes-inline-row">
                                 <div class="form-group">
@@ -4517,7 +4722,7 @@
                                     <input type="text" id="ach_ligne_ref" class="form-input" placeholder="Réf">
                                 </div>
                                 <div class="form-group">
-                                    <label for="ach_ligne_code_barre">Code barre</label>
+                                    <label for="ach_ligne_code_barre">Code-barres</label>
                                     <input type="text" id="ach_ligne_code_barre" class="form-input" placeholder="Code" autocomplete="off">
                                 </div>
                                 <div class="form-group">
@@ -4543,7 +4748,7 @@
                                     <input type="number" id="ach_ligne_quantite" class="form-input" step="0.001" min="0" value="1" placeholder="0">
                                 </div>
                                 <div class="form-group">
-                                    <label for="ach_ligne_mesure">Unité de mesure</label>
+                                    <label for="ach_ligne_mesure">Unité de Mesure</label>
                                     <select id="ach_ligne_mesure" class="form-select">
                                         <option value="">— Chargement… —</option>
                                     </select>
@@ -4556,44 +4761,24 @@
                                     <label for="ach_ligne_sous_total">Sous-T.</label>
                                     <input type="text" id="ach_ligne_sous_total" class="form-input achats-sous-total-input readonly" readonly value="0,00 MAD">
                                 </div>
+                                <div class="achats-add-article-wrap no-print-achats">
+                                    <button type="button" class="btn-add-article" id="ajouterLigneAchatsBtn" title="Ajouter l'article" aria-label="Ajouter l'article">
+                                        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                    </button>
+                                </div>
                             </div>
                             </div>
-                            <div class="achats-line-actions no-print-achats">
-                                <button type="button" class="btn-form btn-form-primary" id="validerLigneAchatsBtn">Valider</button>
-                                <button type="button" class="btn-form btn-form-secondary" id="modifierLigneAchatsBtn">Modifier</button>
-                                <button type="button" class="btn-form btn-form-secondary" id="annulerLigneAchatsBtn">Annuler</button>
+                            <div class="achats-articles-summary no-print-achats">
+                                <span class="achats-articles-count" id="achatsArticlesCount">0 article ajouté</span>
+                                <div class="achats-total-bar" style="margin:0;padding:0;border:none;background:transparent;">
+                                    <span>Total général</span>
+                                    <span id="achatsTotalGeneral">0,00 MAD</span>
+                                </div>
                             </div>
                         </div>
                         </div>
                         </div>
 
-                        <div class="achats-articles-panel">
-                            <h3 class="achats-articles-title">Articles saisis</h3>
-                            <div class="fournisseur-table-wrap">
-                                <table class="achats-lines-table" id="achatsLignesTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Réf</th>
-                                            <th>Code barre</th>
-                                            <th>Désignation</th>
-                                            <th>Catégorie</th>
-                                            <th>Famille</th>
-                                            <th>Qté</th>
-                                            <th>Mesure</th>
-                                            <th>Prix U</th>
-                                            <th>Sous-Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="achatsLignesTableBody">
-                                        <tr><td colspan="9" class="achats-lines-empty">Aucune ligne saisie</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="achats-total-bar">
-                                <span>Total général</span>
-                                <span id="achatsTotalGeneral">0,00 MAD</span>
-                            </div>
-                        </div>
                         </div>
 
                         <div class="form-actions achats-doc-actions no-print-achats">
@@ -4612,63 +4797,6 @@
                 </div>
             </div>
 
-            {{-- Commandes --}}
-            <div id="commandesView" class="saisie-panel hidden">
-                <div class="list-toolbar">
-                    <h2 class="list-toolbar-title">Commandes saisies</h2>
-                    <div class="list-toolbar-actions">
-                        <button type="button" class="btn-list btn-list-add" id="nouvelleCommandeBtn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                            Nouvelle commande
-                        </button>
-                        <button type="button" class="btn-list btn-list-print" id="printCommandesBtn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                            Imprimer
-                        </button>
-                        <button type="button" class="btn-list btn-list-pdf" id="exportCommandesPdfBtn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                            Exporter PDF
-                        </button>
-                    </div>
-                </div>
-                <div class="saisie-card" id="commandesPrintArea">
-                    <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#003326;margin-bottom:4px;padding:16px 16px 0;">SWEET AUSTRIA — Commandes saisies</p>
-                    <p style="font-size:11px;color:#6B6B68;margin-bottom:12px;padding:0 16px;" id="commandesPrintDate"></p>
-                    <div class="fournisseur-table-wrap">
-                        <table class="achats-commandes-table" id="commandesListTable">
-                            <colgroup>
-                                <col class="col-cmd-bon">
-                                <col class="col-cmd-date">
-                                <col class="col-cmd-code">
-                                <col class="col-cmd-nom">
-                                <col class="col-cmd-ville">
-                                <col class="col-cmd-qte">
-                                <col class="col-cmd-total">
-                                <col class="col-cmd-reg">
-                                <col class="col-cmd-ech">
-                                <col class="col-cmd-actions">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Bon N°</th>
-                                    <th>Date Cmd</th>
-                                    <th>Code</th>
-                                    <th>Nom Fournisseur</th>
-                                    <th>Ville</th>
-                                    <th>Qté</th>
-                                    <th>Total</th>
-                                    <th>Règlement</th>
-                                    <th>Échéance</th>
-                                    <th class="col-actions col-actions-cmd no-print-cmd">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="commandesListTableBody">
-                                <tr><td colspan="10" class="achats-commandes-empty">Aucune commande saisie</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
 
             {{-- Fiche Produit --}}
             <div id="ficheProduitView" class="saisie-panel hidden">
@@ -4850,7 +4978,7 @@
     <div class="visit-card-overlay" id="commandeDetailModal">
         <div class="visit-card" role="dialog" aria-modal="true" aria-labelledby="commandeDetailTitle" style="max-width:720px;">
             <div class="visit-card-header">
-                <h2 id="commandeDetailTitle">Détail commande</h2>
+                <h2 id="commandeDetailTitle">Détail bon d'achat</h2>
                 <button class="visit-card-close" id="closeCommandeDetail" aria-label="Fermer">&times;</button>
             </div>
             <div class="visit-card-body" id="commandeDetailBody"></div>
@@ -4918,7 +5046,6 @@
         const dashboardView = document.getElementById('dashboardView');
         const ficheFournisseurView = document.getElementById('ficheFournisseurView');
         const achatsView = document.getElementById('achatsView');
-        const commandesView = document.getElementById('commandesView');
         const ficheProduitView = document.getElementById('ficheProduitView');
         const produitFormPanel = document.getElementById('produitFormPanel');
         const produitListPanel = document.getElementById('produitListPanel');
@@ -4936,6 +5063,7 @@
         let fournisseurs = [];
         let nextFournisseurId = 'FR0001';
         let editingFournisseurId = null;
+        let viewingFournisseur = false;
 
         function normalizeFournisseurCode(code) {
             return (code || '').trim().toUpperCase();
@@ -5004,8 +5132,26 @@
             return 'solde-zero';
         }
 
+        function setFournisseurFormReadonly(readonly) {
+            viewingFournisseur = !!readonly;
+            if (!ficheFournisseurForm) return;
+            ficheFournisseurForm.querySelectorAll('input, select, textarea').forEach(el => {
+                if (el.id === 'fr_id') {
+                    el.readOnly = true;
+                    return;
+                }
+                if (el.tagName === 'SELECT') el.disabled = readonly;
+                else el.readOnly = readonly;
+            });
+            const validerBtn = document.getElementById('validerFournisseurBtn');
+            if (validerBtn) validerBtn.classList.toggle('hidden', readonly);
+            const cancelBtn = document.getElementById('cancelFournisseurForm');
+            if (cancelBtn) cancelBtn.textContent = readonly ? 'Retour' : 'Annuler';
+        }
+
         function resetFournisseurFormMode() {
             editingFournisseurId = null;
+            setFournisseurFormReadonly(false);
             const title = document.getElementById('fournisseurFormTitle');
             const subtitle = document.getElementById('fournisseurFormSubtitle');
             const saveBtn = document.getElementById('saveFournisseurBtn');
@@ -5014,23 +5160,7 @@
             if (saveBtn) saveBtn.textContent = 'Enregistrer';
         }
 
-        function showFournisseurForm(reset = false) {
-            if (fournisseurFormPanel) fournisseurFormPanel.classList.remove('hidden');
-            if (fournisseurListPanel) fournisseurListPanel.classList.add('hidden');
-            if (reset) {
-                resetFournisseurFormMode();
-                if (ficheFournisseurForm) ficheFournisseurForm.reset();
-                if (frIdInput) frIdInput.value = editingFournisseurId || nextFournisseurId;
-                updateFournisseurSoldeField({ id: '', nom: '' });
-                refreshLookupSelects();
-            }
-        }
-
-        function editFournisseur(code) {
-            const f = fournisseurs.find(x => x.id === code);
-            if (!f) return;
-            editingFournisseurId = code;
-            showFournisseurForm(false);
+        function populateFournisseurForm(f) {
             refreshLookupSelects({ fr_ville: f.ville || '' });
             if (frIdInput) frIdInput.value = f.id;
             document.getElementById('fr_nom').value = f.nom || '';
@@ -5046,12 +5176,88 @@
             document.getElementById('fr_rib').value = f.rib || '';
             applyFournisseurSoldesFromCommandes();
             updateFournisseurSoldeField(f);
+        }
+
+        function showFournisseurForm(reset = false) {
+            if (fournisseurFormPanel) fournisseurFormPanel.classList.remove('hidden');
+            if (fournisseurListPanel) fournisseurListPanel.classList.add('hidden');
+            if (reset) {
+                resetFournisseurFormMode();
+                if (ficheFournisseurForm) ficheFournisseurForm.reset();
+                if (frIdInput) frIdInput.value = editingFournisseurId || nextFournisseurId;
+                updateFournisseurSoldeField({ id: '', nom: '' });
+                refreshLookupSelects();
+            }
+        }
+
+        function voirFournisseur(code) {
+            const f = fournisseurs.find(x => x.id === code);
+            if (!f) return;
+            editingFournisseurId = null;
+            showFournisseurForm(false);
+            populateFournisseurForm(f);
+            setFournisseurFormReadonly(true);
+            const title = document.getElementById('fournisseurFormTitle');
+            const subtitle = document.getElementById('fournisseurFormSubtitle');
+            if (title) title.textContent = 'Consulter Fournisseur';
+            if (subtitle) subtitle.textContent = f.id;
+        }
+
+        function editFournisseur(code) {
+            const f = fournisseurs.find(x => x.id === code);
+            if (!f) return;
+            editingFournisseurId = code;
+            showFournisseurForm(false);
+            populateFournisseurForm(f);
+            setFournisseurFormReadonly(false);
             const title = document.getElementById('fournisseurFormTitle');
             const subtitle = document.getElementById('fournisseurFormSubtitle');
             const saveBtn = document.getElementById('saveFournisseurBtn');
             if (title) title.textContent = 'Modifier Fournisseur';
             if (subtitle) subtitle.textContent = f.id;
             if (saveBtn) saveBtn.textContent = 'Mettre à jour';
+        }
+
+        function exportFournisseurPdf(code) {
+            const f = fournisseurs.find(x => x.id === code);
+            if (!f) return;
+            if (!window.jspdf) {
+                alert('Bibliothèque PDF non chargée.');
+                return;
+            }
+            applyFournisseurSoldesFromCommandes();
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+            doc.setFontSize(16);
+            doc.setTextColor(0, 51, 38);
+            doc.text('SWEET AUSTRIA — Fiche Fournisseur', 14, 18);
+            doc.setFontSize(9);
+            doc.setTextColor(107, 107, 104);
+            doc.text('Édité le ' + new Date().toLocaleDateString('fr-FR'), 14, 24);
+            doc.autoTable({
+                startY: 30,
+                head: [['Champ', 'Valeur']],
+                body: [
+                    ['ID', f.id || ''],
+                    ['Nom', f.nom || ''],
+                    ['Type', f.type || ''],
+                    ['Ville', f.ville || ''],
+                    ['Adresse', f.adresse || ''],
+                    ['Téléphone', f.telephone || ''],
+                    ['Fixe', f.fixe || ''],
+                    ['E-mail', f.email || ''],
+                    ['Statut', f.statut || ''],
+                    ['Type règlement', f.type_paiement || ''],
+                    ['Banque', f.banque || ''],
+                    ['RIB', f.rib || ''],
+                    ['Solde', formatSolde(computeFournisseurSolde(f))],
+                ],
+                styles: { fontSize: 10, cellPadding: 3 },
+                headStyles: { fillColor: [0, 51, 38], textColor: 255, fontStyle: 'bold' },
+                columnStyles: { 0: { fontStyle: 'bold', cellWidth: 45 } },
+                margin: { left: 14, right: 14 },
+            });
+            doc.save('fournisseur-' + (f.id || 'fiche') + '-sweet-austria.pdf');
         }
 
         async function deleteFournisseur(code) {
@@ -5109,20 +5315,36 @@
                     <td>${escHtml(f.banque)}</td>
                     <td style="font-family:monospace;font-size:11px;">${escHtml(f.rib)}</td>
                     <td class="solde-cell ${soldeClass(computeFournisseurSolde(f))}">${formatSolde(computeFournisseurSolde(f))}</td>
-                    <td class="col-actions">
+                    <td class="col-actions" onclick="event.stopPropagation()">
                         <span class="col-actions-wrap">
-                            <button type="button" class="btn-row btn-row-edit" data-edit="${f.id}">Modifier</button>
-                            <button type="button" class="btn-row btn-row-delete" data-delete="${f.id}">Supprimer</button>
+                            <button type="button" class="btn-icon-row btn-icon-view" data-view="${f.id}" title="Voir" aria-label="Voir">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke-width="2"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-edit" data-edit="${f.id}" title="Modifier" aria-label="Modifier">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-delete" data-delete="${f.id}" title="Supprimer" aria-label="Supprimer">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 6 5 6 21 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11v6M14 11v6M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-pdf" data-pdf="${f.id}" title="PDF" aria-label="PDF">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13h6M9 17h6M9 9h1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
                         </span>
                     </td>
                 </tr>
             `).join('');
 
+            fournisseursTableBody.querySelectorAll('[data-view]').forEach(btn => {
+                btn.addEventListener('click', () => voirFournisseur(btn.dataset.view));
+            });
             fournisseursTableBody.querySelectorAll('[data-edit]').forEach(btn => {
                 btn.addEventListener('click', () => editFournisseur(btn.dataset.edit));
             });
             fournisseursTableBody.querySelectorAll('[data-delete]').forEach(btn => {
                 btn.addEventListener('click', () => deleteFournisseur(btn.dataset.delete));
+            });
+            fournisseursTableBody.querySelectorAll('[data-pdf]').forEach(btn => {
+                btn.addEventListener('click', () => exportFournisseurPdf(btn.dataset.pdf));
             });
         }
 
@@ -5144,7 +5366,7 @@
                 document.querySelector('.nav-item[data-view="dashboard"]')?.classList.add('active');
                 return;
             }
-            if (['achats', 'commandes', 'fiche-fournisseur', 'fiche-produit'].includes(viewId)) {
+            if (['achats', 'fiche-fournisseur', 'fiche-produit'].includes(viewId)) {
                 document.querySelectorAll('.nav-subitem.active').forEach(el => el.classList.remove('active'));
                 document.querySelector(`.nav-subitem[data-view="${viewId}"]`)?.classList.add('active');
             }
@@ -5155,7 +5377,6 @@
             if (dashboardView) dashboardView.classList.toggle('hidden', viewId !== 'dashboard');
             if (ficheFournisseurView) ficheFournisseurView.classList.toggle('hidden', viewId !== 'fiche-fournisseur');
             if (achatsView) achatsView.classList.toggle('hidden', viewId !== 'achats');
-            if (commandesView) commandesView.classList.toggle('hidden', viewId !== 'commandes');
             if (ficheProduitView) ficheProduitView.classList.toggle('hidden', viewId !== 'fiche-produit');
             if (viewId === 'fiche-fournisseur') {
                 loadFournisseurs().then(() => {
@@ -5186,10 +5407,6 @@
                     if (!options.keepForm) resetAchatsForm();
                 });
             }
-            if (viewId === 'commandes') {
-                loadCommandesAchats();
-                renderCommandesAchatsTable();
-            }
             if (viewId === 'fiche-produit') {
                 Promise.all([loadProduits(), loadUnitesMesure()]).then(() => {
                     refreshLookupSelects();
@@ -5208,7 +5425,7 @@
         let produitPhotoObjectUrl = null;
 
         const LOOKUP_LISTS = {
-            villes: ['Casablanca', 'Fès', 'Rabat', 'Nador', 'Tanger', 'Marrakech', 'Taza', 'Oujda', 'Agadir', 'Meknès', 'Kenitra', 'El Jadida'],
+            villes: ['Casablanca', 'Fès', 'Rabat', 'Nador', 'Tanger', 'Marrakech', 'Taza', 'Oujda', 'Agadir', 'Meknès', 'Kénitra', 'El Jadida'],
             categories: [
                 'Fruits à coque', 'Fruits séchés', 'Cacahuètes et dérivés', 'Graines alimentaires',
                 'Fruits secs enrobés et confiseries', 'Produits Ramadan et Fêtes', 'Épices', 'Confiserie', 'Divers'
@@ -5704,7 +5921,7 @@
             }
             if (!tbody) return;
             if (commandesAchats.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="10" class="achats-commandes-empty">Aucune commande saisie</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="10" class="achats-commandes-empty">Aucun bon d\'achat saisi</td></tr>';
                 return;
             }
             tbody.innerHTML = commandesAchats.map((c, i) => {
@@ -5752,7 +5969,6 @@
         }
 
         function renderCommandesAchatsTable() {
-            renderCommandesAchatsTableInto('commandesListTableBody', 'commandesPrintDate');
             renderCommandesAchatsTableInto('commandesListTableBodyAchats', 'commandesPrintDateAchats');
         }
 
@@ -5763,11 +5979,11 @@
             const body = document.getElementById('commandeDetailBody');
             const title = document.getElementById('commandeDetailTitle');
             if (!modal || !body) return;
-            if (title) title.textContent = 'Commande ' + (c.bon || '');
+            if (title) title.textContent = 'Bon d\'Achat ' + (c.bon || '');
             const lignesHtml = (c.lignes || []).length === 0
                 ? '<p style="color:#6B6B68;font-size:13px;">Aucune ligne article.</p>'
                 : `<table class="achats-lines-table" style="min-width:100%;margin-top:12px;">
-                    <thead><tr><th>Réf</th><th>Code barre</th><th>Désignation</th><th>Qté</th><th>Mesure</th><th>Prix U</th><th>Sous-Total</th></tr></thead>
+                    <thead><tr><th>Réf</th><th>Code-barres</th><th>Désignation</th><th>Qté</th><th>Mesure</th><th>Prix U</th><th>Sous-Total</th></tr></thead>
                     <tbody>${(c.lignes || []).map(l => `<tr>
                         <td>${escHtml(l.ref) || '—'}</td>
                         <td>${escHtml(l.code_barre) || '—'}</td>
@@ -5826,7 +6042,7 @@
                     achatsLignes = (c.lignes || []).map(l => ({ ...l }));
                     clearAchatsLigneForm();
                     renderAchatsLignesTable();
-                    showAppView('achats', { keepForm: true, returnView: 'commandes' });
+                    showAppView('achats', { keepForm: true, returnView: 'achats', mode: 'saisie' });
                     document.getElementById('achatsSaisiePanel')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         }
@@ -5834,7 +6050,7 @@
         function reglerCommandeAchats(index) {
             const c = commandesAchats[index];
             if (!c || isCommandePayee(c)) return;
-            if (!confirm('Marquer la commande « ' + c.bon + ' » comme payée ?')) return;
+            if (!confirm('Marquer le bon d\'achat « ' + c.bon + ' » comme payé ?')) return;
             c.paye = true;
             persistCommandesAchats();
             renderCommandesAchatsTable();
@@ -5844,7 +6060,7 @@
         function deleteCommandeAchats(index) {
             const c = commandesAchats[index];
             if (!c) return;
-            if (!confirm('Supprimer la commande « ' + c.bon + ' » ?')) return;
+            if (!confirm('Supprimer le bon d\'achat « ' + c.bon + ' » ?')) return;
             commandesAchats.splice(index, 1);
             persistCommandesAchats();
             if (editingCommandeIndex === index) {
@@ -5895,7 +6111,7 @@
             refreshFournisseurSoldesAfterCommandeChange(previousCommande, commande);
             const toast = document.getElementById('cartToast');
             if (toast) {
-                toast.textContent = 'Commande ' + commande.bon + ' enregistrée';
+                toast.textContent = 'Bon d\'achat ' + commande.bon + ' enregistré';
                 toast.classList.add('show');
                 setTimeout(() => toast.classList.remove('show'), 2800);
             }
@@ -6004,9 +6220,7 @@
             document.getElementById('ach_ligne_mesure').value = '';
             document.getElementById('ach_ligne_prix').value = '';
             document.getElementById('ach_ligne_sous_total').value = formatMoney(0);
-            const modBtn = document.getElementById('modifierLigneAchatsBtn');
-            if (modBtn) modBtn.textContent = 'Modifier';
-            renderAchatsLignesTable();
+            updateAchatsArticlesSummary();
         }
 
         function validateAchatsLigneData(data) {
@@ -6028,46 +6242,39 @@
             return true;
         }
 
-        function renderAchatsLignesTable() {
-            const tbody = document.getElementById('achatsLignesTableBody');
+        function updateAchatsArticlesSummary() {
             const totalEl = document.getElementById('achatsTotalGeneral');
-            if (!tbody) return;
-            if (achatsLignes.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="9" class="achats-lines-empty">Aucune ligne saisie</td></tr>';
-                if (totalEl) totalEl.textContent = formatMoney(0);
-                return;
-            }
-            let total = 0;
-            tbody.innerHTML = achatsLignes.map((l, i) => {
-                total += l.sous_total;
-                const selected = selectedAchatsLineIndex === i ? ' selected' : '';
-                return `<tr class="${selected}" data-line-index="${i}">
-                    <td>${escHtml(l.ref) || '—'}</td>
-                    <td>${escHtml(l.code_barre) || '—'}</td>
-                    <td>${escHtml(l.designation)}</td>
-                    <td>${escHtml(l.categorie) || '—'}</td>
-                    <td>${escHtml(l.famille) || '—'}</td>
-                    <td>${l.quantite.toLocaleString('fr-FR')}</td>
-                    <td>${escHtml(l.mesure_libelle || l.mesure)}</td>
-                    <td>${formatMoney(l.prix_u)}</td>
-                    <td><strong>${formatMoney(l.sous_total)}</strong></td>
-                </tr>`;
-            }).join('');
+            const countEl = document.getElementById('achatsArticlesCount');
+            const total = achatsLignes.reduce((s, l) => s + (parseFloat(l.sous_total) || 0), 0);
             if (totalEl) totalEl.textContent = formatMoney(total);
-            tbody.querySelectorAll('tr[data-line-index]').forEach(row => {
-                row.addEventListener('click', () => {
-                    selectedAchatsLineIndex = parseInt(row.dataset.lineIndex, 10);
-                    renderAchatsLignesTable();
-                });
-                row.addEventListener('dblclick', () => {
-                    const idx = parseInt(row.dataset.lineIndex, 10);
-                    editingAchatsLineIndex = idx;
-                    selectedAchatsLineIndex = idx;
-                    fillAchatsLigneForm(achatsLignes[idx]);
-                    const modBtn = document.getElementById('modifierLigneAchatsBtn');
-                    if (modBtn) modBtn.textContent = 'Mettre à jour';
-                });
-            });
+            if (countEl) {
+                const n = achatsLignes.length;
+                countEl.innerHTML = n === 0
+                    ? '0 article ajouté'
+                    : '<strong>' + n + '</strong> article' + (n > 1 ? 's' : '') + ' ajouté' + (n > 1 ? 's' : '');
+            }
+        }
+
+        function renderAchatsLignesTable() {
+            updateAchatsArticlesSummary();
+        }
+
+        function ajouterArticleAchats() {
+            const data = getAchatsLigneFormData();
+            if (!validateAchatsLigneData(data)) return;
+            if (editingAchatsLineIndex !== null) {
+                achatsLignes[editingAchatsLineIndex] = data;
+            } else {
+                achatsLignes.push(data);
+            }
+            clearAchatsLigneForm();
+            const toast = document.getElementById('cartToast');
+            if (toast) {
+                toast.textContent = 'Article ajouté (' + achatsLignes.length + ')';
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 1800);
+            }
+            document.getElementById('ach_ligne_designation')?.focus();
         }
 
         function getAchatsHeaderInfo() {
@@ -6210,48 +6417,12 @@
         document.getElementById('ach_ligne_quantite')?.addEventListener('input', calcAchatsLigneSousTotal);
         document.getElementById('ach_ligne_prix')?.addEventListener('input', calcAchatsLigneSousTotal);
 
-        document.getElementById('validerLigneAchatsBtn')?.addEventListener('click', () => {
-            const data = getAchatsLigneFormData();
-            if (!validateAchatsLigneData(data)) return;
-            if (editingAchatsLineIndex !== null) {
-                achatsLignes[editingAchatsLineIndex] = data;
-            } else {
-                achatsLignes.push(data);
-            }
-            clearAchatsLigneForm();
-            renderAchatsLignesTable();
-        });
-
-        document.getElementById('modifierLigneAchatsBtn')?.addEventListener('click', () => {
-            if (editingAchatsLineIndex !== null) {
-                const data = getAchatsLigneFormData();
-                if (!validateAchatsLigneData(data)) return;
-                achatsLignes[editingAchatsLineIndex] = data;
-                clearAchatsLigneForm();
-                renderAchatsLignesTable();
-                return;
-            }
-            if (selectedAchatsLineIndex === null) {
-                alert('Sélectionnez une ligne dans le tableau (clic ou double-clic).');
-                return;
-            }
-            editingAchatsLineIndex = selectedAchatsLineIndex;
-            fillAchatsLigneForm(achatsLignes[selectedAchatsLineIndex]);
-            document.getElementById('modifierLigneAchatsBtn').textContent = 'Mettre à jour';
-        });
-
-        document.getElementById('annulerLigneAchatsBtn')?.addEventListener('click', () => clearAchatsLigneForm());
+        document.getElementById('ajouterLigneAchatsBtn')?.addEventListener('click', ajouterArticleAchats);
 
         document.getElementById('enregistrerCommandeAchatsBtn')?.addEventListener('click', saveCommandeAchats);
 
         document.getElementById('fermerAchatsBtn')?.addEventListener('click', () => {
-            showAppView(achatsReturnView);
-        });
-
-        document.getElementById('nouvelleCommandeBtn')?.addEventListener('click', () => {
-            editingCommandeIndex = null;
-            selectedCommandeIndex = null;
-            showAppView('achats', { returnView: 'commandes' });
+            showAppView(achatsReturnView === 'commandes' ? 'achats' : achatsReturnView, achatsReturnView === 'commandes' || achatsReturnView === 'achats' ? { mode: 'consult' } : {});
         });
 
         document.getElementById('nouveauBonAchatsBtn')?.addEventListener('click', () => {
@@ -6285,7 +6456,7 @@
             const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
             doc.setFontSize(16);
             doc.setTextColor(0, 51, 38);
-            doc.text('SWEET AUSTRIA — Bons d\'achat', 14, 16);
+            doc.text('SWEET AUSTRIA — Bons d\'Achat', 14, 16);
             doc.setFontSize(9);
             doc.setTextColor(107, 107, 104);
             doc.text('Édité le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
@@ -6310,54 +6481,6 @@
             });
             doc.save('bons-achat-sweet-austria.pdf');
         });
-
-        document.getElementById('printCommandesBtn')?.addEventListener('click', () => {
-            if (commandesAchats.length === 0) {
-                alert('Aucune commande à imprimer.');
-                return;
-            }
-            window.print();
-        });
-
-        document.getElementById('exportCommandesPdfBtn')?.addEventListener('click', () => {
-            if (commandesAchats.length === 0) {
-                alert('Aucune commande à exporter.');
-                return;
-            }
-            if (!window.jspdf) {
-                alert('Bibliothèque PDF non chargée.');
-                return;
-            }
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-            doc.setFontSize(16);
-            doc.setTextColor(0, 51, 38);
-            doc.text('SWEET AUSTRIA — Commandes saisies', 14, 16);
-            doc.setFontSize(9);
-            doc.setTextColor(107, 107, 104);
-            doc.text('Édité le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
-            doc.autoTable({
-                startY: 28,
-                head: [['Bon N°', 'Date Cmd', 'Code', 'Nom Fournisseur', 'Ville', 'Qté', 'Total', 'Règlement', 'Échéance']],
-                body: commandesAchats.map(c => [
-                    c.bon,
-                    formatDateFr(c.date_cmd),
-                    c.code_fournisseur || '—',
-                    c.nom_fournisseur || '—',
-                    commandeVille(c) || '—',
-                    commandeTotalQte(c).toLocaleString('fr-FR'),
-                    formatMoney(c.total || 0),
-                    c.type_reglement || '—',
-                    formatDateFr(c.echeance),
-                ]),
-                styles: { fontSize: 7, cellPadding: 2 },
-                headStyles: { fillColor: [0, 51, 38], textColor: 255, fontStyle: 'bold' },
-                alternateRowStyles: { fillColor: [249, 248, 243] },
-                margin: { left: 14, right: 14 },
-            });
-            doc.save('commandes-sweet-austria.pdf');
-        });
-
         document.getElementById('closeCommandeDetail')?.addEventListener('click', closeCommandeDetailModal);
         document.getElementById('commandeDetailModal')?.addEventListener('click', e => {
             if (e.target.id === 'commandeDetailModal') closeCommandeDetailModal();
@@ -6393,7 +6516,7 @@
             const total = achatsLignes.reduce((s, l) => s + l.sous_total, 0);
             doc.autoTable({
                 startY: 32,
-                head: [['Réf', 'Code barre', 'Désignation', 'Catégorie', 'Famille', 'Qté', 'Mesure', 'Prix U', 'Sous-Total']],
+                head: [['Réf', 'Code-barres', 'Désignation', 'Catégorie', 'Famille', 'Qté', 'Mesure', 'Prix U', 'Sous-Total']],
                 body: achatsLignes.map(l => [
                     l.ref || '—', l.code_barre || '—', l.designation, l.categorie || '—', l.famille || '—',
                     l.quantite.toLocaleString('fr-FR'), l.mesure_libelle || l.mesure,
@@ -6433,6 +6556,7 @@
         }
 
         async function saveFournisseur() {
+            if (viewingFournisseur) return;
             const nom = document.getElementById('fr_nom')?.value?.trim() || '';
             if (!nom) {
                 alert('Veuillez saisir le nom du fournisseur.');
@@ -6867,7 +6991,7 @@
                 manager: { name: 'Mohamed Tazi', role: 'Responsable Commercial Régional', photo: 'https://images.unsplash.com/photo-1519081900723-00d085d022a8?w=200&q=80' },
             },
             taza: {
-                zone: 'Zone Taza, Fes',
+                zone: 'Zone Taza, Fès',
                 id: 'COM-TAZ-003',
                 name: 'Hassan Alami',
                 phone: '+212 6 34 56 78 90',
@@ -6875,7 +6999,7 @@
                 manager: { name: 'Fatima Bennani', role: 'Responsable Commercial Régional', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80' },
             },
             gharb: {
-                zone: 'Zone Elgharb',
+                zone: 'Zone El Gharb',
                 id: 'COM-GHB-004',
                 name: 'Nadia Chraibi',
                 phone: '+212 6 45 67 89 01',
@@ -6927,7 +7051,7 @@
                             <div class="visit-field-value">${c.name}</div>
                         </div>
                         <div class="visit-field">
-                            <div class="visit-field-label">Numéro téléphone</div>
+                            <div class="visit-field-label">Numéro de téléphone</div>
                             <div class="visit-field-value phone">${c.phone}</div>
                         </div>
                     </div>
@@ -6981,11 +7105,11 @@
                 desc: 'Partenaire nutrition sportive : mixes énergétiques et graines pour les rayons bien-être.',
             },
             atacadaw: {
-                name: 'Atacadaw',
+                name: 'Atacadao',
                 type: 'Cash & carry',
                 since: '2019',
                 regions: 'Nador, Oujda, Tétouan',
-                contact: 'commercial@atacadaw.ma',
+                contact: 'commercial@atacadao.ma',
                 image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80',
                 desc: 'Approvisionnement en vrac pour professionnels : hôtellerie, restauration et revendeurs.',
             },
@@ -7061,172 +7185,6 @@
         productsGrid.addEventListener('click', e => {
             const btn = e.target.closest('.btn-add-cart');
             if (btn) showCartToast(btn.dataset.product);
-        });
-
-        const chartDefaults = {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        boxWidth: 12,
-                        boxHeight: 12,
-                        padding: 16,
-                        font: { family: 'Inter', size: 11 },
-                        color: '#6B6B68',
-                    },
-                },
-            },
-        };
-
-        const axisStyle = {
-            grid: { color: '#F0EEEA' },
-            border: { display: false },
-            ticks: { font: { family: 'Inter', size: 10 }, color: '#9A9A97' },
-        };
-
-        const months = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc'];
-
-        const barValueLabels = {
-            id: 'barValueLabels',
-            afterDatasetsDraw(chart) {
-                if (chart.canvas.id !== 'salesChart') return;
-                const { ctx, chartArea } = chart;
-                if (!chartArea) return;
-
-                chart.data.datasets.forEach((dataset, datasetIndex) => {
-                    const meta = chart.getDatasetMeta(datasetIndex);
-                    meta.data.forEach((bar, index) => {
-                        const value = dataset.data[index];
-                        if (value == null) return;
-
-                        const label = new Intl.NumberFormat('fr-FR').format(value);
-                        const { x, y, base } = bar.getProps(['x', 'y', 'base'], true);
-                        const barHeight = Math.abs(base - y);
-                        const midY = y + (base - y) / 2;
-
-                        ctx.save();
-                        ctx.font = '600 9px Inter, sans-serif';
-                        ctx.fillStyle = '#ffffff';
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'middle';
-
-                        if (barHeight >= 22) {
-                            ctx.fillText(label, x, midY);
-                        } else {
-                            ctx.fillStyle = '#1C1C1A';
-                            ctx.textBaseline = 'bottom';
-                            ctx.fillText(label, x, y - 4);
-                        }
-                        ctx.restore();
-                    });
-                });
-            },
-        };
-
-        Chart.register(barValueLabels);
-
-        new Chart(document.getElementById('salesChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: months,
-                datasets: [
-                    {
-                        label: 'Ventes (MAD)',
-                        data: [280000, 310000, 350000, 320000, 380000, 420000, 390000, 410000, 370000, 400000, 430000, 450000],
-                        backgroundColor: 'rgba(0, 66, 54, 0.85)',
-                        borderColor: '#004236',
-                        borderWidth: 1,
-                        borderRadius: 6,
-                    },
-                    {
-                        label: 'Charges (MAD)',
-                        data: [128000, 130000, 129000, 131000, 128000, 130000, 129000, 131000, 128000, 130000, 129000, 128000],
-                        backgroundColor: 'rgba(184, 149, 106, 0.85)',
-                        borderColor: '#B8956A',
-                        borderWidth: 1,
-                        borderRadius: 6,
-                    },
-                ],
-            },
-            options: {
-                ...chartDefaults,
-                plugins: {
-                    ...chartDefaults.plugins,
-                    legend: {
-                        ...chartDefaults.plugins.legend,
-                        display: true,
-                        position: 'bottom',
-                        align: 'end',
-                    },
-                },
-                scales: {
-                    x: { ...axisStyle, grid: { display: false } },
-                    y: {
-                        ...axisStyle,
-                        ticks: {
-                            ...axisStyle.ticks,
-                            callback: v => (v / 1000) + 'k',
-                        },
-                    },
-                },
-            },
-        });
-
-        new Chart(document.getElementById('citiesChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['Casablanca', 'Fès', 'Rabat', 'Nador', 'Tanger', 'Marrakech'],
-                datasets: [{
-                    label: 'Commandes',
-                    data: [842, 615, 534, 478, 392, 356],
-                    backgroundColor: [
-                        '#004236', '#2B3E92', '#E65C19', '#BF571B', '#2D8A4E', '#7C3AED',
-                    ],
-                    borderRadius: 6,
-                }],
-            },
-            options: {
-                indexAxis: 'y',
-                ...chartDefaults,
-                plugins: { ...chartDefaults.plugins, legend: { display: false } },
-                scales: {
-                    x: { ...axisStyle },
-                    y: { ...axisStyle, grid: { display: false } },
-                },
-            },
-        });
-
-        new Chart(document.getElementById('productsChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: [
-                    'Mix Luxe 500g', 'Dattes Medjool', 'Amandes Premium', 'Coffret Prestige',
-                    'Orangettes Choco', 'Graines Chia', 'Figues Izmir', 'Noix Pécan',
-                ],
-                datasets: [
-                    {
-                        label: 'Plus vendus / demandés',
-                        data: [1240, 980, 870, 720, null, null, null, null],
-                        backgroundColor: '#004236',
-                        borderRadius: 4,
-                    },
-                    {
-                        label: 'Moins vendus',
-                        data: [null, null, null, null, 58, 45, 62, 38],
-                        backgroundColor: '#E65C19',
-                        borderRadius: 4,
-                    },
-                ],
-            },
-            options: {
-                indexAxis: 'y',
-                ...chartDefaults,
-                scales: {
-                    x: { ...axisStyle },
-                    y: { ...axisStyle, grid: { display: false } },
-                },
-            },
         });
 
         /* ===== Interface d'accueil / Connexion ===== */
@@ -7331,3 +7289,4 @@
     </script>
 </body>
 </html>
+
