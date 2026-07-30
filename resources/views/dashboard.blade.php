@@ -679,7 +679,7 @@
             display: flex;
             flex-direction: column;
             height: var(--header-h);
-            background: url('/images/fruits-secs.png') center center / cover no-repeat;
+            background: url('/images/a2s-fruits-background.png') center center / cover no-repeat;
         }
 
         .hero-header::before {
@@ -2424,22 +2424,14 @@
         }
 
         #commandesView .fournisseur-table-wrap {
-            overflow-x: auto;
-        }
-
-        /* Listes : carte à hauteur fixe, seul le tableau défile à l'intérieur */
-        #fournisseurPrintArea .fournisseur-table-wrap,
-        #commandesPrintArea .fournisseur-table-wrap,
-        #produitPrintArea .fournisseur-table-wrap {
-            max-height: calc(100vh - var(--header-h) - 130px);
-            overflow: auto;
+            overflow-x: hidden;
         }
 
         #fournisseurPrintArea .fournisseur-table thead th,
         #commandesPrintArea .achats-commandes-table thead th,
         #produitPrintArea .produits-table thead th {
             position: sticky;
-            top: 0;
+            top: var(--header-h);
             z-index: 6;
         }
 
@@ -2842,6 +2834,182 @@
             z-index: 7;
         }
 
+        /* Tous les tableaux restent fixes dans leur conteneur, sans défilement interne */
+        .fournisseur-table-wrap,
+        #fournisseurPrintArea .fournisseur-table-wrap,
+        #commandesPrintAreaAchats .fournisseur-table-wrap,
+        #produitPrintArea .fournisseur-table-wrap {
+            width: 100%;
+            max-height: none;
+            overflow: visible;
+        }
+
+        .fournisseur-table,
+        .achats-commandes-table,
+        .produits-table,
+        .stock-table,
+        .achats-lines-table {
+            width: 100%;
+            min-width: 0;
+            table-layout: fixed;
+        }
+
+        .fournisseur-table th,
+        .fournisseur-table td,
+        .achats-commandes-table th,
+        .achats-commandes-table td,
+        .produits-table th,
+        .produits-table td,
+        .stock-table th,
+        .stock-table td,
+        .achats-lines-table th,
+        .achats-lines-table td {
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: normal;
+        }
+
+        #fournisseurPrintArea .fournisseur-table thead th,
+        #commandesPrintAreaAchats .achats-commandes-table thead th,
+        #produitPrintArea .produits-table thead th {
+            position: static;
+        }
+
+        #fournisseursTable .col-actions {
+            position: static;
+            width: 150px;
+            min-width: 0;
+            box-shadow: none;
+        }
+
+        @media (max-width: 1200px) {
+            .fournisseur-table,
+            .achats-commandes-table,
+            .produits-table {
+                font-size: 10px;
+            }
+
+            .fournisseur-table thead th,
+            .fournisseur-table tbody td,
+            .achats-commandes-table thead th,
+            .achats-commandes-table tbody td,
+            .produits-table thead th,
+            .produits-table tbody td {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            #fournisseursTable .col-actions {
+                width: 124px;
+            }
+
+            #fournisseursTable .btn-icon-row {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        /* Liste fournisseurs : positions du tableau et des boutons verrouillées */
+        #fournisseurListPanel .list-toolbar {
+            flex-wrap: nowrap;
+            min-height: 66px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 14px -14px rgba(0, 51, 38, 0.4);
+        }
+
+        #fournisseurListPanel .list-toolbar-title {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        #fournisseurListPanel .list-toolbar-actions {
+            display: grid;
+            grid-template-columns: repeat(3, max-content);
+            flex: 0 0 auto;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+        #fournisseurListPanel .btn-list,
+        #fournisseurListPanel .btn-list:hover {
+            transform: none;
+            white-space: nowrap;
+        }
+
+        #fournisseurPrintArea {
+            width: 100%;
+            position: relative;
+            contain: layout;
+        }
+
+        #fournisseurPrintArea .fournisseur-table-wrap {
+            width: 100%;
+            overflow: visible;
+        }
+
+        #fournisseursTable {
+            width: 100%;
+            min-width: 0;
+            table-layout: fixed;
+        }
+
+        #fournisseursTable th,
+        #fournisseursTable td {
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #fournisseurListPanel #fournisseursTable .col-actions {
+            position: static;
+            width: auto;
+            min-width: 0;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+
+        #fournisseursTable .col-actions-wrap {
+            display: grid;
+            grid-template-columns: repeat(4, 28px);
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            width: 124px;
+            min-width: 124px;
+            margin: 0 auto;
+        }
+
+        #fournisseursTable .btn-icon-row,
+        #fournisseursTable .btn-icon-row:hover {
+            width: 28px;
+            height: 28px;
+            flex: 0 0 28px;
+            transform: none;
+        }
+
+        @media (max-width: 900px) {
+            #fournisseurListPanel .list-toolbar {
+                align-items: flex-start;
+            }
+
+            #fournisseurListPanel .list-toolbar-actions {
+                grid-template-columns: repeat(3, 36px);
+            }
+
+            #fournisseurListPanel .btn-list {
+                width: 36px;
+                height: 36px;
+                padding: 0;
+                justify-content: center;
+                font-size: 0;
+            }
+
+            #fournisseurListPanel .btn-list svg {
+                width: 17px;
+                height: 17px;
+            }
+        }
+
         .produits-empty {
             text-align: center;
             padding: 28px 16px;
@@ -2881,7 +3049,11 @@
         }
 
         #ficheProduitView .pr-inline-row-2 {
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 72px 72px;
+            grid-template-columns:
+                minmax(120px, 1fr)
+                minmax(110px, 0.9fr)
+                minmax(110px, 0.7fr)
+                minmax(110px, 0.7fr);
         }
 
         #ficheProduitView .pr-inline-row-3 {
@@ -3299,7 +3471,7 @@
         .landing-bg {
             position: absolute;
             inset: 0;
-            background: url('{{ asset('images/fruits-secs.jpg') }}') center/cover no-repeat;
+            background: url('{{ asset('images/a2s-fruits-background.png') }}') center/cover no-repeat;
             transform: scale(1.05);
             filter: saturate(1.1);
             z-index: 0;
@@ -3743,6 +3915,275 @@
             .landing-body { justify-content: center; text-align: center; }
             .landing-hero-text { text-align: center; }
         }
+
+        /* ===== Verrouillage global des tableaux : aucun défilement horizontal ===== */
+        .fournisseur-table-wrap,
+        .stock-table-wrap,
+        #commandesView .fournisseur-table-wrap,
+        #commandesPrintArea .fournisseur-table-wrap,
+        #commandesPrintAreaAchats .fournisseur-table-wrap,
+        #produitPrintArea .fournisseur-table-wrap {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .fournisseur-table,
+        .produits-table,
+        .achats-commandes-table,
+        .achats-lines-table,
+        .stock-table {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            table-layout: fixed;
+        }
+
+        .fournisseur-table thead th,
+        .fournisseur-table tbody td,
+        .produits-table thead th,
+        .produits-table tbody td,
+        .achats-commandes-table thead th,
+        .achats-commandes-table tbody td,
+        .achats-lines-table thead th,
+        .achats-lines-table tbody td,
+        .stock-table thead th,
+        .stock-table tbody td {
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+
+        .fournisseur-table thead th,
+        .produits-table thead th,
+        .achats-commandes-table thead th {
+            padding-left: 6px;
+            padding-right: 6px;
+            font-size: 9.5px;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+        }
+
+        .fournisseur-table tbody td,
+        .produits-table tbody td,
+        .achats-commandes-table tbody td {
+            padding-left: 6px;
+            padding-right: 6px;
+            font-size: 11px;
+        }
+
+        /* ===== Pages fixes : seules les zones de données des tableaux défilent ===== */
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            overflow: hidden !important;
+        }
+
+        .main-wrapper {
+            height: 100vh;
+            max-height: 100vh;
+            min-height: 0;
+            overflow: hidden !important;
+        }
+
+        .dashboard-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            min-height: 0;
+            overflow: hidden !important;
+        }
+
+        .page-footer,
+        .hero-header,
+        .list-toolbar {
+            flex: 0 0 auto;
+        }
+
+        #dashboardView,
+        #ficheFournisseurView,
+        #achatsView,
+        #ficheProduitView {
+            flex: 1;
+            min-height: 0;
+            max-height: 100%;
+            overflow: hidden !important;
+        }
+
+        #ficheFournisseurView:not(.hidden),
+        #achatsView:not(.hidden),
+        #ficheProduitView:not(.hidden),
+        #fournisseurListPanel:not(.hidden),
+        #produitListPanel:not(.hidden),
+        #achatsConsultMode:not(.hidden) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #fournisseurListPanel,
+        #produitListPanel,
+        #achatsConsultMode,
+        #fournisseurPrintArea,
+        #produitPrintArea,
+        #commandesPrintAreaAchats {
+            flex: 1;
+            min-height: 0;
+            overflow: hidden !important;
+        }
+
+        #fournisseurPrintArea,
+        #produitPrintArea,
+        #commandesPrintAreaAchats {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fournisseur-table-wrap,
+        .stock-table-wrap,
+        #fournisseurPrintArea .fournisseur-table-wrap,
+        #commandesPrintArea .fournisseur-table-wrap,
+        #commandesPrintAreaAchats .fournisseur-table-wrap,
+        #produitPrintArea .fournisseur-table-wrap,
+        #achatsView .achats-articles-panel .fournisseur-table-wrap {
+            flex: 1;
+            width: 100%;
+            height: auto !important;
+            min-height: 0;
+            max-height: 100% !important;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+            overscroll-behavior: contain;
+            scrollbar-gutter: stable;
+        }
+
+        .fournisseur-table,
+        .produits-table,
+        .achats-commandes-table,
+        .achats-lines-table,
+        .stock-table {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            table-layout: fixed !important;
+        }
+
+        .fournisseur-table thead th,
+        .produits-table thead th,
+        .achats-commandes-table thead th,
+        .achats-lines-table thead th,
+        .stock-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 8;
+        }
+
+        #fournisseursTable .col-actions,
+        #fournisseursTable thead th.col-actions {
+            position: static !important;
+            right: auto !important;
+            min-width: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .fournisseur-table tbody tr,
+        .fournisseur-table tbody tr:hover,
+        .fournisseur-table tbody td,
+        .fournisseur-table tbody tr:hover td,
+        .produits-table tbody tr:hover td,
+        .achats-commandes-table tbody tr:hover td,
+        .stock-table tbody tr:hover td {
+            transform: none !important;
+        }
+
+        /* Titres et boutons fixés directement au-dessus de tous les tableaux */
+        #fournisseurListPanel .list-toolbar,
+        #produitListPanel .list-toolbar,
+        #achatsConsultMode .list-toolbar {
+            position: relative;
+            top: auto;
+            z-index: 10;
+            width: 100%;
+            min-height: 58px;
+            margin: 0;
+            padding: 9px 12px;
+            border: 1px solid var(--border);
+            border-bottom: 0;
+            border-radius: 12px 12px 0 0;
+            background: #fff;
+            box-shadow: none;
+        }
+
+        #fournisseurListPanel .list-toolbar-title,
+        #produitListPanel .list-toolbar-title,
+        #achatsConsultMode .list-toolbar-title {
+            margin: 0;
+            line-height: 40px;
+        }
+
+        #fournisseurListPanel .list-toolbar-actions,
+        #produitListPanel .list-toolbar-actions,
+        #achatsConsultMode .list-toolbar-actions {
+            align-self: center;
+            flex: 0 0 auto;
+            flex-wrap: nowrap;
+        }
+
+        #produitListPanel .list-toolbar,
+        #achatsConsultMode .list-toolbar {
+            flex-wrap: nowrap;
+        }
+
+        #produitListPanel .list-toolbar-title,
+        #achatsConsultMode .list-toolbar-title {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        #fournisseurPrintArea .fournisseur-table-wrap,
+        #produitPrintArea .fournisseur-table-wrap {
+            border-radius: 0 0 12px 12px;
+        }
+
+        #commandesPrintAreaAchats {
+            border-radius: 0 0 12px 12px;
+            border-top: 0;
+        }
+
+        /* Interface principale : cartes et tableaux alignés en haut */
+        #dashboardView {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-content: flex-start;
+            height: 100%;
+            padding-top: 0;
+        }
+
+        #dashboardView .kpi-grid {
+            position: relative;
+            top: 0;
+            flex: 0 0 auto;
+            margin-top: 0;
+            margin-bottom: 8px;
+            padding-top: 4px;
+            padding-bottom: 8px;
+        }
+
+        #dashboardView .tables-grid {
+            flex: 0 0 auto;
+            align-items: start;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        #dashboardView .table-card {
+            align-self: start;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -3962,7 +4403,7 @@
 
         <div class="landing-body">
             <div class="landing-hero-text">
-                <h1>Sweet Austria <span>Enterprise</span></h1>
+                <h1>Sweet Austria</h1>
                 <p>La plateforme la plus proche des goûts de luxe</p>
             </div>
 
@@ -4001,7 +4442,7 @@
             </div>
         </div>
 
-        <div class="landing-footer">© {{ date('Y') }} Sweet Austria Enterprise — Tous droits réservés</div>
+        <div class="landing-footer">© 2026 A2S — Tous Droits Réservés</div>
     </div>
 
     {{-- Logo header (aligné avec hero) --}}
@@ -4534,6 +4975,21 @@
                     <div id="fournisseurPrintArea">
                         <div class="fournisseur-table-wrap">
                             <table class="fournisseur-table" id="fournisseursTable">
+                                <colgroup>
+                                    <col style="width:4%">
+                                    <col style="width:9%">
+                                    <col style="width:4%">
+                                    <col style="width:6%">
+                                    <col style="width:7%">
+                                    <col style="width:6%">
+                                    <col style="width:10%">
+                                    <col style="width:5%">
+                                    <col style="width:7%">
+                                    <col style="width:7%">
+                                    <col style="width:10%">
+                                    <col style="width:9%">
+                                    <col style="width:16%">
+                                </colgroup>
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -4579,8 +5035,6 @@
                         </div>
                     </div>
                     <div class="saisie-card" id="commandesPrintAreaAchats">
-                        <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#003326;margin-bottom:4px;padding:16px 16px 0;">SWEET AUSTRIA — Bons d'Achat</p>
-                        <p style="font-size:11px;color:#6B6B68;margin-bottom:12px;padding:0 16px;" id="commandesPrintDateAchats"></p>
                         <div class="fournisseur-table-wrap">
                             <table class="achats-commandes-table" id="commandesListTableAchats">
                                 <colgroup>
@@ -4951,7 +5405,7 @@
         </main>
 
         <footer class="page-footer">
-            <span>© 2023 SWEET AUSTRIA Enterprise. Tous droits réservés.</span>
+            <span>© 2026 A2S — Tous Droits Réservés</span>
             <ul class="footer-links">
                 <li><a href="#">Journal de sécurité</a></li>
                 <li><a href="#">Statut des API</a></li>
@@ -5179,6 +5633,7 @@
         }
 
         function showFournisseurForm(reset = false) {
+            document.body.classList.remove('table-list-active');
             if (fournisseurFormPanel) fournisseurFormPanel.classList.remove('hidden');
             if (fournisseurListPanel) fournisseurListPanel.classList.add('hidden');
             if (reset) {
@@ -5291,6 +5746,7 @@
         function showFournisseurList() {
             if (fournisseurFormPanel) fournisseurFormPanel.classList.add('hidden');
             if (fournisseurListPanel) fournisseurListPanel.classList.remove('hidden');
+            document.body.classList.add('table-list-active');
             renderFournisseursTable();
         }
 
@@ -5373,6 +5829,9 @@
         }
 
         function showAppView(viewId, options = {}) {
+            if (viewId !== 'fiche-fournisseur') {
+                document.body.classList.remove('table-list-active');
+            }
             syncNavActive(viewId);
             if (dashboardView) dashboardView.classList.toggle('hidden', viewId !== 'dashboard');
             if (ficheFournisseurView) ficheFournisseurView.classList.toggle('hidden', viewId !== 'fiche-fournisseur');
