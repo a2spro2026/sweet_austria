@@ -22,7 +22,7 @@
 
 
 
-    <title>Sweet Austria ? Tableau de bord ex?cutif</title>
+    <title>Sweet Austria — Tableau de bord exécutif</title>
 
 
 
@@ -206,7 +206,7 @@
 
 
 
-        /* ?? Logo header (align? avec la barre hero) ?? */
+        /* ── Logo header (aligné avec la barre hero) ── */
 
 
 
@@ -570,7 +570,7 @@
 
 
 
-        /* ?? Sidebar ?? */
+        /* ── Sidebar ── */
 
 
 
@@ -2230,7 +2230,7 @@
 
 
 
-        /* ?? Sidebar toggle ?? */
+        /* ── Sidebar toggle ── */
 
 
 
@@ -2498,7 +2498,7 @@
 
 
 
-        /* ?? Main ?? */
+        /* ── Main ── */
 
 
 
@@ -2550,7 +2550,7 @@
 
 
 
-        /* ?? Hero Header (sticky : navbar + banni?re restent visibles au scroll) ?? */
+        /* ── Hero Header (sticky : navbar + bannière restent visibles au scroll) ── */
 
 
 
@@ -4566,7 +4566,7 @@
 
 
 
-        /* ?? Carte de visite Commercial ?? */
+        /* ── Carte de visite Commercial ── */
 
 
 
@@ -5230,7 +5230,7 @@
 
 
 
-        /* ?? Modal Catégories ?? */
+        /* ── Modal Catégories ── */
 
 
 
@@ -6270,7 +6270,7 @@
 
 
 
-        /* ?? Dashboard Content ?? */
+        /* ── Dashboard Content ── */
 
 
 
@@ -6322,7 +6322,7 @@
 
 
 
-        /* ?? Barre de saisie ?? */
+        /* ── Barre de saisie ── */
 
 
 
@@ -6386,7 +6386,7 @@
 
 
 
-        /* Bon d'achat : en-t?te fixe, champs d?filants */
+        /* Bon d'achat : en-tête fixe, champs défilants */
 
 
 
@@ -7397,6 +7397,37 @@
         }
 
 
+
+        
+        /* Pas de flèche sur les listes / datalist / date */
+        input.form-input[list],
+        input.form-input[list]:hover,
+        input.form-input[list]:focus {
+            background-image: none !important;
+            padding-right: 10px;
+        }
+        input.form-input::-webkit-calendar-picker-indicator,
+        input.form-input[list]::-webkit-calendar-picker-indicator,
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator,
+        input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            display: none !important;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 0;
+            height: 0;
+        }
+        select.form-select,
+        .form-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: none !important;
+        }
+        select.form-select::-ms-expand {
+            display: none;
+        }
 
         .form-input.readonly {
 
@@ -9414,7 +9445,7 @@
 
 
 
-        /* Alignement centr? : en-t?tes et donn?es sur la m?me colonne */
+        /* Alignement centr? : en-têtes et données sur la même colonne */
 
 
 
@@ -10058,7 +10089,7 @@
 
 
 
-        /* Tous les tableaux restent fixes dans leur conteneur, sans d?filement interne */
+        /* Tous les tableaux restent fixes dans leur conteneur, sans défilement interne */
 
 
 
@@ -10322,7 +10353,7 @@
 
 
 
-        /* Liste fournisseurs : positions du tableau et des boutons verrouill?es */
+        /* Liste fournisseurs : positions du tableau et des boutons verrouillées */
 
 
 
@@ -10702,7 +10733,7 @@
 
 
 
-        /* Fiche Produit ? barre compacte + photo */
+        /* Fiche Produit — barre compacte + photo */
 
 
 
@@ -11278,7 +11309,7 @@
 
 
 
-        /* ?? Fiche Société ?? */
+        /* ── Fiche Société ── */
 
 
 
@@ -11904,7 +11935,7 @@
 
 
 
-        /* ?? Utilisateur ?? */
+        /* ── Utilisateur ── */
 
 
 
@@ -12296,7 +12327,7 @@
 
 
 
-        /* ?? Trésorerie Matériels ?? */
+        /* ── Trésorerie Matériels ── */
 
 
 
@@ -12960,7 +12991,7 @@
 
 
 
-        /* Impression d?di?e : Bon d'achat (consultation) */
+        /* Impression dédiée : Bon d'achat (consultation) */
 
 
 
@@ -13040,7 +13071,7 @@
 
 
 
-        /* ?? KPI Cards (coll?es sous le hero, bloqu?es au scroll) ?? */
+        /* ── KPI Cards (collées sous le hero, bloquées au scroll) ── */
 
 
 
@@ -13344,7 +13375,7 @@
 
 
 
-        /* ?? Stock Tables ?? */
+        /* ── Stock Tables ── */
 
 
 
@@ -13564,7 +13595,7 @@
 
 
 
-        /* ?? Footer ?? */
+        /* ── Footer ── */
 
 
 
@@ -14621,13 +14652,14 @@
         .login-panel {
             position: fixed;
             top: 50%;
-            left: 50%;
-            width: min(380px, calc(100vw - 32px));
+            right: 28px;
+            left: auto;
+            width: min(380px, calc(100vw - 48px));
             max-width: 100%;
             z-index: 30;
             opacity: 0;
             visibility: hidden;
-            transform: translate(-50%, calc(-50% + 16px)) scale(0.98);
+            transform: translate(24px, -50%) scale(0.98);
             transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
             pointer-events: none;
         }
@@ -14635,8 +14667,17 @@
         .login-panel.is-open {
             opacity: 1;
             visibility: visible;
-            transform: translate(-50%, -50%) scale(1);
+            transform: translate(0, -50%) scale(1);
             pointer-events: auto;
+        }
+
+        @media (max-width: 560px) {
+            .login-panel,
+            .login-panel.is-open {
+                right: 16px;
+                left: 16px;
+                width: auto;
+            }
         }
 
 
@@ -15414,7 +15455,7 @@
 
 
 
-        /* ===== Verrouillage global des tableaux : aucun d?filement horizontal ===== */
+        /* ===== Verrouillage global des tableaux : aucun défilement horizontal ===== */
 
 
 
@@ -15622,7 +15663,7 @@
 
 
 
-        /* ===== Pages fixes : seules les zones de donn?es des tableaux d?filent ===== */
+        /* ===== Pages fixes : seules les zones de données des tableaux défilent ===== */
 
 
 
@@ -16158,7 +16199,7 @@
 
 
 
-        /* Titres et boutons fix?s directement au-dessus de tous les tableaux */
+        /* Titres et boutons fixés directement au-dessus de tous les tableaux */
 
 
 
@@ -16390,7 +16431,7 @@
 
 
 
-        /* Interface principale : cartes et tableaux align?s en haut */
+        /* Interface principale : cartes et tableaux alignés en haut */
 
 
 
@@ -16510,7 +16551,7 @@
 
             display: grid;
 
-            grid-template-columns: minmax(0, 1fr) 150px;
+            grid-template-columns: 1fr;
 
             gap: 14px 16px;
 
@@ -16774,7 +16815,7 @@
 
 
 
-                                <span class="sub-link-icon cat-coque">??</span>
+                                <span class="sub-link-icon cat-coque"></span>
 
 
 
@@ -16782,7 +16823,7 @@
 
 
 
-                                    <span class="sub-link-title">Fruits ? coque</span>
+                                    <span class="sub-link-title">Fruits à coque</span>
 
 
 
@@ -16814,7 +16855,7 @@
 
 
 
-                                <span class="sub-link-icon cat-seche">??</span>
+                                <span class="sub-link-icon cat-seche"></span>
 
 
 
@@ -16822,7 +16863,7 @@
 
 
 
-                                    <span class="sub-link-title">Fruits s?ch?s</span>
+                                    <span class="sub-link-title">Fruits séchés</span>
 
 
 
@@ -16854,7 +16895,7 @@
 
 
 
-                                <span class="sub-link-icon cat-cacahuetes">??</span>
+                                <span class="sub-link-icon cat-cacahuetes"></span>
 
 
 
@@ -16862,11 +16903,11 @@
 
 
 
-                                    <span class="sub-link-title">Cacahu?tes et d?riv?s</span>
+                                    <span class="sub-link-title">Cacahuètes et dérivés</span>
 
 
 
-                                    <span class="sub-link-desc">Grill?es, sal?es &amp; enrob?es</span>
+                                    <span class="sub-link-desc">Grillées, salées &amp; enrobées</span>
 
 
 
@@ -16894,7 +16935,7 @@
 
 
 
-                                <span class="sub-link-icon cat-graines">??</span>
+                                <span class="sub-link-icon cat-graines"></span>
 
 
 
@@ -16934,7 +16975,7 @@
 
 
 
-                                <span class="sub-link-icon cat-enrobes">??</span>
+                                <span class="sub-link-icon cat-enrobes"></span>
 
 
 
@@ -16942,7 +16983,7 @@
 
 
 
-                                    <span class="sub-link-title">Fruits secs enrob?s</span>
+                                    <span class="sub-link-title">Fruits secs enrobés</span>
 
 
 
@@ -16974,7 +17015,7 @@
 
 
 
-                                <span class="sub-link-icon cat-ramadan">??</span>
+                                <span class="sub-link-icon cat-ramadan"></span>
 
 
 
@@ -16982,7 +17023,7 @@
 
 
 
-                                    <span class="sub-link-title">Produits Ramadan &amp; F?tes</span>
+                                    <span class="sub-link-title">Produits Ramadan &amp; Fêtes</span>
 
 
 
@@ -17150,7 +17191,7 @@
 
 
 
-                                    <span class="sub-link-title">Zone Taza, F?s</span>
+                                    <span class="sub-link-title">Zone Taza, Fès</span>
 
 
 
@@ -17290,7 +17331,7 @@
 
 
 
-                        <li class="nav-dropdown-menu-label">R?seau de distribution</li>
+                        <li class="nav-dropdown-menu-label">Réseau de distribution</li>
 
 
 
@@ -17366,11 +17407,11 @@
 
 
 
-                                    <span class="sub-link-title">D?cathlon</span>
+                                    <span class="sub-link-title">Décathlon</span>
 
 
 
-                                    <span class="sub-link-desc">Nutrition sportive &amp; bien-?tre</span>
+                                    <span class="sub-link-desc">Nutrition sportive &amp; bien-être</span>
 
 
 
@@ -17589,7 +17630,7 @@
 
 
 
-                <p class="login-subtitle">Acc?dez ? votre espace de gestion</p>
+                <p class="login-subtitle">Accédez à votre espace de gestion</p>
 
 
 
@@ -17613,7 +17654,7 @@
 
 
 
-                    <input type="text" id="loginUser" name="login_user" placeholder="Identifiant" autocomplete="username" value="superadmin@sweetaustria.com">
+                    <input type="text" id="loginUser" name="login_user" placeholder="Identifiant" autocomplete="username">
 
 
 
@@ -17637,7 +17678,7 @@
 
 
 
-                    <input type="password" id="loginPass" name="login_pass" placeholder="Mot de passe" autocomplete="current-password" value="mot de passe">
+                    <input type="password" id="loginPass" name="login_pass" placeholder="Mot de passe" autocomplete="current-password">
 
 
 
@@ -17693,7 +17734,7 @@
 
 
 
-    {{-- Logo header (align? avec hero) --}}
+    {{-- Logo header (aligné avec hero) --}}
 
 
 
@@ -17945,7 +17986,7 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>R?glement</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>Réglement</a></li>
 
 
 
@@ -17993,11 +18034,11 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></span>D?bit</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></span>Débit</a></li>
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></span>Cr?dit</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></span>Crédit</a></li>
 
 
 
@@ -18189,7 +18230,7 @@
 
 
 
-    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Ouvrir ou fermer la barre lat?rale" aria-expanded="true">
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Ouvrir ou fermer la barre latérale" aria-expanded="true">
 
 
 
@@ -18273,7 +18314,7 @@
 
 
 
-                        <p class="hero-slogan">La plateforme la plus proche des go?ts de luxe</p>
+                        <p class="hero-slogan">La plateforme la plus proche des goûts de luxe</p>
 
 
 
@@ -18297,7 +18338,7 @@
 
 
 
-                        <button type="button" class="top-nav-logout" id="goToLandingBtn" title="Page d'accueil / D?connexion">
+                        <button type="button" class="top-nav-logout" id="goToLandingBtn" title="Page d'accueil / Déconnexion">
 
 
 
@@ -18621,7 +18662,7 @@
 
 
 
-                    <div class="table-card-title">?tat Stock Produits</div>
+                    <div class="table-card-title">Etat Stock Produits</div>
 
 
 
@@ -18637,15 +18678,15 @@
 
 
 
-                                <th>R?f?rence</th>
+                                <th>Référence</th>
 
 
 
-                                <th>D?signation</th>
+                                <th>Désignation</th>
 
 
 
-                                <th>Quantit?</th>
+                                <th>Quantité</th>
 
 
 
@@ -18753,7 +18794,7 @@
 
 
 
-                    <div class="table-card-title">?tat Stock Produits Finis</div>
+                    <div class="table-card-title">Etat Stock Produits Finis</div>
 
 
 
@@ -18769,15 +18810,15 @@
 
 
 
-                                <th>R?f?rence</th>
+                                <th>Référence</th>
 
 
 
-                                <th>D?signation</th>
+                                <th>Désignation</th>
 
 
 
-                                <th>Quantit?</th>
+                                <th>Quantité</th>
 
 
 
@@ -18921,7 +18962,7 @@
 
 
 
-                                <th>Bon N?</th>
+                                <th>Bon N°</th>
 
 
 
@@ -19105,7 +19146,7 @@
 
 
 
-                                <th>Bon N?</th>
+                                <th>Bon N°</th>
 
 
 
@@ -19137,7 +19178,7 @@
 
 
 
-                                <td>?picerie Al Amal</td>
+                                <td>Épicerie Al Amal</td>
 
 
 
@@ -19205,7 +19246,7 @@
 
 
 
-                                <td>F?s</td>
+                                <td>Fès</td>
 
 
 
@@ -19233,7 +19274,7 @@
 
 
 
-                                <td>Casa D?lices</td>
+                                <td>Casa Délices</td>
 
 
 
@@ -19373,7 +19414,7 @@
 
 
 
-                                    <input type="text" id="fr_id" name="id" class="form-input readonly" value="FR0001" readonly>
+                                    <input type="text" id="fr_id" name="id" class="form-input">
 
 
 
@@ -19405,23 +19446,11 @@
 
 
 
-                                    <select id="fr_type" name="type" class="form-select">
-
-
-
-                                        <option value="">? S?lectionner ?</option>
-
-
-
-                                        <option value="Rev">Rev ? Revendeur</option>
-
-
-
-                                        <option value="Ste">St? ? Soci?t?</option>
-
-
-
-                                    </select>
+                                    <input type="text" id="fr_type" name="type" class="form-input" list="fr_type_list" placeholder="Type" autocomplete="off">
+<datalist id="fr_type_list">
+<option value="Rev">Rev — Revendeur</option>
+<option value="Ste">Sté — Société</option>
+</datalist>
 
 
 
@@ -19437,27 +19466,12 @@
 
 
 
-                                    <select id="fr_statut" name="statut" class="form-select">
-
-
-
-                                        <option value="">? S?lectionner ?</option>
-
-
-
-                                        <option value="G/c">G/c ? Grand compte</option>
-
-
-
-                                        <option value="Mc">Mc ? Moyen compte</option>
-
-
-
-                                        <option value="Pc">Pc ? Petit compte</option>
-
-
-
-                                    </select>
+                                    <input type="text" id="fr_statut" name="statut" class="form-input" list="fr_statut_list" placeholder="Statut" autocomplete="off">
+<datalist id="fr_statut_list">
+<option value="G/c">G/c — Grand compte</option>
+<option value="Mc">Mc — Moyen compte</option>
+<option value="Pc">Pc — Petit compte</option>
+</datalist>
 
 
 
@@ -19481,7 +19495,7 @@
 
 
 
-                                    <input type="text" id="fr_adresse" name="adresse" class="form-input" placeholder="Adresse compl?te">
+                                    <input type="text" id="fr_adresse" name="adresse" class="form-input" placeholder="Adresse complète">
 
 
 
@@ -19493,7 +19507,7 @@
 
 
 
-                                    <label for="fr_telephone">T?l?phone</label>
+                                    <label for="fr_telephone">Téléphone</label>
 
 
 
@@ -19529,15 +19543,10 @@
 
 
 
-                                    <select id="fr_ville" name="ville" class="form-select">
+                                    <input type="text" id="fr_ville" name="ville" class="form-input" list="fr_ville_list" placeholder="Ville" autocomplete="off">
+<datalist id="fr_ville_list">
 
-
-
-                                        <option value="">? S?lectionner ?</option>
-
-
-
-                                    </select>
+</datalist>
 
 
 
@@ -19573,39 +19582,18 @@
 
 
 
-                                    <label for="fr_type_paiement">Type R?glement</label>
+                                    <label for="fr_type_paiement">Type Réglement</label>
 
 
 
-                                    <select id="fr_type_paiement" name="type_paiement" class="form-select">
-
-
-
-                                        <option value="">? S?lectionner ?</option>
-
-
-
-                                        <option value="Esp">Esp ? Esp?ces</option>
-
-
-
-                                        <option value="Chq">Chq ? Ch?que</option>
-
-
-
-                                        <option value="Eff">Eff ? Effet</option>
-
-
-
-                                        <option value="Vir">Vir ? Virement</option>
-
-
-
-                                        <option value="Vers">Vers ? Versement</option>
-
-
-
-                                    </select>
+                                    <input type="text" id="fr_type_paiement" name="type_paiement" class="form-input" list="fr_type_paiement_list" placeholder="Type règlement" autocomplete="off">
+<datalist id="fr_type_paiement_list">
+<option value="Esp">Esp — Espèces</option>
+<option value="Chq">Chq — Chèque</option>
+<option value="Eff">Eff — Effet</option>
+<option value="Vir">Vir — Virement</option>
+<option value="Vers">Vers — Versement</option>
+</datalist>
 
 
 
@@ -19621,7 +19609,7 @@
 
 
 
-                                    <input type="number" id="fr_solde" name="solde" class="form-input money-input" step="0.01" value="0.00" placeholder="0.00">
+                                    <input type="number" id="fr_solde" name="solde" class="form-input money-input" step="0.01" placeholder="0.00">
 
 
 
@@ -19869,7 +19857,7 @@
 
 
 
-                                        <th>T?l?phone</th>
+                                        <th>Téléphone</th>
 
 
 
@@ -19953,7 +19941,7 @@
 
 
 
-                        <h2 class="list-toolbar-title">Bons d'Achat ? Consultation</h2>
+                        <h2 class="list-toolbar-title">Bons d'Achat — Consultation</h2>
 
 
 
@@ -20085,7 +20073,7 @@
 
 
 
-                                        <th>Bon N?</th>
+                                        <th>Bon N°</th>
 
 
 
@@ -20105,7 +20093,7 @@
 
 
 
-                                        <th>Qt?</th>
+                                        <th>Qté</th>
 
 
 
@@ -20113,11 +20101,11 @@
 
 
 
-                                        <th>R?glement</th>
+                                        <th>Réglement</th>
 
 
 
-                                        <th>?ch?ance</th>
+                                        <th>Échéance</th>
 
 
 
@@ -20217,11 +20205,11 @@
 
 
 
-                                    <label for="ach_bon">Bon N?</label>
+                                    <label for="ach_bon">Bon N°</label>
 
 
 
-                                    <input type="text" id="ach_bon" name="bon" class="form-input readonly" readonly>
+                                    <input type="text" id="ach_bon" name="bon" class="form-input">
 
 
 
@@ -20253,7 +20241,7 @@
 
 
 
-                                    <input type="text" id="ach_code_fournisseur" name="code_fournisseur" class="form-input" placeholder="Ex. FR0001" list="achFournisseurCodesList" autocomplete="off">
+                                    <input type="text" id="ach_code_fournisseur" name="code_fournisseur" class="form-input" placeholder="Code fournisseur" list="achFournisseurCodesList" autocomplete="off">
 
 
 
@@ -20317,39 +20305,18 @@
 
 
 
-                                            <label for="ach_type_reglement">Type R?glement</label>
+                                            <label for="ach_type_reglement">Type Réglement</label>
 
 
 
-                                            <select id="ach_type_reglement" name="type_reglement" class="form-select">
-
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                                <option value="Esp">Esp ? Esp?ces</option>
-
-
-
-                                                <option value="Chq">Chq ? Ch?que</option>
-
-
-
-                                                <option value="Eff">Eff ? Effet</option>
-
-
-
-                                                <option value="Vir">Vir ? Virement</option>
-
-
-
-                                                <option value="Vers">Vers ? Versement</option>
-
-
-
-                                            </select>
+                                            <input type="text" id="ach_type_reglement" name="type_reglement" class="form-input" list="ach_type_reglement_list" placeholder="Type règlement" autocomplete="off">
+<datalist id="ach_type_reglement_list">
+<option value="Esp">Esp — Espèces</option>
+<option value="Chq">Chq — Chèque</option>
+<option value="Eff">Eff — Effet</option>
+<option value="Vir">Vir — Virement</option>
+<option value="Vers">Vers — Versement</option>
+</datalist>
 
 
 
@@ -20361,7 +20328,7 @@
 
 
 
-                                            <label for="ach_echeance">?ch?ance</label>
+                                            <label for="ach_echeance">Échéance</label>
 
 
 
@@ -20377,31 +20344,16 @@
 
 
 
-                                            <label for="ach_recuperation">R?cup?ration R?glement</label>
+                                            <label for="ach_recuperation">Récupération Réglement</label>
 
 
 
-                                            <select id="ach_recuperation" name="recuperation" class="form-select">
-
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                                <option value="Immediat">Imm?diat</option>
-
-
-
-                                                <option value="Semaine">Semaine</option>
-
-
-
-                                                <option value="Mois">Mois</option>
-
-
-
-                                            </select>
+                                            <input type="text" id="ach_recuperation" name="recuperation" class="form-input" list="ach_recuperation_list" placeholder="Récupération" autocomplete="off">
+<datalist id="ach_recuperation_list">
+<option value="Immediat">Immédiat</option>
+<option value="Semaine"></option>
+<option value="Mois"></option>
+</datalist>
 
 
 
@@ -20437,15 +20389,10 @@
 
 
 
-                                            <select id="ach_ville_livraison" name="ville_livraison" class="form-select">
+                                            <input type="text" id="ach_ville_livraison" name="ville_livraison" class="form-input" list="ach_ville_livraison_list" placeholder="Ville" autocomplete="off">
+<datalist id="ach_ville_livraison_list">
 
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                            </select>
+</datalist>
 
 
 
@@ -20461,27 +20408,12 @@
 
 
 
-                                            <select id="ach_transport" name="transport" class="form-select">
-
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                                <option value="Interne">Transport interne</option>
-
-
-
-                                                <option value="Externe">Transport externe</option>
-
-
-
-                                                <option value="Frns">Transport fournisseur</option>
-
-
-
-                                            </select>
+                                            <input type="text" id="ach_transport" name="transport" class="form-input" list="ach_transport_list" placeholder="Transport" autocomplete="off">
+<datalist id="ach_transport_list">
+<option value="Interne">Transport interne</option>
+<option value="Externe">Transport externe</option>
+<option value="Frns">Transport fournisseur</option>
+</datalist>
 
 
 
@@ -20497,7 +20429,7 @@
 
 
 
-                                            <input type="text" id="ach_matricule" name="matricule" class="form-input" placeholder="Matricule v?hicule">
+                                            <input type="text" id="ach_matricule" name="matricule" class="form-input" placeholder="Matricule véhicule">
 
 
 
@@ -20557,11 +20489,11 @@
 
 
 
-                                    <label for="ach_ligne_ref">R?f</label>
+                                    <label for="ach_ligne_ref">Réf</label>
 
 
 
-                                    <input type="text" id="ach_ligne_ref" class="form-input" placeholder="R?f">
+                                    <input type="text" id="ach_ligne_ref" class="form-input" placeholder="Réf">
 
 
 
@@ -20589,19 +20521,14 @@
 
 
 
-                                    <label for="ach_ligne_designation">D?signation</label>
+                                    <label for="ach_ligne_designation">Désignation</label>
 
 
 
-                                    <select id="ach_ligne_designation" class="form-select">
+                                    <input type="text" id="ach_ligne_designation" class="form-input" list="ach_ligne_designation_list" placeholder="Désignation" autocomplete="off">
+<datalist id="ach_ligne_designation_list">
 
-
-
-                                        <option value="">? S?lectionner ?</option>
-
-
-
-                                    </select>
+</datalist>
 
 
 
@@ -20613,19 +20540,14 @@
 
 
 
-                                    <label for="ach_ligne_categorie">Cat?gorie</label>
+                                    <label for="ach_ligne_categorie">Catégorie</label>
 
 
 
-                                    <select id="ach_ligne_categorie" class="form-select">
+                                    <input type="text" id="ach_ligne_categorie" class="form-input" list="ach_ligne_categorie_list" placeholder="Catégorie" autocomplete="off">
+<datalist id="ach_ligne_categorie_list">
 
-
-
-                                        <option value="">? S?lectionner ?</option>
-
-
-
-                                    </select>
+</datalist>
 
 
 
@@ -20641,15 +20563,10 @@
 
 
 
-                                    <select id="ach_ligne_famille" class="form-select">
+                                    <input type="text" id="ach_ligne_famille" class="form-input" list="ach_ligne_famille_list" placeholder="Famille" autocomplete="off">
+<datalist id="ach_ligne_famille_list">
 
-
-
-                                        <option value="">? S?lectionner ?</option>
-
-
-
-                                    </select>
+</datalist>
 
 
 
@@ -20661,11 +20578,11 @@
 
 
 
-                                    <label for="ach_ligne_quantite">Qt?</label>
+                                    <label for="ach_ligne_quantite">Qté</label>
 
 
 
-                                    <input type="number" id="ach_ligne_quantite" class="form-input" step="0.001" min="0" value="1" placeholder="0">
+                                    <input type="number" id="ach_ligne_quantite" class="form-input" step="0.001" min="0" placeholder="0">
 
 
 
@@ -20681,15 +20598,10 @@
 
 
 
-                                    <select id="ach_ligne_mesure" class="form-select">
-
-
-
-                                        <option value="">? Chargement? ?</option>
-
-
-
-                                    </select>
+                                    <input type="text" id="ach_ligne_mesure" class="form-input" list="ach_ligne_mesure_list" placeholder="Unité" autocomplete="off">
+<datalist id="ach_ligne_mesure_list">
+<option value="? Chargement? ?"></option>
+</datalist>
 
 
 
@@ -20721,7 +20633,7 @@
 
 
 
-                                    <input type="text" id="ach_ligne_sous_total" class="form-input achats-sous-total-input readonly" readonly value="0,00 MAD">
+                                    <input type="text" id="ach_ligne_sous_total" class="form-input achats-sous-total-input readonly" readonly value="">
 
 
 
@@ -20761,7 +20673,7 @@
 
 
 
-                                <span class="achats-articles-count" id="achatsArticlesCount">0 article ajout?</span>
+                                <span class="achats-articles-count" id="achatsArticlesCount">0 article ajouté</span>
 
 
 
@@ -20769,7 +20681,7 @@
 
 
 
-                                    <span>Total g?n?ral</span>
+                                    <span>Total général</span>
 
 
 
@@ -20805,7 +20717,27 @@
 
 
 
+                            <input type="file" id="ach_photo_file" accept="image/*" class="hidden">
+
+
+
                             <button type="button" class="btn-form btn-form-outline" id="fermerAchatsBtn">Fermer</button>
+
+
+
+                            <button type="button" class="btn-form btn-form-outline" id="achPhotoPickBtn" title="Importer photo bon / facture fournisseur">
+
+
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="margin-right:6px;vertical-align:-2px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+
+
+
+                                <span id="achPhotoBtnLabel">Importer</span>
+
+
+
+                            </button>
 
 
 
@@ -20921,11 +20853,11 @@
 
 
 
-                                            <label for="pr_ref">R?f</label>
+                                            <label for="pr_ref">Réf</label>
 
 
 
-                                            <input type="text" id="pr_ref" name="ref" class="form-input readonly" readonly>
+                                            <input type="text" id="pr_ref" name="ref" class="form-input">
 
 
 
@@ -20937,19 +20869,14 @@
 
 
 
-                                            <label for="pr_designation">D?signation</label>
+                                            <label for="pr_designation">Désignation</label>
 
 
 
-                                            <select id="pr_designation" name="designation" class="form-select" required>
+                                            <input type="text" id="pr_designation" name="designation" class="form-input" list="pr_designation_list" placeholder="Désignation" autocomplete="off" required>
+<datalist id="pr_designation_list">
 
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                            </select>
+</datalist>
 
 
 
@@ -20965,27 +20892,12 @@
 
 
 
-                                            <select id="pr_type" name="type" class="form-select">
-
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                                <option value="Pro Cru">Pro Cru</option>
-
-
-
-                                                <option value="Pro Fini">Pro Fini</option>
-
-
-
-                                                <option value="Pro Div">Pro Div</option>
-
-
-
-                                            </select>
+                                            <input type="text" id="pr_type" name="type" class="form-input" list="pr_type_list" placeholder="Type" autocomplete="off">
+<datalist id="pr_type_list">
+<option value="Pro Cru"></option>
+<option value="Pro Fini"></option>
+<option value="Pro Div"></option>
+</datalist>
 
 
 
@@ -21005,19 +20917,14 @@
 
 
 
-                                            <label for="pr_categorie">Cat?gorie</label>
+                                            <label for="pr_categorie">Catégorie</label>
 
 
 
-                                            <select id="pr_categorie" name="categorie" class="form-select">
+                                            <input type="text" id="pr_categorie" name="categorie" class="form-input" list="pr_categorie_list" placeholder="Catégorie" autocomplete="off">
+<datalist id="pr_categorie_list">
 
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                            </select>
+</datalist>
 
 
 
@@ -21033,15 +20940,10 @@
 
 
 
-                                            <select id="pr_famille" name="famille" class="form-select">
+                                            <input type="text" id="pr_famille" name="famille" class="form-input" list="pr_famille_list" placeholder="Famille" autocomplete="off">
+<datalist id="pr_famille_list">
 
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                            </select>
+</datalist>
 
 
 
@@ -21053,11 +20955,11 @@
 
 
 
-                                            <label for="pr_quantite">Qt?</label>
+                                            <label for="pr_quantite">Qté</label>
 
 
 
-                                            <input type="number" id="pr_quantite" name="quantite" class="form-input" step="0.001" min="0" value="0">
+                                            <input type="number" id="pr_quantite" name="quantite" class="form-input" step="0.001" min="0">
 
 
 
@@ -21073,15 +20975,10 @@
 
 
 
-                                            <select id="pr_unite" name="unite" class="form-select">
+                                            <input type="text" id="pr_unite" name="unite" class="form-input" list="pr_unite_list" placeholder="Unité" autocomplete="off">
+<datalist id="pr_unite_list">
 
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                            </select>
+</datalist>
 
 
 
@@ -21369,7 +21266,7 @@
 
 
 
-                                        <th>R?f</th>
+                                        <th>Réf</th>
 
 
 
@@ -21381,7 +21278,7 @@
 
 
 
-                                        <th>D?signation</th>
+                                        <th>Désignation</th>
 
 
 
@@ -21389,7 +21286,7 @@
 
 
 
-                                        <th>Cat?gorie</th>
+                                        <th>Catégorie</th>
 
 
 
@@ -21397,7 +21294,7 @@
 
 
 
-                                        <th>Quantit?</th>
+                                        <th>Quantité</th>
 
 
 
@@ -21429,7 +21326,7 @@
 
 
 
-                                    <tr><td colspan="12" class="produits-empty">Aucun produit enregistr?</td></tr>
+                                    <tr><td colspan="12" class="produits-empty">Aucun produit enregistré</td></tr>
 
 
 
@@ -21517,7 +21414,7 @@
 
 
 
-                                            <label for="so_nom">Nom Soci?t?</label>
+                                            <label for="so_nom">Nom Société</label>
 
 
 
@@ -21533,11 +21430,11 @@
 
 
 
-                                            <label for="so_gerant">Nom Complet G?rant</label>
+                                            <label for="so_gerant">Nom Complet Gérant</label>
 
 
 
-                                            <input type="text" id="so_gerant" name="gerant" class="form-input" placeholder="Nom et pr?nom du g?rant">
+                                            <input type="text" id="so_gerant" name="gerant" class="form-input" placeholder="Nom et prénom du gérant">
 
 
 
@@ -21577,15 +21474,10 @@
 
 
 
-                                            <select id="so_ville" name="ville" class="form-select">
+                                            <input type="text" id="so_ville" name="ville" class="form-input" list="so_ville_list" placeholder="Ville" autocomplete="off">
+<datalist id="so_ville_list">
 
-
-
-                                                <option value="">? S?lectionner ?</option>
-
-
-
-                                            </select>
+</datalist>
 
 
 
@@ -21601,7 +21493,7 @@
 
 
 
-                                            <input type="text" id="so_adresse" name="adresse" class="form-input" placeholder="Adresse compl?te">
+                                            <input type="text" id="so_adresse" name="adresse" class="form-input" placeholder="Adresse complète">
 
 
 
@@ -21705,7 +21597,7 @@
 
 
 
-                                            <input type="text" id="so_cnss" name="cnss" class="form-input" placeholder="N? CNSS">
+                                            <input type="text" id="so_cnss" name="cnss" class="form-input" placeholder="N° CNSS">
 
 
 
@@ -21729,7 +21621,7 @@
 
 
 
-                                            <input type="text" id="so_patente" name="patente" class="form-input" placeholder="N? patente">
+                                            <input type="text" id="so_patente" name="patente" class="form-input" placeholder="N° patente">
 
 
 
@@ -21777,7 +21669,7 @@
 
 
 
-                                        <img id="so_photo_img" alt="Logo soci?t?" class="hidden">
+                                        <img id="so_photo_img" alt="Logo société" class="hidden">
 
 
 
@@ -21960,7 +21852,7 @@
 
 
 
-                                <img class="societe-consult-logo hidden" id="soConsultLogoImg" alt="Logo soci?t?">
+                                <img class="societe-consult-logo hidden" id="soConsultLogoImg" alt="Logo société">
 
 
 
@@ -22258,7 +22150,7 @@
 
 
 
-                                        <img id="tm_photo_img" alt="Photo mat?riel" class="hidden">
+                                        <img id="tm_photo_img" alt="Photo matériel" class="hidden">
 
 
 
@@ -22548,7 +22440,7 @@
 
                                             <label for="rg_ref">Réf°</label>
 
-                                            <input type="text" id="rg_ref" class="form-input readonly" readonly>
+                                            <input type="text" id="rg_ref" class="form-input">
 
                                         </div>
 
@@ -22556,11 +22448,10 @@
 
                                             <label for="rg_bon">Fournisseur</label>
 
-                                            <select id="rg_bon" class="form-select" required>
+                                            <input type="text" id="rg_bon" class="form-input" list="rg_bon_list" placeholder="Bon / Fournisseur" autocomplete="off" required>
+<datalist id="rg_bon_list">
 
-                                                <option value="">— Bons non soldés —</option>
-
-                                            </select>
+</datalist>
 
                                         </div>
 
@@ -22572,21 +22463,14 @@
 
                                             <label for="rg_type">Type Rég</label>
 
-                                            <select id="rg_type" class="form-select" required>
-
-                                                <option value="">— Sélectionner —</option>
-
-                                                <option value="Esp">Esp — Espèces</option>
-
-                                                <option value="Chq">Chq — Chèque</option>
-
-                                                <option value="Eff">Eff — Effet</option>
-
-                                                <option value="Vir">Vir — Virement</option>
-
-                                                <option value="Vers">Vers — Versement</option>
-
-                                            </select>
+                                            <input type="text" id="rg_type" class="form-input" list="rg_type_list" placeholder="Type règlement" autocomplete="off" required>
+<datalist id="rg_type_list">
+<option value="Esp">Esp — Espèces</option>
+<option value="Chq">Chq — Chèque</option>
+<option value="Eff">Eff — Effet</option>
+<option value="Vir">Vir — Virement</option>
+<option value="Vers">Vers — Versement</option>
+</datalist>
 
                                         </div>
 
@@ -22602,27 +22486,17 @@
 
                                             <label for="rg_banque">Banque</label>
 
-                                            <select id="rg_banque" class="form-select">
-
-                                                <option value="">— Sélectionner —</option>
-
-                                                <option value="Attijariwafa Bank">Attijariwafa Bank</option>
-
-                                                <option value="Banque Populaire">Banque Populaire</option>
-
-                                                <option value="BMCE Bank Of Africa">BMCE Bank Of Africa</option>
-
-                                                <option value="CIH Bank">CIH Bank</option>
-
-                                                <option value="Crédit Agricole">Crédit Agricole</option>
-
-                                                <option value="Société Générale">Société Générale</option>
-
-                                                <option value="CFG Bank">CFG Bank</option>
-
-                                                <option value="Al Barid Bank">Al Barid Bank</option>
-
-                                            </select>
+                                            <input type="text" id="rg_banque" class="form-input" list="rg_banque_list" placeholder="Banque" autocomplete="off">
+<datalist id="rg_banque_list">
+<option value="Attijariwafa Bank"></option>
+<option value="Banque Populaire"></option>
+<option value="BMCE Bank Of Africa"></option>
+<option value="CIH Bank"></option>
+<option value="Crédit Agricole"></option>
+<option value="Société Générale"></option>
+<option value="CFG Bank"></option>
+<option value="Al Barid Bank"></option>
+</datalist>
 
                                         </div>
 
@@ -22664,39 +22538,21 @@
 
                                 </div>
 
-                                <div class="rg-photo-panel">
-
-                                    <label for="rg_photo_file">Importer Photo</label>
-
-                                    <div class="rg-photo-preview" id="rg_photo_preview">
-
-                                        <span class="rg-photo-placeholder" id="rg_photo_placeholder">Aucune photo</span>
-
-                                        <img id="rg_photo_img" alt="Photo règlement" class="hidden">
-
-                                    </div>
-
-                                    <div class="rg-photo-actions">
-
-                                        <input type="file" id="rg_photo_file" accept="image/*" class="hidden">
-
-                                        <button type="button" class="btn-photo" id="rgPhotoPickBtn">
-
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-
-                                            Importer Photo
-
-                                        </button>
-
-                                    </div>
-
-                                </div>
+                                <input type="file" id="rg_photo_file" accept="image/*" class="hidden">
 
                             </div>
 
                             <div class="form-actions">
 
                                 <button type="button" class="btn-form btn-form-secondary" id="fermerReglementForm">Fermer</button>
+
+                                <button type="button" class="btn-form btn-form-outline" id="rgPhotoPickBtn" title="Importer une photo">
+
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="margin-right:6px;vertical-align:-2px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+
+                                    <span id="rgPhotoBtnLabel">Importer</span>
+
+                                </button>
 
                                 <button type="button" class="btn-form btn-form-plus" id="ajouterAutreReglementBtn" title="Ajouter un réglement" aria-label="Ajouter un réglement">
 
@@ -22852,7 +22708,7 @@
 
 
 
-                                    <input type="date" id="us_date" name="date" class="form-input readonly" readonly>
+                                    <input type="date" id="us_date" name="date" class="form-input">
 
 
 
@@ -22868,7 +22724,7 @@
 
 
 
-                                    <input type="text" id="us_id" name="id" class="form-input readonly" readonly>
+                                    <input type="text" id="us_id" name="id" class="form-input">
 
 
 
@@ -22900,31 +22756,13 @@
 
 
 
-                                    <select id="us_statut" name="statut" class="form-select" required>
-
-
-
-                                        <option value="">? Sélectionner ?</option>
-
-
-
-                                        <option value="Admin">Admin</option>
-
-
-
-                                        <option value="Commercial">Commercial</option>
-
-
-
-                                        <option value="Facturation">Facturation</option>
-
-
-
-                                        <option value="Magasinier">Magasinier</option>
-
-
-
-                                    </select>
+                                    <input type="text" id="us_statut" name="statut" class="form-input" list="us_statut_list" placeholder="Statut" autocomplete="off" required>
+<datalist id="us_statut_list">
+<option value="Admin"></option>
+<option value="Commercial"></option>
+<option value="Facturation"></option>
+<option value="Magasinier"></option>
+</datalist>
 
 
 
@@ -23192,7 +23030,7 @@
 
 
 
-                <li><a href="#">Journal de s?curit?</a></li>
+                <li><a href="#">Journal de sécurité</a></li>
 
 
 
@@ -23200,7 +23038,7 @@
 
 
 
-                <li><a href="#">Mentions l?gales</a></li>
+                <li><a href="#">Mentions légales</a></li>
 
 
 
@@ -23268,7 +23106,7 @@
 
 
 
-    {{-- D?tail commande (Voir) --}}
+    {{-- Détail commande (Voir) --}}
 
 
 
@@ -23284,7 +23122,7 @@
 
 
 
-                <h2 id="commandeDetailTitle">D?tail bon d'achat</h2>
+                <h2 id="commandeDetailTitle">Détail bon d'achat</h2>
 
 
 
@@ -23766,7 +23604,7 @@
 
 
 
-        // Solde affich? = solde initial saisi + total des achats non pay?s
+        // Solde affiché = solde initial saisi + total des achats non payés
 
 
 
@@ -23806,7 +23644,7 @@
 
 
 
-            soldeInput.value = (f ? fournisseurInitialSolde(f) : 0).toFixed(2);
+            soldeInput.value = f ? fournisseurInitialSolde(f).toFixed(2) : '';
 
 
 
@@ -23895,17 +23733,8 @@
 
 
                 if (el.id === 'fr_id') {
-
-
-
-                    el.readOnly = true;
-
-
-
+                    el.readOnly = !!readonly;
                     return;
-
-
-
                 }
 
 
@@ -24078,7 +23907,7 @@
 
 
 
-                if (frIdInput) frIdInput.value = editingFournisseurId || nextFournisseurId;
+                if (frIdInput) frIdInput.value = editingFournisseurId || '';
 
 
 
@@ -24194,7 +24023,7 @@
 
 
 
-            if (saveBtn) saveBtn.textContent = 'Mettre ? jour';
+            if (saveBtn) saveBtn.textContent = 'Mettre à jour';
 
 
 
@@ -24218,7 +24047,7 @@
 
 
 
-                alert('Biblioth?que PDF non charg?e.');
+                alert('Bibliothèque PDF non chargée.');
 
 
 
@@ -24250,7 +24079,7 @@
 
 
 
-            doc.text('SWEET AUSTRIA ? Fiche Fournisseur', 14, 18);
+            doc.text('SWEET AUSTRIA — Fiche Fournisseur', 14, 18);
 
 
 
@@ -24262,7 +24091,7 @@
 
 
 
-            doc.text('?dit? le ' + new Date().toLocaleDateString('fr-FR'), 14, 24);
+            doc.text('édité le ' + new Date().toLocaleDateString('fr-FR'), 14, 24);
 
 
 
@@ -24302,7 +24131,7 @@
 
 
 
-                    ['T?l?phone', f.telephone || ''],
+                    ['Téléphone', f.telephone || ''],
 
 
 
@@ -24318,7 +24147,7 @@
 
 
 
-                    ['Type r?glement', f.type_paiement || ''],
+                    ['Type réglement', f.type_paiement || ''],
 
 
 
@@ -24438,7 +24267,7 @@
 
 
 
-                    toast.textContent = 'Fournisseur ' + code + ' supprim?';
+                    toast.textContent = 'Fournisseur ' + code + ' supprimé';
 
 
 
@@ -24514,7 +24343,7 @@
 
 
 
-                fournisseursTableBody.innerHTML = '<tr><td colspan="13" class="fournisseur-empty">Aucun fournisseur enregistr?</td></tr>';
+                fournisseursTableBody.innerHTML = '<tr><td colspan="13" class="fournisseur-empty">Aucun fournisseur enregistré</td></tr>';
 
 
 
@@ -25068,7 +24897,7 @@
 
 
 
-            villes: ['Casablanca', 'F?s', 'Rabat', 'Nador', 'Tanger', 'Marrakech', 'Taza', 'Oujda', 'Agadir', 'Mekn?s', 'K?nitra', 'El Jadida'],
+            villes: ['Casablanca', 'Fès', 'Rabat', 'Nador', 'Tanger', 'Marrakech', 'Taza', 'Oujda', 'Agadir', 'Meknès', 'Kénitra', 'El Jadida'],
 
 
 
@@ -25076,11 +24905,11 @@
 
 
 
-                'Fruits ? coque', 'Fruits s?ch?s', 'Cacahu?tes et d?riv?s', 'Graines alimentaires',
+                'Fruits à coque', 'Fruits séchés', 'Cacahuètes et dérivés', 'Graines alimentaires',
 
 
 
-                'Fruits secs enrob?s et confiseries', 'Produits Ramadan et F?tes', '?pices', 'Confiserie', 'Divers'
+                'Fruits secs enrobés et confiseries', 'Produits Ramadan et Fêtes', 'Épices', 'Confiserie', 'Divers'
 
 
 
@@ -25088,7 +24917,7 @@
 
 
 
-            familles: ['Noix', 'Amandes', 'Dattes', 'Figues', 'Abricots', 'Raisins', 'Graines', 'M?langes', 'Confiserie', 'Divers'],
+            familles: ['Noix', 'Amandes', 'Dattes', 'Figues', 'Abricots', 'Raisins', 'Graines', 'Mélanges', 'Confiserie', 'Divers'],
 
 
 
@@ -25096,11 +24925,11 @@
 
 
 
-                'Amandes d?cortiqu?es', 'Noix de cajou', 'Dattes Medjool', 'Figues s?ch?es', 'Abricots secs',
+                'Amandes décortiquées', 'Noix de cajou', 'Dattes Medjool', 'Figues séchées', 'Abricots secs',
 
 
 
-                'Raisins secs', 'Pistaches', 'Cacahu?tes grill?es', 'M?lange fruits secs', 'Noix de coco r?p?e'
+                'Raisins secs', 'Pistaches', 'Cacahuètes grillées', 'Mélange fruits secs', 'Noix de coco râpée'
 
 
 
@@ -25164,30 +24993,27 @@
 
 
 
-        function populateLookupSelect(selectId, items, selectedValue = '') {
-
-
-
+                function populateLookupSelect(selectId, items, selectedValue = '') {
             const el = document.getElementById(selectId);
-
-
-
             if (!el) return;
-
-
-
-            const merged = uniqueSortedList([...(items || []), selectedValue]);
-
-
-
-            el.innerHTML = '<option value="">? S?lectionner ?</option>' +
-
-
-
+            const merged = uniqueSortedList([...(items || []), selectedValue].filter(v => v !== undefined && v !== null));
+            if (el.tagName === 'INPUT') {
+                const listId = el.getAttribute('list') || (selectId + '_list');
+                el.setAttribute('list', listId);
+                let dl = document.getElementById(listId);
+                if (!dl) {
+                    dl = document.createElement('datalist');
+                    dl.id = listId;
+                    el.insertAdjacentElement('afterend', dl);
+                }
+                dl.innerHTML = merged.filter(Boolean).map(v => `<option value="${escapeOptionAttr(v)}"></option>`).join('');
+                if (selectedValue !== undefined && selectedValue !== null && selectedValue !== '') {
+                    el.value = selectedValue;
+                }
+                return;
+            }
+            el.innerHTML = '<option value="">— Sélectionner —</option>' +
                 merged.map(v => `<option value="${escapeOptionAttr(v)}"${v === selectedValue ? ' selected' : ''}>${escapeOptionText(v)}</option>`).join('');
-
-
-
         }
 
 
@@ -25664,7 +25490,7 @@
 
 
 
-                alert('Veuillez s?lectionner une image valide.');
+                alert('Veuillez sélectionner une image valide.');
 
 
 
@@ -25680,7 +25506,7 @@
 
 
 
-                alert('La photo ne doit pas d?passer 5 Mo.');
+                alert('La photo ne doit pas dépasser 5 Mo.');
 
 
 
@@ -25752,26 +25578,32 @@
 
 
 
-        function populateProduitUniteSelect() {
-
-
-
-            const select = document.getElementById('pr_unite');
-
-
-
-            if (!select) return;
-
-
-
-            select.innerHTML = '<option value="">? S?lectionner ?</option>' +
-
-
-
-                unitesMesure.map(u => `<option value="${u.code}">${u.libelle} (${u.code})</option>`).join('');
-
-
-
+                function populateProduitUniteSelect() {
+            const el = document.getElementById('pr_unite');
+            if (!el) return;
+            const items = (unitesMesure || []).map(u => u.code || u.libelle).filter(Boolean);
+            const labels = {};
+            (unitesMesure || []).forEach(u => {
+                if (u.code) labels[u.code] = `${u.libelle || u.code} (${u.code})`;
+            });
+            if (el.tagName === 'INPUT') {
+                const listId = el.getAttribute('list') || 'pr_unite_list';
+                el.setAttribute('list', listId);
+                let dl = document.getElementById(listId);
+                if (!dl) {
+                    dl = document.createElement('datalist');
+                    dl.id = listId;
+                    el.insertAdjacentElement('afterend', dl);
+                }
+                dl.innerHTML = (unitesMesure || []).map(u => {
+                    const code = u.code || '';
+                    const lab = `${u.libelle || code} (${code})`;
+                    return code ? `<option value="${escapeOptionAttr(code)}">${escapeOptionText(lab)}</option>` : '';
+                }).join('');
+                return;
+            }
+            el.innerHTML = '<option value="">— Sélectionner —</option>' +
+                (unitesMesure || []).map(u => `<option value="${u.code}">${u.libelle} (${u.code})</option>`).join('');
         }
 
 
@@ -25800,7 +25632,7 @@
 
 
 
-                if (prRefInput) prRefInput.value = editingProduitRef || nextProduitRef;
+                if (prRefInput) prRefInput.value = editingProduitRef || '';
 
 
 
@@ -25924,7 +25756,7 @@
 
 
 
-                produitsTableBody.innerHTML = '<tr><td colspan="12" class="produits-empty">Aucun produit enregistr?</td></tr>';
+                produitsTableBody.innerHTML = '<tr><td colspan="12" class="produits-empty">Aucun produit enregistré</td></tr>';
 
 
 
@@ -26228,7 +26060,7 @@
 
 
 
-            if (saveBtn) saveBtn.textContent = 'Mettre ? jour';
+            if (saveBtn) saveBtn.textContent = 'Mettre à jour';
 
 
 
@@ -26316,7 +26148,7 @@
 
 
 
-                    toast.textContent = 'Produit ' + ref + ' supprim?';
+                    toast.textContent = 'Produit ' + ref + ' supprimé';
 
 
 
@@ -26380,7 +26212,7 @@
 
 
 
-                if (prRefInput && !editingProduitRef) prRefInput.value = nextProduitRef;
+                if (prRefInput && !editingProduitRef) prRefInput.value = '';
 
 
 
@@ -26440,7 +26272,7 @@
 
 
 
-                alert('Veuillez s?lectionner la d?signation.');
+                alert('Veuillez sélectionner la désignation.');
 
 
 
@@ -26524,7 +26356,7 @@
 
 
 
-                saveBtn.textContent = isEdit ? 'Mise ? jour?' : 'Enregistrement?';
+                saveBtn.textContent = isEdit ? 'Mise à jour…' : 'Enregistrement…';
 
 
 
@@ -26636,11 +26468,11 @@
 
 
 
-                        ? 'Produit ' + data.produit.ref + ' modifi?'
+                        ? 'Produit ' + data.produit.ref + ' modifié'
 
 
 
-                        : 'Produit ' + data.produit.ref + ' enregistr?';
+                        : 'Produit ' + data.produit.ref + ' enregistré';
 
 
 
@@ -26680,7 +26512,7 @@
 
 
 
-                    saveBtn.textContent = isEdit ? 'Mettre ? jour' : 'Enregistrer';
+                    saveBtn.textContent = isEdit ? 'Mettre à jour' : 'Enregistrer';
 
 
 
@@ -26741,6 +26573,7 @@
 
 
         let achatsLignes = [];
+        let achatsPhotoDataUrl = '';
 
 
 
@@ -26868,7 +26701,7 @@
 
 
 
-                printDate.textContent = '?dit? le ' + new Date().toLocaleDateString('fr-FR', {
+                printDate.textContent = 'édité le ' + new Date().toLocaleDateString('fr-FR', {
 
 
 
@@ -26964,7 +26797,7 @@
 
 
 
-                            <button type="button" class="btn-row btn-row-edit" data-regler-commande="${i}" ${isCommandePayee(c) ? 'style="display:none"' : ''}>R?gler</button>
+                            <button type="button" class="btn-row btn-row-edit" data-regler-commande="${i}" ${isCommandePayee(c) ? 'style="display:none"' : ''}>Régler</button>
 
 
 
@@ -27128,7 +26961,7 @@
 
 
 
-                    <thead><tr><th>R?f</th><th>Code-barres</th><th>D?signation</th><th>Qt?</th><th>Mesure</th><th>Prix U</th><th>Sous-Total</th></tr></thead>
+                    <thead><tr><th>Réf</th><th>Code-barres</th><th>Désignation</th><th>Qté</th><th>Mesure</th><th>Prix U</th><th>Sous-Total</th></tr></thead>
 
 
 
@@ -27196,15 +27029,15 @@
 
 
 
-                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">R?glement</span><br><strong>${escHtml(c.type_reglement) || '?'}</strong></div>
+                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Réglement</span><br><strong>${escHtml(c.type_reglement) || '?'}</strong></div>
 
 
 
-                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">?ch?ance</span><br><strong>${formatDateFr(c.echeance)}</strong></div>
+                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Échéance</span><br><strong>${formatDateFr(c.echeance)}</strong></div>
 
 
 
-                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Qt? totale</span><br><strong>${commandeTotalQte(c).toLocaleString('fr-FR')}</strong></div>
+                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Qté totale</span><br><strong>${commandeTotalQte(c).toLocaleString('fr-FR')}</strong></div>
 
 
 
@@ -27212,7 +27045,7 @@
 
 
 
-                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Statut paiement</span><br><strong>${isCommandePayee(c) ? 'Pay?' : 'Non pay?'}</strong></div>
+                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Statut paiement</span><br><strong>${isCommandePayee(c) ? 'Pay?' : 'Non payé'}</strong></div>
 
 
 
@@ -27342,7 +27175,7 @@
 
                     document.getElementById('ach_chauffeur').value = c.chauffeur || '';
 
-
+                    setAchatsPhotoPreview(c.photo || '');
 
                     achatsLignes = (c.lignes || []).map(l => ({ ...l }));
 
@@ -27384,7 +27217,7 @@
 
 
 
-            if (!confirm('Marquer le bon d\'achat ? ' + c.bon + ' ? comme pay? ?')) return;
+            if (!confirm('Marquer le bon d\'achat ? ' + c.bon + ' ? comme payé ?')) return;
 
 
 
@@ -27620,7 +27453,7 @@
 
 
 
-                toast.textContent = 'Bon d\'achat ' + commande.bon + ' enregistr?';
+                toast.textContent = 'Bon d\'achat ' + commande.bon + ' enregistré';
 
 
 
@@ -27664,22 +27497,22 @@
 
 
 
-                const select = document.getElementById('ach_ligne_mesure');
-
-
-
-                if (select) {
-
-
-
-                    select.innerHTML = '<option value="">? S?lectionner ?</option>' +
-
-
-
-                        unitesMesure.map(u => `<option value="${u.code}">${u.libelle} (${u.code})</option>`).join('');
-
-
-
+                const mesureEl = document.getElementById('ach_ligne_mesure');
+                if (mesureEl) {
+                    if (mesureEl.tagName === 'INPUT') {
+                        const listId = mesureEl.getAttribute('list') || 'ach_ligne_mesure_list';
+                        mesureEl.setAttribute('list', listId);
+                        let dl = document.getElementById(listId);
+                        if (!dl) {
+                            dl = document.createElement('datalist');
+                            dl.id = listId;
+                            mesureEl.insertAdjacentElement('afterend', dl);
+                        }
+                        dl.innerHTML = unitesMesure.map(u => `<option value="${escapeOptionAttr(u.code)}">${escapeOptionText((u.libelle || u.code) + ' (' + u.code + ')')}</option>`).join('');
+                    } else {
+                        mesureEl.innerHTML = '<option value="">— Sélectionner —</option>' +
+                            unitesMesure.map(u => `<option value="${u.code}">${u.libelle} (${u.code})</option>`).join('');
+                    }
                 }
 
 
@@ -27692,18 +27525,24 @@
 
 
 
-                const select = document.getElementById('ach_ligne_mesure');
-
-
-
-                if (select) {
-
-
-
-                    select.innerHTML = '<option value="">? Unit? ?</option><option value="KG">Kilogramme (KG)</option><option value="UN">Unit? (UN)</option>';
-
-
-
+                const mesureEl = document.getElementById('ach_ligne_mesure');
+                if (mesureEl) {
+                    const fallback = [
+                        { code: 'KG', libelle: 'Kilogramme' },
+                        { code: 'UN', libelle: 'Unité' },
+                    ];
+                    if (mesureEl.tagName === 'INPUT') {
+                        const listId = mesureEl.getAttribute('list') || 'ach_ligne_mesure_list';
+                        let dl = document.getElementById(listId);
+                        if (!dl) {
+                            dl = document.createElement('datalist');
+                            dl.id = listId;
+                            mesureEl.insertAdjacentElement('afterend', dl);
+                        }
+                        dl.innerHTML = fallback.map(u => `<option value="${u.code}">${u.libelle} (${u.code})</option>`).join('');
+                    } else {
+                        mesureEl.innerHTML = '<option value="">— Unité —</option><option value="KG">Kilogramme (KG)</option><option value="UN">Unité (UN)</option>';
+                    }
                 }
 
 
@@ -27744,7 +27583,7 @@
 
 
 
-        // Formate tout champ de montant pour qu'il se termine par .00 (2 d?cimales)
+        // Formate tout champ de montant pour qu'il se termine par .00 (2 décimales)
 
 
 
@@ -27952,7 +27791,7 @@
 
 
 
-            document.getElementById('ach_ligne_quantite').value = line.quantite ?? 1;
+            document.getElementById('ach_ligne_quantite').value = (line.quantite != null && line.quantite !== '') ? line.quantite : '';
 
 
 
@@ -28004,7 +27843,7 @@
 
 
 
-            document.getElementById('ach_ligne_quantite').value = '1';
+            document.getElementById('ach_ligne_quantite').value = '';
 
 
 
@@ -28016,7 +27855,7 @@
 
 
 
-            document.getElementById('ach_ligne_sous_total').value = formatMoney(0);
+            document.getElementById('ach_ligne_sous_total').value = '';
 
 
 
@@ -28036,7 +27875,7 @@
 
 
 
-                alert('Veuillez s?lectionner la d?signation.');
+                alert('Veuillez sélectionner la désignation.');
 
 
 
@@ -28056,7 +27895,7 @@
 
 
 
-                alert('La quantit? doit ?tre sup?rieure ? 0.');
+                alert('La quantité doit être supérieure ? 0.');
 
 
 
@@ -28076,7 +27915,7 @@
 
 
 
-                alert('Veuillez s?lectionner une mesure.');
+                alert('Veuillez sélectionner une mesure.');
 
 
 
@@ -28132,11 +27971,11 @@
 
 
 
-                    ? '0 article ajout?'
+                    ? '0 article ajouté'
 
 
 
-                    : '<strong>' + n + '</strong> article' + (n > 1 ? 's' : '') + ' ajout?' + (n > 1 ? 's' : '');
+                    : '<strong>' + n + '</strong> article' + (n > 1 ? 's' : '') + ' ajouté' + (n > 1 ? 's' : '');
 
 
 
@@ -28204,7 +28043,7 @@
 
 
 
-                toast.textContent = 'Article ajout? (' + achatsLignes.length + ')';
+                toast.textContent = 'Article ajouté (' + achatsLignes.length + ')';
 
 
 
@@ -28236,7 +28075,7 @@
 
 
 
-                bon: document.getElementById('ach_bon')?.value || '',
+                bon: document.getElementById('ach_bon')?.value || nextAchatsBonNumber(),
 
 
 
@@ -28278,7 +28117,7 @@
 
                 chauffeur: document.getElementById('ach_chauffeur')?.value || '',
 
-
+                photo: achatsPhotoDataUrl || '',
 
             };
 
@@ -28528,7 +28367,7 @@
 
 
 
-            if (bonInput) bonInput.value = keepBon && currentBon ? currentBon : nextAchatsBonNumber();
+            if (bonInput) bonInput.value = keepBon && currentBon ? currentBon : '';
 
 
 
@@ -28536,7 +28375,7 @@
 
 
 
-            if (dateCmd) dateCmd.value = todayIsoDate();
+            if (dateCmd) dateCmd.value = '';
 
 
 
@@ -28546,7 +28385,7 @@
 
             editingCommandeIndex = null;
 
-
+            setAchatsPhotoPreview('');
 
             clearAchatsLigneForm();
 
@@ -28730,6 +28569,29 @@
 
         document.getElementById('enregistrerCommandeAchatsBtn')?.addEventListener('click', saveCommandeAchats);
 
+        function setAchatsPhotoPreview(dataUrl) {
+            achatsPhotoDataUrl = dataUrl || '';
+            const label = document.getElementById('achPhotoBtnLabel');
+            if (label) label.textContent = dataUrl ? 'Photo importée' : 'Importer';
+            const fileInput = document.getElementById('ach_photo_file');
+            if (!dataUrl && fileInput) fileInput.value = '';
+        }
+
+        document.getElementById('achPhotoPickBtn')?.addEventListener('click', () => document.getElementById('ach_photo_file')?.click());
+        document.getElementById('ach_photo_file')?.addEventListener('change', (e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+            if (file.size > 4.5 * 1024 * 1024) {
+                alert('Image trop volumineuse (max ~4,5 Mo).');
+                e.target.value = '';
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = () => setAchatsPhotoPreview(String(reader.result || ''));
+            reader.readAsDataURL(file);
+        });
+
+
 
 
         document.getElementById('fermerAchatsBtn')?.addEventListener('click', () => {
@@ -28772,7 +28634,7 @@
 
 
 
-                alert('Aucun bon ? imprimer.');
+                alert('Aucun bon à imprimer.');
 
 
 
@@ -28816,7 +28678,7 @@
 
 
 
-                alert('Aucun bon ? exporter.');
+                alert('Aucun bon à exporter.');
 
 
 
@@ -28832,7 +28694,7 @@
 
 
 
-                alert('Biblioth?que PDF non charg?e.');
+                alert('Bibliothèque PDF non chargée.');
 
 
 
@@ -28860,7 +28722,7 @@
 
 
 
-            doc.text('SWEET AUSTRIA ? Bons d\'Achat', 14, 16);
+            doc.text('SWEET AUSTRIA — Bons d\'Achat', 14, 16);
 
 
 
@@ -28872,7 +28734,7 @@
 
 
 
-            doc.text('?dit? le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
+            doc.text('édité le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
 
 
 
@@ -28884,7 +28746,7 @@
 
 
 
-                head: [['Bon N?', 'Date Cmd', 'Code', 'Nom Fournisseur', 'Ville', 'Qt?', 'Total', 'R?glement', '?ch?ance']],
+                head: [['Bon N°', 'Date Cmd', 'Code', 'Nom Fournisseur', 'Ville', 'Qté', 'Total', 'Réglement', 'Échéance']],
 
 
 
@@ -29028,7 +28890,7 @@
 
 
 
-                alert('Biblioth?que PDF non charg?e.');
+                alert('Bibliothèque PDF non chargée.');
 
 
 
@@ -29060,7 +28922,7 @@
 
 
 
-            doc.text('SWEET AUSTRIA ? Bon d\'Achat ' + info.bon, 14, 16);
+            doc.text('SWEET AUSTRIA — Bon d\'Achat ' + info.bon, 14, 16);
 
 
 
@@ -29092,7 +28954,7 @@
 
 
 
-                head: [['R?f', 'Code-barres', 'D?signation', 'Cat?gorie', 'Famille', 'Qt?', 'Mesure', 'Prix U', 'Sous-Total']],
+                head: [['Réf', 'Code-barres', 'Désignation', 'Catégorie', 'Famille', 'Qté', 'Mesure', 'Prix U', 'Sous-Total']],
 
 
 
@@ -29176,7 +29038,7 @@
 
 
 
-                if (frIdInput) frIdInput.value = nextFournisseurId;
+                if (frIdInput) frIdInput.value = '';
 
 
 
@@ -29268,7 +29130,7 @@
 
 
 
-            const saveBtnLabel = isEdit ? 'Mettre ? jour' : 'Enregistrer';
+            const saveBtnLabel = isEdit ? 'Mettre à jour' : 'Enregistrer';
 
 
 
@@ -29348,7 +29210,7 @@
 
 
 
-                saveBtn.textContent = isEdit ? 'Mise ? jour?' : 'Enregistrement?';
+                saveBtn.textContent = isEdit ? 'Mise à jour…' : 'Enregistrement…';
 
 
 
@@ -29456,11 +29318,11 @@
 
 
 
-                        ? 'Fournisseur ' + data.fournisseur.id + ' modifi?'
+                        ? 'Fournisseur ' + data.fournisseur.id + ' modifié'
 
 
 
-                        : 'Fournisseur ' + data.fournisseur.id + ' enregistr?';
+                        : 'Fournisseur ' + data.fournisseur.id + ' enregistré';
 
 
 
@@ -29484,7 +29346,7 @@
 
 
 
-                alert('Impossible d\'enregistrer le fournisseur. V?rifiez votre connexion.');
+                alert('Impossible d\'enregistrer le fournisseur. Vérifiez votre connexion.');
 
 
 
@@ -29576,7 +29438,7 @@
 
 
 
-                alert('Aucun fournisseur ? imprimer.');
+                alert('Aucun fournisseur à imprimer.');
 
 
 
@@ -29604,7 +29466,7 @@
 
 
 
-                alert('Aucun fournisseur ? exporter.');
+                alert('Aucun fournisseur à exporter.');
 
 
 
@@ -29620,7 +29482,7 @@
 
 
 
-                alert('Biblioth?que PDF non charg?e.');
+                alert('Bibliothèque PDF non chargée.');
 
 
 
@@ -29648,7 +29510,7 @@
 
 
 
-            doc.text('SWEET AUSTRIA ? Liste des Fournisseurs', 14, 16);
+            doc.text('SWEET AUSTRIA — Liste des Fournisseurs', 14, 16);
 
 
 
@@ -29660,7 +29522,7 @@
 
 
 
-            doc.text('?dit? le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
+            doc.text('édité le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
 
 
 
@@ -29676,7 +29538,7 @@
 
 
 
-                head: [['ID', 'Nom', 'Type', 'Ville', 'T?l.', 'Fixe', 'E-mail', 'Statut', 'Paiement', 'Banque', 'RIB', 'Solde']],
+                head: [['ID', 'Nom', 'Type', 'Ville', 'Tél.', 'Fixe', 'E-mail', 'Statut', 'Paiement', 'Banque', 'RIB', 'Solde']],
 
 
 
@@ -29796,7 +29658,7 @@
 
 
 
-                alert('Aucun produit ? imprimer.');
+                alert('Aucun produit à imprimer.');
 
 
 
@@ -29824,7 +29686,7 @@
 
 
 
-                alert('Aucun produit ? exporter.');
+                alert('Aucun produit à exporter.');
 
 
 
@@ -29840,7 +29702,7 @@
 
 
 
-                alert('Biblioth?que PDF non charg?e.');
+                alert('Bibliothèque PDF non chargée.');
 
 
 
@@ -29868,7 +29730,7 @@
 
 
 
-            doc.text('SWEET AUSTRIA ? Fiche Produit', 14, 16);
+            doc.text('SWEET AUSTRIA — Fiche Produit', 14, 16);
 
 
 
@@ -29880,7 +29742,7 @@
 
 
 
-            doc.text('?dit? le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
+            doc.text('édité le ' + new Date().toLocaleDateString('fr-FR'), 14, 22);
 
 
 
@@ -29892,7 +29754,7 @@
 
 
 
-                head: [['R?f', 'D?signation', 'Type', 'Cat?gorie', 'Famille', 'Qt?', 'U', 'Prix Achat', 'Prix Vente']],
+                head: [['Réf', 'Désignation', 'Type', 'Catégorie', 'Famille', 'Qté', 'U', 'Prix Achat', 'Prix Vente']],
 
 
 
@@ -29972,7 +29834,7 @@
 
 
 
-        /* ?? Fiche Société ?? */
+        /* ── Fiche Société ── */
 
 
 
@@ -30380,7 +30242,7 @@
 
 
 
-            document.getElementById('soConsultGerant').textContent = d.gerant ? ('G?rant : ' + d.gerant) : '?';
+            document.getElementById('soConsultGerant').textContent = d.gerant ? ('Gérant : ' + d.gerant) : '?';
 
 
 
@@ -30567,7 +30429,7 @@
 
 
 
-                alert('Le nom de la soci?t? est obligatoire.');
+                alert('Le nom de la société est obligatoire.');
 
 
 
@@ -30599,7 +30461,7 @@
 
 
 
-                toast.textContent = 'Fiche soci?t? enregistr?e';
+                toast.textContent = 'Fiche société enregistrée';
 
 
 
@@ -30909,7 +30771,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                alert('Aucune fiche soci?t? ? imprimer.');
+                alert('Aucune fiche société à imprimer.');
 
 
 
@@ -30929,7 +30791,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        /* ?? Trésorerie Matériels ?? */
+        /* ── Trésorerie Matériels ── */
 
 
 
@@ -31205,11 +31067,11 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            document.getElementById('tm_date').value = todayInputValue();
+            document.getElementById('tm_date').value = '';
 
 
 
-            document.getElementById('tm_ref').value = nextMaterielRef();
+            document.getElementById('tm_ref').value = '';
 
 
 
@@ -31261,7 +31123,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                ref: (document.getElementById('tm_ref')?.value || '').trim(),
+                ref: (document.getElementById('tm_ref')?.value || '').trim() || nextMaterielRef(),
 
 
 
@@ -31685,7 +31547,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            if (!confirm('Supprimer ce mat?riel ?')) return;
+            if (!confirm('Supprimer ce matériel ?')) return;
 
 
 
@@ -31757,7 +31619,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                toast.textContent = 'Mat?riel ' + data.ref + ' enregistr?';
+                toast.textContent = 'Matériel ' + data.ref + ' enregistré';
 
 
 
@@ -31901,7 +31763,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                alert('Aucun mat?riel ? imprimer.');
+                alert('Aucun matériel à imprimer.');
 
 
 
@@ -31921,7 +31783,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        /* ?? Utilisateur ?? */
+        /* ── Utilisateur ── */
 
 
 
@@ -32777,11 +32639,11 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            document.getElementById('us_date').value = user?.date || todayInputValue();
+            document.getElementById('us_date').value = user?.date || '';
 
 
 
-            document.getElementById('us_id').value = user?.id || nextUserId();
+            document.getElementById('us_id').value = user?.id || '';
 
 
 
@@ -33367,110 +33229,75 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        function fillReglementBonsSelect(selectedBon = '') {
-
+                function fillReglementBonsSelect(selectedBon = '') {
             const sel = document.getElementById('rg_bon');
-
             if (!sel) return;
-
             const bons = getBonsNonSoldes();
-
-            const opts = ['<option value="">— Bons non soldés —</option>'];
-
-            bons.forEach((c, i) => {
-
-                const idx = commandesAchats.indexOf(c);
-
-                const key = String(idx);
-
-                const label = `${c.bon || '—'} — ${c.nom_fournisseur || c.code_fournisseur || 'Fournisseur'} — ${formatMoneyFr(c.total || 0)}`;
-
-                opts.push(`<option value="${escapeOptionAttr(key)}" ${selectedBon === key ? 'selected' : ''}>${escapeOptionText(label)}</option>`);
-
-            });
-
-            // keep currently selected bon even if now paid (edit mode)
-
-            if (selectedBon && !bons.some((_, i) => String(commandesAchats.indexOf(bons[i])) === selectedBon)) {
-
-                // try restore from editing record via option value matching index
-
+            if (sel.tagName === 'INPUT') {
+                const listId = sel.getAttribute('list') || 'rg_bon_list';
+                sel.setAttribute('list', listId);
+                let dl = document.getElementById(listId);
+                if (!dl) {
+                    dl = document.createElement('datalist');
+                    dl.id = listId;
+                    sel.insertAdjacentElement('afterend', dl);
+                }
+                const opts = [];
+                bons.forEach((c) => {
+                    const idx = commandesAchats.indexOf(c);
+                    const key = String(idx);
+                    const label = `${c.bon || '—'} — ${c.nom_fournisseur || c.code_fournisseur || 'Fournisseur'} — ${formatMoneyFr(c.total || 0)}`;
+                    opts.push(`<option value="${escapeOptionAttr(key)}">${escapeOptionText(label)}</option>`);
+                    opts.push(`<option value="${escapeOptionAttr(c.bon || '')}">${escapeOptionText(label)}</option>`);
+                });
+                dl.innerHTML = opts.join('');
+                if (selectedBon) sel.value = selectedBon;
+                return;
             }
-
+            const opts = ['<option value="">— Bons non soldés —</option>'];
+            bons.forEach((c) => {
+                const idx = commandesAchats.indexOf(c);
+                const key = String(idx);
+                const label = `${c.bon || '—'} — ${c.nom_fournisseur || c.code_fournisseur || 'Fournisseur'} — ${formatMoneyFr(c.total || 0)}`;
+                opts.push(`<option value="${escapeOptionAttr(key)}" ${selectedBon === key ? 'selected' : ''}>${escapeOptionText(label)}</option>`);
+            });
             sel.innerHTML = opts.join('');
-
             if (selectedBon) sel.value = selectedBon;
-
         }
 
 
 
-        function applySelectedBonToReglementForm() {
-
+                function applySelectedBonToReglementForm() {
             const sel = document.getElementById('rg_bon');
-
-            const idx = parseInt(sel?.value || '', 10);
-
-            if (Number.isNaN(idx) || !commandesAchats[idx]) {
-
+            const raw = (sel?.value || '').trim();
+            let c = null;
+            const idx = parseInt(raw, 10);
+            if (!Number.isNaN(idx) && commandesAchats[idx] && String(idx) === raw) {
+                c = commandesAchats[idx];
+            } else if (raw) {
+                c = (commandesAchats || []).find(x => String(x.bon || '') === raw) || null;
+            }
+            if (!c) {
                 document.getElementById('rg_bon_num').value = '';
-
                 document.getElementById('rg_fournisseur').value = '';
-
                 document.getElementById('rg_montant_bon').value = '';
-
                 return;
-
             }
-
-            const c = commandesAchats[idx];
-
             document.getElementById('rg_bon_num').value = c.bon || '';
-
             document.getElementById('rg_fournisseur').value = c.nom_fournisseur || c.code_fournisseur || '';
-
             document.getElementById('rg_montant_bon').value = c.total || 0;
-
             const montantReg = document.getElementById('rg_montant_reg');
-
             if (montantReg && (!montantReg.value || montantReg.value === '0' || montantReg.value === '0.00')) {
-
                 montantReg.value = parseFloat(c.total || 0).toFixed(2);
-
             }
-
         }
 
 
 
         function setReglementPhotoPreview(dataUrl) {
-
-            const img = document.getElementById('rg_photo_img');
-
-            const placeholder = document.getElementById('rg_photo_placeholder');
-
             reglementPhotoDataUrl = dataUrl || '';
-
-            if (!img || !placeholder) return;
-
-            if (dataUrl) {
-
-                img.src = dataUrl;
-
-                img.classList.remove('hidden');
-
-                placeholder.classList.add('hidden');
-
-            } else {
-
-                img.removeAttribute('src');
-
-                img.classList.add('hidden');
-
-                placeholder.classList.remove('hidden');
-
-            }
-
+            const label = document.getElementById('rgPhotoBtnLabel');
+            if (label) label.textContent = dataUrl ? 'Photo importée' : 'Importer';
         }
 
 
@@ -33502,6 +33329,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
             }
 
             document.getElementById('rgPhotoPickBtn')?.toggleAttribute('disabled', !!readonly);
+            document.getElementById('rgPhotoPickBtn')?.classList.toggle('hidden', !!readonly);
 
             const title = document.getElementById('reglementFormTitle');
 
@@ -33569,13 +33397,13 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            document.getElementById('rg_date').value = item?.date || todayInputValue();
+            document.getElementById('rg_date').value = item?.date || '';
 
-            document.getElementById('rg_ref').value = item?.ref || nextReglementRef();
+            document.getElementById('rg_ref').value = item?.ref || '';
 
             document.getElementById('rg_type').value = item?.type_reg || '';
 
-            document.getElementById('rg_num').value = item?.num_reg || nextReglementNum();
+            document.getElementById('rg_num').value = item?.num_reg || '';
 
             document.getElementById('rg_banque').value = item?.banque || '';
 
@@ -34015,7 +33843,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                title: '?? Fruits ? coque (Noix et graines nobles)',
+                title: 'Fruits à coque (Noix et graines nobles)',
 
 
 
@@ -34023,19 +33851,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Amandes Premium Californie', image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=500&q=80', price: '185 MAD/kg', desc: 'Amandes enti?res s?lectionn?es, croquantes et riches en nutriments. Id?ales en snack ou p?tisserie fine.' },
+                    { name: 'Amandes Premium Californie', image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=500&q=80', price: '185 MAD/kg', desc: 'Amandes entières sélectionnées, croquantes et riches en nutriments. Idéales en snack ou pâtisserie fine.' },
 
 
 
-                    { name: 'Noix de Cajou W320', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '220 MAD/kg', desc: 'Noix de cajou enti?res de grade sup?rieur, saveur douce et texture onctueuse.' },
+                    { name: 'Noix de Cajou W320', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '220 MAD/kg', desc: 'Noix de cajou entières de grade supérieur, saveur douce et texture onctueuse.' },
 
 
 
-                    { name: 'Noix de Grenoble AOP', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '195 MAD/kg', desc: 'Noix d?cortiqu?es, chair ferme et go?t authentique des terroirs montagnards.' },
+                    { name: 'Noix de Grenoble AOP', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '195 MAD/kg', desc: 'Noix décortiquées, chair ferme et goût authentique des terroirs montagnards.' },
 
 
 
-                    { name: 'Pistaches de Sicile', image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=500&q=80', price: '280 MAD/kg', desc: 'Pistaches naturellement ouvertes, ar?me intense et qualit? gastronomique.' },
+                    { name: 'Pistaches de Sicile', image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=500&q=80', price: '280 MAD/kg', desc: 'Pistaches naturellement ouvertes, arôme intense et qualité gastronomique.' },
 
 
 
@@ -34051,7 +33879,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                title: '?? Fruits s?ch?s',
+                title: 'Fruits séchés',
 
 
 
@@ -34059,19 +33887,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Abricots secs de Turquie', image: 'https://images.unsplash.com/photo-1587049352846-83a3988c6791?w=500&q=80', price: '95 MAD/kg', desc: 'Abricots moelleux, l?g?rement acidul?s, s?ch?s au soleil sans conservateurs.' },
+                    { name: 'Abricots secs de Turquie', image: 'https://images.unsplash.com/photo-1587049352846-83a3988c6791?w=500&q=80', price: '95 MAD/kg', desc: 'Abricots moelleux, légèrement acidulés, séchés au soleil sans conservateurs.' },
 
 
 
-                    { name: 'Dattes Medjool Premium', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '145 MAD/kg', desc: 'Dattes extra moelleuses, caramel naturel, parfaites pour le Ramadan et le petit-d?jeuner.' },
+                    { name: 'Dattes Medjool Premium', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '145 MAD/kg', desc: 'Dattes extra moelleuses, caramel naturel, parfaites pour le Ramadan et le petit-déjeuner.' },
 
 
 
-                    { name: 'Figues s?ch?es Izmir', image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652765?w=500&q=80', price: '110 MAD/kg', desc: 'Figues blanches tendres, saveur miell?e, source naturelle de fibres.' },
+                    { name: 'Figues séchées Izmir', image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652765?w=500&q=80', price: '110 MAD/kg', desc: 'Figues blanches tendres, saveur miellée, source naturelle de fibres.' },
 
 
 
-                    { name: 'Raisins secs Golden', image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=500&q=80', price: '75 MAD/kg', desc: 'Raisins dor?s juteux, douceur naturelle pour muesli, salades et desserts.' },
+                    { name: 'Raisins secs Golden', image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=500&q=80', price: '75 MAD/kg', desc: 'Raisins dorés juteux, douceur naturelle pour muesli, salades et desserts.' },
 
 
 
@@ -34087,7 +33915,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                title: '?? Cacahu?tes et d?riv?s',
+                title: 'Cacahuètes et dérivés',
 
 
 
@@ -34095,15 +33923,15 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Cacahu?tes grill?es sal?es', image: 'https://images.unsplash.com/photo-1553627862-fbb7dd4c7102?w=500&q=80', price: '55 MAD/kg', desc: 'Cacahu?tes croustillantes, l?g?rement sal?es, parfaites pour l\'ap?ritif.' },
+                    { name: 'Cacahuètes grillées salées', image: 'https://images.unsplash.com/photo-1553627862-fbb7dd4c7102?w=500&q=80', price: '55 MAD/kg', desc: 'Cacahuètes croustillantes, légèrement salées, parfaites pour l\'apéritif.' },
 
 
 
-                    { name: 'Cacahu?tes nature bio', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&q=80', price: '65 MAD/kg', desc: 'Cacahu?tes d?cortiqu?es, sans sel, certifi?es agriculture biologique.' },
+                    { name: 'Cacahuètes nature bio', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&q=80', price: '65 MAD/kg', desc: 'Cacahuètes décortiquées, sans sel, certifiées agriculture biologique.' },
 
 
 
-                    { name: 'Beurre de cacahu?te cr?meux', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '89 MAD/pot', desc: 'Pur?e 100% cacahu?tes, texture onctueuse, sans huile de palme ajout?e.' },
+                    { name: 'Beurre de cacahuète crémeux', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '89 MAD/pot', desc: 'Purée 100% cacahuètes, texture onctueuse, sans huile de palme ajoutée.' },
 
 
 
@@ -34119,7 +33947,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                title: '?? Graines alimentaires',
+                title: 'Graines alimentaires',
 
 
 
@@ -34127,11 +33955,11 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Graines de tournesol d?cortiqu?es', image: 'https://images.unsplash.com/photo-1518843875459-f738682238c6?w=500&q=80', price: '45 MAD/kg', desc: 'Graines fra?ches, riches en vitamine E, id?ales en salade ou snack.' },
+                    { name: 'Graines de tournesol décortiquées', image: 'https://images.unsplash.com/photo-1518843875459-f738682238c6?w=500&q=80', price: '45 MAD/kg', desc: 'Graines fraîches, riches en vitamine E, idéales en salade ou snack.' },
 
 
 
-                    { name: 'Graines de courge', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '120 MAD/kg', desc: 'Graines de courge premium, go?t de noisette, source de zinc et magn?sium.' },
+                    { name: 'Graines de courge', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '120 MAD/kg', desc: 'Graines de courge premium, goût de noisette, source de zinc et magnésium.' },
 
 
 
@@ -34139,7 +33967,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'M?lange de graines gourmet', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '85 MAD/kg', desc: 'Assortiment tournesol, lin et s?same pour une nutrition compl?te.' },
+                    { name: 'Mélange de graines gourmet', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '85 MAD/kg', desc: 'Assortiment tournesol, lin et sésame pour une nutrition complète.' },
 
 
 
@@ -34155,7 +33983,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                title: '?? Fruits secs enrob?s et confiseries',
+                title: 'Fruits secs enrobés et confiseries',
 
 
 
@@ -34163,19 +33991,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Amandes enrob?es chocolat noir', image: 'https://images.unsplash.com/photo-1548365328-0f4e0977132a?w=500&q=80', price: '165 MAD/kg', desc: 'Amandes enti?res enrob?es de chocolat noir 70%, alliance croquante et intense.' },
+                    { name: 'Amandes enrobées chocolat noir', image: 'https://images.unsplash.com/photo-1548365328-0f4e0977132a?w=500&q=80', price: '165 MAD/kg', desc: 'Amandes entières enrobées de chocolat noir 70%, alliance croquante et intense.' },
 
 
 
-                    { name: 'Raisins secs enrob?s chocolat au lait', image: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=500&q=80', price: '135 MAD/kg', desc: 'Raisins moelleux napp?s de chocolat au lait belge, douceur gourmande.' },
+                    { name: 'Raisins secs enrobés chocolat au lait', image: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=500&q=80', price: '135 MAD/kg', desc: 'Raisins moelleux nappés de chocolat au lait belge, douceur gourmande.' },
 
 
 
-                    { name: 'Dattes fourr?es amandes', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '175 MAD/kg', desc: 'Dattes Medjool farcies d\'amandes enti?res, cr?ation artisanale de luxe.' },
+                    { name: 'Dattes fourrées amandes', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '175 MAD/kg', desc: 'Dattes Medjool farcies d\'amandes entières, création artisanale de luxe.' },
 
 
 
-                    { name: 'Orangettes au chocolat', image: 'https://images.unsplash.com/photo-1607922267115-ed5d32ecbc2c?w=500&q=80', price: '155 MAD/kg', desc: '?corces d\'orange confites enrob?es de chocolat noir, saveur raffin?e.' },
+                    { name: 'Orangettes au chocolat', image: 'https://images.unsplash.com/photo-1607922267115-ed5d32ecbc2c?w=500&q=80', price: '155 MAD/kg', desc: 'Écorces d\'orange confites enrobées de chocolat noir, saveur raffinée.' },
 
 
 
@@ -34191,7 +34019,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                title: '?? Produits Ramadan et F?tes',
+                title: 'Produits Ramadan et Fêtes',
 
 
 
@@ -34199,19 +34027,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Coffret Ramadan Prestige', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '450 MAD', desc: 'Coffret assortiment dattes, noix et fruits secs, pr?sentation ?l?gante pour l\'Iftar.' },
+                    { name: 'Coffret Ramadan Prestige', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '450 MAD', desc: 'Coffret assortiment dattes, noix et fruits secs, présentation élégante pour l\'Iftar.' },
 
 
 
-                    { name: 'Chebakia artisanale (500g)', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80', price: '85 MAD', desc: 'Chebakia traditionnelle au miel et s?same, pr?par?e selon recette marocaine.' },
+                    { name: 'Chebakia artisanale (500g)', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80', price: '85 MAD', desc: 'Chebakia traditionnelle au miel et sésame, préparée selon recette marocaine.' },
 
 
 
-                    { name: 'Sellou aux amandes', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '120 MAD/kg', desc: 'Sellou maison grill?, m?lange ?nerg?tique de farine, amandes et miel.' },
+                    { name: 'Sellou aux amandes', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '120 MAD/kg', desc: 'Sellou maison grillé, mélange énergétique de farine, amandes et miel.' },
 
 
 
-                    { name: 'Panier F?tes Sweet Austria', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '680 MAD', desc: 'Panier cadeau premium : fruits secs, confiseries et sp?cialit?s de f?te.' },
+                    { name: 'Panier Fêtes Sweet Austria', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '680 MAD', desc: 'Panier cadeau premium : fruits secs, confiseries et spécialités de fête.' },
 
 
 
@@ -34547,7 +34375,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                        <p>${category.products.length} produit${category.products.length > 1 ? 's' : ''} ? d?couvrez notre s?lection avec photos</p>
+                        <p>${category.products.length} produit${category.products.length > 1 ? 's' : ''} ? découvrez notre sélection avec photos</p>
 
 
 
@@ -34687,7 +34515,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            cartToast.textContent = `? ? ${productName} ? ajout? au panier`;
+            cartToast.textContent = `? ? ${productName} ? ajouté au panier`;
 
 
 
@@ -34791,7 +34619,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                manager: { name: 'Youssef El Amrani', role: 'Responsable Commercial R?gional', photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80' },
+                manager: { name: 'Youssef El Amrani', role: 'Responsable Commercial Régional', photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80' },
 
 
 
@@ -34823,7 +34651,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                manager: { name: 'Mohamed Tazi', role: 'Responsable Commercial R?gional', photo: 'https://images.unsplash.com/photo-1519081900723-00d085d022a8?w=200&q=80' },
+                manager: { name: 'Mohamed Tazi', role: 'Responsable Commercial Régional', photo: 'https://images.unsplash.com/photo-1519081900723-00d085d022a8?w=200&q=80' },
 
 
 
@@ -34835,7 +34663,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                zone: 'Zone Taza, F?s',
+                zone: 'Zone Taza, Fès',
 
 
 
@@ -34855,7 +34683,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                manager: { name: 'Fatima Bennani', role: 'Responsable Commercial R?gional', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80' },
+                manager: { name: 'Fatima Bennani', role: 'Responsable Commercial Régional', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80' },
 
 
 
@@ -34887,7 +34715,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                manager: { name: 'Rachid Mansouri', role: 'Responsable Commercial R?gional', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80' },
+                manager: { name: 'Rachid Mansouri', role: 'Responsable Commercial Régional', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80' },
 
 
 
@@ -35055,7 +34883,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                            <div class="visit-field-label">Num?ro de t?l?phone</div>
+                            <div class="visit-field-label">Numéro de téléphone</div>
 
 
 
@@ -35199,7 +35027,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                regions: 'Casablanca, Rabat, F?s, Tanger',
+                regions: 'Casablanca, Rabat, Fès, Tanger',
 
 
 
@@ -35211,7 +35039,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                desc: 'Distribution nationale de nos gammes fruits secs premium dans les hypermarch?s Marjane.',
+                desc: 'Distribution nationale de nos gammes fruits secs premium dans les hypermarchés Marjane.',
 
 
 
@@ -35223,7 +35051,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                name: 'D?cathlon',
+                name: 'Décathlon',
 
 
 
@@ -35247,7 +35075,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                desc: 'Partenaire nutrition sportive : mixes ?nerg?tiques et graines pour les rayons bien-?tre.',
+                desc: 'Partenaire nutrition sportive : mixes énergétiques et graines pour les rayons bien-être.',
 
 
 
@@ -35271,7 +35099,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                regions: 'Nador, Oujda, T?touan',
+                regions: 'Nador, Oujda, Tétouan',
 
 
 
@@ -35283,7 +35111,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                desc: 'Approvisionnement en vrac pour professionnels : h?tellerie, restauration et revendeurs.',
+                desc: 'Approvisionnement en vrac pour professionnels : hôtellerie, restauration et revendeurs.',
 
 
 
@@ -35878,7 +35706,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            // Bloque le scroll de l'app tant que l'accueil est affich?
+            // Bloque le scroll de l'app tant que l'accueil est affiché
 
 
 
