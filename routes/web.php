@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FournisseurController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\UniteMesureController;
@@ -13,6 +14,11 @@ Route::get('/api/fournisseurs', [FournisseurController::class, 'index']);
 Route::post('/api/fournisseurs', [FournisseurController::class, 'store']);
 Route::put('/api/fournisseurs/{code}', [FournisseurController::class, 'update']);
 Route::delete('/api/fournisseurs/{code}', [FournisseurController::class, 'destroy']);
+
+Route::get('/api/clients', [ClientController::class, 'index']);
+Route::post('/api/clients', [ClientController::class, 'store']);
+Route::put('/api/clients/{code}', [ClientController::class, 'update']);
+Route::delete('/api/clients/{code}', [ClientController::class, 'destroy']);
 
 Route::get('/api/unites-mesure', [UniteMesureController::class, 'index']);
 

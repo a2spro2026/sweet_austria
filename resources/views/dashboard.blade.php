@@ -6390,7 +6390,7 @@
 
 
 
-        #achatsView .saisie-card {
+        #achatsView .saisie-card , #ventesView .saisie-card {
 
 
 
@@ -6410,7 +6410,7 @@
 
 
 
-        #achatsView .saisie-card-header {
+        #achatsView .saisie-card-header , #ventesView .saisie-card-header {
 
 
 
@@ -6426,7 +6426,7 @@
 
 
 
-        #achatsView .saisie-form {
+        #achatsView .saisie-form , #ventesView .saisie-form {
 
 
 
@@ -6454,7 +6454,11 @@
 
 
 
-        #achatsView #achatsPrintArea {
+        #achatsView #achatsPrintArea,
+
+
+
+        #ventesView #ventesPrintArea {
 
 
 
@@ -6482,15 +6486,15 @@
 
 
 
-        #achatsView .achats-form-scroll {
+        #achatsView .achats-form-scroll , #ventesView .achats-form-scroll {
 
 
 
-            flex: 0 1 auto;
+            flex: 1 1 auto;
 
 
 
-            max-height: 46vh;
+            max-height: none;
 
 
 
@@ -6498,23 +6502,19 @@
 
 
 
-            overflow-y: auto;
+            overflow: hidden;
 
 
 
-            overflow-x: hidden;
+            padding: 14px 18px 8px;
 
 
 
-            padding: 16px 18px;
+            display: flex;
 
 
 
-            scrollbar-width: thin;
-
-
-
-            scrollbar-color: rgba(0, 51, 38, 0.28) transparent;
+            flex-direction: column;
 
 
 
@@ -6522,7 +6522,7 @@
 
 
 
-        #achatsView .achats-form-scroll::-webkit-scrollbar {
+        #achatsView .achats-form-scroll::-webkit-scrollbar , #ventesView .achats-form-scroll::-webkit-scrollbar {
 
 
 
@@ -6534,7 +6534,7 @@
 
 
 
-        #achatsView .achats-form-scroll::-webkit-scrollbar-thumb {
+        #achatsView .achats-form-scroll::-webkit-scrollbar-thumb , #ventesView .achats-form-scroll::-webkit-scrollbar-thumb {
 
 
 
@@ -6550,7 +6550,7 @@
 
 
 
-        #achatsView .achats-doc-actions {
+        #achatsView .achats-doc-actions , #ventesView .achats-doc-actions {
 
 
 
@@ -6598,7 +6598,7 @@
 
 
 
-        #achatsView .achats-doc-actions .btn-list {
+        #achatsView .achats-doc-actions .btn-list , #ventesView .achats-doc-actions .btn-list {
 
 
 
@@ -6614,517 +6614,149 @@
 
 
 
-        /* Bon d'achat : Infos fournisseur sur une seule ligne */
+        /* Bon d'achat — panneau de saisie (comme réglement) */
 
-
-
-        #achatsView .achats-fr-inline-row {
-
-
-
-            display: grid;
-
-
-
-            grid-template-columns: 120px 160px 160px 1fr;
-
-
-
-            gap: 10px 14px;
-
-
-
-            align-items: end;
-
-
-
-            padding: 10px 12px;
-
-
-
-            border-radius: 12px;
-
-
-
-            background: linear-gradient(180deg, rgba(249, 248, 243, 0.95) 0%, rgba(244, 241, 234, 0.9) 100%);
-
-
-
-            border: 1px solid rgba(0, 51, 38, 0.08);
-
-
-
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
-
-
-
-        }
-
-
-
-        #achatsView .achats-pay-inline-row {
-
-
-
-            display: grid;
-
-
-
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-
-
-
-            gap: 8px 10px;
-
-
-
-            align-items: end;
-
-
-
-        }
-
-
-
-        #achatsView .achats-liv-inline-row {
-
-
-
-            display: grid;
-
-
-
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-
-
-
-            gap: 8px 10px;
-
-
-
-            align-items: end;
-
-
-
-        }
-
-
-
-        #achatsView .achats-pay-liv-card {
-
-
-
-            display: grid;
-
-
-
-            grid-template-columns: 1fr 1fr;
-
-
-
-            gap: 0;
-
-
-
-            align-items: stretch;
-
-
-
-            padding: 12px 14px;
-
-
-
-            border-radius: 12px;
-
-
-
-            background: linear-gradient(180deg, rgba(249, 248, 243, 0.95) 0%, rgba(244, 241, 234, 0.9) 100%);
-
-
-
-            border: 1px solid rgba(0, 51, 38, 0.08);
-
-
-
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
-
-
-
-        }
-
-
-
-        #achatsView .achats-pay-liv-col {
-
-
-
+        #achatsView .ach-form-layout , #ventesView .ach-form-layout {
             display: flex;
-
-
-
             flex-direction: column;
-
-
-
-            gap: 8px;
-
-
-
-            min-height: 100%;
-
-
-
-            padding: 0 10px;
-
-
-
-        }
-
-
-
-        #achatsView .achats-pay-liv-col .achats-pay-inline-row,
-
-
-
-        #achatsView .achats-pay-liv-col .achats-liv-inline-row {
-
-
-
-            flex: 1;
-
-
-
-            align-content: end;
-
-
-
-        }
-
-
-
-        #achatsView .achats-pay-liv-col:first-child {
-
-
-
-            border-right: 1px solid rgba(0, 51, 38, 0.1);
-
-
-
-            padding-left: 0;
-
-
-
-        }
-
-
-
-        #achatsView .achats-pay-liv-col:last-child {
-
-
-
-            padding-right: 0;
-
-
-
-        }
-
-
-
-        #achatsView .achats-subsection-title {
-
-
-
-            font-family: 'Playfair Display', serif;
-
-
-
-            font-size: 12px;
-
-
-
-            font-weight: 700;
-
-
-
-            color: var(--green-dark);
-
-
-
-            letter-spacing: 0.04em;
-
-
-
-            text-transform: uppercase;
-
-
-
-            margin: 0;
-
-
-
-            padding-bottom: 6px;
-
-
-
-            border-bottom: 1px solid rgba(200, 149, 108, 0.35);
-
-
-
-        }
-
-
-
-        #achatsView .achats-articles-panel {
-
-
-
+            gap: 10px;
+            padding: 4px 2px 0;
             flex: 1 1 auto;
-
-
-
-            min-height: 210px;
-
-
-
-            padding: 12px 18px 10px;
-
-
-
-            border-top: 1px solid var(--border);
-
-
-
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(249, 248, 243, 0.95) 100%);
-
-
-
-            display: flex;
-
-
-
-            flex-direction: column;
-
-
-
-            gap: 8px;
-
-
-
+            min-height: 0;
+            overflow: hidden;
         }
 
-
-
-        #achatsView .achats-articles-panel .achats-articles-title {
-
-
-
-            font-family: 'Playfair Display', serif;
-
-
-
-            font-size: 13px;
-
-
-
-            font-weight: 700;
-
-
-
-            color: var(--green-dark);
-
-
-
-            letter-spacing: 0.03em;
-
-
-
-            margin: 0;
-
-
-
+        #achatsView .ach-inline-row , #ventesView .ach-inline-row {
+            display: grid;
+            gap: 8px 10px;
+            align-items: end;
+            flex-shrink: 0;
         }
 
-
-
-        #achatsView .achats-articles-panel .fournisseur-table-wrap {
-
-
-
-            flex: 1;
-
-
-
-            min-height: 140px;
-
-
-
-            max-height: 280px;
-
-
-
-            overflow: auto;
-
-
-
+        #achatsView .ach-row-head {
+            grid-template-columns: 120px 100px minmax(140px, 1.2fr) 140px 100px 120px;
+            align-items: end;
         }
 
-
-
-        #achatsView .achats-articles-panel .achats-lines-table thead th {
-
-
-
-            position: sticky;
-
-
-
-            top: 0;
-
-
-
-            z-index: 2;
-
-
-
+        #ventesView .ach-row-head {
+            grid-template-columns: 120px 100px minmax(140px, 1.2fr) 100px 120px;
+            align-items: end;
         }
 
-
-
-        #achatsView .achats-fr-inline-row .form-group,
-
-
-
-        #achatsView .achats-pay-inline-row .form-group,
-
-
-
-        #achatsView .achats-liv-inline-row .form-group {
-
-
-
+        #achatsView .ach-row-art , #ventesView .ach-row-art {
+            grid-template-columns: 80px minmax(120px, 1.1fr) 70px 80px 85px 95px 44px;
+            align-items: end;
             min-width: 0;
-
-
-
         }
 
-
-
-        #achatsView .achats-fr-inline-row .form-input,
-
-
-
-        #achatsView .achats-fr-inline-row .form-select,
-
-
-
-        #achatsView .achats-pay-inline-row .form-input,
-
-
-
-        #achatsView .achats-pay-inline-row .form-select,
-
-
-
-        #achatsView .achats-liv-inline-row .form-input,
-
-
-
-        #achatsView .achats-liv-inline-row .form-select {
-
-
-
-            min-height: 34px;
-
-
-
+        #achatsView .ach-row-1, #ventesView .ach-row-1,
+        #achatsView .ach-row-2, #ventesView .ach-row-2,
+        #achatsView .ach-row-3 , #ventesView .ach-row-3 {
+            display: none;
         }
 
+        #achatsView .ach-inline-row .form-group , #ventesView .ach-inline-row .form-group {
+            margin: 0;
+            min-width: 0;
+        }
 
+        #achatsView .achats-add-article-wrap , #ventesView .achats-add-article-wrap {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 2px;
+            margin: 0;
+        }
+
+        #achatsView .achats-articles-summary , #ventesView .achats-articles-summary {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 16px;
+            margin: 0;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            background: rgba(0, 51, 38, 0.03);
+            flex-shrink: 0;
+        }
+
+        #achatsView .ach-form-layout .fournisseur-table-wrap , #ventesView .ach-form-layout .fournisseur-table-wrap {
+            margin-top: 4px;
+            flex: 1 1 auto;
+            min-height: 120px;
+            max-height: none;
+            overflow: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px 8px 0 0;
+            background: #fff;
+        }
+
+        #achatsView .ach-form-layout .achats-lines-table , #ventesView .ach-form-layout .achats-lines-table {
+            margin: 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        #achatsView .ach-form-layout .achats-lines-table thead th , #ventesView .ach-form-layout .achats-lines-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 3;
+            background: var(--table-header);
+            color: #000;
+            text-shadow: none;
+            box-shadow: 0 1px 0 var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        #achatsView .achats-total-bar , #ventesView .achats-total-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--green-dark);
+        }
+
+        #achatsView .achats-form-scroll , #ventesView .achats-form-scroll {
+            flex: 1 1 auto;
+            max-height: none;
+            min-height: 0;
+            overflow: hidden;
+            padding: 14px 18px 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #achatsView .achats-doc-actions , #ventesView .achats-doc-actions {
+            flex-shrink: 0;
+            margin-top: 0;
+            padding: 12px 18px 16px;
+            background: white;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-end;
+            align-items: center;
+        }
 
         @media (max-width: 1100px) {
-
-
-
-            #achatsView .achats-pay-liv-card {
-
-
-
-                grid-template-columns: 1fr;
-
-
-
-                gap: 12px;
-
-
-
+            #achatsView .ach-row-head , #ventesView .ach-row-head {
+                grid-template-columns: 120px 100px 1fr 1fr;
             }
-
-
-
-            #achatsView .achats-pay-liv-col:first-child {
-
-
-
-                border-right: none;
-
-
-
-                border-bottom: 1px solid rgba(0, 51, 38, 0.1);
-
-
-
-                padding-bottom: 12px;
-
-
-
+            #achatsView .ach-row-art , #ventesView .ach-row-art {
+                grid-template-columns: 80px minmax(100px, 1fr) 70px 80px 85px 95px 44px;
             }
-
-
-
-            #achatsView .achats-liv-inline-row {
-
-
-
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-
-
-
-            }
-
-
-
         }
 
-
-
-        @media (max-width: 900px) {
-
-
-
-            #achatsView .achats-fr-inline-row,
-
-
-
-            #achatsView .achats-pay-inline-row,
-
-
-
-            #achatsView .achats-liv-inline-row {
-
-
-
+        @media (max-width: 700px) {
+            #achatsView .ach-row-head, #ventesView .ach-row-head,
+            #achatsView .ach-row-art , #ventesView .ach-row-art {
                 grid-template-columns: 1fr 1fr;
-
-
-
             }
-
-
-
         }
-
-
 
         .saisie-card-header {
 
@@ -8005,7 +7637,7 @@
 
 
 
-        #achatsView .achats-lignes-scroll {
+        #achatsView .achats-lignes-scroll , #ventesView .achats-lignes-scroll {
 
 
 
@@ -8025,7 +7657,7 @@
 
 
 
-        #achatsView .achats-lignes-inline-row {
+        #achatsView .achats-lignes-inline-row , #ventesView .achats-lignes-inline-row {
 
 
 
@@ -8077,7 +7709,7 @@
 
 
 
-        #achatsView .achats-lignes-inline-row .form-group {
+        #achatsView .achats-lignes-inline-row .form-group , #ventesView .achats-lignes-inline-row .form-group {
 
 
 
@@ -8089,7 +7721,7 @@
 
 
 
-        #achatsView .achats-lignes-inline-row label {
+        #achatsView .achats-lignes-inline-row label , #ventesView .achats-lignes-inline-row label {
 
 
 
@@ -8105,11 +7737,11 @@
 
 
 
-        #achatsView .achats-lignes-inline-row .form-input,
+        #achatsView .achats-lignes-inline-row .form-input, #ventesView .achats-lignes-inline-row .form-input,
 
 
 
-        #achatsView .achats-lignes-inline-row .form-select {
+        #achatsView .achats-lignes-inline-row .form-select , #ventesView .achats-lignes-inline-row .form-select {
 
 
 
@@ -8129,7 +7761,7 @@
 
 
 
-        #achatsView .achats-add-article-wrap {
+        #achatsView .achats-add-article-wrap , #ventesView .achats-add-article-wrap {
 
 
 
@@ -8153,7 +7785,7 @@
 
 
 
-        #achatsView .btn-add-article {
+        #achatsView .btn-add-article , #ventesView .btn-add-article {
 
 
 
@@ -8209,7 +7841,7 @@
 
 
 
-        #achatsView .btn-add-article:hover {
+        #achatsView .btn-add-article:hover , #ventesView .btn-add-article:hover {
 
 
 
@@ -8229,7 +7861,7 @@
 
 
 
-        #achatsView .btn-add-article svg {
+        #achatsView .btn-add-article svg , #ventesView .btn-add-article svg {
 
 
 
@@ -8257,7 +7889,7 @@
 
 
 
-        #achatsView .achats-articles-summary {
+        #achatsView .achats-articles-summary , #ventesView .achats-articles-summary {
 
 
 
@@ -8277,23 +7909,27 @@
 
 
 
-            margin-top: 10px;
+            margin: 0;
 
 
 
-            padding: 12px 16px;
+            padding: 10px 14px;
 
 
 
-            border-radius: 10px;
+            border-radius: 0;
 
 
 
-            border: 1px solid var(--border);
+            border: none;
 
 
 
-            background: linear-gradient(135deg, rgba(0, 51, 38, 0.06) 0%, rgba(200, 149, 108, 0.08) 100%);
+            border-top: 1px solid rgba(0, 51, 38, 0.12);
+
+
+
+            background: rgba(0, 51, 38, 0.04);
 
 
 
@@ -8301,7 +7937,7 @@
 
 
 
-        #achatsView .achats-articles-count {
+        #achatsView .achats-articles-count , #ventesView .achats-articles-count {
 
 
 
@@ -8321,7 +7957,7 @@
 
 
 
-        #achatsView .achats-articles-count strong {
+        #achatsView .achats-articles-count strong , #ventesView .achats-articles-count strong {
 
 
 
@@ -8333,7 +7969,7 @@
 
 
 
-        #achatsView .achats-saisie-ligne .achats-line-actions {
+        #achatsView .achats-saisie-ligne .achats-line-actions , #ventesView .achats-saisie-ligne .achats-line-actions {
 
 
 
@@ -8377,7 +8013,7 @@
 
 
 
-            #achatsView .achats-lignes-inline-row {
+            #achatsView .achats-lignes-inline-row , #ventesView .achats-lignes-inline-row {
 
 
 
@@ -8461,15 +8097,11 @@
 
 
 
-        .achats-commandes-table col.col-cmd-reg { width: 8%; }
+        .achats-commandes-table col.col-cmd-reg { width: 10%; }
 
 
 
-        .achats-commandes-table col.col-cmd-ech { width: 9%; }
-
-
-
-        .achats-commandes-table col.col-cmd-actions { width: 13%; }
+        .achats-commandes-table col.col-cmd-actions { width: 14%; }
 
 
 
@@ -10001,6 +9633,56 @@
 
 
 
+        .btn-icon-print {
+
+
+
+            background: #5a6a7a;
+
+
+
+            color: #fff;
+
+
+
+            border-color: #5a6a7a;
+
+
+
+        }
+
+
+
+        .btn-icon-print:hover {
+
+
+
+            background: #3d4a56;
+
+
+
+            transform: translateY(-1px);
+
+
+
+            box-shadow: 0 2px 8px rgba(61, 74, 86, 0.25);
+
+
+
+        }
+
+
+
+            @media print {
+
+            .no-print-balance { display: none !important; }
+
+            .no-print-depot { display: none !important; }
+
+        }
+
+
+
         .btn-icon-delete {
 
 
@@ -10102,6 +9784,14 @@
 
 
         #commandesPrintAreaAchats .fournisseur-table-wrap,
+
+        #commandesPrintAreaVentes .fournisseur-table-wrap,
+
+        #clientPrintArea .fournisseur-table-wrap,
+
+        #reglementVentePrintArea .fournisseur-table-wrap,
+
+        #balanceClientsPrintArea .fournisseur-table-wrap,
 
 
 
@@ -10222,6 +9912,8 @@
 
 
         #commandesPrintAreaAchats .achats-commandes-table thead th,
+
+        #commandesPrintAreaVentes .achats-commandes-table thead th,
 
 
 
@@ -10525,7 +10217,9 @@
 
 
 
-        #fournisseurListPanel #fournisseursTable .col-actions {
+        #fournisseurListPanel #fournisseursTable .col-actions,
+
+        #clientListPanel #clientsTable .col-actions {
 
 
 
@@ -11939,58 +11633,45 @@
 
 
 
-        #utilisateurView .user-form-grid {
-
-
-
+        #utilisateurView .user-bar-1 {
             display: grid;
-
-
-
-            grid-template-columns: 110px 100px minmax(0, 1.4fr) minmax(0, 1fr);
-
-
-
+            grid-template-columns: 100px minmax(140px, 1.4fr) minmax(120px, 1fr) minmax(110px, 0.9fr);
             gap: 8px 10px;
-
-
-
             align-items: end;
-
-
-
             margin-bottom: 10px;
-
-
-
         }
 
-
-
-        #utilisateurView .user-form-grid-2 {
-
-
-
+        #utilisateurView .user-bar-2 {
             display: grid;
-
-
-
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-
-
-
             gap: 8px 10px;
-
-
-
             align-items: end;
-
-
-
             margin-bottom: 12px;
+        }
 
+        #utilisateurView .user-bar-1 .form-group,
+        #utilisateurView .user-bar-2 .form-group {
+            margin: 0;
+            min-width: 0;
+        }
 
+        #utilisateurView tr.user-suspended td {
+            opacity: 0.55;
+        }
 
+        #utilisateurView .btn-icon-suspend {
+            color: #b45309;
+        }
+
+        #utilisateurView .btn-icon-suspend.is-suspended {
+            color: #047857;
+        }
+
+        @media (max-width: 900px) {
+            #utilisateurView .user-bar-1,
+            #utilisateurView .user-bar-2 {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
 
@@ -14650,662 +14331,377 @@
 
         
         .login-panel {
+            display: none;
             position: fixed;
-            top: 50%;
-            right: 28px;
-            left: auto;
-            width: min(380px, calc(100vw - 48px));
-            max-width: 100%;
-            z-index: 30;
+            inset: 0;
+            z-index: 100000;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 24px 28px;
+            box-sizing: border-box;
+            background: rgba(0, 18, 14, 0.55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             opacity: 0;
-            visibility: hidden;
-            transform: translate(24px, -50%) scale(0.98);
-            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
             pointer-events: none;
+            transition: opacity 0.28s ease;
         }
 
         .login-panel.is-open {
+            display: flex !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        .login-panel .login-card {
+            width: min(420px, calc(100vw - 48px));
+            margin: 0;
+            transform: translateX(28px) scale(0.98);
+            opacity: 0;
+            transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+        }
+
+        .login-panel.is-open .login-card {
+            transform: translateX(0) scale(1);
             opacity: 1;
-            visibility: visible;
-            transform: translate(0, -50%) scale(1);
-            pointer-events: auto;
         }
 
         @media (max-width: 560px) {
             .login-panel,
             .login-panel.is-open {
-                right: 16px;
-                left: 16px;
-                width: auto;
+                align-items: flex-end;
+                justify-content: center;
+                padding: 16px;
+            }
+            .login-panel .login-card {
+                width: 100%;
+                transform: translateY(24px) scale(0.98);
+            }
+            .login-panel.is-open .login-card {
+                transform: translateY(0) scale(1);
             }
         }
 
-
-
-
         .login-panel-close {
-
-
-
             position: absolute;
-
-
-
-            top: 12px;
-
-
-
-            right: 12px;
-
-
-
-            width: 32px;
-
-
-
-            height: 32px;
-
-
-
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
             display: inline-flex;
-
-
-
             align-items: center;
-
-
-
             justify-content: center;
-
-
-
-            border: none;
-
-
-
+            border: 1px solid rgba(233, 197, 119, 0.28);
             border-radius: 50%;
-
-
-
-            background: rgba(255, 255, 255, 0.12);
-
-
-
-            color: #fff;
-
-
-
+            background: rgba(255, 255, 255, 0.06);
+            color: #f4e6c4;
             cursor: pointer;
-
-
-
-            transition: background 0.15s;
-
-
-
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            z-index: 2;
         }
-
-
 
         .login-panel-close:hover {
-
-
-
-            background: rgba(255, 255, 255, 0.22);
-
-
-
+            background: rgba(233, 197, 119, 0.18);
+            border-color: rgba(233, 197, 119, 0.55);
+            transform: rotate(90deg);
         }
-
-
 
         .login-panel-close svg {
-
-
-
             width: 16px;
-
-
-
             height: 16px;
-
-
-
         }
-
-
 
         .login-card {
-
-
-
             position: relative;
-
-
-
-            width: 100%;
-
-
-
-            background: rgba(255, 255, 255, 0.12);
-
-
-
-            backdrop-filter: blur(16px);
-
-
-
-            -webkit-backdrop-filter: blur(16px);
-
-
-
-            border: 1px solid rgba(255, 255, 255, 0.25);
-
-
-
-            border-radius: 20px;
-
-
-
-            padding: 34px 30px;
-
-
-
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-
-
-
+            overflow: hidden;
+            background:
+                radial-gradient(120% 80% at 100% 0%, rgba(233, 197, 119, 0.18) 0%, transparent 45%),
+                radial-gradient(90% 70% at 0% 100%, rgba(0, 77, 58, 0.55) 0%, transparent 50%),
+                linear-gradient(160deg, #0b2a22 0%, #062019 48%, #031510 100%);
+            border: 1px solid rgba(233, 197, 119, 0.38);
+            border-radius: 24px;
+            padding: 28px 28px 24px;
+            box-shadow:
+                0 28px 80px rgba(0, 0, 0, 0.55),
+                0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+                0 1px 0 rgba(233, 197, 119, 0.2) inset;
         }
 
+        .login-card::before {
+            content: "";
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            top: 0;
+            height: 3px;
+            border-radius: 0 0 6px 6px;
+            background: linear-gradient(90deg, transparent, #e9c577 20%, #f4e6c4 50%, #d4a86a 80%, transparent);
+        }
 
+        .login-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -40px -60px auto;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(233, 197, 119, 0.14) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .login-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 4px 28px 18px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-brand-mark {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            background:
+                linear-gradient(145deg, #e9c577 0%, #d4a86a 55%, #b8893f 100%);
+            box-shadow: 0 10px 24px rgba(212, 168, 106, 0.35);
+            overflow: hidden;
+        }
+
+        .login-brand-mark img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
+        }
+
+        .login-brand-name {
+            margin: 0 0 2px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #e9c577;
+        }
 
         .login-title {
-
-
-
             margin: 0;
-
-
-
             font-family: 'Playfair Display', Georgia, serif;
-
-
-
-            font-size: 28px;
-
-
-
-            font-weight: 800;
-
-
-
-            color: #fff;
-
-
-
-            text-align: center;
-
-
-
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: #fffaf0;
+            text-align: left;
         }
-
-
 
         .login-subtitle {
-
-
-
-            margin: 6px 0 26px;
-
-
-
-            text-align: center;
-
-
-
-            font-size: 13px;
-
-
-
-            color: rgba(255, 255, 255, 0.8);
-
-
-
+            margin: 0 0 22px;
+            text-align: left;
+            font-size: 13.5px;
+            line-height: 1.45;
+            color: rgba(255, 248, 230, 0.72);
+            position: relative;
+            z-index: 1;
         }
-
-
 
         .login-error {
-
-
-
-            margin: 0 0 16px;
-
-
-
-            padding: 10px 12px;
-
-
-
-            border-radius: 10px;
-
-
-
-            background: rgba(214, 64, 41, 0.22);
-
-
-
-            border: 1px solid rgba(255, 120, 100, 0.55);
-
-
-
-            color: #ffd9d2;
-
-
-
+            margin: 0 0 14px;
+            padding: 11px 12px;
+            border-radius: 12px;
+            background: rgba(180, 45, 35, 0.28);
+            border: 1px solid rgba(255, 150, 130, 0.45);
+            color: #ffe4de;
             font-size: 12.5px;
-
-
-
             text-align: center;
-
-
-
+            position: relative;
+            z-index: 1;
+            animation: loginShake 0.35s ease;
         }
 
-
+        @keyframes loginShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
 
         .login-field {
-
-
-
             position: relative;
-
-
-
             display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 14px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            z-index: 1;
+        }
 
+        .login-field-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(233, 197, 119, 0.9);
+            padding-left: 2px;
+        }
 
-
+        .login-field-row {
+            display: flex;
             align-items: center;
-
-
-
-            margin-bottom: 16px;
-
-
-
-            background: rgba(255, 255, 255, 0.16);
-
-
-
-            border: 1px solid rgba(255, 255, 255, 0.3);
-
-
-
-            border-radius: 12px;
-
-
-
-            transition: border-color 0.2s, box-shadow 0.2s;
-
-
-
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(233, 197, 119, 0.22);
+            border-radius: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
         }
 
-
-
-        .login-field:focus-within {
-
-
-
+        .login-field:focus-within .login-field-row {
             border-color: #e9c577;
-
-
-
-            box-shadow: 0 0 0 3px rgba(233, 197, 119, 0.25);
-
-
-
+            background: rgba(233, 197, 119, 0.08);
+            box-shadow: 0 0 0 3px rgba(233, 197, 119, 0.16);
         }
-
-
 
         .login-icon {
-
-
-
             display: grid;
-
-
-
             place-items: center;
-
-
-
-            width: 44px;
-
-
-
-            height: 46px;
-
-
-
+            width: 46px;
+            height: 48px;
             color: #e9c577;
-
-
-
             flex-shrink: 0;
-
-
-
         }
-
-
 
         .login-icon svg {
-
-
-
-            width: 20px;
-
-
-
-            height: 20px;
-
-
-
+            width: 18px;
+            height: 18px;
         }
-
-
 
         .login-field input {
-
-
-
             flex: 1;
-
-
-
             border: none;
-
-
-
             background: transparent;
-
-
-
             outline: none;
-
-
-
-            padding: 12px 8px 12px 0;
-
-
-
-            font-size: 14px;
-
-
-
-            color: #fff;
-
-
-
+            padding: 13px 10px;
+            font-size: 14.5px;
+            font-weight: 500;
+            color: #fffaf0;
+            min-width: 0;
         }
 
+        #loginUser,
+        #loginPass {
+            text-align: center;
+        }
 
+        #loginUser::placeholder,
+        #loginPass::placeholder {
+            text-align: center;
+        }
 
         .login-field input::placeholder {
-
-
-
-            color: rgba(255, 255, 255, 0.65);
-
-
-
+            color: rgba(255, 248, 230, 0.42);
+            font-weight: 400;
         }
-
-
-
-        /* Corrige l'autofill : garde un fond translucide et un texte lisible */
-
-
 
         .login-field input:-webkit-autofill,
-
-
-
         .login-field input:-webkit-autofill:hover,
-
-
-
         .login-field input:-webkit-autofill:focus,
-
-
-
         .login-field input:-webkit-autofill:active {
-
-
-
-            -webkit-text-fill-color: #2a1a05 !important;
-
-
-
-            caret-color: #2a1a05;
-
-
-
-            -webkit-box-shadow: 0 0 0 1000px #f6ecd8 inset !important;
-
-
-
-            box-shadow: 0 0 0 1000px #f6ecd8 inset !important;
-
-
-
+            -webkit-text-fill-color: #fffaf0 !important;
+            caret-color: #fffaf0;
+            -webkit-box-shadow: 0 0 0 1000px #0a241d inset !important;
+            box-shadow: 0 0 0 1000px #0a241d inset !important;
             border-radius: 12px;
-
-
-
             transition: background-color 9999s ease-in-out 0s;
-
-
-
+            background-color: transparent !important;
         }
-
-
 
         .login-eye {
-
-
-
             background: none;
-
-
-
             border: none;
-
-
-
             cursor: pointer;
-
-
-
-            color: rgba(255, 255, 255, 0.75);
-
-
-
+            color: rgba(255, 248, 230, 0.65);
             display: grid;
-
-
-
             place-items: center;
-
-
-
-            width: 42px;
-
-
-
-            height: 46px;
-
-
-
+            width: 44px;
+            height: 48px;
+            flex-shrink: 0;
+            transition: color 0.15s;
         }
-
-
 
         .login-eye svg {
-
-
-
             width: 18px;
-
-
-
             height: 18px;
-
-
-
         }
-
-
 
         .login-eye:hover {
-
-
-
             color: #e9c577;
-
-
-
         }
-
-
 
         .login-btn {
-
-
-
             width: 100%;
-
-
-
-            margin-top: 8px;
-
-
-
+            margin-top: 10px;
             display: flex;
-
-
-
             align-items: center;
-
-
-
             justify-content: center;
-
-
-
             gap: 10px;
-
-
-
-            padding: 13px;
-
-
-
+            padding: 14px 16px;
             border: none;
-
-
-
-            border-radius: 12px;
-
-
-
+            border-radius: 14px;
             cursor: pointer;
-
-
-
             font-size: 15px;
-
-
-
             font-weight: 700;
-
-
-
-            letter-spacing: 0.03em;
-
-
-
-            color: #2a1a05;
-
-
-
-            background: linear-gradient(135deg, #e9c577 0%, #d4a86a 100%);
-
-
-
-            box-shadow: 0 10px 26px rgba(212, 168, 106, 0.45);
-
-
-
-            transition: transform 0.15s, box-shadow 0.2s, filter 0.2s;
-
-
-
+            letter-spacing: 0.04em;
+            color: #1f1406;
+            background: linear-gradient(135deg, #f2d48a 0%, #e9c577 40%, #d4a86a 100%);
+            box-shadow: 0 12px 28px rgba(212, 168, 106, 0.38);
+            transition: transform 0.18s, box-shadow 0.2s, filter 0.2s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
         }
 
+        .login-btn::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform 0.55s ease;
+        }
 
+        .login-btn:hover::after {
+            transform: translateX(120%);
+        }
 
         .login-btn svg {
-
-
-
             width: 18px;
-
-
-
             height: 18px;
-
-
-
+            position: relative;
+            z-index: 1;
         }
-
-
 
         .login-btn:hover {
-
-
-
             transform: translateY(-2px);
-
-
-
-            filter: brightness(1.05);
-
-
-
-            box-shadow: 0 14px 32px rgba(212, 168, 106, 0.6);
-
-
-
+            filter: brightness(1.04);
+            box-shadow: 0 16px 36px rgba(212, 168, 106, 0.5);
         }
-
-
 
         .login-btn:active {
-
-
-
             transform: translateY(0);
-
-
-
         }
 
-
+        .login-footnote {
+            margin: 16px 0 0;
+            text-align: center;
+            font-size: 11.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(233, 197, 119, 0.55);
+            position: relative;
+            z-index: 1;
+        }
 
         .landing-footer {
 
@@ -15478,6 +14874,8 @@
         #commandesPrintAreaAchats .fournisseur-table-wrap,
 
 
+
+        #commandesPrintAreaVentes .fournisseur-table-wrap,
 
         #produitPrintArea .fournisseur-table-wrap {
 
@@ -15791,6 +15189,38 @@
 
 
 
+        #reglementAchatsView,
+
+
+
+        #balanceAchatsView,
+
+
+
+        #ficheClientView,
+
+
+
+        #ventesView,
+
+
+
+        #reglementVentesView,
+
+
+
+        #balanceClientsView,
+
+
+
+        #depotCrusView,
+
+
+
+        #depotDiversView,
+
+
+
         #utilisateurView {
 
 
@@ -15835,6 +15265,38 @@
 
 
 
+        #reglementAchatsView:not(.hidden),
+
+
+
+        #balanceAchatsView:not(.hidden),
+
+
+
+        #ficheClientView:not(.hidden),
+
+
+
+        #ventesView:not(.hidden),
+
+
+
+        #reglementVentesView:not(.hidden),
+
+
+
+        #balanceClientsView:not(.hidden),
+
+
+
+        #depotCrusView:not(.hidden),
+
+
+
+        #depotDiversView:not(.hidden),
+
+
+
         #utilisateurView:not(.hidden),
 
 
@@ -15848,6 +15310,22 @@
 
 
         #achatsConsultMode:not(.hidden),
+
+
+
+        #ventesConsultMode:not(.hidden),
+
+
+
+        #clientListPanel:not(.hidden),
+
+
+
+        #reglementVenteConsultPanel:not(.hidden),
+
+
+
+        #balanceClientsConsultPanel:not(.hidden),
 
 
 
@@ -15871,7 +15349,27 @@
 
 
 
-        #utilisateurFormPanel:not(.hidden) {
+        #utilisateurFormPanel:not(.hidden),
+
+        #reglementConsultPanel:not(.hidden),
+
+        #reglementVenteFormPanel:not(.hidden),
+
+        #clientFormPanel:not(.hidden),
+
+        #ventesSaisieMode:not(.hidden),
+
+        #balanceAchatsConsultPanel:not(.hidden),
+
+        #balanceAchatsDetailPanel:not(.hidden),
+
+        #depotCrusConsultPanel:not(.hidden),
+
+        #depotCrusDetailPanel:not(.hidden),
+
+        #depotDiversConsultPanel:not(.hidden),
+
+        #depotDiversDetailPanel:not(.hidden) {
 
 
 
@@ -15931,6 +15429,38 @@
 
 
 
+        #reglementPrintArea,
+
+        #balanceAchatsPrintArea,
+
+        #depotCrusPrintArea,
+
+        #depotDiversPrintArea,
+
+        #depotCrusConsultPanel,
+
+        #depotDiversConsultPanel,
+
+        #reglementConsultPanel,
+
+        #balanceAchatsConsultPanel,
+
+        #clientListPanel,
+
+        #clientPrintArea,
+
+        #ventesConsultMode,
+
+        #commandesPrintAreaVentes,
+
+        #reglementVenteConsultPanel,
+
+        #reglementVentePrintArea,
+
+        #balanceClientsConsultPanel,
+
+        #balanceClientsPrintArea,
+
         #commandesPrintAreaAchats {
 
 
@@ -15971,7 +15501,15 @@
 
 
 
-        #commandesPrintAreaAchats {
+        #commandesPrintAreaAchats,
+
+        #commandesPrintAreaVentes,
+
+        #clientPrintArea,
+
+        #reglementVentePrintArea,
+
+        #balanceClientsPrintArea {
 
 
 
@@ -16007,11 +15545,27 @@
 
 
 
+        #commandesPrintAreaVentes .fournisseur-table-wrap,
+
+        #clientPrintArea .fournisseur-table-wrap,
+
+        #reglementVentePrintArea .fournisseur-table-wrap,
+
+        #balanceClientsPrintArea .fournisseur-table-wrap,
+
         #produitPrintArea .fournisseur-table-wrap,
 
 
 
-        #achatsView .achats-articles-panel .fournisseur-table-wrap {
+        #achatsView .achats-articles-panel .fournisseur-table-wrap, #ventesView .achats-articles-panel .fournisseur-table-wrap,
+
+        #reglementPrintArea .fournisseur-table-wrap,
+
+        #balanceAchatsPrintArea .fournisseur-table-wrap,
+
+        #depotCrusPrintArea .fournisseur-table-wrap,
+
+        #depotDiversPrintArea .fournisseur-table-wrap {
 
 
 
@@ -16215,6 +15769,22 @@
 
 
 
+        #ventesConsultMode .list-toolbar,
+
+
+
+        #clientListPanel .list-toolbar,
+
+
+
+        #reglementVenteConsultPanel .list-toolbar,
+
+
+
+        #balanceClientsConsultPanel .list-toolbar,
+
+
+
         #societeConsultPanel .list-toolbar,
 
 
@@ -16225,7 +15795,19 @@
 
         #utilisateurConsultPanel .list-toolbar,
 
-        #reglementConsultPanel .list-toolbar {
+        #reglementConsultPanel .list-toolbar,
+
+        #balanceAchatsConsultPanel .list-toolbar,
+
+        #balanceAchatsDetailPanel .list-toolbar,
+
+        #depotCrusConsultPanel .list-toolbar,
+
+        #depotCrusDetailPanel .list-toolbar,
+
+        #depotDiversConsultPanel .list-toolbar,
+
+        #depotDiversDetailPanel .list-toolbar {
 
 
 
@@ -16297,6 +15879,22 @@
 
 
 
+        #ventesConsultMode .list-toolbar-title,
+
+
+
+        #clientListPanel .list-toolbar-title,
+
+
+
+        #reglementVenteConsultPanel .list-toolbar-title,
+
+
+
+        #balanceClientsConsultPanel .list-toolbar-title,
+
+
+
         #societeConsultPanel .list-toolbar-title,
 
 
@@ -16340,6 +15938,22 @@
 
 
         #achatsConsultMode .list-toolbar-actions,
+
+
+
+        #ventesConsultMode .list-toolbar-actions,
+
+
+
+        #clientListPanel .list-toolbar-actions,
+
+
+
+        #reglementVenteConsultPanel .list-toolbar-actions,
+
+
+
+        #balanceClientsConsultPanel .list-toolbar-actions,
 
 
 
@@ -16387,7 +16001,13 @@
 
         #utilisateurPrintArea .fournisseur-table-wrap,
 
-        #reglementPrintArea .fournisseur-table-wrap {
+        #reglementPrintArea .fournisseur-table-wrap,
+
+        #balanceAchatsPrintArea .fournisseur-table-wrap,
+
+        #depotCrusPrintArea .fournisseur-table-wrap,
+
+        #depotDiversPrintArea .fournisseur-table-wrap {
 
 
 
@@ -16415,7 +16035,9 @@
 
 
 
-        #commandesPrintAreaAchats {
+        #commandesPrintAreaAchats,
+
+        #commandesPrintAreaVentes {
 
 
 
@@ -16547,7 +16169,146 @@
 
         /* ── Réglement Achat ── */
 
-        #reglementAchatsView .rg-form-layout {
+        #reglementAchatsView .rg-bons-panel , #reglementVentesView .rg-bons-panel {
+            margin-top: 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        #reglementAchatsView .rg-bons-title , #reglementVentesView .rg-bons-title {
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--green-dark);
+            background: rgba(0, 51, 38, 0.04);
+            border-bottom: 1px solid var(--border);
+        }
+
+        #reglementAchatsView .rg-bons-wrap , #reglementVentesView .rg-bons-wrap {
+            max-height: 220px;
+            overflow: auto;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+        }
+
+        #reglementAchatsView .rg-bons-table thead th , #reglementVentesView .rg-bons-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: var(--table-header);
+            color: #000;
+            text-shadow: none;
+        }
+
+        #reglementAchatsView .rg-bons-table .col-choose , #reglementVentesView .rg-bons-table .col-choose {
+            width: 70px;
+            text-align: center;
+        }
+
+        #reglementAchatsView .rg-bons-table tbody tr.selected td , #reglementVentesView .rg-bons-table tbody tr.selected td {
+            background: rgba(0, 51, 38, 0.06);
+        }
+
+        #reglementAchatsView .rg-bons-table input[type="radio"] , #reglementVentesView .rg-bons-table input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        #reglementConsultPanel .rg-kpi-grid,
+        #reglementVenteConsultPanel .rg-kpi-grid {
+            position: static;
+            top: auto;
+            z-index: 1;
+            margin: 0 0 12px;
+            padding: 0 12px;
+            box-shadow: none;
+            background: transparent;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        #reglementConsultPanel .rg-kpi-grid .kpi-card,
+        #reglementVenteConsultPanel .rg-kpi-grid .kpi-card {
+            padding: 14px 12px;
+        }
+
+        #reglementConsultPanel .rg-kpi-grid .kpi-value,
+        #reglementVenteConsultPanel .rg-kpi-grid .kpi-value {
+            font-size: 18px;
+        }
+
+        @media (max-width: 1100px) {
+            #reglementConsultPanel .rg-kpi-grid,
+            #reglementVenteConsultPanel .rg-kpi-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 700px) {
+            #reglementConsultPanel .rg-kpi-grid,
+            #reglementVenteConsultPanel .rg-kpi-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        #reglementsTable .col-actions,
+        #reglementsVenteTable .col-actions {
+            position: sticky;
+            right: 0;
+            z-index: 4;
+            width: auto;
+            min-width: 120px;
+            white-space: nowrap;
+            padding: 6px 8px;
+            background: #fff;
+            box-shadow: -6px 0 10px rgba(0, 0, 0, 0.06);
+        }
+
+        #reglementsTable thead th.col-actions,
+        #reglementsVenteTable thead th.col-actions {
+            background: linear-gradient(135deg, var(--green-dark) 0%, #004d3a 100%);
+            color: #fff;
+            z-index: 5;
+        }
+
+        #reglementsTable .rg-actions-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #reglementsTable .btn-rg-action,
+        #reglementsVenteTable .btn-rg-action {
+            display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        #reglementsTable .btn-rg-action svg,
+        #reglementsVenteTable .btn-rg-action svg {
+            width: 13px;
+            height: 13px;
+            display: block;
+            stroke: currentColor;
+        }
+
+        #reglementPrintArea .fournisseur-table-wrap {
+            overflow-x: auto !important;
+        }
+
+        #reglementAchatsView .rg-form-layout , #reglementVentesView .rg-form-layout {
 
             display: grid;
 
@@ -16559,7 +16320,7 @@
 
         }
 
-        #reglementAchatsView .rg-inline-row {
+        #reglementAchatsView .rg-inline-row , #reglementVentesView .rg-inline-row {
 
             display: grid;
 
@@ -16571,25 +16332,25 @@
 
         }
 
-        #reglementAchatsView .rg-inline-row-1 {
+        #reglementAchatsView .rg-inline-row-1 , #reglementVentesView .rg-inline-row-1 {
 
             grid-template-columns: 130px 110px minmax(0, 1.6fr);
 
         }
 
-        #reglementAchatsView .rg-inline-row-2 {
+        #reglementAchatsView .rg-inline-row-2 , #reglementVentesView .rg-inline-row-2 {
 
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
 
         }
 
-        #reglementAchatsView .rg-inline-row-3 {
+        #reglementAchatsView .rg-inline-row-3 , #reglementVentesView .rg-inline-row-3 {
 
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
         }
 
-        #reglementAchatsView .rg-photo-panel {
+        #reglementAchatsView .rg-photo-panel , #reglementVentesView .rg-photo-panel {
 
             display: flex;
 
@@ -16599,7 +16360,7 @@
 
         }
 
-        #reglementAchatsView .rg-photo-panel > label {
+        #reglementAchatsView .rg-photo-panel > label , #reglementVentesView .rg-photo-panel > label {
 
             font-size: 9px;
 
@@ -16613,7 +16374,7 @@
 
         }
 
-        #reglementAchatsView .rg-photo-preview {
+        #reglementAchatsView .rg-photo-preview , #reglementVentesView .rg-photo-preview {
 
             width: 100%;
 
@@ -16635,7 +16396,7 @@
 
         }
 
-        #reglementAchatsView .rg-photo-preview img {
+        #reglementAchatsView .rg-photo-preview img , #reglementVentesView .rg-photo-preview img {
 
             width: 100%;
 
@@ -16647,7 +16408,7 @@
 
         }
 
-        #reglementAchatsView .rg-photo-placeholder {
+        #reglementAchatsView .rg-photo-placeholder , #reglementVentesView .rg-photo-placeholder {
 
             font-size: 10px;
 
@@ -16659,7 +16420,7 @@
 
         }
 
-        #reglementAchatsView .rg-photo-actions {
+        #reglementAchatsView .rg-photo-actions , #reglementVentesView .rg-photo-actions {
 
             display: flex;
 
@@ -16667,13 +16428,13 @@
 
         }
 
-        #reglementAchatsView .rg-photo-actions .btn-photo {
+        #reglementAchatsView .rg-photo-actions .btn-photo , #reglementVentesView .rg-photo-actions .btn-photo {
 
             flex: 1;
 
         }
 
-        #reglementAchatsView .btn-form-plus {
+        #reglementAchatsView .btn-form-plus , #reglementVentesView .btn-form-plus {
 
             display: inline-flex;
 
@@ -16693,13 +16454,13 @@
 
         }
 
-        #reglementAchatsView .btn-form-plus:hover {
+        #reglementAchatsView .btn-form-plus:hover , #reglementVentesView .btn-form-plus:hover {
 
             filter: brightness(1.08);
 
         }
 
-        #reglementAchatsView .btn-form-plus svg {
+        #reglementAchatsView .btn-form-plus svg , #reglementVentesView .btn-form-plus svg {
 
             width: 16px;
 
@@ -16707,7 +16468,7 @@
 
         }
 
-        #reglementAchatsView .btn-form-plus[disabled] {
+        #reglementAchatsView .btn-form-plus[disabled] , #reglementVentesView .btn-form-plus[disabled] {
 
             opacity: 0.45;
 
@@ -16719,13 +16480,13 @@
 
         @media (max-width: 900px) {
 
-            #reglementAchatsView .rg-form-layout { grid-template-columns: 1fr; }
+            #reglementAchatsView .rg-form-layout , #reglementVentesView .rg-form-layout { grid-template-columns: 1fr; }
 
-            #reglementAchatsView .rg-inline-row-1,
+            #reglementAchatsView .rg-inline-row-1, #reglementVentesView .rg-inline-row-1,
 
-            #reglementAchatsView .rg-inline-row-2,
+            #reglementAchatsView .rg-inline-row-2, #reglementVentesView .rg-inline-row-2,
 
-            #reglementAchatsView .rg-inline-row-3 { grid-template-columns: 1fr 1fr; }
+            #reglementAchatsView .rg-inline-row-3 , #reglementVentesView .rg-inline-row-3 { grid-template-columns: 1fr 1fr; }
 
         }
 
@@ -17606,122 +17367,6 @@
                 </div>
             </div>
 
-            <div class="login-panel" id="loginPanel">
-
-
-
-            <form class="login-card" id="loginForm" autocomplete="off">
-
-
-
-                <button type="button" class="login-panel-close" id="closeLoginBtn" aria-label="Fermer">
-
-
-
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-
-
-
-                </button>
-
-
-
-                <h2 class="login-title">Connexion</h2>
-
-
-
-                <p class="login-subtitle">Accédez à votre espace de gestion</p>
-
-
-
-                <div class="login-error" id="loginError" hidden>Identifiant ou mot de passe incorrect.</div>
-
-
-
-                <div class="login-field">
-
-
-
-                    <span class="login-icon" aria-hidden="true">
-
-
-
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-
-
-
-                    </span>
-
-
-
-                    <input type="text" id="loginUser" name="login_user" placeholder="Identifiant" autocomplete="username">
-
-
-
-                </div>
-
-
-
-                <div class="login-field">
-
-
-
-                    <span class="login-icon" aria-hidden="true">
-
-
-
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-
-
-
-                    </span>
-
-
-
-                    <input type="password" id="loginPass" name="login_pass" placeholder="Mot de passe" autocomplete="current-password">
-
-
-
-                    <button type="button" class="login-eye" id="loginEyeBtn" aria-label="Afficher le mot de passe">
-
-
-
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
-
-
-
-                    </button>
-
-
-
-                </div>
-
-
-
-                <button type="submit" class="login-btn">
-
-
-
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-
-
-
-                    Se connecter
-
-
-
-                </button>
-
-
-
-            </form>
-
-
-
-            </div>
-
-
-
         </div>
 
 
@@ -17731,6 +17376,190 @@
 
 
     </div>
+
+
+
+    <div class="login-panel" id="loginPanel" aria-hidden="true">
+
+        <form class="login-card" id="loginForm" autocomplete="off">
+
+            <button type="button" class="login-panel-close" id="closeLoginBtn" aria-label="Fermer">
+
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+
+            </button>
+
+            <div class="login-brand">
+                <div class="login-brand-mark" aria-hidden="true">
+                    <img src="{{ asset('images/sweet-austria-logo.png') }}" alt="">
+                </div>
+                <div>
+                    <p class="login-brand-name">Sweet Austria</p>
+                    <h2 class="login-title">Connexion</h2>
+                </div>
+            </div>
+
+            <p class="login-subtitle">Entrez vos accès pour ouvrir l’espace de gestion.</p>
+
+            <div class="login-error" id="loginError" hidden>Statut, login ou mot de passe incorrect.</div>
+
+            <div class="login-field">
+                <span class="login-field-label">Statut</span>
+                <div class="login-field-row">
+                    <span class="login-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <input type="text" id="loginStatut" name="login_statut" list="loginStatutList" placeholder="Admin, Commercial…" autocomplete="off">
+                    <datalist id="loginStatutList">
+                        <option value="Admin"></option>
+                        <option value="Commercial"></option>
+                        <option value="Facturation"></option>
+                        <option value="Magasinier"></option>
+                    </datalist>
+                </div>
+            </div>
+
+            <div class="login-field">
+                <span class="login-field-label">Login</span>
+                <div class="login-field-row">
+                    <span class="login-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </span>
+                    <input type="text" id="loginUser" name="login_user" placeholder="Votre identifiant" autocomplete="username">
+                </div>
+            </div>
+
+            <div class="login-field">
+                <span class="login-field-label">Mot de Passe</span>
+                <div class="login-field-row">
+                    <span class="login-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </span>
+                    <input type="password" id="loginPass" name="login_pass" placeholder="••••••••" autocomplete="current-password">
+                    <button type="button" class="login-eye" id="loginEyeBtn" aria-label="Afficher le mot de passe">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                Se connecter
+            </button>
+
+            <p class="login-footnote">Accès sécurisé · Sweet Austria</p>
+
+        </form>
+
+    </div>
+
+    <script>
+        (function () {
+            function openLogin(e) {
+                if (e && e.preventDefault) e.preventDefault();
+                if (e && e.stopPropagation) e.stopPropagation();
+                var panel = document.getElementById('loginPanel');
+                if (!panel) return false;
+                panel.classList.add('is-open');
+                panel.setAttribute('aria-hidden', 'false');
+                var user = document.getElementById('loginStatut') || document.getElementById('loginUser');
+                if (user) setTimeout(function () { user.focus(); }, 50);
+                return false;
+            }
+            function closeLogin(e) {
+                if (e && e.preventDefault) e.preventDefault();
+                var panel = document.getElementById('loginPanel');
+                if (!panel) return false;
+                panel.classList.remove('is-open');
+                panel.setAttribute('aria-hidden', 'true');
+                var err = document.getElementById('loginError');
+                if (err) err.hidden = true;
+                return false;
+            }
+            window.openLandingLogin = openLogin;
+            window.closeLandingLogin = closeLogin;
+            document.addEventListener('click', function (ev) {
+                var t = ev.target;
+                if (!t || !t.closest) return;
+                if (t.closest('#openLoginBtn') || t.closest('.landing-connect-btn')) {
+                    openLogin(ev);
+                    return;
+                }
+                if (t.closest('#closeLoginBtn')) {
+                    closeLogin(ev);
+                    return;
+                }
+                var panel = document.getElementById('loginPanel');
+                if (panel && panel.classList.contains('is-open') && t === panel) {
+                    closeLogin(ev);
+                }
+            });
+            var eye = document.getElementById('loginEyeBtn');
+            var pass = document.getElementById('loginPass');
+            if (eye && pass) {
+                eye.addEventListener('click', function () {
+                    var isPwd = pass.type === 'password';
+                    pass.type = isPwd ? 'text' : 'password';
+                });
+            }
+            var form = document.getElementById('loginForm');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var s = ((document.getElementById('loginStatut') || {}).value || '').trim();
+                    var u = ((document.getElementById('loginUser') || {}).value || '').trim();
+                    var p = ((document.getElementById('loginPass') || {}).value || '').trim();
+                    var err = document.getElementById('loginError');
+
+                    function norm(v) {
+                        return String(v || '').trim().toLowerCase();
+                    }
+
+                    var ok = false;
+                    // Accès superadmin (compat)
+                    if (
+                        (norm(u) === 'superadmin' && p === 'SweetAustria@2026')
+                        || (norm(u) === 'superadmin@sweetaustria.com' && p === 'mot de passe')
+                    ) {
+                        ok = !s || norm(s) === 'admin';
+                    }
+
+                    // Utilisateurs enregistrés (localStorage)
+                    if (!ok && s && u && p) {
+                        try {
+                            var list = JSON.parse(localStorage.getItem('utilisateursApp') || '[]');
+                            if (Array.isArray(list)) {
+                                ok = list.some(function (usr) {
+                                    if (!usr || usr.suspendu === true) return false;
+                                    return norm(usr.statut) === norm(s)
+                                        && norm(usr.login) === norm(u)
+                                        && String(usr.password || '') === p;
+                                });
+                            }
+                        } catch (ex) {}
+                    }
+
+                    if (ok) {
+                        if (err) err.hidden = true;
+                        try {
+                            sessionStorage.setItem('authUser', JSON.stringify({
+                                statut: s || 'Admin',
+                                login: u,
+                                at: Date.now()
+                            }));
+                        } catch (ex2) {}
+                        closeLogin();
+                        var landing = document.getElementById('landingScreen');
+                        if (landing) landing.classList.add('is-hidden');
+                        document.body.style.overflow = '';
+                    } else {
+                        if (err) err.hidden = false;
+                        if (pass) { pass.value = ''; pass.focus(); }
+                    }
+                });
+            }
+        })();
+    </script>
 
 
 
@@ -17830,7 +17659,7 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Balance Achats</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="balance-achats"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Balance Achats</a></li>
 
 
 
@@ -17878,7 +17707,7 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Dépôt Produits Crus</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="depot-crus"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Dépôt Produits Crus</a></li>
 
 
 
@@ -17886,7 +17715,7 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg></span>Dépôt produits Divers</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="depot-divers"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg></span>Dépôt produits Divers</a></li>
 
 
 
@@ -17978,19 +17807,19 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Fiche Client</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="fiche-client"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Fiche Client</a></li>
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></span>Vente</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="ventes"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></span>Bon de Vente</a></li>
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>Réglement</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="reglement-ventes"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>Réglement Vente</a></li>
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>Balance</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="balance-clients"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>Balance Client</a></li>
 
 
 
@@ -18376,975 +18205,99 @@
 
             <div id="dashboardView">
 
-
-
             {{-- KPI Cards --}}
-
-
-
             <div class="kpi-grid">
-
-
-
                 <div class="kpi-card blue">
-
-
-
                     <div class="kpi-top">
-
-
-
                         <div class="kpi-icon">
-
-
-
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-
-
-
                         </div>
-
-
-
-                        <span class="kpi-badge kpi-badge-up">
-
-
-
-                            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-
-
-
-                            +5%
-
-
-
-                        </span>
-
-
-
+                        <span class="kpi-badge kpi-badge-flat" id="kpiBadgeAchats">0 bon</span>
                     </div>
-
-
-
                     <div class="kpi-label">Total Achats</div>
-
-
-
-                    <div class="kpi-value">218,000 MAD</div>
-
-
-
+                    <div class="kpi-value" id="kpiTotalAchats">0,00 MAD</div>
                 </div>
-
-
 
                 <div class="kpi-card green">
-
-
-
                     <div class="kpi-top">
-
-
-
                         <div class="kpi-icon">
-
-
-
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-
-
-
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
                         </div>
-
-
-
-                        <span class="kpi-badge kpi-badge-up">
-
-
-
-                            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-
-
-
-                            +12%
-
-
-
-                        </span>
-
-
-
+                        <span class="kpi-badge kpi-badge-flat" id="kpiBadgeVentes">0 bon</span>
                     </div>
-
-
-
                     <div class="kpi-label">Total Ventes</div>
-
-
-
-                    <div class="kpi-value">452,000 MAD</div>
-
-
-
+                    <div class="kpi-value" id="kpiTotalVentes">0,00 MAD</div>
                 </div>
-
-
-
-                <div class="kpi-card orange">
-
-
-
-                    <div class="kpi-top">
-
-
-
-                        <div class="kpi-icon">
-
-
-
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
-
-
-
-                        </div>
-
-
-
-                        <span class="kpi-badge kpi-badge-down">
-
-
-
-                            <svg viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 7 17 17 7 17"/></svg>
-
-
-
-                            -2%
-
-
-
-                        </span>
-
-
-
-                    </div>
-
-
-
-                    <div class="kpi-label">Total Charges</div>
-
-
-
-                    <div class="kpi-value">128,300 MAD</div>
-
-
-
-                </div>
-
-
-
-                <div class="kpi-card brown">
-
-
-
-                    <div class="kpi-top">
-
-
-
-                        <div class="kpi-icon">
-
-
-
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-
-
-
-                        </div>
-
-
-
-                        <span class="kpi-badge kpi-badge-up">
-
-
-
-                            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-
-
-
-                            +3%
-
-
-
-                        </span>
-
-
-
-                    </div>
-
-
-
-                    <div class="kpi-label">Caisse</div>
-
-
-
-                    <div class="kpi-value">84,500 MAD</div>
-
-
-
-                </div>
-
-
 
                 <div class="kpi-card teal">
-
-
-
                     <div class="kpi-top">
-
-
-
                         <div class="kpi-icon">
-
-
-
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-
-
-
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                         </div>
-
-
-
-                        <span class="kpi-badge kpi-badge-up">
-
-
-
-                            <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-
-
-
-                            +8%
-
-
-
-                        </span>
-
-
-
+                        <span class="kpi-badge kpi-badge-flat" id="kpiBadgeStock">0 art</span>
                     </div>
-
-
-
-                    <div class="kpi-label">Trésorerie</div>
-
-
-
-                    <div class="kpi-value">105,700 MAD</div>
-
-
-
+                    <div class="kpi-label">Valeurs Stock</div>
+                    <div class="kpi-value" id="kpiValeurStock">0,00 MAD</div>
                 </div>
 
+                <div class="kpi-card orange">
+                    <div class="kpi-top">
+                        <div class="kpi-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        </div>
+                        <span class="kpi-badge kpi-badge-flat" id="kpiBadgeCharges">0 ligne</span>
+                    </div>
+                    <div class="kpi-label">Total Charges</div>
+                    <div class="kpi-value" id="kpiTotalCharges">0,00 MAD</div>
+                </div>
 
-
+                <div class="kpi-card brown">
+                    <div class="kpi-top">
+                        <div class="kpi-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <span class="kpi-badge kpi-badge-flat" id="kpiBadgeSoldeClients">0 clt</span>
+                    </div>
+                    <div class="kpi-label">Solde Clients</div>
+                    <div class="kpi-value" id="kpiSoldeClients">0,00 MAD</div>
+                </div>
             </div>
-
-
 
             {{-- Stock Tables --}}
-
-
-
             <div class="tables-grid">
-
-
-
                 <div class="table-card">
-
-
-
                     <div class="table-card-title">Etat Stock Produits</div>
-
-
-
                     <table class="stock-table">
-
-
-
                         <thead>
-
-
-
                             <tr>
-
-
-
                                 <th>Référence</th>
-
-
-
                                 <th>Désignation</th>
-
-
-
                                 <th>Quantité</th>
-
-
-
                                 <th>Statut</th>
-
-
-
                             </tr>
-
-
-
                         </thead>
-
-
-
-                        <tbody>
-
-
-
-                            <tr>
-
-
-
-                                <td>MP-001</td>
-
-
-
-                                <td>Amandes Premium</td>
-
-
-
-                                <td>450 kg</td>
-
-
-
-                                <td><span class="status-pill status-dispo">DISPO</span></td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>MP-002</td>
-
-
-
-                                <td>Noix de Cajou Bio</td>
-
-
-
-                                <td>120 kg</td>
-
-
-
-                                <td><span class="status-pill status-faible">FAIBLE</span></td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>MP-003</td>
-
-
-
-                                <td>Dattes Medjool</td>
-
-
-
-                                <td>0 kg</td>
-
-
-
-                                <td><span class="status-pill status-rupture">RUPTURE</span></td>
-
-
-
-                            </tr>
-
-
-
+                        <tbody id="dashStockProduitsBody">
+                            <tr><td colspan="4" class="fournisseur-empty" style="text-align:center;">Aucun stock produit</td></tr>
                         </tbody>
-
-
-
                     </table>
-
-
-
                 </div>
-
-
-
                 <div class="table-card">
-
-
-
                     <div class="table-card-title">Etat Stock Produits Finis</div>
-
-
-
                     <table class="stock-table">
-
-
-
                         <thead>
-
-
-
                             <tr>
-
-
-
                                 <th>Référence</th>
-
-
-
                                 <th>Désignation</th>
-
-
-
                                 <th>Quantité</th>
-
-
-
                                 <th>Statut</th>
-
-
-
                             </tr>
-
-
-
                         </thead>
-
-
-
-                        <tbody>
-
-
-
-                            <tr>
-
-
-
-                                <td>PF-101</td>
-
-
-
-                                <td>Mix Luxe 500g</td>
-
-
-
-                                <td>1,200 u</td>
-
-
-
-                                <td><span class="status-pill status-dispo">DISPO</span></td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>PF-102</td>
-
-
-
-                                <td>Coffret Prestige</td>
-
-
-
-                                <td>85 u</td>
-
-
-
-                                <td><span class="status-pill status-faible">FAIBLE</span></td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>PF-103</td>
-
-
-
-                                <td>Amandes Chocolat</td>
-
-
-
-                                <td>0 u</td>
-
-
-
-                                <td><span class="status-pill status-rupture">RUPTURE</span></td>
-
-
-
-                            </tr>
-
-
-
+                        <tbody id="dashStockFinisBody">
+                            <tr><td colspan="4" class="fournisseur-empty" style="text-align:center;">Aucun stock produit fini</td></tr>
                         </tbody>
-
-
-
                     </table>
-
-
-
                 </div>
-
-
-
             </div>
-
-
-
-            {{-- Derniers bons --}}
-
-
-
-            <div class="tables-grid">
-
-
-
-                <div class="table-card">
-
-
-
-                    <div class="table-card-title">5 Derniers Bons d'Achat</div>
-
-
-
-                    <table class="stock-table">
-
-
-
-                        <thead>
-
-
-
-                            <tr>
-
-
-
-                                <th>Date</th>
-
-
-
-                                <th>Fournisseur</th>
-
-
-
-                                <th>Bon N°</th>
-
-
-
-                                <th>Montant</th>
-
-
-
-                            </tr>
-
-
-
-                        </thead>
-
-
-
-                        <tbody>
-
-
-
-                            <tr>
-
-
-
-                                <td>27/07/2026</td>
-
-
-
-                                <td>Agro Fruits SARL</td>
-
-
-
-                                <td>BA-2026-0148</td>
-
-
-
-                                <td>42,800.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>25/07/2026</td>
-
-
-
-                                <td>Nador Nuts Trading</td>
-
-
-
-                                <td>BA-2026-0147</td>
-
-
-
-                                <td>18,350.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>22/07/2026</td>
-
-
-
-                                <td>Atlas Dattes &amp; Co</td>
-
-
-
-                                <td>BA-2026-0146</td>
-
-
-
-                                <td>31,200.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>20/07/2026</td>
-
-
-
-                                <td>Med Import Fruits</td>
-
-
-
-                                <td>BA-2026-0145</td>
-
-
-
-                                <td>9,780.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>18/07/2026</td>
-
-
-
-                                <td>Oriental Dry Food</td>
-
-
-
-                                <td>BA-2026-0144</td>
-
-
-
-                                <td>27,450.00</td>
-
-
-
-                            </tr>
-
-
-
-                        </tbody>
-
-
-
-                    </table>
-
-
-
-                </div>
-
-
-
-                <div class="table-card">
-
-
-
-                    <div class="table-card-title">5 Derniers Bons de Vente</div>
-
-
-
-                    <table class="stock-table">
-
-
-
-                        <thead>
-
-
-
-                            <tr>
-
-
-
-                                <th>Date</th>
-
-
-
-                                <th>Client</th>
-
-
-
-                                <th>Ville</th>
-
-
-
-                                <th>Bon N°</th>
-
-
-
-                                <th>Montant</th>
-
-
-
-                                <th>Solde</th>
-
-
-
-                            </tr>
-
-
-
-                        </thead>
-
-
-
-                        <tbody>
-
-
-
-                            <tr>
-
-
-
-                                <td>27/07/2026</td>
-
-
-
-                                <td>Épicerie Al Amal</td>
-
-
-
-                                <td>Nador</td>
-
-
-
-                                <td>BV-2026-0321</td>
-
-
-
-                                <td>8,640.00</td>
-
-
-
-                                <td class="solde-negative">0.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>26/07/2026</td>
-
-
-
-                                <td>Palais Gourmet</td>
-
-
-
-                                <td>Casablanca</td>
-
-
-
-                                <td>BV-2026-0320</td>
-
-
-
-                                <td>22,150.00</td>
-
-
-
-                                <td class="solde-negative">4,200.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>24/07/2026</td>
-
-
-
-                                <td>Souk Prestige</td>
-
-
-
-                                <td>Fès</td>
-
-
-
-                                <td>BV-2026-0319</td>
-
-
-
-                                <td>15,980.00</td>
-
-
-
-                                <td class="solde-negative">0.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>23/07/2026</td>
-
-
-
-                                <td>Casa Délices</td>
-
-
-
-                                <td>Rabat</td>
-
-
-
-                                <td>BV-2026-0318</td>
-
-
-
-                                <td>11,300.00</td>
-
-
-
-                                <td class="solde-negative">1,850.00</td>
-
-
-
-                            </tr>
-
-
-
-                            <tr>
-
-
-
-                                <td>21/07/2026</td>
-
-
-
-                                <td>Boutique Luxe Sec</td>
-
-
-
-                                <td>Tanger</td>
-
-
-
-                                <td>BV-2026-0317</td>
-
-
-
-                                <td>19,750.00</td>
-
-
-
-                                <td class="solde-negative">0.00</td>
-
-
-
-                            </tr>
-
-
-
-                        </tbody>
-
-
-
-                    </table>
-
-
-
-                </div>
-
-
-
-            </div>
-
-
 
             </div>
 
@@ -19941,7 +18894,7 @@
 
 
 
-                        <h2 class="list-toolbar-title">Bons d'Achat — Consultation</h2>
+                        <h2 class="list-toolbar-title">Bon d'Achat</h2>
 
 
 
@@ -19957,7 +18910,7 @@
 
 
 
-                                Nouveau Bon d'Achat
+                                Ajouter
 
 
 
@@ -20053,10 +19006,6 @@
 
 
 
-                                    <col class="col-cmd-ech">
-
-
-
                                     <col class="col-cmd-actions">
 
 
@@ -20105,10 +19054,6 @@
 
 
 
-                                        <th>Échéance</th>
-
-
-
                                         <th class="col-actions col-actions-cmd no-print-cmd">Actions</th>
 
 
@@ -20125,7 +19070,7 @@
 
 
 
-                                    <tr><td colspan="10" class="achats-commandes-empty">Aucun bon d'achat saisi</td></tr>
+                                    <tr><td colspan="9" class="achats-commandes-empty">Aucun bon d'achat saisi</td></tr>
 
 
 
@@ -20151,643 +19096,150 @@
 
                 <div class="saisie-card hidden" id="achatsSaisieMode">
 
-
-
                     <div class="saisie-card-header">
-
-
-
                         <div>
-
-
-
                             <h2>Bon d'Achat</h2>
-
-
-
+                            <span>Barre de saisie</span>
                         </div>
-
-
-
                     </div>
 
-
-
                     <form class="saisie-form" id="achatsForm" novalidate>
-
-
-
                         <div id="achatsPrintArea">
+                            <div class="achats-form-scroll">
+                                <div id="achatsSaisiePanel" class="ach-form-layout">
 
-
-
-                        <div class="achats-form-scroll">
-
-
-
-                        <div id="achatsSaisiePanel">
-
-
-
-                        <div class="saisie-section">
-
-
-
-                            <h3 class="saisie-section-title">Infos Fournisseur</h3>
-
-
-
-                            <div class="achats-fr-inline-row">
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_bon">Bon N°</label>
-
-
-
-                                    <input type="text" id="ach_bon" name="bon" class="form-input">
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_date_cmd">Date Cmd</label>
-
-
-
-                                    <input type="date" id="ach_date_cmd" name="date_cmd" class="form-input">
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_code_fournisseur">Code Fournisseur</label>
-
-
-
-                                    <input type="text" id="ach_code_fournisseur" name="code_fournisseur" class="form-input" placeholder="Code fournisseur" list="achFournisseurCodesList" autocomplete="off">
-
-
-
+                                    <!-- champs techniques cachés (compat JS / sauvegarde) -->
+                                    <input type="hidden" id="ach_code_fournisseur" name="code_fournisseur" list="achFournisseurCodesList" value="">
                                     <datalist id="achFournisseurCodesList"></datalist>
+                                    <input type="hidden" id="ach_recuperation" name="recuperation" value="">
+                                    <input type="hidden" id="ach_ville_livraison" name="ville_livraison" value="">
+                                    <input type="hidden" id="ach_transport" name="transport" value="">
+                                    <input type="hidden" id="ach_matricule" name="matricule" value="">
+                                    <input type="hidden" id="ach_chauffeur" name="chauffeur" value="">
+                                    <input type="hidden" id="ach_ligne_code_barre" value="">
+                                    <input type="hidden" id="ach_ligne_categorie" value="">
+                                    <input type="hidden" id="ach_ligne_famille" value="">
 
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_nom_fournisseur">Nom Fournisseur</label>
-
-
-
-                                    <input type="text" id="ach_nom_fournisseur" name="nom_fournisseur" class="form-input" placeholder="Raison sociale" list="achFournisseurNomsList" autocomplete="off">
-
-
-
-                                    <datalist id="achFournisseurNomsList"></datalist>
-
-
-
-                                </div>
-
-
-
-                            </div>
-
-
-
-                        </div>
-
-
-
-                        <div class="saisie-section">
-
-
-
-                            <div class="achats-pay-liv-card">
-
-
-
-                                <div class="achats-pay-liv-col">
-
-
-
-                                    <h4 class="achats-subsection-title">Infos Paiement</h4>
-
-
-
-                                    <div class="achats-pay-inline-row">
-
-
-
+                                    <div class="ach-inline-row ach-row-head">
                                         <div class="form-group">
-
-
-
-                                            <label for="ach_type_reglement">Type Réglement</label>
-
-
-
-                                            <input type="text" id="ach_type_reglement" name="type_reglement" class="form-input" list="ach_type_reglement_list" placeholder="Type règlement" autocomplete="off">
-<datalist id="ach_type_reglement_list">
-<option value="Esp">Esp — Espèces</option>
-<option value="Chq">Chq — Chèque</option>
-<option value="Eff">Eff — Effet</option>
-<option value="Vir">Vir — Virement</option>
-<option value="Vers">Vers — Versement</option>
-</datalist>
-
-
-
+                                            <label for="ach_date_cmd">Date</label>
+                                            <input type="date" id="ach_date_cmd" name="date_cmd" class="form-input" readonly tabindex="-1">
                                         </div>
-
-
-
                                         <div class="form-group">
-
-
-
+                                            <label for="ach_bon">N° Bn</label>
+                                            <input type="text" id="ach_bon" name="bon" class="form-input" placeholder="N° bon">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ach_nom_fournisseur">Nom Fournisseur</label>
+                                            <input type="text" id="ach_nom_fournisseur" name="nom_fournisseur" class="form-input" placeholder="Raison sociale" list="achFournisseurNomsList" autocomplete="off">
+                                            <datalist id="achFournisseurNomsList"></datalist>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ach_destination">Destination</label>
+                                            <input type="text" id="ach_destination" name="destination" class="form-input" list="ach_destination_list" placeholder="Destination" autocomplete="off">
+                                            <datalist id="ach_destination_list">
+                                                <option value="Depot Pr Cru">Depot Pr Cru</option>
+                                                <option value="Depot Pr Div">Depot Pr Div</option>
+                                            </datalist>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ach_type_reglement">Type régl</label>
+                                            <input type="text" id="ach_type_reglement" name="type_reglement" class="form-input" list="ach_type_reglement_list" placeholder="Type" autocomplete="off">
+                                            <datalist id="ach_type_reglement_list">
+                                                <option value="Esp">Esp — Espèces</option>
+                                                <option value="Chq">Chq — Chèque</option>
+                                                <option value="Eff">Eff — Effet</option>
+                                                <option value="Vir">Vir — Virement</option>
+                                                <option value="Vers">Vers — Versement</option>
+                                            </datalist>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="ach_echeance">Échéance</label>
-
-
-
                                             <input type="date" id="ach_echeance" name="echeance" class="form-input">
-
-
-
                                         </div>
-
-
-
-                                        <div class="form-group">
-
-
-
-                                            <label for="ach_recuperation">Récupération Réglement</label>
-
-
-
-                                            <input type="text" id="ach_recuperation" name="recuperation" class="form-input" list="ach_recuperation_list" placeholder="Récupération" autocomplete="off">
-<datalist id="ach_recuperation_list">
-<option value="Immediat">Immédiat</option>
-<option value="Semaine"></option>
-<option value="Mois"></option>
-</datalist>
-
-
-
-                                        </div>
-
-
-
                                     </div>
 
-
-
-                                </div>
-
-
-
-                                <div class="achats-pay-liv-col">
-
-
-
-                                    <h4 class="achats-subsection-title">Livraison</h4>
-
-
-
-                                    <div class="achats-liv-inline-row">
-
-
-
+                                    <div class="ach-inline-row ach-row-art">
                                         <div class="form-group">
-
-
-
-                                            <label for="ach_ville_livraison">Ville Livraison</label>
-
-
-
-                                            <input type="text" id="ach_ville_livraison" name="ville_livraison" class="form-input" list="ach_ville_livraison_list" placeholder="Ville" autocomplete="off">
-<datalist id="ach_ville_livraison_list">
-
-</datalist>
-
-
-
+                                            <label for="ach_ligne_ref">Réf</label>
+                                            <input type="text" id="ach_ligne_ref" class="form-input" placeholder="Réf">
                                         </div>
-
-
-
                                         <div class="form-group">
-
-
-
-                                            <label for="ach_transport">Transport</label>
-
-
-
-                                            <input type="text" id="ach_transport" name="transport" class="form-input" list="ach_transport_list" placeholder="Transport" autocomplete="off">
-<datalist id="ach_transport_list">
-<option value="Interne">Transport interne</option>
-<option value="Externe">Transport externe</option>
-<option value="Frns">Transport fournisseur</option>
-</datalist>
-
-
-
+                                            <label for="ach_ligne_designation">Désignation</label>
+                                            <input type="text" id="ach_ligne_designation" class="form-input" list="ach_ligne_designation_list" placeholder="Désignation" autocomplete="off">
+                                            <datalist id="ach_ligne_designation_list"></datalist>
                                         </div>
-
-
-
                                         <div class="form-group">
-
-
-
-                                            <label for="ach_matricule">Matricule</label>
-
-
-
-                                            <input type="text" id="ach_matricule" name="matricule" class="form-input" placeholder="Matricule véhicule">
-
-
-
+                                            <label for="ach_ligne_quantite">Qté</label>
+                                            <input type="number" id="ach_ligne_quantite" class="form-input" step="0.001" min="0" placeholder="0">
                                         </div>
-
-
-
                                         <div class="form-group">
-
-
-
-                                            <label for="ach_chauffeur">Chauffeur</label>
-
-
-
-                                            <input type="text" id="ach_chauffeur" name="chauffeur" class="form-input" placeholder="Nom du chauffeur">
-
-
-
+                                            <label for="ach_ligne_mesure">Unité</label>
+                                            <input type="text" id="ach_ligne_mesure" class="form-input" list="ach_ligne_mesure_list" placeholder="Unité" autocomplete="off">
+                                            <datalist id="ach_ligne_mesure_list"></datalist>
                                         </div>
-
-
-
+                                        <div class="form-group">
+                                            <label for="ach_ligne_prix">Prix/U</label>
+                                            <input type="number" id="ach_ligne_prix" class="form-input money-input" step="0.01" min="0" placeholder="0.00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ach_ligne_sous_total">Sous-Total</label>
+                                            <input type="text" id="ach_ligne_sous_total" class="form-input achats-sous-total-input readonly" readonly value="">
+                                        </div>
+                                        <div class="achats-add-article-wrap no-print-achats">
+                                            <button type="button" class="btn-add-article" id="ajouterLigneAchatsBtn" title="Ajouter l'article" aria-label="Ajouter l'article">
+                                                <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                            </button>
+                                        </div>
                                     </div>
 
+                                    <div class="fournisseur-table-wrap">
+                                        <table class="fournisseur-table achats-lines-table" id="achatsLignesTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Réf</th>
+                                                    <th>Désignation</th>
+                                                    <th>Catégorie</th>
+                                                    <th>Famille</th>
+                                                    <th>Qté</th>
+                                                    <th>Mesure</th>
+                                                    <th>Prix/U</th>
+                                                    <th>Total</th>
+                                                    <th class="col-actions no-print-achats">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="achatsLignesTableBody">
+                                                <tr><td colspan="9" class="fournisseur-empty">Aucun article ajouté</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
 
+                                    <div class="achats-articles-summary no-print-achats">
+                                        <div class="achats-total-bar" style="margin:0;padding:0;border:none;background:transparent;width:100%;justify-content:flex-end;">
+                                            <span>Total général</span>
+                                            <span id="achatsTotalGeneral">0,00 MAD</span>
+                                        </div>
+                                    </div>
 
                                 </div>
-
-
-
                             </div>
-
-
-
                         </div>
-
-
-
-                        <div class="saisie-section achats-saisie-ligne">
-
-
-
-                            <h3 class="saisie-section-title">Articles</h3>
-
-
-
-                            <div class="achats-lignes-scroll">
-
-
-
-                            <div class="achats-lignes-inline-row">
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_ref">Réf</label>
-
-
-
-                                    <input type="text" id="ach_ligne_ref" class="form-input" placeholder="Réf">
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_code_barre">Code-barres</label>
-
-
-
-                                    <input type="text" id="ach_ligne_code_barre" class="form-input" placeholder="Code" autocomplete="off">
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_designation">Désignation</label>
-
-
-
-                                    <input type="text" id="ach_ligne_designation" class="form-input" list="ach_ligne_designation_list" placeholder="Désignation" autocomplete="off">
-<datalist id="ach_ligne_designation_list">
-
-</datalist>
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_categorie">Catégorie</label>
-
-
-
-                                    <input type="text" id="ach_ligne_categorie" class="form-input" list="ach_ligne_categorie_list" placeholder="Catégorie" autocomplete="off">
-<datalist id="ach_ligne_categorie_list">
-
-</datalist>
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_famille">Famille</label>
-
-
-
-                                    <input type="text" id="ach_ligne_famille" class="form-input" list="ach_ligne_famille_list" placeholder="Famille" autocomplete="off">
-<datalist id="ach_ligne_famille_list">
-
-</datalist>
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_quantite">Qté</label>
-
-
-
-                                    <input type="number" id="ach_ligne_quantite" class="form-input" step="0.001" min="0" placeholder="0">
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_mesure">Unité de Mesure</label>
-
-
-
-                                    <input type="text" id="ach_ligne_mesure" class="form-input" list="ach_ligne_mesure_list" placeholder="Unité" autocomplete="off">
-<datalist id="ach_ligne_mesure_list">
-<option value="? Chargement? ?"></option>
-</datalist>
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_prix">Prix U</label>
-
-
-
-                                    <input type="number" id="ach_ligne_prix" class="form-input money-input" step="0.01" min="0" placeholder="0.00">
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
-
-                                    <label for="ach_ligne_sous_total">Sous-T.</label>
-
-
-
-                                    <input type="text" id="ach_ligne_sous_total" class="form-input achats-sous-total-input readonly" readonly value="">
-
-
-
-                                </div>
-
-
-
-                                <div class="achats-add-article-wrap no-print-achats">
-
-
-
-                                    <button type="button" class="btn-add-article" id="ajouterLigneAchatsBtn" title="Ajouter l'article" aria-label="Ajouter l'article">
-
-
-
-                                        <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-
-
-
-                                    </button>
-
-
-
-                                </div>
-
-
-
-                            </div>
-
-
-
-                            </div>
-
-
-
-                            <div class="achats-articles-summary no-print-achats">
-
-
-
-                                <span class="achats-articles-count" id="achatsArticlesCount">0 article ajouté</span>
-
-
-
-                                <div class="achats-total-bar" style="margin:0;padding:0;border:none;background:transparent;">
-
-
-
-                                    <span>Total général</span>
-
-
-
-                                    <span id="achatsTotalGeneral">0,00 MAD</span>
-
-
-
-                                </div>
-
-
-
-                            </div>
-
-
-
-                        </div>
-
-
-
-                        </div>
-
-
-
-                        </div>
-
-
-
-                        </div>
-
-
 
                         <div class="form-actions achats-doc-actions no-print-achats">
-
-
-
                             <input type="file" id="ach_photo_file" accept="image/*" class="hidden">
-
-
-
-                            <button type="button" class="btn-form btn-form-outline" id="fermerAchatsBtn">Fermer</button>
-
-
-
-                            <button type="button" class="btn-form btn-form-outline" id="achPhotoPickBtn" title="Importer photo bon / facture fournisseur">
-
-
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="margin-right:6px;vertical-align:-2px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-
-
-
-                                <span id="achPhotoBtnLabel">Importer</span>
-
-
-
-                            </button>
-
-
-
+                            <button type="button" class="hidden" id="achPhotoPickBtn" aria-hidden="true"><span id="achPhotoBtnLabel">Importer</span></button>
+                            <button type="button" class="btn-form btn-form-secondary" id="fermerAchatsBtn">Fermer</button>
                             <button type="button" class="btn-form btn-form-primary" id="enregistrerCommandeAchatsBtn">Valider</button>
-
-
-
-                            <button type="button" class="btn-list btn-list-print" id="printAchatsBtn">
-
-
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-
-
-
-                                Imprimer
-
-
-
-                            </button>
-
-
-
-                            <button type="button" class="btn-list btn-list-pdf" id="exportAchatsPdfBtn">
-
-
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-
-
-
-                                Exporter PDF
-
-
-
-                            </button>
-
-
-
                         </div>
-
-
-
                     </form>
-
-
 
                 </div>
 
-
+                <button type="button" class="hidden" id="printAchatsBtn" aria-hidden="true"></button>
+                <button type="button" class="hidden" id="exportAchatsPdfBtn" aria-hidden="true"></button>
+                <button type="button" class="hidden" id="ouvrirArticleAchatsBtn" aria-hidden="true"></button>
+                <button type="button" class="hidden" id="fermerArticleAchatsBtn" aria-hidden="true"></button>
+                <div id="achatsArticlePanel" class="hidden" aria-hidden="true"></div>
 
             </div>
 
@@ -22438,9 +20890,9 @@
 
                                         <div class="form-group">
 
-                                            <label for="rg_ref">Réf°</label>
+                                            <label for="rg_ref">N°</label>
 
-                                            <input type="text" id="rg_ref" class="form-input">
+                                            <input type="text" id="rg_ref" class="form-input readonly" placeholder="Rég0001" readonly tabindex="-1">
 
                                         </div>
 
@@ -22448,10 +20900,8 @@
 
                                             <label for="rg_bon">Fournisseur</label>
 
-                                            <input type="text" id="rg_bon" class="form-input" list="rg_bon_list" placeholder="Bon / Fournisseur" autocomplete="off" required>
-<datalist id="rg_bon_list">
-
-</datalist>
+                                            <input type="text" id="rg_bon" class="form-input" list="rg_fournisseur_list" placeholder="Nom fournisseur" autocomplete="off" required>
+                                            <datalist id="rg_fournisseur_list"></datalist>
 
                                         </div>
 
@@ -22530,6 +20980,27 @@
 
                                     </div>
 
+                                    <div id="rgBonsPanel" class="rg-bons-panel">
+                                        <div class="rg-bons-title">Bons d'achat non soldés — choisissez le bon à régler</div>
+                                        <div class="fournisseur-table-wrap rg-bons-wrap">
+                                            <table class="fournisseur-table rg-bons-table" id="rgBonsTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="col-choose">Choisir</th>
+                                                        <th>Bon</th>
+                                                        <th>Date</th>
+                                                        <th>Montant</th>
+                                                        <th>Déjà payé</th>
+                                                        <th>Solde</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="rgBonsTableBody">
+                                                    <tr><td colspan="6" class="fournisseur-empty">Sélectionnez un fournisseur</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                     <input type="hidden" id="rg_bon_num" value="">
 
                                     <input type="hidden" id="rg_fournisseur" value="">
@@ -22600,6 +21071,49 @@
 
                     </div>
 
+                    <div class="kpi-grid rg-kpi-grid no-print-reglement">
+                        <div class="kpi-card blue">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeChq">0</span>
+                            </div>
+                            <div class="kpi-label">Total Chq</div>
+                            <div class="kpi-value" id="rgKpiTotalChq">0,00 MAD</div>
+                        </div>
+                        <div class="kpi-card orange">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeEff">0</span>
+                            </div>
+                            <div class="kpi-label">Total Eff</div>
+                            <div class="kpi-value" id="rgKpiTotalEff">0,00 MAD</div>
+                        </div>
+                        <div class="kpi-card green">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeEsp">0</span>
+                            </div>
+                            <div class="kpi-label">Total Esp</div>
+                            <div class="kpi-value" id="rgKpiTotalEsp">0,00 MAD</div>
+                        </div>
+                        <div class="kpi-card teal">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2v20"/><path d="M17 7l-5-5-5 5"/><path d="M7 17l5 5 5-5"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeVir">0</span>
+                            </div>
+                            <div class="kpi-label">Total Vir</div>
+                            <div class="kpi-value" id="rgKpiTotalVir">0,00 MAD</div>
+                        </div>
+                    </div>
+
                     <div id="reglementPrintArea">
 
                         <div class="fournisseur-table-wrap">
@@ -22612,7 +21126,7 @@
 
                                         <th>Date</th>
 
-                                        <th>Réf°</th>
+                                        <th>N°</th>
 
                                         <th>Fournisseur</th>
 
@@ -22652,6 +21166,218 @@
 
                 </div>
 
+            </div>
+
+
+
+            <div id="balanceAchatsView" class="saisie-panel hidden">
+
+                <div id="balanceAchatsConsultPanel">
+
+                    <div class="list-toolbar no-print-balance">
+
+                        <h2 class="list-toolbar-title">Balance Achats</h2>
+
+                        <div class="list-toolbar-actions">
+
+                            <button type="button" class="btn-list btn-list-print" id="printBalanceAchatsBtn">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+
+                                Imprimer
+
+                            </button>
+
+                            <button type="button" class="btn-list btn-list-print" id="fermerBalanceAchatsBtn">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+
+                                Fermer
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div id="balanceAchatsPrintArea">
+
+                        <div class="fournisseur-table-wrap">
+
+                            <table class="fournisseur-table" id="balanceAchatsTable">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>ID</th>
+
+                                        <th>Nom Fournisseur</th>
+
+                                        <th>Montant</th>
+
+                                        <th>Montant Payé</th>
+
+                                        <th>Solde</th>
+
+                                        <th>Reliquat</th>
+
+                                        <th class="col-actions no-print-balance">Actions</th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="balanceAchatsTableBody">
+
+                                    <tr><td colspan="7" class="fournisseur-empty">Aucune balance à afficher</td></tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="balanceAchatsDetailPanel" class="hidden">
+
+                    <div class="list-toolbar no-print-balance">
+
+                        <h2 class="list-toolbar-title" id="balanceDetailTitle">Détail Balance Fournisseur</h2>
+
+                        <div class="list-toolbar-actions">
+
+                            <button type="button" class="btn-list btn-list-print" id="printBalanceDetailBtn">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+
+                                Imprimer
+
+                            </button>
+
+                            <button type="button" class="btn-list btn-list-print" id="fermerBalanceDetailBtn">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+
+                                Retour
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div id="balanceDetailPrintArea" class="saisie-card" style="margin:12px;padding:16px;"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <div id="depotCrusView" class="saisie-panel hidden">
+                <div id="depotCrusConsultPanel">
+                    <div class="list-toolbar no-print-depot">
+                        <h2 class="list-toolbar-title">Dépôt Produits Crus</h2>
+                        <div class="list-toolbar-actions">
+                            <button type="button" class="btn-list btn-list-print" id="printDepotCrusBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                                Imprimer
+                            </button>
+                            <button type="button" class="btn-list btn-list-print" id="fermerDepotCrusBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                    <div id="depotCrusPrintArea">
+                        <div class="fournisseur-table-wrap">
+                            <table class="fournisseur-table" id="depotCrusTable">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Nom Fournisseur</th>
+                                        <th>Réf</th>
+                                        <th>Désignation</th>
+                                        <th>Quantité</th>
+                                        <th>Prix/U</th>
+                                        <th>Total</th>
+                                        <th class="col-actions no-print-depot">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="depotCrusTableBody">
+                                    <tr><td colspan="8" class="fournisseur-empty">Aucun article (importer via Destination « Depot Pr Cru » sur les bons d'achat)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="depotCrusDetailPanel" class="hidden">
+                    <div class="list-toolbar no-print-depot">
+                        <h2 class="list-toolbar-title" id="depotCrusDetailTitle">Détail article — Produits Crus</h2>
+                        <div class="list-toolbar-actions">
+                            <button type="button" class="btn-list btn-list-print" id="fermerDepotCrusDetailBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Retour
+                            </button>
+                        </div>
+                    </div>
+                    <div id="depotCrusDetailArea" class="saisie-card" style="margin:12px;padding:16px;"></div>
+                </div>
+            </div>
+
+            <div id="depotDiversView" class="saisie-panel hidden">
+                <div id="depotDiversConsultPanel">
+                    <div class="list-toolbar no-print-depot">
+                        <h2 class="list-toolbar-title">Dépôt Produits Divers</h2>
+                        <div class="list-toolbar-actions">
+                            <button type="button" class="btn-list btn-list-print" id="printDepotDiversBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                                Imprimer
+                            </button>
+                            <button type="button" class="btn-list btn-list-print" id="fermerDepotDiversBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+                    <div id="depotDiversPrintArea">
+                        <div class="fournisseur-table-wrap">
+                            <table class="fournisseur-table" id="depotDiversTable">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Nom Fournisseur</th>
+                                        <th>Réf</th>
+                                        <th>Désignation</th>
+                                        <th>Quantité</th>
+                                        <th>Prix/U</th>
+                                        <th>Total</th>
+                                        <th class="col-actions no-print-depot">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="depotDiversTableBody">
+                                    <tr><td colspan="8" class="fournisseur-empty">Aucun article (importer via Destination « Depot Pr Div » sur les bons d'achat)</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="depotDiversDetailPanel" class="hidden">
+                    <div class="list-toolbar no-print-depot">
+                        <h2 class="list-toolbar-title" id="depotDiversDetailTitle">Détail article — Produits Divers</h2>
+                        <div class="list-toolbar-actions">
+                            <button type="button" class="btn-list btn-list-print" id="fermerDepotDiversDetailBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Retour
+                            </button>
+                        </div>
+                    </div>
+                    <div id="depotDiversDetailArea" class="saisie-card" style="margin:12px;padding:16px;"></div>
+                </div>
             </div>
 
 
@@ -22696,163 +21422,89 @@
 
 
 
-                            <div class="user-form-grid">
-
-
+                            <div class="fr-inline-row fr-inline-row-idnom user-bar-1">
 
                                 <div class="form-group">
-
-
-
-                                    <label for="us_date">Date</label>
-
-
-
-                                    <input type="date" id="us_date" name="date" class="form-input">
-
-
-
-                                </div>
-
-
-
-                                <div class="form-group">
-
-
 
                                     <label for="us_id">ID</label>
 
-
-
-                                    <input type="text" id="us_id" name="id" class="form-input">
-
-
+                                    <input type="text" id="us_id" name="id" class="form-input" readonly tabindex="-1">
 
                                 </div>
 
-
-
                                 <div class="form-group">
-
-
 
                                     <label for="us_nom">Nom Complet</label>
 
-
-
                                     <input type="text" id="us_nom" name="nom" class="form-input" placeholder="Nom et prénom" required>
-
-
 
                                 </div>
 
-
-
                                 <div class="form-group">
 
+                                    <label for="us_contact">Contact</label>
 
+                                    <input type="tel" id="us_contact" name="contact" class="form-input" placeholder="06 XX XX XX XX">
+
+                                </div>
+
+                                <div class="form-group">
 
                                     <label for="us_statut">Statut</label>
 
-
-
                                     <input type="text" id="us_statut" name="statut" class="form-input" list="us_statut_list" placeholder="Statut" autocomplete="off" required>
-<datalist id="us_statut_list">
-<option value="Admin"></option>
-<option value="Commercial"></option>
-<option value="Facturation"></option>
-<option value="Magasinier"></option>
-</datalist>
-
-
+                                    <datalist id="us_statut_list">
+                                        <option value="Admin"></option>
+                                        <option value="Commercial"></option>
+                                        <option value="Facturation"></option>
+                                        <option value="Magasinier"></option>
+                                    </datalist>
 
                                 </div>
 
-
-
                             </div>
 
-
-
-                            <div class="user-form-grid-2">
-
-
+                            <div class="fr-inline-row user-bar-2">
 
                                 <div class="form-group">
-
-
 
                                     <label for="us_login">Login</label>
 
-
-
                                     <input type="text" id="us_login" name="login" class="form-input" placeholder="Identifiant" required>
 
-
-
                                 </div>
-
-
 
                                 <div class="form-group">
 
-
-
                                     <label for="us_password">Mot de Passe</label>
-
-
 
                                     <input type="text" id="us_password" name="password" class="form-input" placeholder="Mot de passe" required>
 
-
-
                                 </div>
-
-
 
                             </div>
 
-
+                            <input type="hidden" id="us_date" value="">
 
                             <div class="user-auth-box">
 
-
-
                                 <div class="user-auth-title">
-
-
 
                                     <h3>Autorisations</h3>
 
-
-
                                     <label class="user-auth-item"><input type="checkbox" id="us_auth_all"> Tout sélectionner</label>
-
-
 
                                 </div>
 
-
-
                                 <div id="utilisateurAuthTree"></div>
-
-
 
                             </div>
 
-
-
                             <div class="form-actions">
-
-
 
                                 <button type="button" class="btn-form btn-form-secondary" id="fermerUtilisateurForm">Fermer</button>
 
-
-
                                 <button type="submit" class="btn-form btn-form-primary" id="validerUtilisateurBtn">Valider</button>
-
-
 
                             </div>
 
@@ -22946,11 +21598,15 @@
 
 
 
-                                        <th>Date</th>
-
-
-
                                         <th>ID</th>
+
+
+
+                                        <th>Nom Complet</th>
+
+
+
+                                        <th>Contact</th>
 
 
 
@@ -22962,11 +21618,7 @@
 
 
 
-                                        <th>Mot de passe</th>
-
-
-
-                                        <th>Autorisations</th>
+                                        <th>Mot de Passe</th>
 
 
 
@@ -23011,6 +21663,10 @@
 
 
             </div>
+
+
+
+            @include('partials.client-section')
 
 
 
@@ -23384,6 +22040,18 @@
 
         const reglementsTableBody = document.getElementById('reglementsTableBody');
 
+        const balanceAchatsView = document.getElementById('balanceAchatsView');
+
+        const balanceAchatsTableBody = document.getElementById('balanceAchatsTableBody');
+
+        const balanceAchatsConsultPanel = document.getElementById('balanceAchatsConsultPanel');
+
+        const balanceAchatsDetailPanel = document.getElementById('balanceAchatsDetailPanel');
+
+        const depotCrusView = document.getElementById('depotCrusView');
+
+        const depotDiversView = document.getElementById('depotDiversView');
+
         const utilisateurView = document.getElementById('utilisateurView');
 
 
@@ -23667,6 +22335,14 @@
                 renderFournisseursTable();
 
 
+
+            }
+
+
+
+            if (balanceAchatsView && !balanceAchatsView.classList.contains('hidden') && typeof renderBalanceAchatsTable === 'function') {
+
+                renderBalanceAchatsTable();
 
             }
 
@@ -24599,7 +23275,7 @@
 
 
 
-            if (['achats', 'fiche-fournisseur', 'fiche-produit', 'fiche-societe', 'tresorerie-materiels', 'utilisateur', 'reglement-achats'].includes(viewId)) {
+            if (['achats', 'fiche-fournisseur', 'fiche-produit', 'fiche-societe', 'tresorerie-materiels', 'utilisateur', 'reglement-achats', 'balance-achats', 'depot-crus', 'depot-divers', 'fiche-client', 'ventes', 'reglement-ventes', 'balance-clients'].includes(viewId)) {
 
 
 
@@ -24640,6 +23316,9 @@
 
 
             if (dashboardView) dashboardView.classList.toggle('hidden', viewId !== 'dashboard');
+            if (viewId === 'dashboard' && typeof refreshDashboardAnalytics === 'function') {
+                refreshDashboardAnalytics();
+            }
 
 
 
@@ -24666,6 +23345,17 @@
             if (utilisateurView) utilisateurView.classList.toggle('hidden', viewId !== 'utilisateur');
 
             if (reglementAchatsView) reglementAchatsView.classList.toggle('hidden', viewId !== 'reglement-achats');
+
+            if (balanceAchatsView) balanceAchatsView.classList.toggle('hidden', viewId !== 'balance-achats');
+
+            if (depotCrusView) depotCrusView.classList.toggle('hidden', viewId !== 'depot-crus');
+
+            if (depotDiversView) depotDiversView.classList.toggle('hidden', viewId !== 'depot-divers');
+
+            document.getElementById('ficheClientView')?.classList.toggle('hidden', viewId !== 'fiche-client');
+            document.getElementById('ventesView')?.classList.toggle('hidden', viewId !== 'ventes');
+            document.getElementById('reglementVentesView')?.classList.toggle('hidden', viewId !== 'reglement-ventes');
+            document.getElementById('balanceClientsView')?.classList.toggle('hidden', viewId !== 'balance-clients');
 
 
 
@@ -24749,6 +23439,10 @@
 
 
 
+                // Afficher immédiatement les bons déjà enregistrés (sans attendre les API)
+                loadCommandesAchats();
+                renderCommandesAchatsTable();
+
                 Promise.all([loadFournisseurs(), loadProduits()]).then(() => {
 
 
@@ -24758,6 +23452,10 @@
 
 
                     loadCommandesAchats();
+
+
+
+                    renderCommandesAchatsTable();
 
 
 
@@ -24777,6 +23475,15 @@
 
 
 
+                    loadCommandesAchats();
+                    renderCommandesAchatsTable();
+
+
+
+                }).catch((err) => {
+                    console.error('Chargement achats:', err);
+                    loadCommandesAchats();
+                    renderCommandesAchatsTable();
                 });
 
 
@@ -24853,6 +23560,76 @@
 
 
 
+            }
+
+
+
+            if (viewId === 'balance-achats') {
+
+
+
+                openBalanceAchats();
+
+
+
+            }
+
+
+
+            if (viewId === 'depot-crus') {
+                document.body.classList.add('table-list-active');
+                openDepotStock('cru');
+            }
+
+
+
+            if (viewId === 'depot-divers') {
+                document.body.classList.add('table-list-active');
+                openDepotStock('div');
+            }
+
+            if (viewId === 'fiche-client') {
+                document.body.classList.add('table-list-active');
+                if (typeof loadClients === 'function') {
+                    loadClients().then(() => {
+                        if (typeof fillClientVilleDatalist === 'function') fillClientVilleDatalist();
+                        if (typeof clients !== 'undefined' && clients.length > 0) showClientList();
+                        else if (typeof showClientForm === 'function') showClientForm(true);
+                    });
+                }
+            }
+
+            if (viewId === 'ventes') {
+                if (typeof ventesReturnView !== 'undefined') {
+                    ventesReturnView = options.returnView !== undefined ? options.returnView : 'dashboard';
+                }
+                const mode = options.mode || 'consult';
+                const loadCl = typeof loadClients === 'function' ? loadClients() : Promise.resolve();
+                const loadPr = typeof loadProduits === 'function' ? loadProduits() : Promise.resolve();
+                const loadUm = typeof loadUnitesMesure === 'function' ? loadUnitesMesure() : Promise.resolve();
+                Promise.all([loadCl, loadPr, loadUm]).then(() => {
+                    if (typeof updateVentesClientDatalists === 'function') updateVentesClientDatalists();
+                    if (typeof updateVentesDesignationDatalist === 'function') updateVentesDesignationDatalist();
+                    if (typeof loadCommandesVentesStore === 'function') loadCommandesVentesStore();
+                    if (mode === 'saisie' && typeof showVentesSaisie === 'function') showVentesSaisie(!options.keepForm);
+                    else if (typeof showVentesConsult === 'function') showVentesConsult();
+                }).catch(err => {
+                    console.error('Chargement ventes:', err);
+                    if (typeof loadCommandesVentesStore === 'function') loadCommandesVentesStore();
+                    if (typeof showVentesConsult === 'function') showVentesConsult();
+                });
+            }
+
+            if (viewId === 'reglement-ventes') {
+                const p = typeof loadClients === 'function' ? loadClients() : Promise.resolve();
+                Promise.resolve(p).then(() => {
+                    if (typeof openReglementVentes === 'function') openReglementVentes();
+                });
+            }
+
+            if (viewId === 'balance-clients') {
+                document.body.classList.add('table-list-active');
+                if (typeof openBalanceClients === 'function') openBalanceClients();
             }
 
 
@@ -26528,7 +25305,7 @@
 
 
 
-        const SAISIES_RESET_VERSION = '2026-07-08-v1';
+        const SAISIES_RESET_VERSION = '2026-08-10-v2-full-empty';
 
 
 
@@ -26540,11 +25317,23 @@
 
 
 
-            localStorage.removeItem('commandesAchats');
+            const keysToClear = [
+                'commandesAchats',
+                'commandesVentes',
+                'achatsBonCounter',
+                'ventesBonCounter',
+                'reglementsAchats',
+                'reglementsVentes',
+                'utilisateursApp',
+                'ficheSociete',
+                'tresorerieMateriels',
+            ];
 
+            keysToClear.forEach((k) => {
+                try { localStorage.removeItem(k); } catch (e) {}
+            });
 
-
-            localStorage.removeItem('achatsBonCounter');
+            try { sessionStorage.removeItem('authUser'); } catch (e) {}
 
 
 
@@ -26587,6 +25376,10 @@
 
         let commandesAchats = [];
 
+        let materiels = [];
+
+        let reglementsAchats = [];
+
 
 
         let editingCommandeIndex = null;
@@ -26605,7 +25398,9 @@
 
 
 
-                commandesAchats = JSON.parse(localStorage.getItem('commandesAchats') || '[]');
+                const raw = localStorage.getItem('commandesAchats');
+                const parsed = raw ? JSON.parse(raw) : [];
+                commandesAchats = Array.isArray(parsed) ? parsed : [];
 
 
 
@@ -26613,11 +25408,14 @@
 
 
 
-                commandesAchats = [];
+                console.error('Lecture bons d\'achat:', err);
+                commandesAchats = Array.isArray(commandesAchats) ? commandesAchats : [];
 
 
 
             }
+
+            return commandesAchats;
 
 
 
@@ -26629,7 +25427,23 @@
 
 
 
-            localStorage.setItem('commandesAchats', JSON.stringify(commandesAchats));
+            try {
+                localStorage.setItem('commandesAchats', JSON.stringify(commandesAchats || []));
+            } catch (err) {
+                console.error('Sauvegarde bons d\'achat (quota?):', err);
+                // Réessayer sans photos trop lourdes pour ne pas perdre les bons
+                try {
+                    const light = (commandesAchats || []).map(c => {
+                        const copy = { ...c };
+                        if (copy.photo && String(copy.photo).length > 200000) copy.photo = '';
+                        return copy;
+                    });
+                    localStorage.setItem('commandesAchats', JSON.stringify(light));
+                    commandesAchats = light;
+                } catch (err2) {
+                    alert('Impossible d\'enregistrer les bons d\'achat (mémoire navigateur pleine).');
+                }
+            }
 
 
 
@@ -26725,7 +25539,7 @@
 
 
 
-                tbody.innerHTML = '<tr><td colspan="10" class="achats-commandes-empty">Aucun bon d\'achat saisi</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="9" class="achats-commandes-empty">Aucun bon d\'achat saisi</td></tr>';
 
 
 
@@ -26782,10 +25596,6 @@
 
 
                     <td>${escHtml(c.type_reglement) || '?'}</td>
-
-
-
-                    <td>${formatDateFr(c.echeance)}</td>
 
 
 
@@ -26913,6 +25723,15 @@
 
 
 
+        }
+
+        // Précharger et afficher les bons dès le démarrage (consultation)
+        try {
+            loadCommandesAchats();
+            renderCommandesAchatsTable();
+            if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
+        } catch (e) {
+            console.warn('Init bons/analytics:', e);
         }
 
 
@@ -27045,7 +25864,7 @@
 
 
 
-                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Statut paiement</span><br><strong>${isCommandePayee(c) ? 'Pay?' : 'Non payé'}</strong></div>
+                    <div><span style="color:#6B6B68;font-size:11px;text-transform:uppercase;">Statut paiement</span><br><strong>${isCommandePayee(c) ? 'Payé' : 'Non payé'}</strong></div>
 
 
 
@@ -27142,6 +25961,10 @@
 
 
                     document.getElementById('ach_nom_fournisseur').value = c.nom_fournisseur || '';
+
+
+
+                    document.getElementById('ach_destination').value = c.destination || '';
 
 
 
@@ -27253,7 +26076,7 @@
 
 
 
-            if (!confirm('Supprimer le bon d\'achat ? ' + c.bon + ' ? ?')) return;
+            if (!confirm('Supprimer le bon d\'achat ' + c.bon + ' ?')) return;
 
 
 
@@ -27299,9 +26122,13 @@
 
             renderCommandesAchatsTable();
 
+            refreshDashboardAnalytics();
+
 
 
             refreshFournisseurSoldesAfterCommandeChange(c);
+
+            if (typeof refreshDepotStockTables === 'function') refreshDepotStockTables();
 
 
 
@@ -27325,7 +26152,27 @@
 
 
 
-                document.getElementById('ach_code_fournisseur')?.focus();
+                document.getElementById('ach_nom_fournisseur')?.focus();
+
+
+
+                return;
+
+
+
+            }
+
+
+
+            if (!header.destination || !normalizeDepotDestination(header.destination)) {
+
+
+
+                alert('Veuillez choisir la Destination (Depot Pr Cru ou Depot Pr Div).');
+
+
+
+                document.getElementById('ach_destination')?.focus();
 
 
 
@@ -27357,7 +26204,7 @@
 
 
 
-            const total = achatsLignes.reduce((s, l) => s + l.sous_total, 0);
+            const total = Math.round(achatsLignes.reduce((s, l) => s + (parseFloat(l.sous_total) || 0), 0) * 100) / 100;
 
 
 
@@ -27441,7 +26288,20 @@
 
 
 
+            // Retour à la consultation pour voir le bon enregistré
+            const consult = document.getElementById('achatsConsultMode');
+            const saisie = document.getElementById('achatsSaisieMode');
+            if (consult && saisie) {
+                saisie.classList.add('hidden');
+                consult.classList.remove('hidden');
+            }
+            renderCommandesAchatsTable();
+
+
+
             refreshFournisseurSoldesAfterCommandeChange(previousCommande, commande);
+
+            if (typeof refreshDepotStockTables === 'function') refreshDepotStockTables();
 
 
 
@@ -27453,7 +26313,8 @@
 
 
 
-                toast.textContent = 'Bon d\'achat ' + commande.bon + ' enregistré';
+                if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
+            toast.textContent = 'Bon d\'achat ' + commande.bon + ' enregistré';
 
 
 
@@ -27735,7 +26596,7 @@
 
 
 
-                sous_total: qte * prix,
+                sous_total: Math.round(qte * prix * 100) / 100,
 
 
 
@@ -27995,6 +26856,126 @@
 
 
 
+            const tbody = document.getElementById('achatsLignesTableBody');
+
+            if (!tbody) return;
+
+
+
+            if (!achatsLignes.length) {
+
+                tbody.innerHTML = '<tr><td colspan="9" class="fournisseur-empty">Aucun article ajouté</td></tr>';
+
+                return;
+
+            }
+
+
+
+            tbody.innerHTML = achatsLignes.map((l, i) => `
+
+                <tr class="${selectedAchatsLineIndex === i ? 'selected' : ''}" data-ligne-index="${i}">
+
+                    <td>${escHtml(l.ref || '—')}</td>
+
+                    <td>${escHtml(l.designation || '—')}</td>
+
+                    <td>${escHtml(l.categorie || '—')}</td>
+
+                    <td>${escHtml(l.famille || '—')}</td>
+
+                    <td>${escHtml((parseFloat(l.quantite) || 0).toLocaleString('fr-FR'))}</td>
+
+                    <td>${escHtml(l.mesure_libelle || l.mesure || '—')}</td>
+
+                    <td>${escHtml(typeof formatMoney === 'function' ? formatMoney(l.prix_u) : (l.prix_u || '0'))}</td>
+
+                    <td><strong>${escHtml(typeof formatMoney === 'function' ? formatMoney(l.sous_total) : (l.sous_total || '0'))}</strong></td>
+
+                    <td class="col-actions no-print-achats">
+
+                        <span class="col-actions-wrap">
+
+                            <button type="button" class="btn-icon-row btn-icon-edit" data-edit-ligne="${i}" title="Modifier" aria-label="Modifier">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+
+                            </button>
+
+                            <button type="button" class="btn-icon-row btn-icon-delete" data-del-ligne="${i}" title="Supprimer" aria-label="Supprimer">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+
+                            </button>
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `).join('');
+
+
+
+            tbody.querySelectorAll('[data-edit-ligne]').forEach(btn => {
+
+                btn.addEventListener('click', () => {
+
+                    const idx = parseInt(btn.dataset.editLigne, 10);
+
+                    const line = achatsLignes[idx];
+
+                    if (!line) return;
+
+                    editingAchatsLineIndex = idx;
+
+                    selectedAchatsLineIndex = idx;
+
+                    fillAchatsLigneForm(line);
+
+                    openAchatsArticlePanel();
+
+                    renderAchatsLignesTable();
+
+                });
+
+            });
+
+            tbody.querySelectorAll('[data-del-ligne]').forEach(btn => {
+
+                btn.addEventListener('click', () => {
+
+                    const idx = parseInt(btn.dataset.delLigne, 10);
+
+                    if (Number.isNaN(idx) || idx < 0) return;
+
+                    if (!confirm('Supprimer cet article ?')) return;
+
+                    achatsLignes.splice(idx, 1);
+
+                    if (editingAchatsLineIndex === idx) {
+
+                        editingAchatsLineIndex = null;
+
+                        clearAchatsLigneForm();
+
+                    } else if (editingAchatsLineIndex !== null && editingAchatsLineIndex > idx) {
+
+                        editingAchatsLineIndex -= 1;
+
+                    }
+
+                    selectedAchatsLineIndex = null;
+
+                    renderAchatsLignesTable();
+
+                });
+
+            });
+
+
+
         }
 
 
@@ -28032,6 +27013,8 @@
 
 
             clearAchatsLigneForm();
+
+            renderAchatsLignesTable();
 
 
 
@@ -28088,6 +27071,10 @@
 
 
                 nom_fournisseur: document.getElementById('ach_nom_fournisseur')?.value || '',
+
+
+
+                destination: document.getElementById('ach_destination')?.value || '',
 
 
 
@@ -28375,7 +27362,7 @@
 
 
 
-            if (dateCmd) dateCmd.value = '';
+            if (dateCmd) dateCmd.value = todayIsoDate();
 
 
 
@@ -28385,9 +27372,17 @@
 
             editingCommandeIndex = null;
 
+            editingAchatsLineIndex = null;
+
+            selectedAchatsLineIndex = null;
+
             setAchatsPhotoPreview('');
 
             clearAchatsLigneForm();
+
+            closeAchatsArticlePanel();
+
+            renderAchatsLignesTable();
 
 
 
@@ -28564,6 +27559,24 @@
 
 
         document.getElementById('ajouterLigneAchatsBtn')?.addEventListener('click', ajouterArticleAchats);
+
+        function openAchatsArticlePanel() {
+            document.getElementById('ach_ligne_designation')?.focus();
+        }
+
+        function closeAchatsArticlePanel() {
+            editingAchatsLineIndex = null;
+        }
+
+        document.getElementById('ouvrirArticleAchatsBtn')?.addEventListener('click', () => {
+            editingAchatsLineIndex = null;
+            clearAchatsLigneForm();
+            openAchatsArticlePanel();
+        });
+
+        document.getElementById('fermerArticleAchatsBtn')?.addEventListener('click', () => {
+            closeAchatsArticlePanel();
+        });
 
 
 
@@ -28746,7 +27759,7 @@
 
 
 
-                head: [['Bon N°', 'Date Cmd', 'Code', 'Nom Fournisseur', 'Ville', 'Qté', 'Total', 'Réglement', 'Échéance']],
+                head: [['Bon N°', 'Date Cmd', 'Code', 'Nom Fournisseur', 'Ville', 'Qté', 'Total', 'Réglement']],
 
 
 
@@ -28783,10 +27796,6 @@
 
 
                     c.type_reglement || '?',
-
-
-
-                    formatDateFr(c.echeance),
 
 
 
@@ -30799,7 +29808,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        let materiels = [];
+        // materiels déclaré plus haut (évite TDZ avec refreshDashboardAnalytics)
 
 
 
@@ -30911,6 +29920,247 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
+
+        function loadCommandesVentes() {
+            try {
+                const parsed = JSON.parse(localStorage.getItem('commandesVentes') || '[]');
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        /** Parse un montant (nombre, "1234.56", "1 234,56 MAD") → nombre exact. */
+        function parseMoneyExact(val) {
+            if (val == null || val === '') return 0;
+            if (typeof val === 'number') return Number.isFinite(val) ? val : 0;
+            let s = String(val).trim().replace(/\u00a0/g, ' ').replace(/\s/g, '');
+            s = s.replace(/MAD|DH|€|EUR/gi, '');
+            if (!s) return 0;
+            if (s.includes(',') && s.includes('.')) {
+                // 1.234,56 ou 1,234.56
+                if (s.lastIndexOf(',') > s.lastIndexOf('.')) {
+                    s = s.replace(/\./g, '').replace(',', '.');
+                } else {
+                    s = s.replace(/,/g, '');
+                }
+            } else if (s.includes(',')) {
+                s = s.replace(',', '.');
+            }
+            const n = parseFloat(s);
+            return Number.isFinite(n) ? n : 0;
+        }
+
+        function toCents(val) {
+            return Math.round(parseMoneyExact(val) * 100);
+        }
+
+        function fromCents(cents) {
+            return (Math.round(cents) || 0) / 100;
+        }
+
+        /** Total exact d'un bon : somme des lignes (centimes), sinon champ total. */
+        function commandeMontantExact(c) {
+            if (!c) return 0;
+            if (Array.isArray(c.lignes) && c.lignes.length) {
+                const cents = c.lignes.reduce((s, l) => {
+                    if (!l) return s;
+                    if (l.sous_total != null && l.sous_total !== '') {
+                        return s + toCents(l.sous_total);
+                    }
+                    const qte = parseMoneyExact(l.qte != null ? l.qte : l.quantite);
+                    const prix = parseMoneyExact(l.prix != null ? l.prix : (l.prix_unitaire != null ? l.prix_unitaire : l.pu));
+                    return s + Math.round(qte * prix * 100);
+                }, 0);
+                return fromCents(cents);
+            }
+            return fromCents(toCents(c.total != null ? c.total : c.montant));
+        }
+
+        function sumMoneyCents(list, getter) {
+            return (list || []).reduce((s, item) => s + toCents(getter(item)), 0);
+        }
+
+        function formatKpiMoney(val) {
+            const n = fromCents(toCents(val));
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+        }
+
+        function isReglementEsp(type) {
+            const t = String(type || '').trim().toLowerCase()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            return t === 'esp' || t === 'especes' || t.startsWith('esp');
+        }
+
+        function isReglementType(type, prefix) {
+            const t = String(type || '').trim().toLowerCase()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            const p = String(prefix || '').trim().toLowerCase();
+            return t === p || t.startsWith(p);
+        }
+
+        function refreshReglementAchatsKpis() {
+            try { if (typeof loadCommandesAchats === 'function') loadCommandesAchats(); } catch (e) {}
+            try { if (typeof loadReglementsAchats === 'function') loadReglementsAchats(); } catch (e) {}
+
+            const regs = Array.isArray(reglementsAchats) ? reglementsAchats : [];
+
+            const regsChq = regs.filter(r => isReglementType(r.type_reg, 'chq'));
+            const regsEff = regs.filter(r => isReglementType(r.type_reg, 'eff'));
+            const regsEsp = regs.filter(r => isReglementEsp(r.type_reg));
+            const regsVir = regs.filter(r => isReglementType(r.type_reg, 'vir'));
+
+            const totalChq = fromCents(sumMoneyCents(regsChq, r => r.montant_reg));
+            const totalEff = fromCents(sumMoneyCents(regsEff, r => r.montant_reg));
+            const totalEsp = fromCents(sumMoneyCents(regsEsp, r => r.montant_reg));
+            const totalVir = fromCents(sumMoneyCents(regsVir, r => r.montant_reg));
+
+            const setText = (id, text) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            };
+
+            setText('rgKpiTotalChq', formatKpiMoney(totalChq));
+            setText('rgKpiTotalEff', formatKpiMoney(totalEff));
+            setText('rgKpiTotalEsp', formatKpiMoney(totalEsp));
+            setText('rgKpiTotalVir', formatKpiMoney(totalVir));
+
+            setText('rgKpiBadgeChq', regsChq.length + ' Chq');
+            setText('rgKpiBadgeEff', regsEff.length + ' Eff');
+            setText('rgKpiBadgeEsp', regsEsp.length + ' Esp');
+            setText('rgKpiBadgeVir', regsVir.length + ' Vir');
+        }
+
+        function refreshDashboardAnalytics() {
+            try {
+                if (typeof loadCommandesAchats === 'function') loadCommandesAchats();
+            } catch (e) {}
+            try {
+                if (typeof loadReglementsAchats === 'function') loadReglementsAchats();
+            } catch (e) {}
+            try {
+                if (typeof loadMateriels === 'function') loadMateriels();
+            } catch (e) {}
+            try {
+                if (typeof loadCommandesVentesStore === 'function') loadCommandesVentesStore();
+            } catch (e) {}
+            try {
+                if (typeof loadReglementsVentes === 'function') loadReglementsVentes();
+            } catch (e) {}
+
+            const achats = (typeof commandesAchats !== 'undefined' && Array.isArray(commandesAchats)) ? commandesAchats : [];
+            const ventes = (typeof commandesVentes !== 'undefined' && Array.isArray(commandesVentes))
+                ? commandesVentes
+                : (typeof loadCommandesVentes === 'function' ? loadCommandesVentes() : []);
+            const regs = (typeof reglementsAchats !== 'undefined' && Array.isArray(reglementsAchats)) ? reglementsAchats : [];
+            const regsVentes = (typeof reglementsVentes !== 'undefined' && Array.isArray(reglementsVentes)) ? reglementsVentes : [];
+            let mats = [];
+            try {
+                mats = (typeof materiels !== 'undefined' && Array.isArray(materiels)) ? materiels
+                    : JSON.parse(localStorage.getItem('tresorerieMateriels') || '[]');
+                if (!Array.isArray(mats)) mats = [];
+            } catch (e) { mats = []; }
+
+            const prods = (typeof produits !== 'undefined' && Array.isArray(produits)) ? produits : [];
+
+            const totalAchats = fromCents(sumMoneyCents(achats, commandeMontantExact));
+            const totalVentes = fromCents(sumMoneyCents(ventes, commandeMontantExact));
+            const totalCharges = fromCents((mats || []).reduce((s, m) => s + toCents(m.prix_achat) + toCents(m.douane), 0));
+
+            // Valeur stock = quantité × prix d'achat des fiches produits
+            const valeurStockCents = (prods || []).reduce((s, p) => {
+                const qte = parseMoneyExact(p.quantite);
+                const prix = parseMoneyExact(p.prix_achat);
+                return s + Math.round(qte * prix * 100);
+            }, 0);
+            const valeurStock = fromCents(valeurStockCents);
+
+            // Solde clients = ventes − règlements vente + soldes initiaux fiches clients
+            const ventesCents = sumMoneyCents(ventes, commandeMontantExact);
+            const regsVentesCents = sumMoneyCents(regsVentes, r => r.montant_reg);
+            let soldeInitCents = 0;
+            if (typeof clients !== 'undefined' && Array.isArray(clients)) {
+                soldeInitCents = clients.reduce((s, c) => s + toCents(c.solde), 0);
+            }
+            const soldeClients = fromCents(ventesCents - regsVentesCents + soldeInitCents);
+            const nbClients = (typeof clients !== 'undefined' && Array.isArray(clients)) ? clients.length : 0;
+
+            const setText = (id, text) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            };
+            setText('kpiTotalAchats', formatKpiMoney(totalAchats));
+            setText('kpiTotalVentes', formatKpiMoney(totalVentes));
+            setText('kpiValeurStock', formatKpiMoney(valeurStock));
+            setText('kpiTotalCharges', formatKpiMoney(totalCharges));
+            setText('kpiSoldeClients', formatKpiMoney(soldeClients));
+
+            setText('kpiBadgeAchats', achats.length + ' bon' + (achats.length > 1 ? 's' : ''));
+            setText('kpiBadgeVentes', ventes.length + ' bon' + (ventes.length > 1 ? 's' : ''));
+            setText('kpiBadgeStock', prods.length + ' art');
+            setText('kpiBadgeCharges', mats.length + ' ligne' + (mats.length > 1 ? 's' : ''));
+            setText('kpiBadgeSoldeClients', nbClients + ' clt');
+
+            // Garder compat si les anciens blocs réapparaissent
+            const achBody = document.getElementById('dashLastAchatsBody');
+            if (achBody) {
+                const last = [...achats].sort((a, b) => String(b.date_cmd || '').localeCompare(String(a.date_cmd || ''))).slice(0, 5);
+                if (!last.length) {
+                    achBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#888;">Aucun bon d\'achat</td></tr>';
+                } else {
+                    achBody.innerHTML = last.map(c => `
+                        <tr>
+                            <td>${escHtml(typeof formatDateFr === 'function' ? formatDateFr(c.date_cmd) : (c.date_cmd || '—'))}</td>
+                            <td>${escHtml(c.nom_fournisseur || c.code_fournisseur || '—')}</td>
+                            <td>${escHtml(c.bon || '—')}</td>
+                            <td>${escHtml(formatKpiMoney(commandeMontantExact(c)).replace(' MAD',''))}</td>
+                        </tr>
+                    `).join('');
+                }
+            }
+
+            const venBody = document.getElementById('dashLastVentesBody');
+            if (venBody) {
+                const lastV = [...ventes].sort((a, b) => String(b.date_cmd || b.date || '').localeCompare(String(a.date_cmd || a.date || ''))).slice(0, 5);
+                if (!lastV.length) {
+                    venBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#888;">Aucun bon de vente</td></tr>';
+                } else {
+                    venBody.innerHTML = lastV.map(c => `
+                        <tr>
+                            <td>${escHtml(typeof formatDateFr === 'function' ? formatDateFr(c.date_cmd || c.date) : (c.date_cmd || c.date || '—'))}</td>
+                            <td>${escHtml(c.nom_client || c.client || c.code_client || '—')}</td>
+                            <td>${escHtml(c.bon || '—')}</td>
+                            <td>${escHtml(formatKpiMoney(commandeMontantExact(c)).replace(' MAD',''))}</td>
+                        </tr>
+                    `).join('');
+                }
+            }
+
+            // Rafraîchir produits/clients en arrière-plan pour Valeurs Stock / Solde Clients
+            if (typeof loadProduits === 'function') {
+                Promise.resolve(loadProduits()).then(() => {
+                    const p2 = (typeof produits !== 'undefined' && Array.isArray(produits)) ? produits : [];
+                    const cents = p2.reduce((s, p) => {
+                        const qte = parseMoneyExact(p.quantite);
+                        const prix = parseMoneyExact(p.prix_achat);
+                        return s + Math.round(qte * prix * 100);
+                    }, 0);
+                    setText('kpiValeurStock', formatKpiMoney(fromCents(cents)));
+                    setText('kpiBadgeStock', p2.length + ' art');
+                }).catch(() => {});
+            }
+            if (typeof loadClients === 'function') {
+                Promise.resolve(loadClients()).then(() => {
+                    const cl = (typeof clients !== 'undefined' && Array.isArray(clients)) ? clients : [];
+                    const initC = cl.reduce((s, c) => s + toCents(c.solde), 0);
+                    const solde = fromCents(ventesCents - regsVentesCents + initC);
+                    setText('kpiSoldeClients', formatKpiMoney(solde));
+                    setText('kpiBadgeSoldeClients', cl.length + ' clt');
+                }).catch(() => {});
+            }
+        }
+
+
         function formatMoneyFr(val) {
 
 
@@ -30924,30 +30174,6 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
             return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-
-
-        }
-
-
-
-        function formatDateFr(iso) {
-
-
-
-            if (!iso) return '?';
-
-
-
-            const parts = String(iso).split('-');
-
-
-
-            if (parts.length !== 3) return iso;
-
-
-
-            return `${parts[2]}/${parts[1]}/${parts[0]}`;
 
 
 
@@ -31563,6 +30789,10 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
+            if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
+
+
+
         }
 
 
@@ -31620,6 +30850,8 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
                 toast.textContent = 'Matériel ' + data.ref + ' enregistré';
+
+                if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
 
 
 
@@ -32515,7 +31747,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            ['us_nom', 'us_statut', 'us_login', 'us_password'].forEach(id => {
+            ['us_nom', 'us_contact', 'us_statut', 'us_login', 'us_password'].forEach(id => {
 
 
 
@@ -32639,15 +31871,20 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            document.getElementById('us_date').value = user?.date || '';
+            const dateEl = document.getElementById('us_date');
+            if (dateEl) dateEl.value = user?.date || (typeof todayInputValue === 'function' ? todayInputValue() : todayIsoDate());
 
 
 
-            document.getElementById('us_id').value = user?.id || '';
+            document.getElementById('us_id').value = user?.id || nextUserId();
 
 
 
             document.getElementById('us_nom').value = user?.nom || '';
+
+
+
+            document.getElementById('us_contact').value = user?.contact || '';
 
 
 
@@ -32747,35 +31984,46 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            utilisateursTableBody.innerHTML = utilisateurs.map(u => `
+            utilisateursTableBody.innerHTML = utilisateurs.map(u => {
 
 
 
-                <tr>
+                const suspended = u.suspendu === true;
+                const statutLabel = suspended
+                    ? (escHtml(u.statut || '—') + ' · Suspendu')
+                    : escHtml(u.statut || '—');
+                const suspendTitle = suspended ? 'Réactiver' : 'Suspendre';
+                const suspendIcon = suspended
+                    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>'
+                    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="10" y1="15" x2="10" y2="9"/><line x1="14" y1="15" x2="14" y2="9"/></svg>';
+
+                return `
+
+                <tr class="${suspended ? 'user-suspended' : ''}">
 
 
 
-                    <td>${escHtml(formatDateFr(u.date))}</td>
+                    <td><strong>${escHtml(u.id)}</strong></td>
 
 
 
-                    <td>${escHtml(u.id)}</td>
+                    <td>${escHtml(u.nom || '—')}</td>
 
 
 
-                    <td>${escHtml(u.statut || '?')}</td>
+                    <td>${escHtml(u.contact || '—')}</td>
 
 
 
-                    <td>${escHtml(u.login || '?')}</td>
+                    <td>${statutLabel}</td>
+
+
+
+                    <td>${escHtml(u.login || '—')}</td>
 
 
 
                     <td class="pwd-mask">${escHtml(maskPassword(u.password))}</td>
-
-
-
-                    <td>${authChipsHtml(u.autorisations)}</td>
 
 
 
@@ -32811,11 +32059,11 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                            <button type="button" class="btn-icon-row btn-icon-delete" data-delete-user="${escHtml(u.id)}" title="Supprimer" aria-label="Supprimer">
+                            <button type="button" class="btn-icon-row btn-icon-suspend ${suspended ? 'is-suspended' : ''}" data-suspend-user="${escHtml(u.id)}" title="${suspendTitle}" aria-label="${suspendTitle}">
 
 
 
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                                ${suspendIcon}
 
 
 
@@ -32835,7 +32083,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            `).join('');
+            `; }).join('');
 
 
 
@@ -32887,11 +32135,11 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            utilisateursTableBody.querySelectorAll('[data-delete-user]').forEach(btn => {
+            utilisateursTableBody.querySelectorAll('[data-suspend-user]').forEach(btn => {
 
 
 
-                btn.addEventListener('click', () => deleteUtilisateur(btn.dataset.deleteUser));
+                btn.addEventListener('click', () => suspendUtilisateur(btn.dataset.suspendUser));
 
 
 
@@ -32903,26 +32151,30 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        function deleteUtilisateur(id) {
+        function suspendUtilisateur(id) {
 
 
 
-            if (!confirm('Supprimer cet utilisateur ?')) return;
-
-
-
-            utilisateurs = utilisateurs.filter(u => u.id !== id);
-
-
-
+            const u = utilisateurs.find(x => x.id === id);
+            if (!u) return;
+            const willSuspend = u.suspendu !== true;
+            const msg = willSuspend
+                ? ('Suspendre l\'utilisateur « ' + (u.nom || u.login || id) + ' » ?')
+                : ('Réactiver l\'utilisateur « ' + (u.nom || u.login || id) + ' » ?');
+            if (!confirm(msg)) return;
+            u.suspendu = willSuspend;
             saveUtilisateurs();
-
-
-
             renderUtilisateursTable();
 
 
 
+        }
+
+
+
+        function deleteUtilisateur(id) {
+            // Conservé pour compatibilité : bascule vers Suspendre
+            suspendUtilisateur(id);
         }
 
 
@@ -32947,6 +32199,10 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
+            const existing = editingUserId ? utilisateurs.find(u => u.id === editingUserId) : null;
+
+
+
             return {
 
 
@@ -32955,11 +32211,15 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                date: document.getElementById('us_date')?.value || todayInputValue(),
+                date: document.getElementById('us_date')?.value || (typeof todayInputValue === 'function' ? todayInputValue() : (typeof todayIsoDate === 'function' ? todayIsoDate() : '')),
 
 
 
                 nom: (document.getElementById('us_nom')?.value || '').trim(),
+
+
+
+                contact: (document.getElementById('us_contact')?.value || '').trim(),
 
 
 
@@ -32976,6 +32236,10 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
                 autorisations: collectAuthIds(),
+
+
+
+                suspendu: existing ? existing.suspendu === true : false,
 
 
 
@@ -33149,7 +32413,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         const REGLEMENTS_STORAGE_KEY = 'reglementsAchats';
 
-        let reglementsAchats = [];
+        // reglementsAchats déclaré plus haut (évite TDZ avec refreshDashboardAnalytics)
 
         let editingReglementId = null;
 
@@ -33191,13 +32455,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             const nums = reglementsAchats
 
-                .map(r => parseInt(String(r.ref || '').replace(/\D/g, ''), 10))
+                .map(r => {
+
+                    const m = String(r.ref || '').match(/(\d+)\s*$/);
+
+                    return m ? parseInt(m[1], 10) : NaN;
+
+                })
 
                 .filter(n => !Number.isNaN(n));
 
             const next = (nums.length ? Math.max(...nums) : 0) + 1;
 
-            return 'RG' + String(next).padStart(4, '0');
+            return 'Rég' + String(next).padStart(4, '0');
 
         }
 
@@ -33219,77 +32489,183 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        function getBonsNonSoldes() {
-
-            loadCommandesAchats();
-
-            return (commandesAchats || []).filter(c => !isCommandePayee(c));
-
+        function getMontantPayeBon(bon, excludeReglementId = null) {
+            const key = String(bon || '').trim();
+            if (!key) return 0;
+            return (reglementsAchats || [])
+                .filter(r => String(r.bon || '').trim() === key)
+                .filter(r => !excludeReglementId || r.id !== excludeReglementId)
+                .reduce((s, r) => s + (parseFloat(r.montant_reg) || 0), 0);
         }
 
+        function getSoldeRestantBon(c, excludeReglementId = null) {
+            if (!c) return 0;
+            const total = parseFloat(c.total || 0) || 0;
+            return Math.round((total - getMontantPayeBon(c.bon, excludeReglementId)) * 100) / 100;
+        }
 
+        function getRgMontantSaisi() {
+            return parseFloat(document.getElementById('rg_montant_reg')?.value || 0) || 0;
+        }
 
-                function fillReglementBonsSelect(selectedBon = '') {
-            const sel = document.getElementById('rg_bon');
-            if (!sel) return;
-            const bons = getBonsNonSoldes();
-            if (sel.tagName === 'INPUT') {
-                const listId = sel.getAttribute('list') || 'rg_bon_list';
-                sel.setAttribute('list', listId);
-                let dl = document.getElementById(listId);
-                if (!dl) {
-                    dl = document.createElement('datalist');
-                    dl.id = listId;
-                    sel.insertAdjacentElement('afterend', dl);
+        function getRgBonSelectionne() {
+            return document.querySelector('#rgBonsTableBody input[name="rg_bon_choix"]:checked')?.value
+                || document.getElementById('rg_bon_num')?.value
+                || '';
+        }
+
+        function updateRgBonsLiveSoldes() {
+            const tbody = document.getElementById('rgBonsTableBody');
+            if (!tbody) return;
+            const selectedBon = String(getRgBonSelectionne() || '');
+            const saisi = getRgMontantSaisi();
+            const excludeId = editingReglementId || null;
+            const fmt = (typeof formatMoneyFr === 'function')
+                ? formatMoneyFr
+                : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+
+            tbody.querySelectorAll('tr[data-bon]').forEach(tr => {
+                const bon = String(tr.getAttribute('data-bon') || '');
+                const total = parseFloat(tr.getAttribute('data-montant') || 0) || 0;
+                let paye = getMontantPayeBon(bon, excludeId);
+                if (selectedBon && bon === selectedBon) {
+                    paye = Math.round((paye + saisi) * 100) / 100;
                 }
-                const opts = [];
-                bons.forEach((c) => {
-                    const idx = commandesAchats.indexOf(c);
-                    const key = String(idx);
-                    const label = `${c.bon || '—'} — ${c.nom_fournisseur || c.code_fournisseur || 'Fournisseur'} — ${formatMoneyFr(c.total || 0)}`;
-                    opts.push(`<option value="${escapeOptionAttr(key)}">${escapeOptionText(label)}</option>`);
-                    opts.push(`<option value="${escapeOptionAttr(c.bon || '')}">${escapeOptionText(label)}</option>`);
-                });
-                dl.innerHTML = opts.join('');
-                if (selectedBon) sel.value = selectedBon;
-                return;
-            }
-            const opts = ['<option value="">— Bons non soldés —</option>'];
-            bons.forEach((c) => {
-                const idx = commandesAchats.indexOf(c);
-                const key = String(idx);
-                const label = `${c.bon || '—'} — ${c.nom_fournisseur || c.code_fournisseur || 'Fournisseur'} — ${formatMoneyFr(c.total || 0)}`;
-                opts.push(`<option value="${escapeOptionAttr(key)}" ${selectedBon === key ? 'selected' : ''}>${escapeOptionText(label)}</option>`);
+                const solde = Math.round((total - paye) * 100) / 100;
+                const payeEl = tr.querySelector('[data-col="paye"]');
+                const soldeEl = tr.querySelector('[data-col="solde"]');
+                if (payeEl) payeEl.textContent = fmt(paye);
+                if (soldeEl) soldeEl.innerHTML = '<strong>' + escHtml(fmt(solde)) + '</strong>';
             });
-            sel.innerHTML = opts.join('');
-            if (selectedBon) sel.value = selectedBon;
         }
 
+        function isBonNonSolde(c, includeBon = '') {
+            if (!c) return false;
+            if (includeBon && String(c.bon || '') === String(includeBon)) return true;
+            if (c.paye === true) return false;
+            if (isCommandePayee(c)) return false;
+            return getSoldeRestantBon(c) > 0.009;
+        }
 
+        function getBonsNonSoldes(includeBon = '') {
+            loadCommandesAchats();
+            loadReglementsAchats();
+            return (commandesAchats || []).filter(c => isBonNonSolde(c, includeBon));
+        }
 
-                function applySelectedBonToReglementForm() {
-            const sel = document.getElementById('rg_bon');
-            const raw = (sel?.value || '').trim();
-            let c = null;
-            const idx = parseInt(raw, 10);
-            if (!Number.isNaN(idx) && commandesAchats[idx] && String(idx) === raw) {
-                c = commandesAchats[idx];
-            } else if (raw) {
-                c = (commandesAchats || []).find(x => String(x.bon || '') === raw) || null;
-            }
+        function getBonsNonSoldesForFournisseur(nomFournisseur, includeBon = '') {
+            const q = String(nomFournisseur || '').trim();
+            if (!q) return [];
+            const f = (typeof findFournisseurByNom === 'function') ? findFournisseurByNom(q) : null;
+            return getBonsNonSoldes(includeBon).filter(c => {
+                if (f && typeof commandeBelongsToFournisseur === 'function') {
+                    return commandeBelongsToFournisseur(c, f);
+                }
+                const nom = String(c.nom_fournisseur || '').trim().toLowerCase();
+                const code = String(c.code_fournisseur || '').trim().toLowerCase();
+                const qq = q.toLowerCase();
+                return nom === qq || code === qq || nom.includes(qq);
+            });
+        }
+
+        function fillReglementFournisseurDatalist() {
+            const dl = document.getElementById('rg_fournisseur_list');
+            if (!dl) return;
+            const names = new Set();
+            (fournisseurs || []).forEach(f => {
+                if (f?.nom) names.add(String(f.nom).trim());
+            });
+            (commandesAchats || []).forEach(c => {
+                if (c?.nom_fournisseur) names.add(String(c.nom_fournisseur).trim());
+            });
+            const list = Array.from(names).filter(Boolean).sort((a, b) => a.localeCompare(b, 'fr'));
+            dl.innerHTML = list.map(n => `<option value="${escapeOptionAttr(n)}"></option>`).join('');
+        }
+
+        function clearSelectedBonOnReglementForm() {
+            document.getElementById('rg_bon_num').value = '';
+            document.getElementById('rg_montant_bon').value = '';
+            document.querySelectorAll('#rgBonsTableBody input[name="rg_bon_choix"]').forEach(r => { r.checked = false; });
+            document.querySelectorAll('#rgBonsTableBody tr').forEach(tr => tr.classList.remove('selected'));
+        }
+
+        function applySelectedBonToReglementForm(bonOverride = null) {
+            const bon = bonOverride != null
+                ? String(bonOverride)
+                : (document.querySelector('#rgBonsTableBody input[name="rg_bon_choix"]:checked')?.value
+                    || document.getElementById('rg_bon_num')?.value
+                    || '');
+            const c = (commandesAchats || []).find(x => String(x.bon || '') === String(bon)) || null;
             if (!c) {
                 document.getElementById('rg_bon_num').value = '';
-                document.getElementById('rg_fournisseur').value = '';
                 document.getElementById('rg_montant_bon').value = '';
                 return;
             }
             document.getElementById('rg_bon_num').value = c.bon || '';
-            document.getElementById('rg_fournisseur').value = c.nom_fournisseur || c.code_fournisseur || '';
+            const frNom = document.getElementById('rg_bon')?.value?.trim() || c.nom_fournisseur || c.code_fournisseur || '';
+            document.getElementById('rg_fournisseur').value = frNom;
+            const solde = getSoldeRestantBon(c, editingReglementId || null);
             document.getElementById('rg_montant_bon').value = c.total || 0;
             const montantReg = document.getElementById('rg_montant_reg');
             if (montantReg && (!montantReg.value || montantReg.value === '0' || montantReg.value === '0.00')) {
-                montantReg.value = parseFloat(c.total || 0).toFixed(2);
+                montantReg.value = Math.max(0, solde).toFixed(2);
             }
+            updateRgBonsLiveSoldes();
+        }
+
+        function renderRgBonsNonSoldes(selectedBon = '') {
+            const tbody = document.getElementById('rgBonsTableBody');
+            if (!tbody) return;
+            const fr = document.getElementById('rg_bon')?.value?.trim() || '';
+            document.getElementById('rg_fournisseur').value = fr;
+            if (!fr) {
+                tbody.innerHTML = '<tr><td colspan="6" class="fournisseur-empty">Sélectionnez un fournisseur</td></tr>';
+                clearSelectedBonOnReglementForm();
+                return;
+            }
+            const bons = getBonsNonSoldesForFournisseur(fr, selectedBon);
+            if (!bons.length) {
+                tbody.innerHTML = '<tr><td colspan="6" class="fournisseur-empty">Aucun bon non soldé pour ce fournisseur</td></tr>';
+                if (!selectedBon) clearSelectedBonOnReglementForm();
+                return;
+            }
+            const fmt = (typeof formatMoneyFr === 'function')
+                ? formatMoneyFr
+                : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+            const excludeId = editingReglementId || null;
+            tbody.innerHTML = bons.map((c) => {
+                const payeBase = getMontantPayeBon(c.bon, excludeId);
+                const soldeBase = getSoldeRestantBon(c, excludeId);
+                const checked = selectedBon && String(c.bon) === String(selectedBon) ? 'checked' : '';
+                const selClass = checked ? 'selected' : '';
+                const dateVal = c.date_cmd || c.date || '';
+                const dateTxt = (typeof formatDateFr === 'function' && dateVal) ? formatDateFr(dateVal) : (dateVal || '—');
+                return `<tr class="${selClass}" data-bon="${escapeOptionAttr(c.bon || '')}" data-montant="${escapeOptionAttr(String(c.total || 0))}">
+                    <td class="col-choose"><input type="radio" name="rg_bon_choix" value="${escapeOptionAttr(c.bon || '')}" ${checked} ${reglementReadonly ? 'disabled' : ''}></td>
+                    <td>${escHtml(c.bon || '—')}</td>
+                    <td>${escHtml(dateTxt)}</td>
+                    <td data-col="montant">${escHtml(fmt(c.total || 0))}</td>
+                    <td data-col="paye">${escHtml(fmt(payeBase))}</td>
+                    <td data-col="solde"><strong>${escHtml(fmt(soldeBase))}</strong></td>
+                </tr>`;
+            }).join('');
+
+            tbody.querySelectorAll('input[name="rg_bon_choix"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    tbody.querySelectorAll('tr').forEach(tr => tr.classList.remove('selected'));
+                    radio.closest('tr')?.classList.add('selected');
+                    applySelectedBonToReglementForm(radio.value);
+                });
+            });
+
+            if (selectedBon) applySelectedBonToReglementForm(selectedBon);
+            else updateRgBonsLiveSoldes();
+        }
+
+        // compat anciens appels
+        function fillReglementBonsSelect(selectedBon = '') {
+            fillReglementFournisseurDatalist();
+            renderRgBonsNonSoldes(selectedBon);
         }
 
 
@@ -33306,12 +32682,16 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             reglementReadonly = !!readonly;
 
-            ['rg_date', 'rg_bon', 'rg_type', 'rg_num', 'rg_banque', 'rg_tire', 'rg_montant_reg', 'rg_date_decaiss'].forEach(id => {
+            ['rg_date', 'rg_bon', 'rg_ref', 'rg_type', 'rg_num', 'rg_banque', 'rg_tire', 'rg_montant_reg', 'rg_date_decaiss'].forEach(id => {
 
                 const el = document.getElementById(id);
 
                 if (el) el.disabled = !!readonly;
 
+            });
+
+            document.querySelectorAll('#rgBonsTableBody input[name="rg_bon_choix"]').forEach(r => {
+                r.disabled = !!readonly;
             });
 
             const saveBtn = document.getElementById('validerReglementBtn');
@@ -33374,6 +32754,10 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
         function showReglementForm(item = null, readonly = false) {
 
             loadCommandesAchats();
+            loadReglementsAchats();
+            if (typeof loadFournisseurs === 'function') {
+                try { loadFournisseurs(); } catch (_) {}
+            }
 
             reglementFormPanel?.classList.remove('hidden');
 
@@ -33381,25 +32765,15 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             editingReglementId = item?.id || null;
 
+            fillReglementFournisseurDatalist();
 
+            const frNom = item?.fournisseur || '';
+            document.getElementById('rg_bon').value = frNom;
+            document.getElementById('rg_fournisseur').value = frNom;
 
-            let selectedBon = '';
+            document.getElementById('rg_date').value = item?.date || (typeof todayIsoDate === 'function' ? todayIsoDate() : '');
 
-            if (item?.bon) {
-
-                const idx = commandesAchats.findIndex(c => c.bon === item.bon);
-
-                if (idx >= 0) selectedBon = String(idx);
-
-            }
-
-            fillReglementBonsSelect(selectedBon);
-
-
-
-            document.getElementById('rg_date').value = item?.date || '';
-
-            document.getElementById('rg_ref').value = item?.ref || '';
+            document.getElementById('rg_ref').value = item?.ref || nextReglementRef();
 
             document.getElementById('rg_type').value = item?.type_reg || '';
 
@@ -33417,13 +32791,11 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             document.getElementById('rg_bon_num').value = item?.bon || '';
 
-            document.getElementById('rg_fournisseur').value = item?.fournisseur || '';
-
             document.getElementById('rg_montant_bon').value = item?.montant != null ? item.montant : '';
 
             setReglementPhotoPreview(item?.photo || '');
 
-            if (selectedBon) applySelectedBonToReglementForm();
+            renderRgBonsNonSoldes(item?.bon || '');
 
             if (item?.montant_reg != null && item?.montant_reg !== '') {
 
@@ -33477,7 +32849,9 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             if (!data.date) { alert('La date est obligatoire.'); document.getElementById('rg_date')?.focus(); return false; }
 
-            if (!data.bon) { alert('Sélectionnez un bon non soldé.'); document.getElementById('rg_bon')?.focus(); return false; }
+            if (!data.bon) { alert('Sélectionnez le bon d\'achat non soldé à régler.'); document.querySelector('#rgBonsTableBody input[name="rg_bon_choix"]')?.focus(); return false; }
+
+            if (!data.fournisseur) { alert('Sélectionnez un fournisseur.'); document.getElementById('rg_bon')?.focus(); return false; }
 
             if (!data.type_reg) { alert('Le type de réglement est obligatoire.'); document.getElementById('rg_type')?.focus(); return false; }
 
@@ -33565,30 +32939,22 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
                     <td class="col-actions no-print-reglement">
 
-                        <span class="col-actions-wrap">
+                        <span class="col-actions-wrap rg-actions-wrap">
 
-                            <button type="button" class="btn-icon-row btn-icon-view" data-view-reg="${escHtml(r.id)}" title="Voir" aria-label="Voir">
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
-
+                            <button type="button" class="btn-icon-row btn-icon-view btn-rg-action" data-view-reg="${escHtml(r.id)}" title="Voir" aria-label="Voir">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                             </button>
 
-                            <button type="button" class="btn-icon-row btn-icon-edit" data-edit-reg="${escHtml(r.id)}" title="Modifier" aria-label="Modifier">
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-
+                            <button type="button" class="btn-icon-row btn-icon-edit btn-rg-action" data-edit-reg="${escHtml(r.id)}" title="Modifier" aria-label="Modifier">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                             </button>
 
-                            <button type="button" class="btn-icon-row btn-icon-delete" data-delete-reg="${escHtml(r.id)}" title="Supprimer" aria-label="Supprimer">
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-
+                            <button type="button" class="btn-icon-row btn-icon-delete btn-rg-action" data-delete-reg="${escHtml(r.id)}" title="Supprimer" aria-label="Supprimer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
                             </button>
 
-                            <button type="button" class="btn-icon-row btn-icon-pdf" data-pdf-reg="${escHtml(r.id)}" title="PDF" aria-label="PDF">
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-
+                            <button type="button" class="btn-icon-row btn-icon-pdf btn-rg-action" data-pdf-reg="${escHtml(r.id)}" title="PDF" aria-label="PDF">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                             </button>
 
                         </span>
@@ -33637,6 +33003,8 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             });
 
+            if (typeof refreshReglementAchatsKpis === 'function') refreshReglementAchatsKpis();
+
         }
 
 
@@ -33650,6 +33018,14 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
             saveReglementsAchats();
 
             renderReglementsTable();
+
+            if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
+
+            if (balanceAchatsView && !balanceAchatsView.classList.contains('hidden') && typeof renderBalanceAchatsTable === 'function') {
+
+                renderBalanceAchatsTable();
+
+            }
 
         }
 
@@ -33743,6 +33119,10 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             const data = collectReglementForm();
 
+            if (!data.fournisseur) {
+                data.fournisseur = document.getElementById('rg_bon')?.value?.trim() || '';
+            }
+
             if (!validateReglement(data)) return false;
 
             const idx = reglementsAchats.findIndex(r => r.id === data.id);
@@ -33759,7 +33139,15 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             if (toast) {
 
-                toast.textContent = 'Réglement ' + data.ref + ' enregistré';
+                if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
+
+                if (balanceAchatsView && !balanceAchatsView.classList.contains('hidden') && typeof renderBalanceAchatsTable === 'function') {
+
+                    renderBalanceAchatsTable();
+
+                }
+
+            toast.textContent = 'Réglement ' + data.ref + ' enregistré';
 
                 toast.classList.add('show');
 
@@ -33813,7 +33201,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         document.getElementById('ajouterAutreReglementBtn')?.addEventListener('click', ajouterAutreReglement);
 
-        document.getElementById('rg_bon')?.addEventListener('change', applySelectedBonToReglementForm);
+        document.getElementById('rg_bon')?.addEventListener('change', () => {
+            clearSelectedBonOnReglementForm();
+            renderRgBonsNonSoldes('');
+        });
+
+        document.getElementById('rg_bon')?.addEventListener('input', () => {
+            // met à jour la liste dès que le nom fournisseur est assez précis
+            const v = document.getElementById('rg_bon')?.value?.trim() || '';
+            if (v.length >= 2) renderRgBonsNonSoldes(document.getElementById('rg_bon_num')?.value || '');
+        });
+
+        document.getElementById('rg_montant_reg')?.addEventListener('input', updateRgBonsLiveSoldes);
+        document.getElementById('rg_montant_reg')?.addEventListener('change', updateRgBonsLiveSoldes);
 
         document.getElementById('rgPhotoPickBtn')?.addEventListener('click', () => document.getElementById('rg_photo_file')?.click());
 
@@ -33832,6 +33232,1044 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
         });
 
 
+
+        // ——— Balance Achats ———
+
+        let balanceAchatsRows = [];
+
+        let currentBalanceKey = null;
+
+
+
+        function reglementBelongsToFournisseur(r, f) {
+
+            if (!r || !f) return false;
+
+            const rNom = normalizeFournisseurNom(r.fournisseur);
+
+            const fNom = normalizeFournisseurNom(f.nom);
+
+            if (rNom && fNom && rNom === fNom) return true;
+
+            if (r.bon) {
+
+                const c = (commandesAchats || []).find(x => x.bon === r.bon);
+
+                if (c && commandeBelongsToFournisseur(c, f)) return true;
+
+            }
+
+            return false;
+
+        }
+
+
+
+        function balanceKeyFromFournisseur(f) {
+
+            return 'f:' + (normalizeFournisseurCode(f.id) || normalizeFournisseurNom(f.nom) || String(f.id || ''));
+
+        }
+
+
+
+        function buildBalanceAchatsRows() {
+
+            try { if (typeof loadCommandesAchats === 'function') loadCommandesAchats(); } catch (e) {}
+
+            try { if (typeof loadReglementsAchats === 'function') loadReglementsAchats(); } catch (e) {}
+
+            const map = new Map();
+
+            const moneyCents = (v) => (typeof toCents === 'function' ? toCents(v) : Math.round((parseFloat(v) || 0) * 100));
+
+            const cmdAmt = (c) => (typeof commandeMontantExact === 'function' ? commandeMontantExact(c) : (parseFloat(c.total) || 0));
+
+
+
+            function ensureRow(key, partial) {
+
+                if (!map.has(key)) {
+
+                    map.set(key, {
+
+                        key,
+
+                        id: partial.id || '—',
+
+                        nom: partial.nom || '—',
+
+                        montantCents: 0,
+
+                        payeCents: 0,
+
+                        fournisseur: partial.fournisseur || null
+
+                    });
+
+                }
+
+                const row = map.get(key);
+
+                if (partial.nom && (row.nom === '—' || !row.nom)) row.nom = partial.nom;
+
+                if (partial.id && row.id === '—') row.id = partial.id;
+
+                if (partial.fournisseur) row.fournisseur = partial.fournisseur;
+
+                return row;
+
+            }
+
+
+
+            (typeof fournisseurs !== 'undefined' && Array.isArray(fournisseurs) ? fournisseurs : []).forEach(f => {
+
+                ensureRow(balanceKeyFromFournisseur(f), { id: f.id, nom: f.nom, fournisseur: f });
+
+            });
+
+
+
+            (commandesAchats || []).forEach(c => {
+
+                const matched = (fournisseurs || []).find(f => commandeBelongsToFournisseur(c, f));
+
+                const key = matched
+
+                    ? balanceKeyFromFournisseur(matched)
+
+                    : 'n:' + (normalizeFournisseurNom(c.nom_fournisseur) || normalizeFournisseurCode(c.code_fournisseur) || 'inconnu');
+
+                const row = ensureRow(key, {
+
+                    id: matched ? matched.id : (c.code_fournisseur || '—'),
+
+                    nom: matched ? matched.nom : (c.nom_fournisseur || c.code_fournisseur || '—'),
+
+                    fournisseur: matched || null
+
+                });
+
+                row.montantCents += moneyCents(cmdAmt(c));
+
+            });
+
+
+
+            (reglementsAchats || []).forEach(r => {
+
+                const matched = (fournisseurs || []).find(f => reglementBelongsToFournisseur(r, f));
+
+                const key = matched
+
+                    ? balanceKeyFromFournisseur(matched)
+
+                    : 'n:' + (normalizeFournisseurNom(r.fournisseur) || 'inconnu');
+
+                const row = ensureRow(key, {
+
+                    id: matched ? matched.id : '—',
+
+                    nom: matched ? matched.nom : (r.fournisseur || '—'),
+
+                    fournisseur: matched || null
+
+                });
+
+                row.payeCents += moneyCents(r.montant_reg);
+
+            });
+
+
+
+            balanceAchatsRows = Array.from(map.values())
+
+                .map(r => {
+
+                    const montant = (r.montantCents || 0) / 100;
+
+                    const paye = (r.payeCents || 0) / 100;
+
+                    const solde = Math.round((r.montantCents - r.payeCents)) / 100;
+
+                    const reliquat = Math.max(0, solde);
+
+                    return {
+
+                        key: r.key,
+
+                        id: r.id,
+
+                        nom: r.nom,
+
+                        montant,
+
+                        paye,
+
+                        solde,
+
+                        reliquat,
+
+                        fournisseur: r.fournisseur
+
+                    };
+
+                })
+
+                .filter(r => r.montant !== 0 || r.paye !== 0)
+
+                .sort((a, b) => String(a.nom || '').localeCompare(String(b.nom || ''), 'fr'));
+
+
+
+            return balanceAchatsRows;
+
+        }
+
+
+
+        function formatBalanceMoney(val) {
+
+            if (typeof formatKpiMoney === 'function') return formatKpiMoney(val).replace(' MAD', '') + ' MAD';
+
+            if (typeof formatMoneyFr === 'function') {
+
+                const t = formatMoneyFr(val);
+
+                return t.includes('MAD') ? t : t + ' MAD';
+
+            }
+
+            const n = Math.round((parseFloat(val) || 0) * 100) / 100;
+
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+
+        }
+
+
+
+        function showBalanceConsult() {
+
+            balanceAchatsDetailPanel?.classList.add('hidden');
+
+            balanceAchatsConsultPanel?.classList.remove('hidden');
+
+            currentBalanceKey = null;
+
+            renderBalanceAchatsTable();
+
+        }
+
+
+
+        function openBalanceAchats() {
+
+            const go = () => {
+
+                buildBalanceAchatsRows();
+
+                showBalanceConsult();
+
+            };
+
+            if (typeof loadFournisseurs === 'function') {
+
+                Promise.resolve(loadFournisseurs()).then(go).catch(go);
+
+            } else {
+
+                go();
+
+            }
+
+        }
+
+
+
+        function getBalanceRow(key) {
+
+            return (balanceAchatsRows || []).find(r => r.key === key) || null;
+
+        }
+
+
+
+        function getBalanceAchatsForRow(row) {
+
+            if (!row) return [];
+
+            if (row.fournisseur) {
+
+                return (commandesAchats || []).filter(c => commandeBelongsToFournisseur(c, row.fournisseur));
+
+            }
+
+            const nom = normalizeFournisseurNom(row.nom);
+
+            const code = normalizeFournisseurCode(row.id);
+
+            return (commandesAchats || []).filter(c => {
+
+                const cNom = normalizeFournisseurNom(c.nom_fournisseur);
+
+                const cCode = normalizeFournisseurCode(c.code_fournisseur);
+
+                return (nom && cNom && nom === cNom) || (code && cCode && code === cCode);
+
+            });
+
+        }
+
+
+
+        function getBalanceRegsForRow(row) {
+
+            if (!row) return [];
+
+            if (row.fournisseur) {
+
+                return (reglementsAchats || []).filter(r => reglementBelongsToFournisseur(r, row.fournisseur));
+
+            }
+
+            const nom = normalizeFournisseurNom(row.nom);
+
+            return (reglementsAchats || []).filter(r => normalizeFournisseurNom(r.fournisseur) === nom);
+
+        }
+
+
+
+        function renderBalanceAchatsTable() {
+
+            if (!balanceAchatsTableBody) return;
+
+            buildBalanceAchatsRows();
+
+            if (!balanceAchatsRows.length) {
+
+                balanceAchatsTableBody.innerHTML = '<tr><td colspan="7" class="fournisseur-empty">Aucune balance à afficher</td></tr>';
+
+                return;
+
+            }
+
+            balanceAchatsTableBody.innerHTML = balanceAchatsRows.map(r => `
+
+                <tr data-balance-key="${escHtml(r.key)}">
+
+                    <td>${escHtml(r.id)}</td>
+
+                    <td>${escHtml(r.nom)}</td>
+
+                    <td>${escHtml(formatBalanceMoney(r.montant))}</td>
+
+                    <td>${escHtml(formatBalanceMoney(r.paye))}</td>
+
+                    <td class="solde-cell ${typeof soldeClass === 'function' ? soldeClass(r.solde) : ''}">${escHtml(formatBalanceMoney(r.solde))}</td>
+
+                    <td class="solde-cell ${typeof soldeClass === 'function' ? soldeClass(r.reliquat) : ''}">${escHtml(formatBalanceMoney(r.reliquat))}</td>
+
+                    <td class="col-actions no-print-balance">
+
+                        <span class="col-actions-wrap">
+
+                            <button type="button" class="btn-icon-row btn-icon-view" data-balance-view="${escHtml(r.key)}" title="Voir" aria-label="Voir">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+
+                            </button>
+
+                            <button type="button" class="btn-icon-row btn-icon-print" data-balance-print="${escHtml(r.key)}" title="Imprimer" aria-label="Imprimer">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+
+                            </button>
+
+                            <button type="button" class="btn-icon-row btn-icon-pdf" data-balance-pdf="${escHtml(r.key)}" title="PDF" aria-label="PDF">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6M9 17h6M9 9h1"/></svg>
+
+                            </button>
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `).join('');
+
+
+
+            balanceAchatsTableBody.querySelectorAll('[data-balance-view]').forEach(btn => {
+
+                btn.addEventListener('click', () => voirBalanceFournisseur(btn.dataset.balanceView));
+
+            });
+
+            balanceAchatsTableBody.querySelectorAll('[data-balance-print]').forEach(btn => {
+
+                btn.addEventListener('click', () => imprimerBalanceFournisseur(btn.dataset.balancePrint));
+
+            });
+
+            balanceAchatsTableBody.querySelectorAll('[data-balance-pdf]').forEach(btn => {
+
+                btn.addEventListener('click', () => exportBalanceFournisseurPdf(btn.dataset.balancePdf));
+
+            });
+
+        }
+
+
+
+        function buildBalanceDetailHtml(row) {
+
+            const achats = getBalanceAchatsForRow(row);
+
+            const regs = getBalanceRegsForRow(row);
+
+            const fmt = (v) => escHtml(formatBalanceMoney(v));
+
+            const dateFr = (d) => escHtml(typeof formatDateFr === 'function' ? formatDateFr(d) : (d || '—'));
+
+            let html = `
+
+                <div style="margin-bottom:16px;">
+
+                    <div><strong>ID :</strong> ${escHtml(row.id)}</div>
+
+                    <div><strong>Fournisseur :</strong> ${escHtml(row.nom)}</div>
+
+                    <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:10px;">
+
+                        <div><strong>Montant :</strong> ${fmt(row.montant)}</div>
+
+                        <div><strong>Montant Payé :</strong> ${fmt(row.paye)}</div>
+
+                        <div><strong>Solde :</strong> ${fmt(row.solde)}</div>
+
+                        <div><strong>Reliquat :</strong> ${fmt(row.reliquat)}</div>
+
+                    </div>
+
+                </div>
+
+                <h3 style="margin:12px 0 8px;font-size:15px;">Bons d'achat</h3>
+
+                <div class="fournisseur-table-wrap">
+
+                    <table class="fournisseur-table">
+
+                        <thead><tr><th>Date</th><th>Bon</th><th>Montant</th><th>Payé</th></tr></thead>
+
+                        <tbody>
+
+            `;
+
+            if (!achats.length) {
+
+                html += '<tr><td colspan="4" class="fournisseur-empty">Aucun bon d\'achat</td></tr>';
+
+            } else {
+
+                const cmdAmt = (c) => (typeof commandeMontantExact === 'function' ? commandeMontantExact(c) : (parseFloat(c.total) || 0));
+
+                html += achats.map(c => `
+
+                    <tr>
+
+                        <td>${dateFr(c.date_cmd)}</td>
+
+                        <td>${escHtml(c.bon || '—')}</td>
+
+                        <td>${fmt(cmdAmt(c))}</td>
+
+                        <td>${escHtml(c.paye === true || (typeof isCommandePayee === 'function' && isCommandePayee(c)) ? 'Oui' : 'Non')}</td>
+
+                    </tr>
+
+                `).join('');
+
+            }
+
+            html += `
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <h3 style="margin:16px 0 8px;font-size:15px;">Règlements</h3>
+
+                <div class="fournisseur-table-wrap">
+
+                    <table class="fournisseur-table">
+
+                        <thead><tr><th>Date</th><th>Réf</th><th>Bon</th><th>Type</th><th>Montant Rég</th></tr></thead>
+
+                        <tbody>
+
+            `;
+
+            if (!regs.length) {
+
+                html += '<tr><td colspan="5" class="fournisseur-empty">Aucun réglement</td></tr>';
+
+            } else {
+
+                html += regs.map(r => `
+
+                    <tr>
+
+                        <td>${dateFr(r.date)}</td>
+
+                        <td>${escHtml(r.ref || '—')}</td>
+
+                        <td>${escHtml(r.bon || '—')}</td>
+
+                        <td>${escHtml(r.type_reg || '—')}</td>
+
+                        <td>${fmt(r.montant_reg)}</td>
+
+                    </tr>
+
+                `).join('');
+
+            }
+
+            html += '</tbody></table></div>';
+
+            return html;
+
+        }
+
+
+
+        function voirBalanceFournisseur(key) {
+
+            buildBalanceAchatsRows();
+
+            const row = getBalanceRow(key);
+
+            if (!row) return;
+
+            currentBalanceKey = key;
+
+            const title = document.getElementById('balanceDetailTitle');
+
+            if (title) title.textContent = 'Balance — ' + (row.nom || row.id);
+
+            const area = document.getElementById('balanceDetailPrintArea');
+
+            if (area) area.innerHTML = buildBalanceDetailHtml(row);
+
+            balanceAchatsConsultPanel?.classList.add('hidden');
+
+            balanceAchatsDetailPanel?.classList.remove('hidden');
+
+        }
+
+
+
+        function imprimerBalanceFournisseur(key) {
+
+            buildBalanceAchatsRows();
+
+            const row = getBalanceRow(key);
+
+            if (!row) return;
+
+            const area = document.getElementById('balanceDetailPrintArea');
+
+            if (area) area.innerHTML = buildBalanceDetailHtml(row);
+
+            const wasHidden = balanceAchatsDetailPanel?.classList.contains('hidden');
+
+            balanceAchatsConsultPanel?.classList.add('hidden');
+
+            balanceAchatsDetailPanel?.classList.remove('hidden');
+
+            const title = document.getElementById('balanceDetailTitle');
+
+            if (title) title.textContent = 'Balance — ' + (row.nom || row.id);
+
+            currentBalanceKey = key;
+
+            setTimeout(() => {
+
+                window.print();
+
+                if (wasHidden) showBalanceConsult();
+
+            }, 80);
+
+        }
+
+
+
+        function exportBalanceFournisseurPdf(key) {
+
+            buildBalanceAchatsRows();
+
+            const row = getBalanceRow(key);
+
+            if (!row) return;
+
+            if (!window.jspdf) {
+
+                alert('jsPDF non disponible');
+
+                return;
+
+            }
+
+            const { jsPDF } = window.jspdf;
+
+            const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4' });
+
+            doc.setFontSize(14);
+
+            doc.text('Balance Achats — ' + (row.nom || ''), 40, 40);
+
+            doc.setFontSize(10);
+
+            doc.text('ID : ' + String(row.id || '—'), 40, 62);
+
+            doc.text('Montant : ' + formatBalanceMoney(row.montant), 40, 78);
+
+            doc.text('Montant Payé : ' + formatBalanceMoney(row.paye), 40, 94);
+
+            doc.text('Solde : ' + formatBalanceMoney(row.solde), 40, 110);
+
+            doc.text('Reliquat : ' + formatBalanceMoney(row.reliquat), 40, 126);
+
+
+
+            const achats = getBalanceAchatsForRow(row);
+
+            const regs = getBalanceRegsForRow(row);
+
+            const cmdAmt = (c) => (typeof commandeMontantExact === 'function' ? commandeMontantExact(c) : (parseFloat(c.total) || 0));
+
+            const dateFr = (d) => (typeof formatDateFr === 'function' ? formatDateFr(d) : (d || '—'));
+
+
+
+            if (doc.autoTable) {
+
+                doc.autoTable({
+
+                    startY: 150,
+
+                    head: [['Date', 'Bon', 'Montant', 'Payé']],
+
+                    body: achats.map(c => [
+
+                        dateFr(c.date_cmd),
+
+                        c.bon || '—',
+
+                        formatBalanceMoney(cmdAmt(c)),
+
+                        (c.paye === true || (typeof isCommandePayee === 'function' && isCommandePayee(c))) ? 'Oui' : 'Non'
+
+                    ]),
+
+                    styles: { fontSize: 8 },
+
+                    headStyles: { fillColor: [0, 51, 38] }
+
+                });
+
+                doc.autoTable({
+
+                    startY: (doc.lastAutoTable?.finalY || 200) + 16,
+
+                    head: [['Date', 'Réf', 'Bon', 'Type', 'Montant Rég']],
+
+                    body: regs.map(r => [
+
+                        dateFr(r.date),
+
+                        r.ref || '—',
+
+                        r.bon || '—',
+
+                        r.type_reg || '—',
+
+                        formatBalanceMoney(r.montant_reg)
+
+                    ]),
+
+                    styles: { fontSize: 8 },
+
+                    headStyles: { fillColor: [43, 62, 146] }
+
+                });
+
+            }
+
+            doc.save('balance-achats-' + String(row.id || row.nom || 'fournisseur').replace(/\s+/g, '_') + '.pdf');
+
+        }
+
+
+
+        function printBalanceAchatsList() {
+
+            showBalanceConsult();
+
+            setTimeout(() => window.print(), 80);
+
+        }
+
+
+
+        document.getElementById('fermerBalanceAchatsBtn')?.addEventListener('click', () => {
+
+            document.querySelector('.nav-item[data-view="dashboard"]')?.click();
+
+        });
+
+        document.getElementById('printBalanceAchatsBtn')?.addEventListener('click', printBalanceAchatsList);
+
+        document.getElementById('fermerBalanceDetailBtn')?.addEventListener('click', showBalanceConsult);
+
+        document.getElementById('printBalanceDetailBtn')?.addEventListener('click', () => {
+
+            if (currentBalanceKey) imprimerBalanceFournisseur(currentBalanceKey);
+
+            else window.print();
+
+        });
+
+
+
+        // ——— Dépôts Stock (import bons d'achat via Destination) ———
+
+        const DEPOT_DEST_CRU = 'Depot Pr Cru';
+
+        const DEPOT_DEST_DIV = 'Depot Pr Div';
+
+        let depotCrusRows = [];
+
+        let depotDiversRows = [];
+
+
+
+        function normalizeDepotDestination(val) {
+
+            const t = String(val || '').toLowerCase()
+
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+
+                .replace(/\s+/g, ' ').trim();
+
+            if (!t) return '';
+
+            if (t.includes('cru') || t === 'depot pr cru') return 'cru';
+
+            if (t.includes('div') || t === 'depot pr div' || t.includes('divers')) return 'div';
+
+            return '';
+
+        }
+
+
+
+        function collectDepotArticlesFromAchats(kind) {
+
+            try { if (typeof loadCommandesAchats === 'function') loadCommandesAchats(); } catch (e) {}
+
+            const rows = [];
+
+            (commandesAchats || []).forEach((c, ci) => {
+
+                if (normalizeDepotDestination(c.destination) !== kind) return;
+
+                const lignes = Array.isArray(c.lignes) ? c.lignes : [];
+
+                lignes.forEach((l, li) => {
+
+                    const qte = parseFloat(l.quantite != null ? l.quantite : l.qte) || 0;
+
+                    const prix = parseFloat(l.prix_u != null ? l.prix_u : (l.prix != null ? l.prix : l.prix_unitaire)) || 0;
+
+                    const total = (l.sous_total != null && l.sous_total !== '')
+
+                        ? (parseFloat(l.sous_total) || 0)
+
+                        : Math.round(qte * prix * 100) / 100;
+
+                    rows.push({
+
+                        id: (c.bon || 'bon') + '_' + ci + '_' + li,
+
+                        commandeIndex: ci,
+
+                        ligneIndex: li,
+
+                        date: c.date_cmd || '',
+
+                        bon: c.bon || '',
+
+                        nom_fournisseur: c.nom_fournisseur || c.code_fournisseur || '—',
+
+                        ref: l.ref || '',
+
+                        designation: l.designation || '',
+
+                        quantite: qte,
+
+                        prix_u: prix,
+
+                        total,
+
+                        ligne: l,
+
+                        commande: c
+
+                    });
+
+                });
+
+            });
+
+            rows.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+
+            return rows;
+
+        }
+
+
+
+        function formatDepotMoney(val) {
+
+            if (typeof formatMoney === 'function') return formatMoney(val);
+
+            if (typeof formatMoneyFr === 'function') return formatMoneyFr(val);
+
+            const n = Math.round((parseFloat(val) || 0) * 100) / 100;
+
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        }
+
+
+
+        function renderDepotStockTable(kind) {
+
+            const isCru = kind === 'cru';
+
+            const tbody = document.getElementById(isCru ? 'depotCrusTableBody' : 'depotDiversTableBody');
+
+            if (!tbody) return;
+
+            const rows = collectDepotArticlesFromAchats(kind);
+
+            if (isCru) depotCrusRows = rows; else depotDiversRows = rows;
+
+            const emptyMsg = isCru
+
+                ? 'Aucun article (importer via Destination « Depot Pr Cru » sur les bons d\'achat)'
+
+                : 'Aucun article (importer via Destination « Depot Pr Div » sur les bons d\'achat)';
+
+            if (!rows.length) {
+
+                tbody.innerHTML = `<tr><td colspan="8" class="fournisseur-empty">${emptyMsg}</td></tr>`;
+
+                return;
+
+            }
+
+            const dateFr = (d) => (typeof formatDateFr === 'function' ? formatDateFr(d) : (d || '—'));
+
+            tbody.innerHTML = rows.map(r => `
+
+                <tr>
+
+                    <td>${escHtml(dateFr(r.date))}</td>
+
+                    <td>${escHtml(r.nom_fournisseur)}</td>
+
+                    <td>${escHtml(r.ref || '—')}</td>
+
+                    <td>${escHtml(r.designation || '—')}</td>
+
+                    <td>${escHtml((r.quantite || 0).toLocaleString('fr-FR'))}</td>
+
+                    <td>${escHtml(formatDepotMoney(r.prix_u))}</td>
+
+                    <td><strong>${escHtml(formatDepotMoney(r.total))}</strong></td>
+
+                    <td class="col-actions no-print-depot">
+
+                        <span class="col-actions-wrap">
+
+                            <button type="button" class="btn-icon-row btn-icon-view" data-depot-view="${escHtml(r.id)}" data-depot-kind="${kind}" title="Voir" aria-label="Voir">
+
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+
+                            </button>
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `).join('');
+
+            tbody.querySelectorAll('[data-depot-view]').forEach(btn => {
+
+                btn.addEventListener('click', () => voirDepotArticle(btn.dataset.depotKind, btn.dataset.depotView));
+
+            });
+
+        }
+
+
+
+        function refreshDepotStockTables() {
+
+            if (depotCrusView && !depotCrusView.classList.contains('hidden')) renderDepotStockTable('cru');
+
+            if (depotDiversView && !depotDiversView.classList.contains('hidden')) renderDepotStockTable('div');
+
+        }
+
+
+
+        function openDepotStock(kind) {
+
+            const isCru = kind === 'cru';
+
+            const view = isCru ? depotCrusView : depotDiversView;
+
+            if (view) view.classList.remove('hidden');
+
+            document.getElementById(isCru ? 'depotCrusDetailPanel' : 'depotDiversDetailPanel')?.classList.add('hidden');
+
+            document.getElementById(isCru ? 'depotCrusConsultPanel' : 'depotDiversConsultPanel')?.classList.remove('hidden');
+
+            renderDepotStockTable(kind);
+
+        }
+
+
+
+        function findDepotRow(kind, id) {
+
+            const list = kind === 'cru' ? depotCrusRows : depotDiversRows;
+
+            return (list || []).find(r => r.id === id) || null;
+
+        }
+
+
+
+        function buildDepotDetailHtml(row) {
+
+            const dateFr = (d) => escHtml(typeof formatDateFr === 'function' ? formatDateFr(d) : (d || '—'));
+
+            const l = row.ligne || {};
+
+            return `
+
+                <div style="display:grid;gap:8px;">
+
+                    <div><strong>Date :</strong> ${dateFr(row.date)}</div>
+
+                    <div><strong>Bon d'achat :</strong> ${escHtml(row.bon || '—')}</div>
+
+                    <div><strong>Fournisseur :</strong> ${escHtml(row.nom_fournisseur || '—')}</div>
+
+                    <div><strong>Réf :</strong> ${escHtml(row.ref || '—')}</div>
+
+                    <div><strong>Désignation :</strong> ${escHtml(row.designation || '—')}</div>
+
+                    <div><strong>Catégorie :</strong> ${escHtml(l.categorie || '—')}</div>
+
+                    <div><strong>Mesure :</strong> ${escHtml(l.mesure_libelle || l.mesure || '—')}</div>
+
+                    <div><strong>Quantité :</strong> ${escHtml((row.quantite || 0).toLocaleString('fr-FR'))}</div>
+
+                    <div><strong>Prix/U :</strong> ${escHtml(formatDepotMoney(row.prix_u))}</div>
+
+                    <div><strong>Total :</strong> ${escHtml(formatDepotMoney(row.total))}</div>
+
+                    <div><strong>Destination :</strong> ${escHtml(row.commande?.destination || '—')}</div>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        function voirDepotArticle(kind, id) {
+
+            renderDepotStockTable(kind);
+
+            const row = findDepotRow(kind, id);
+
+            if (!row) return;
+
+            const isCru = kind === 'cru';
+
+            const title = document.getElementById(isCru ? 'depotCrusDetailTitle' : 'depotDiversDetailTitle');
+
+            if (title) title.textContent = 'Détail — ' + (row.designation || row.ref || row.bon || 'Article');
+
+            const area = document.getElementById(isCru ? 'depotCrusDetailArea' : 'depotDiversDetailArea');
+
+            if (area) area.innerHTML = buildDepotDetailHtml(row);
+
+            document.getElementById(isCru ? 'depotCrusConsultPanel' : 'depotDiversConsultPanel')?.classList.add('hidden');
+
+            document.getElementById(isCru ? 'depotCrusDetailPanel' : 'depotDiversDetailPanel')?.classList.remove('hidden');
+
+        }
+
+
+
+        document.getElementById('fermerDepotCrusBtn')?.addEventListener('click', () => {
+
+            document.querySelector('.nav-item[data-view="dashboard"]')?.click();
+
+        });
+
+        document.getElementById('fermerDepotDiversBtn')?.addEventListener('click', () => {
+
+            document.querySelector('.nav-item[data-view="dashboard"]')?.click();
+
+        });
+
+        document.getElementById('printDepotCrusBtn')?.addEventListener('click', () => {
+
+            openDepotStock('cru');
+
+            setTimeout(() => window.print(), 80);
+
+        });
+
+        document.getElementById('printDepotDiversBtn')?.addEventListener('click', () => {
+
+            openDepotStock('div');
+
+            setTimeout(() => window.print(), 80);
+
+        });
+
+        document.getElementById('fermerDepotCrusDetailBtn')?.addEventListener('click', () => openDepotStock('cru'));
+
+        document.getElementById('fermerDepotDiversDetailBtn')?.addEventListener('click', () => openDepotStock('div'));
 
 
 
@@ -35359,7 +35797,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        productsGrid.addEventListener('click', e => {
+        if (productsGrid) productsGrid.addEventListener('click', e => {
 
 
 
@@ -35375,354 +35813,39 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-        /* ===== Interface d'accueil / Connexion ===== */
+        /* ===== Interface d'accueil / Connexion (complément) ===== */
+        /* Ouverture/fermeture/login gérés par le script léger près du panneau. */
 
-
-
-        (function initLanding() {
-
-
+        (function initLandingExtras() {
+            try {
+                if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
+            } catch (e) { console.warn('analytics', e); }
+            try {
+                if (typeof applyLandingHabillage === 'function') {
+                    applyLandingHabillage(typeof loadSociete === 'function' ? loadSociete() : null);
+                }
+            } catch (e) { console.warn('habillage', e); }
 
             const landing = document.getElementById('landingScreen');
-
-
-
-            const loginPanel = document.getElementById('loginPanel');
-
-
-
-            
-            applyLandingHabillage(loadSociete());
-
-            const openLoginBtn = document.getElementById('openLoginBtn');
-
-
-
-            const closeLoginBtn = document.getElementById('closeLoginBtn');
-
-
-
-            const loginForm = document.getElementById('loginForm');
-
-
-
-            const eyeBtn = document.getElementById('loginEyeBtn');
-
-
-
-            const userInput = document.getElementById('loginUser');
-
-
-
-            const passInput = document.getElementById('loginPass');
-
-
-
-            const loginError = document.getElementById('loginError');
-
-
-
             const goToLandingBtn = document.getElementById('goToLandingBtn');
 
-
-
-            // Identifiants Super Admin
-
-
-
-            const SUPER_ADMIN_1 = { user: 'superadmin@sweetaustria.com', pass: 'mot de passe' };
-
-
-
-            const SUPER_ADMIN_OLD = { user: 'superadmin', pass: 'SweetAustria@2026' };
-
-
-
-            function openLoginPanel() {
-
-
-
-                if (!loginPanel) return;
-
-
-
-                loginPanel.classList.add('is-open');
-
-
-
-                if (userInput) {
-
-
-
-                    setTimeout(() => userInput.focus(), 200);
-
-
-
-                }
-
-
-
-            }
-
-
-
-            function closeLoginPanel() {
-
-
-
-                if (!loginPanel) return;
-
-
-
-                loginPanel.classList.remove('is-open');
-
-
-
-                if (loginError) loginError.hidden = true;
-
-
-
-            }
-
-
-
-            function showLanding() {
-
-
-
-                if (!landing) return;
-
-
-
-                landing.classList.remove('is-hidden');
-
-
-
-                closeLoginPanel();
-
-
-
-                document.body.style.overflow = 'hidden';
-
-
-
-            }
-
-
-
-            function hideLanding() {
-
-
-
-                if (!landing) return;
-
-
-
-                landing.classList.add('is-hidden');
-
-
-
-                closeLoginPanel();
-
-
-
-                document.body.style.overflow = '';
-
-
-
-            }
-
-
-
-            if (openLoginBtn) {
-
-
-
-                openLoginBtn.addEventListener('click', openLoginPanel);
-
-
-
-            }
-
-
-
-            if (closeLoginBtn) {
-
-
-
-                closeLoginBtn.addEventListener('click', closeLoginPanel);
-
-
-
-            }
-
-
-
-            if (eyeBtn && passInput) {
-
-
-
-                eyeBtn.addEventListener('click', function () {
-
-
-
-                    const isPwd = passInput.type === 'password';
-
-
-
-                    passInput.type = isPwd ? 'text' : 'password';
-
-
-
-                    eyeBtn.setAttribute('aria-label', isPwd ? 'Masquer le mot de passe' : 'Afficher le mot de passe');
-
-
-
-                });
-
-
-
-            }
-
-
-
-            if (loginForm) {
-
-
-
-                loginForm.addEventListener('submit', function (e) {
-
-
-
-                    e.preventDefault();
-
-
-
-                    const u = (userInput?.value || '').trim();
-
-
-
-                    const p = (passInput?.value || '').trim();
-
-
-
-                    const okNew = (u === SUPER_ADMIN_1.user && p === SUPER_ADMIN_1.pass);
-
-
-
-                    const okOld = (u === SUPER_ADMIN_OLD.user && p === SUPER_ADMIN_OLD.pass);
-
-
-
-                    if (okNew || okOld) {
-
-
-
-                        if (loginError) loginError.hidden = true;
-
-
-
-                        hideLanding();
-
-
-
-                    } else {
-
-
-
-                        if (loginError) loginError.hidden = false;
-
-
-
-                        if (passInput) {
-
-
-
-                            passInput.value = '';
-
-
-
-                            passInput.focus();
-
-
-
-                        }
-
-
-
-                    }
-
-
-
-                });
-
-
-
-                [userInput, passInput].forEach(function (el) {
-
-
-
-                    el && el.addEventListener('input', function () {
-
-
-
-                        if (loginError) loginError.hidden = true;
-
-
-
-                    });
-
-
-
-                });
-
-
-
-            }
-
-
-
             if (goToLandingBtn) {
-
-
-
                 goToLandingBtn.addEventListener('click', function (e) {
-
-
-
                     e.preventDefault();
-
-
-
-                    showLanding();
-
-
-
+                    if (typeof window.closeLandingLogin === 'function') window.closeLandingLogin();
+                    if (landing) landing.classList.remove('is-hidden');
+                    document.body.style.overflow = 'hidden';
                 });
-
-
-
             }
-
-
-
-            // Bloque le scroll de l'app tant que l'accueil est affiché
-
-
 
             if (landing && !landing.classList.contains('is-hidden')) {
-
-
-
                 document.body.style.overflow = 'hidden';
-
-
-
             }
-
-
-
         })();
+
+
+
+        @include('partials.client-section-js')
 
 
 
@@ -35735,6 +35858,4 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 </html>
-
-
 
