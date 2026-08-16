@@ -499,10 +499,18 @@
                     <td>${escHtml(c.type_reglement) || '—'}${paye ? ' ✓' : ''}</td>
                     <td class="col-actions col-actions-cmd no-print-cmd" onclick="event.stopPropagation()">
                         <span class="cmd-actions-wrap">
-                            <button type="button" class="btn-row btn-row-edit" data-ve-regler="${i}" ${paye ? 'style="display:none"' : ''}>Régler</button>
-                            <button type="button" class="btn-row btn-row-edit" data-ve-voir="${i}">Voir</button>
-                            <button type="button" class="btn-row btn-row-edit" data-ve-mod="${i}">Modifier</button>
-                            <button type="button" class="btn-row btn-row-delete" data-ve-suppr="${i}">Supprimer</button>
+                            <button type="button" class="btn-icon-row btn-icon-pay" data-ve-regler="${i}" ${paye ? 'style="display:none"' : ''} title="Régler" aria-label="Régler">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M16 15h2"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-view" data-ve-voir="${i}" title="Voir" aria-label="Voir">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-edit" data-ve-mod="${i}" title="Modifier" aria-label="Modifier">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-delete" data-ve-suppr="${i}" title="Supprimer" aria-label="Supprimer">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                            </button>
                         </span>
                     </td>
                 </tr>`;

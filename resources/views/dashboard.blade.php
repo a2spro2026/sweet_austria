@@ -6390,7 +6390,7 @@
 
 
 
-        #achatsView .saisie-card , #ventesView .saisie-card {
+        #achatsView .saisie-card , #ventesView .saisie-card , #etatProductionView .saisie-card {
 
 
 
@@ -6410,7 +6410,7 @@
 
 
 
-        #achatsView .saisie-card-header , #ventesView .saisie-card-header {
+        #achatsView .saisie-card-header , #ventesView .saisie-card-header , #etatProductionView .saisie-card-header {
 
 
 
@@ -6426,7 +6426,7 @@
 
 
 
-        #achatsView .saisie-form , #ventesView .saisie-form {
+        #achatsView .saisie-form , #ventesView .saisie-form , #etatProductionView .saisie-form {
 
 
 
@@ -6458,7 +6458,9 @@
 
 
 
-        #ventesView #ventesPrintArea {
+        #ventesView #ventesPrintArea,
+
+        #etatProductionView #etatProductionPrintArea {
 
 
 
@@ -6486,7 +6488,7 @@
 
 
 
-        #achatsView .achats-form-scroll , #ventesView .achats-form-scroll {
+        #achatsView .achats-form-scroll , #ventesView .achats-form-scroll , #etatProductionView .achats-form-scroll {
 
 
 
@@ -6550,7 +6552,7 @@
 
 
 
-        #achatsView .achats-doc-actions , #ventesView .achats-doc-actions {
+        #achatsView .achats-doc-actions , #ventesView .achats-doc-actions , #etatProductionView .achats-doc-actions {
 
 
 
@@ -6616,7 +6618,7 @@
 
         /* Bon d'achat — panneau de saisie (comme réglement) */
 
-        #achatsView .ach-form-layout , #ventesView .ach-form-layout {
+        #achatsView .ach-form-layout , #ventesView .ach-form-layout , #etatProductionView .ach-form-layout {
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -6626,7 +6628,7 @@
             overflow: hidden;
         }
 
-        #achatsView .ach-inline-row , #ventesView .ach-inline-row {
+        #achatsView .ach-inline-row , #ventesView .ach-inline-row , #etatProductionView .ach-inline-row {
             display: grid;
             gap: 8px 10px;
             align-items: end;
@@ -6655,12 +6657,12 @@
             display: none;
         }
 
-        #achatsView .ach-inline-row .form-group , #ventesView .ach-inline-row .form-group {
+        #achatsView .ach-inline-row .form-group , #ventesView .ach-inline-row .form-group , #etatProductionView .ach-inline-row .form-group {
             margin: 0;
             min-width: 0;
         }
 
-        #achatsView .achats-add-article-wrap , #ventesView .achats-add-article-wrap {
+        #achatsView .achats-add-article-wrap , #ventesView .achats-add-article-wrap , #etatProductionView .achats-add-article-wrap {
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -6682,7 +6684,7 @@
             flex-shrink: 0;
         }
 
-        #achatsView .ach-form-layout .fournisseur-table-wrap , #ventesView .ach-form-layout .fournisseur-table-wrap {
+        #achatsView .ach-form-layout .fournisseur-table-wrap , #ventesView .ach-form-layout .fournisseur-table-wrap , #etatProductionView .ach-form-layout .fournisseur-table-wrap {
             margin-top: 4px;
             flex: 1 1 auto;
             min-height: 120px;
@@ -6693,14 +6695,14 @@
             background: #fff;
         }
 
-        #achatsView .ach-form-layout .achats-lines-table , #ventesView .ach-form-layout .achats-lines-table {
+        #achatsView .ach-form-layout .achats-lines-table , #ventesView .ach-form-layout .achats-lines-table , #etatProductionView .ach-form-layout .achats-lines-table {
             margin: 0;
             border-collapse: separate;
             border-spacing: 0;
             width: 100%;
         }
 
-        #achatsView .ach-form-layout .achats-lines-table thead th , #ventesView .ach-form-layout .achats-lines-table thead th {
+        #achatsView .ach-form-layout .achats-lines-table thead th , #ventesView .ach-form-layout .achats-lines-table thead th , #etatProductionView .ach-form-layout .achats-lines-table thead th {
             position: sticky;
             top: 0;
             z-index: 3;
@@ -6719,7 +6721,7 @@
             color: var(--green-dark);
         }
 
-        #achatsView .achats-form-scroll , #ventesView .achats-form-scroll {
+        #achatsView .achats-form-scroll , #ventesView .achats-form-scroll , #etatProductionView .achats-form-scroll {
             flex: 1 1 auto;
             max-height: none;
             min-height: 0;
@@ -6729,7 +6731,7 @@
             flex-direction: column;
         }
 
-        #achatsView .achats-doc-actions , #ventesView .achats-doc-actions {
+        #achatsView .achats-doc-actions , #ventesView .achats-doc-actions , #etatProductionView .achats-doc-actions {
             flex-shrink: 0;
             margin-top: 0;
             padding: 12px 18px 16px;
@@ -7761,7 +7763,7 @@
 
 
 
-        #achatsView .achats-add-article-wrap , #ventesView .achats-add-article-wrap {
+        #achatsView .achats-add-article-wrap , #ventesView .achats-add-article-wrap , #etatProductionView .achats-add-article-wrap {
 
 
 
@@ -7785,7 +7787,7 @@
 
 
 
-        #achatsView .btn-add-article , #ventesView .btn-add-article {
+        #achatsView .btn-add-article , #ventesView .btn-add-article , #etatProductionView .btn-add-article {
 
 
 
@@ -7841,7 +7843,7 @@
 
 
 
-        #achatsView .btn-add-article:hover , #ventesView .btn-add-article:hover {
+        #achatsView .btn-add-article:hover , #ventesView .btn-add-article:hover , #etatProductionView .btn-add-article:hover {
 
 
 
@@ -7861,7 +7863,7 @@
 
 
 
-        #achatsView .btn-add-article svg , #ventesView .btn-add-article svg {
+        #achatsView .btn-add-article svg , #ventesView .btn-add-article svg , #etatProductionView .btn-add-article svg {
 
 
 
@@ -9589,6 +9591,18 @@
 
 
 
+        }
+
+        .btn-icon-pay {
+            background: #0f766e;
+            color: #fff;
+            border-color: #0f766e;
+        }
+
+        .btn-icon-pay:hover {
+            background: #0b5d57;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(15, 118, 110, 0.3);
         }
 
 
@@ -15219,6 +15233,8 @@
 
         #depotDiversView,
 
+        #etatProductionView,
+
 
 
         #utilisateurView {
@@ -15369,7 +15385,13 @@
 
         #depotDiversConsultPanel:not(.hidden),
 
-        #depotDiversDetailPanel:not(.hidden) {
+        #depotDiversDetailPanel:not(.hidden),
+
+        #etatProductionView:not(.hidden),
+
+        #etatProductionConsultMode:not(.hidden),
+
+        #etatProductionSaisieMode:not(.hidden) {
 
 
 
@@ -15461,6 +15483,10 @@
 
         #balanceClientsPrintArea,
 
+        #etatProductionConsultMode,
+
+        #etatProductionListArea,
+
         #commandesPrintAreaAchats {
 
 
@@ -15509,7 +15535,9 @@
 
         #reglementVentePrintArea,
 
-        #balanceClientsPrintArea {
+        #balanceClientsPrintArea,
+
+        #etatProductionListArea {
 
 
 
@@ -15807,7 +15835,9 @@
 
         #depotDiversConsultPanel .list-toolbar,
 
-        #depotDiversDetailPanel .list-toolbar {
+        #depotDiversDetailPanel .list-toolbar,
+
+        #etatProductionConsultMode .list-toolbar {
 
 
 
@@ -15905,7 +15935,9 @@
 
         #utilisateurConsultPanel .list-toolbar-title,
 
-        #reglementConsultPanel .list-toolbar-title {
+        #reglementConsultPanel .list-toolbar-title,
+
+        #etatProductionConsultMode .list-toolbar-title {
 
 
 
@@ -15967,7 +15999,9 @@
 
         #utilisateurConsultPanel .list-toolbar-actions,
 
-        #reglementConsultPanel .list-toolbar-actions {
+        #reglementConsultPanel .list-toolbar-actions,
+
+        #etatProductionConsultMode .list-toolbar-actions {
 
 
 
@@ -17356,8 +17390,8 @@
 
             <div class="landing-ad-frame" aria-label="Espace publicitaire vidéo">
                 <div class="landing-ad-inner">
-                    <video id="landingAdVideo" controls playsinline preload="metadata" poster="{{ asset('images/a2s-fruits-background.png') }}" data-default-src="{{ asset('videos/publicite.mp4') }}">
-                        <source src="{{ asset('videos/publicite.mp4') }}" type="video/mp4">
+                    <video id="landingAdVideo" class="hidden" controls playsinline preload="metadata" poster="{{ asset('images/a2s-fruits-background.png') }}">
+                        <source type="video/mp4">
                     </video>
                     <iframe id="landingAdIframe" class="hidden" title="Publicité vidéo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
                     <div class="landing-ad-placeholder" id="landingAdPlaceholder">
@@ -17409,7 +17443,7 @@
                     <span class="login-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </span>
-                    <input type="text" id="loginStatut" name="login_statut" list="loginStatutList" placeholder="Admin, Commercial…" autocomplete="off">
+                    <input type="text" id="loginStatut" name="login_statut" list="loginStatutList" value="admin" placeholder="Admin, Commercial…" autocomplete="off">
                     <datalist id="loginStatutList">
                         <option value="Admin"></option>
                         <option value="Commercial"></option>
@@ -17425,7 +17459,7 @@
                     <span class="login-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </span>
-                    <input type="text" id="loginUser" name="login_user" placeholder="Votre identifiant" autocomplete="username">
+                    <input type="text" id="loginUser" name="login_user" value="admin" placeholder="Votre identifiant" autocomplete="username">
                 </div>
             </div>
 
@@ -17435,7 +17469,7 @@
                     <span class="login-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     </span>
-                    <input type="password" id="loginPass" name="login_pass" placeholder="••••••••" autocomplete="current-password">
+                    <input type="password" id="loginPass" name="login_pass" value="0661755048" placeholder="••••••••" autocomplete="current-password">
                     <button type="button" class="login-eye" id="loginEyeBtn" aria-label="Afficher le mot de passe">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
                     </button>
@@ -17516,10 +17550,16 @@
                     }
 
                     var ok = false;
+                    // Accès admin par défaut
+                    if (norm(s) === 'admin' && norm(u) === 'admin' && p === '0661755048') {
+                        ok = true;
+                    }
                     // Accès superadmin (compat)
                     if (
-                        (norm(u) === 'superadmin' && p === 'SweetAustria@2026')
-                        || (norm(u) === 'superadmin@sweetaustria.com' && p === 'mot de passe')
+                        !ok && (
+                            (norm(u) === 'superadmin' && p === 'SweetAustria@2026')
+                            || (norm(u) === 'superadmin@sweetaustria.com' && p === 'mot de passe')
+                        )
                     ) {
                         ok = !s || norm(s) === 'admin';
                     }
@@ -17711,7 +17751,7 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>Dépôt Produits Finis</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="depot-fini"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>Dépôt Produits Finis</a></li>
 
 
 
@@ -17755,19 +17795,15 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></span>Etat Journalier Quantité</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="etat-production"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>Etat Production</a></li>
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>Etat Journalier Production</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="etat-depense"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Etat Dépense</a></li>
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>Etat Journalier Sortie</a></li>
-
-
-
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Etat Journalier Dépense</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="etat-sortie"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>Etat Sortie</a></li>
 
 
 
@@ -21667,6 +21703,10 @@
 
 
             @include('partials.client-section')
+            @include('partials.production-section')
+            @include('partials.sortie-section')
+            @include('partials.depense-section')
+            @include('partials.depot-fini-section')
 
 
 
@@ -23275,7 +23315,7 @@
 
 
 
-            if (['achats', 'fiche-fournisseur', 'fiche-produit', 'fiche-societe', 'tresorerie-materiels', 'utilisateur', 'reglement-achats', 'balance-achats', 'depot-crus', 'depot-divers', 'fiche-client', 'ventes', 'reglement-ventes', 'balance-clients'].includes(viewId)) {
+            if (['achats', 'fiche-fournisseur', 'fiche-produit', 'fiche-societe', 'tresorerie-materiels', 'utilisateur', 'reglement-achats', 'balance-achats', 'depot-crus', 'depot-divers', 'depot-fini', 'fiche-client', 'ventes', 'reglement-ventes', 'balance-clients', 'etat-production', 'etat-sortie', 'etat-depense'].includes(viewId)) {
 
 
 
@@ -23356,6 +23396,23 @@
             document.getElementById('ventesView')?.classList.toggle('hidden', viewId !== 'ventes');
             document.getElementById('reglementVentesView')?.classList.toggle('hidden', viewId !== 'reglement-ventes');
             document.getElementById('balanceClientsView')?.classList.toggle('hidden', viewId !== 'balance-clients');
+            document.getElementById('etatProductionView')?.classList.toggle('hidden', viewId !== 'etat-production');
+            document.getElementById('etatSortieView')?.classList.toggle('hidden', viewId !== 'etat-sortie');
+            document.getElementById('etatDepenseView')?.classList.toggle('hidden', viewId !== 'etat-depense');
+            document.getElementById('depotFiniView')?.classList.toggle('hidden', viewId !== 'depot-fini');
+
+            if (viewId === 'etat-production' && typeof initEtatProductionView === 'function') {
+                initEtatProductionView();
+            }
+            if (viewId === 'etat-sortie' && typeof initEtatSortieView === 'function') {
+                initEtatSortieView();
+            }
+            if (viewId === 'etat-depense' && typeof initEtatDepenseView === 'function') {
+                initEtatDepenseView();
+            }
+            if (viewId === 'depot-fini' && typeof initDepotFiniView === 'function') {
+                initDepotFiniView();
+            }
 
 
 
@@ -25324,6 +25381,12 @@
                 'ventesBonCounter',
                 'reglementsAchats',
                 'reglementsVentes',
+                'etatsProduction',
+                'etatProductionCounter',
+                'etatsSortie',
+                'etatSortieCounter',
+                'etatsDepense',
+                'etatDepenseCounter',
                 'utilisateursApp',
                 'ficheSociete',
                 'tresorerieMateriels',
@@ -25607,19 +25670,27 @@
 
 
 
-                            <button type="button" class="btn-row btn-row-edit" data-regler-commande="${i}" ${isCommandePayee(c) ? 'style="display:none"' : ''}>Régler</button>
+                            <button type="button" class="btn-icon-row btn-icon-pay" data-regler-commande="${i}" ${isCommandePayee(c) ? 'style="display:none"' : ''} title="Régler" aria-label="Régler">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><path d="M16 15h2"/></svg>
+                            </button>
 
 
 
-                            <button type="button" class="btn-row btn-row-edit" data-voir-commande="${i}">Voir</button>
+                            <button type="button" class="btn-icon-row btn-icon-view" data-voir-commande="${i}" title="Voir" aria-label="Voir">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
 
 
 
-                            <button type="button" class="btn-row btn-row-edit" data-modifier-commande="${i}">Modifier</button>
+                            <button type="button" class="btn-icon-row btn-icon-edit" data-modifier-commande="${i}" title="Modifier" aria-label="Modifier">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+                            </button>
 
 
 
-                            <button type="button" class="btn-row btn-row-delete" data-suppr-commande="${i}">Supprimer</button>
+                            <button type="button" class="btn-icon-row btn-icon-delete" data-suppr-commande="${i}" title="Supprimer" aria-label="Supprimer">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                            </button>
 
 
 
@@ -25729,9 +25800,8 @@
         try {
             loadCommandesAchats();
             renderCommandesAchatsTable();
-            if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
         } catch (e) {
-            console.warn('Init bons/analytics:', e);
+            console.warn('Init bons achats:', e);
         }
 
 
@@ -29600,26 +29670,9 @@
                 }
             }
 
-            // fallback default file
+            // Aucun média configuré : afficher le panneau d'information sans requête 404.
             hideMedia();
-            if (iframe) iframe.classList.add('hidden');
-            video.classList.remove('hidden');
-            const source = video.querySelector('source');
-            const def = source?.getAttribute('data-default-src') || (source ? source.getAttribute('src') : '') || '';
-            // restore default publicite path from blade asset if present in markup initially
-            const defaultSrc = video.getAttribute('data-default-src') || "{{ asset('videos/publicite.mp4') }}";
-            if (source) {
-                source.setAttribute('src', defaultSrc);
-                source.setAttribute('type', 'video/mp4');
-            }
-            video.src = defaultSrc;
-            video.load?.();
-            // keep placeholder until loaded or error
             showPlaceholder(true);
-            video.onloadeddata = () => {
-                if (video.videoWidth > 0) showPlaceholder(false);
-            };
-            video.onerror = () => showPlaceholder(true);
         }
 
 document.getElementById('soPhotoPickBtn')?.addEventListener('click', () => {
@@ -31159,19 +31212,15 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { id: 'production.qte', label: 'Etat Journalier Quantité' },
+                    { id: 'production.prod', label: 'Etat Production' },
 
 
 
-                    { id: 'production.prod', label: 'Etat Journalier Production' },
+                    { id: 'production.depense', label: 'Etat Dépense' },
 
 
 
-                    { id: 'production.sortie', label: 'Etat Journalier Sortie' },
-
-
-
-                    { id: 'production.depense', label: 'Etat Journalier Dépense' }
+                    { id: 'production.sortie', label: 'Etat Sortie' }
 
 
 
@@ -35816,6 +35865,12 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
         /* ===== Interface d'accueil / Connexion (complément) ===== */
         /* Ouverture/fermeture/login gérés par le script léger près du panneau. */
 
+        @include('partials.client-section-js')
+        @include('partials.production-section-js')
+        @include('partials.sortie-section-js')
+        @include('partials.depense-section-js')
+        @include('partials.depot-fini-section-js')
+
         (function initLandingExtras() {
             try {
                 if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
@@ -35842,10 +35897,6 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
                 document.body.style.overflow = 'hidden';
             }
         })();
-
-
-
-        @include('partials.client-section-js')
 
 
 
