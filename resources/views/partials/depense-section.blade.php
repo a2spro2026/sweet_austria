@@ -80,22 +80,42 @@
         overflow: auto;
         padding: 14px 18px 8px;
     }
-    #etatDepenseView .depense-date-row {
+    #etatDepenseView .etat-saisie-grid {
         display: grid;
-        grid-template-columns: 150px;
-        margin-bottom: 10px;
-    }
-    #etatDepenseView .depense-entry-row {
-        display: grid;
-        grid-template-columns: 135px 155px 105px minmax(175px, 1fr) 82px 65px 100px 110px 44px;
-        gap: 8px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px 12px;
         align-items: end;
+        width: 100%;
         margin-bottom: 12px;
     }
-    #etatDepenseView .depense-entry-row .form-group,
-    #etatDepenseView .depense-date-row .form-group {
+    #etatDepenseView .etat-saisie-grid .form-group {
         min-width: 0;
         margin: 0;
+    }
+    #etatDepenseView .etat-saisie-grid .span-2 {
+        grid-column: span 2;
+    }
+    #etatDepenseView .etat-saisie-grid .form-input,
+    #etatDepenseView .etat-saisie-grid .form-select {
+        width: 100%;
+        height: 38px;
+        box-sizing: border-box;
+    }
+    #etatDepenseView .depense-entry-stack {
+        display: contents;
+    }
+    #etatDepenseView .etat-saisie-add {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 0;
+        min-width: 0;
+    }
+    #etatDepenseView .etat-saisie-add::before {
+        content: '\00a0';
+        font-size: 12px;
+        line-height: 1;
+        margin-bottom: 4px;
     }
     #etatDepenseView #ed_numero_production {
         cursor: pointer;
@@ -105,24 +125,18 @@
         background-position: right 7px center;
         background-size: 12px;
     }
-    #etatDepenseView #ed_numero_sortie,
+    #etatDepenseView #ed_numero,
     #etatDepenseView #ed_sous_total {
         background: #edf5f1;
         font-weight: 700;
     }
-    #etatDepenseView .achats-add-article-wrap {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        padding-bottom: 1px;
-        margin: 0;
-    }
+    #etatDepenseView .etat-saisie-add .btn-add-article,
     #etatDepenseView .btn-add-article {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         border: none;
         border-radius: 10px;
         background: var(--green-dark, #003326);
@@ -159,15 +173,15 @@
         padding: 12px 18px 16px;
         border-top: 1px solid var(--border);
         background: #fff;
+        position: relative;
+        z-index: 2;
     }
-    @media (max-width: 1150px) {
-        #etatDepenseView .depense-entry-row {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-    }
-    @media (max-width: 720px) {
-        #etatDepenseView .depense-entry-row {
+    @media (max-width: 980px) {
+        #etatDepenseView .etat-saisie-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        #etatDepenseView .etat-saisie-grid .span-2 {
+            grid-column: span 2;
         }
     }
     @media print {
@@ -219,19 +233,20 @@
                 <table class="achats-commandes-table" id="etatsDepenseTable">
                     <thead>
                         <tr>
-                            <th>N° Et/Sor</th>
-                            <th>N° Etat production</th>
+                            <th>Date</th>
+                            <th>N° E/D</th>
+                            <th>N° E/P</th>
                             <th>Réf</th>
                             <th>Désignation</th>
-                            <th>Qté</th>
+                            <th>Quantité</th>
                             <th>U</th>
                             <th>Prix/U</th>
-                            <th>Sous Total</th>
+                            <th>Sous-Total</th>
                             <th class="col-actions">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="etatsDepenseTableBody">
-                        <tr><td colspan="9" class="achats-commandes-empty">Aucun état dépense</td></tr>
+                        <tr><td colspan="10" class="achats-commandes-empty">Aucun état dépense</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -246,52 +261,51 @@
                     <h2>ETAT DÉPENSE</h2>
                 </div>
                 <div class="depense-form-scroll">
-                    <div class="depense-date-row">
+                    <div class="etat-saisie-grid">
                         <div class="form-group">
                             <label for="ed_date">Date</label>
                             <input type="date" id="ed_date" class="form-input" readonly>
                         </div>
-                    </div>
-
-                    <div class="depense-entry-row no-print-depense">
                         <div class="form-group">
-                            <label for="ed_numero_sortie">N° Et/Sor auto</label>
-                            <input type="text" id="ed_numero_sortie" class="form-input" readonly>
+                            <label for="ed_numero">N° E/D</label>
+                            <input type="text" id="ed_numero" class="form-input" readonly>
                         </div>
-                        <div class="form-group">
-                            <label for="ed_numero_production">N° Etat Production</label>
-                            <select id="ed_numero_production" class="form-input form-select">
-                                <option value="">N° Etat Production</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="ed_ref">Réf</label>
-                            <input type="text" id="ed_ref" class="form-input" placeholder="Réf" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="ed_designation">Désignation</label>
-                            <input type="text" id="ed_designation" class="form-input" placeholder="Désignation" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="ed_quantite">Qté</label>
-                            <input type="number" id="ed_quantite" class="form-input" min="0.001" step="0.001" placeholder="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="ed_unite">U</label>
-                            <input type="text" id="ed_unite" class="form-input" placeholder="U" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="ed_prix_unitaire">Prix/U</label>
-                            <input type="number" id="ed_prix_unitaire" class="form-input" min="0" step="0.01" placeholder="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="ed_sous_total">Sous Total</label>
-                            <input type="text" id="ed_sous_total" class="form-input" value="0" readonly>
-                        </div>
-                        <div class="achats-add-article-wrap">
-                            <button type="button" class="btn-add-article" id="ajouterLigneDepenseBtn" title="Ajouter l'article" aria-label="Ajouter l'article">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                            </button>
+                        <div class="depense-entry-stack no-print-depense">
+                            <div class="form-group">
+                                <label for="ed_numero_production">N° E/P</label>
+                                <select id="ed_numero_production" class="form-input form-select">
+                                    <option value="">N° E/P</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ed_ref">Réf</label>
+                                <input type="text" id="ed_ref" class="form-input" placeholder="Réf" autocomplete="off">
+                            </div>
+                            <div class="form-group span-2">
+                                <label for="ed_designation">Désignation</label>
+                                <input type="text" id="ed_designation" class="form-input" placeholder="Désignation" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="ed_quantite">Quantité</label>
+                                <input type="number" id="ed_quantite" class="form-input" min="0.001" step="0.001" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="ed_unite">U</label>
+                                <input type="text" id="ed_unite" class="form-input" placeholder="U" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="ed_prix_unitaire">Prix/U</label>
+                                <input type="number" id="ed_prix_unitaire" class="form-input" min="0" step="0.01" placeholder="0">
+                            </div>
+                            <div class="form-group span-2">
+                                <label for="ed_sous_total">Sous-Total</label>
+                                <input type="text" id="ed_sous_total" class="form-input" value="0" readonly>
+                            </div>
+                            <div class="etat-saisie-add">
+                                <button type="button" class="btn-add-article" id="ajouterLigneDepenseBtn" title="Ajouter l'article" aria-label="Ajouter l'article">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -299,19 +313,18 @@
                         <table class="fournisseur-table achats-lines-table">
                             <thead>
                                 <tr>
-                                    <th>N° Et/Sor</th>
-                                    <th>N° Etat production</th>
+                                    <th>N° E/P</th>
                                     <th>Réf</th>
                                     <th>Désignation</th>
-                                    <th>Qté</th>
+                                    <th>Quantité</th>
                                     <th>U</th>
                                     <th>Prix/U</th>
-                                    <th>Sous Total</th>
+                                    <th>Sous-Total</th>
                                     <th class="col-actions no-print-depense">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="etatDepenseLignesBody">
-                                <tr><td colspan="9" class="fournisseur-empty">Aucune ligne ajoutée</td></tr>
+                                <tr><td colspan="8" class="fournisseur-empty">Aucune ligne ajoutée</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -319,8 +332,8 @@
             </div>
             <div class="form-actions depense-form-actions no-print-depense">
                 <button type="button" class="btn-form btn-form-primary" id="validerEtatDepenseBtn">Valider</button>
-                <button type="button" class="btn-form btn-form-secondary" id="fermerEtatDepenseBtn">Fermer</button>
                 <button type="button" class="btn-form btn-form-secondary" id="imprimerEtatDepenseBtn">Imprimer</button>
+                <button type="button" class="btn-form btn-form-secondary" id="fermerEtatDepenseBtn">Fermer</button>
             </div>
         </form>
     </div>

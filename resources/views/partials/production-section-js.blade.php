@@ -3,9 +3,24 @@
         let etatsProduction = [];
         let etatProductionLignes = [];
         let editingEtatProductionId = null;
+        let editingProductionLineIndex = null;
         // État ouvert dans le panneau : ses quantités sont portées par etatProductionLignes,
         // il ne faut donc pas les déduire une seconde fois depuis les états enregistrés.
         let currentEtatProductionId = null;
+
+        function formatEtatNumero(prefix, n) {
+            return prefix + '/' + String(n).padStart(4, '0');
+        }
+
+        function parseEtatNumero(value) {
+            const match = String(value || '').match(/(\d+)\s*$/);
+            return match ? Number(match[1]) : 0;
+        }
+
+        function normalizeEtatNumero(value, prefix) {
+            const n = parseEtatNumero(value);
+            return n > 0 ? formatEtatNumero(prefix, n) : '';
+        }
 
         function loadEtatsProduction() {
             try {
@@ -14,6 +29,19 @@
             } catch (e) {
                 etatsProduction = [];
             }
+            let migrated = false;
+            let max = 0;
+            etatsProduction.forEach(etat => {
+                const next = normalizeEtatNumero(etat.numero, 'EP');
+                if (next && etat.numero !== next) {
+                    etat.numero = next;
+                    migrated = true;
+                }
+                max = Math.max(max, parseEtatNumero(etat.numero));
+            });
+            if (!etatsProduction.length) max = 0;
+            localStorage.setItem(ETAT_PRODUCTION_COUNTER_KEY, String(max));
+            if (migrated) saveEtatsProduction();
             return etatsProduction;
         }
 
@@ -22,14 +50,10 @@
         }
 
         function nextEtatProductionNumber() {
-            let counter = Number(localStorage.getItem(ETAT_PRODUCTION_COUNTER_KEY) || 0);
-            const used = etatsProduction.reduce((max, etat) => {
-                const match = String(etat.numero || '').match(/(\d+)$/);
-                return Math.max(max, match ? Number(match[1]) : 0);
-            }, 0);
-            counter = Math.max(counter, used) + 1;
-            localStorage.setItem(ETAT_PRODUCTION_COUNTER_KEY, String(counter));
-            return 'EP' + String(counter).padStart(4, '0');
+            loadEtatsProduction();
+            const next = Number(localStorage.getItem(ETAT_PRODUCTION_COUNTER_KEY) || 0) + 1;
+            localStorage.setItem(ETAT_PRODUCTION_COUNTER_KEY, String(next));
+            return formatEtatNumero('EP', next);
         }
 
         function todayEtatProduction() {
@@ -175,15 +199,19 @@
             const stock = document.getElementById('ep_stock');
             if (!product) {
                 if (stock) stock.value = '0';
+                const unite = document.getElementById('ep_unite');
+                if (unite) unite.value = '';
                 return;
             }
             if (ref) ref.value = product.ref || '';
             if (designation) designation.value = product.designation || '';
             if (stock) stock.value = formatProductionNumber(product.quantite);
+            const unite = document.getElementById('ep_unite');
+            if (unite) unite.value = product.unite || '';
         }
 
         function clearEtatProductionEntry() {
-            ['ep_ref', 'ep_designation', 'ep_quantite'].forEach(id => {
+            ['ep_ref', 'ep_designation', 'ep_quantite', 'ep_unite'].forEach(id => {
                 const input = document.getElementById(id);
                 if (input) input.value = '';
             });
@@ -195,22 +223,28 @@
             const tbody = document.getElementById('etatProductionLignesBody');
             if (!tbody) return;
             if (!etatProductionLignes.length) {
-                tbody.innerHTML = '<tr><td colspan="5" class="fournisseur-empty">Aucun produit ajouté</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6" class="fournisseur-empty">Aucun produit ajouté</td></tr>';
                 return;
             }
             const restants = new Map(getProductionProducts().map(article =>
                 [productionArticleKey(article.ref, article.designation), article.quantite]
             ));
             tbody.innerHTML = etatProductionLignes.map((ligne, index) => `
-                <tr>
+                <tr class="${editingProductionLineIndex === index ? 'selected' : ''}">
                     <td>${escHtml(ligne.ref || '')}</td>
                     <td>${escHtml(ligne.designation || '')}</td>
                     <td>${formatProductionNumber(restants.get(productionArticleKey(ligne.ref, ligne.designation)) ?? ligne.stock)}</td>
                     <td>${formatProductionNumber(ligne.quantite)}</td>
+                    <td>${escHtml(ligne.unite || '')}</td>
                     <td class="col-actions no-print-production">
-                        ${readOnly ? '—' : `<button type="button" class="btn-icon-row btn-icon-delete" data-remove-production-line="${index}" title="Supprimer" aria-label="Supprimer">
-                            <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
-                        </button>`}
+                        ${readOnly ? '—' : `<span class="col-actions-wrap">
+                            <button type="button" class="btn-icon-row btn-icon-edit" data-edit-production-line="${index}" title="Modifier" aria-label="Modifier">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-delete" data-remove-production-line="${index}" title="Supprimer" aria-label="Supprimer">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                            </button>
+                        </span>`}
                     </td>
                 </tr>
             `).join('');
@@ -221,20 +255,22 @@
             if (!tbody) return;
             loadEtatsProduction();
             if (!etatsProduction.length) {
-                tbody.innerHTML = '<tr><td colspan="6" class="achats-commandes-empty">Aucun état de production</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="7" class="achats-commandes-empty">Aucun état de production</td></tr>';
                 return;
             }
             tbody.innerHTML = etatsProduction.slice().reverse().map(etat => {
                 const lignes = Array.isArray(etat.lignes) && etat.lignes.length
                     ? etat.lignes
-                    : [{ ref: '', designation: '', quantite: 0 }];
+                    : [{ ref: '', designation: '', quantite: 0, unite: '' }];
+                const dateLabel = typeof formatDateFr === 'function' ? formatDateFr(etat.date) : (etat.date || '');
                 return lignes.map((ligne, index) => `
                     <tr>
-                        ${index === 0 ? `<td rowspan="${lignes.length}">${escHtml(etat.date || '')}</td>
+                        ${index === 0 ? `<td rowspan="${lignes.length}">${escHtml(dateLabel)}</td>
                         <td rowspan="${lignes.length}">${escHtml(etat.numero || '')}</td>` : ''}
                         <td>${escHtml(ligne.ref || '')}</td>
                         <td>${escHtml(ligne.designation || '')}</td>
                         <td>${formatProductionNumber(ligne.quantite)}</td>
+                        <td>${escHtml(ligne.unite || '')}</td>
                         ${index === 0 ? `<td rowspan="${lignes.length}">
                             <div class="production-actions col-actions-wrap">
                                 <button type="button" class="btn-icon-row btn-icon-view" data-production-action="view" data-production-id="${escHtml(etat.id)}" title="Voir" aria-label="Voir">
@@ -242,9 +278,6 @@
                                 </button>
                                 <button type="button" class="btn-icon-row btn-icon-edit" data-production-action="edit" data-production-id="${escHtml(etat.id)}" title="Modifier" aria-label="Modifier">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
-                                </button>
-                                <button type="button" class="btn-icon-row btn-icon-delete" data-production-action="delete" data-production-id="${escHtml(etat.id)}" title="Supprimer" aria-label="Supprimer">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
                                 </button>
                                 <button type="button" class="btn-icon-row btn-icon-print" data-production-action="print" data-production-id="${escHtml(etat.id)}" title="Imprimer" aria-label="Imprimer">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -257,16 +290,19 @@
         }
 
         function setEtatProductionReadOnly(readOnly) {
-            const entry = document.querySelector('#etatProductionView .production-entry-row');
+            const entry = document.querySelector('#etatProductionView .production-entry-stack');
             if (entry) entry.classList.toggle('hidden', readOnly);
             const validate = document.getElementById('validerEtatProductionBtn');
             if (validate) validate.classList.toggle('hidden', readOnly);
+            const modifier = document.getElementById('modifierEtatProductionBtn');
+            if (modifier) modifier.classList.toggle('hidden', !readOnly);
             renderEtatProductionLignes(readOnly);
         }
 
         function resetEtatProductionForm() {
             editingEtatProductionId = null;
             currentEtatProductionId = null;
+            editingProductionLineIndex = null;
             etatProductionLignes = [];
             const date = document.getElementById('ep_date');
             const numero = document.getElementById('ep_numero');
@@ -290,6 +326,7 @@
             editingEtatProductionId = readOnly ? null : etat.id;
             currentEtatProductionId = etat.id;
             etatProductionLignes = Array.isArray(etat.lignes) ? etat.lignes.map(ligne => ({ ...ligne })) : [];
+            editingProductionLineIndex = null;
             document.getElementById('ep_date').value = etat.date || '';
             document.getElementById('ep_numero').value = etat.numero || '';
             clearEtatProductionEntry();
@@ -346,75 +383,149 @@
             applyEtatProductionProduct(findProductionProduct('', event.target.value));
         });
 
-        document.getElementById('ajouterLigneProductionBtn')?.addEventListener('click', () => {
-            const ref = document.getElementById('ep_ref')?.value.trim() || '';
-            const designation = document.getElementById('ep_designation')?.value.trim() || '';
-            const product = findProductionProduct(ref, designation);
+        function commitEtatProductionEntry(requireComplete = true) {
+            const ref = (document.getElementById('ep_ref')?.value || '').trim();
+            const designation = (document.getElementById('ep_designation')?.value || '').trim();
             const quantite = Number(document.getElementById('ep_quantite')?.value || 0);
+            const pending = !!(ref || designation || quantite > 0);
+            if (!pending) return !requireComplete;
+            const product = findProductionProduct(ref, designation);
             if (!product) {
-                alert('Sélectionnez un produit existant.');
+                alert('Sélectionnez une référence et une désignation du dépôt produits crus.');
                 document.getElementById('ep_designation')?.focus();
-                return;
+                return false;
             }
             if (!(quantite > 0)) {
                 alert('La quantité doit être supérieure à zéro.');
                 document.getElementById('ep_quantite')?.focus();
-                return;
+                return false;
             }
-            const disponible = getProductionAvailableStock(product.ref, product.designation);
+            const disponible = getProductionAvailableStock(
+                product.ref,
+                product.designation,
+                editingProductionLineIndex
+            );
             if (quantite > disponible) {
                 alert('Quantité supérieure au stock disponible (' + formatProductionNumber(disponible) + ').');
                 document.getElementById('ep_quantite')?.focus();
-                return;
+                return false;
             }
-            const existing = etatProductionLignes.find(ligne =>
-                productionArticleKey(ligne.ref, ligne.designation) === productionArticleKey(product.ref, product.designation)
-            );
-            if (existing) {
-                existing.quantite = Number(existing.quantite || 0) + quantite;
+            const payload = {
+                ref: product.ref || '',
+                designation: product.designation || '',
+                unite: product.unite || document.getElementById('ep_unite')?.value || '',
+                quantite
+            };
+            if (editingProductionLineIndex !== null && etatProductionLignes[editingProductionLineIndex]) {
+                etatProductionLignes[editingProductionLineIndex] = payload;
             } else {
-                etatProductionLignes.push({
-                    ref: product.ref || '',
-                    designation: product.designation || '',
-                    unite: product.unite || '',
-                    quantite
-                });
+                const existing = etatProductionLignes.find(ligne =>
+                    productionArticleKey(ligne.ref, ligne.designation) === productionArticleKey(product.ref, product.designation)
+                );
+                if (existing) {
+                    existing.quantite = Number(existing.quantite || 0) + quantite;
+                    if (!existing.unite && payload.unite) existing.unite = payload.unite;
+                } else {
+                    etatProductionLignes.push(payload);
+                }
             }
+            editingProductionLineIndex = null;
             renderEtatProductionLignes(false);
             clearEtatProductionEntry();
             refreshEtatProductionStockField();
+            updateEtatProductionProductLists();
+            return true;
+        }
+
+        document.getElementById('etatProductionForm')?.addEventListener('submit', event => {
+            event.preventDefault();
+            document.getElementById('validerEtatProductionBtn')?.click();
         });
+
+        document.getElementById('ajouterLigneProductionBtn')?.addEventListener('click', () => {
+            commitEtatProductionEntry(true);
+        });
+
+        function startEditProductionLine(index) {
+            const ligne = etatProductionLignes[index];
+            if (!ligne) return;
+            editingProductionLineIndex = index;
+            updateEtatProductionProductLists();
+            const ref = document.getElementById('ep_ref');
+            const designation = document.getElementById('ep_designation');
+            if (ref) ref.value = ligne.ref || '';
+            if (designation) designation.value = ligne.designation || '';
+            const stock = document.getElementById('ep_stock');
+            if (stock) {
+                stock.value = formatProductionNumber(getProductionAvailableStock(ligne.ref, ligne.designation, index));
+            }
+            const quantite = document.getElementById('ep_quantite');
+            if (quantite) quantite.value = ligne.quantite ?? '';
+            const unite = document.getElementById('ep_unite');
+            if (unite) unite.value = ligne.unite || '';
+            renderEtatProductionLignes(false);
+            document.getElementById('ep_quantite')?.focus();
+        }
 
         document.getElementById('etatProductionLignesBody')?.addEventListener('click', event => {
+            const editBtn = event.target.closest('[data-edit-production-line]');
+            if (editBtn) {
+                startEditProductionLine(Number(editBtn.dataset.editProductionLine));
+                return;
+            }
             const button = event.target.closest('[data-remove-production-line]');
             if (!button) return;
-            etatProductionLignes.splice(Number(button.dataset.removeProductionLine), 1);
+            const index = Number(button.dataset.removeProductionLine);
+            etatProductionLignes.splice(index, 1);
+            if (editingProductionLineIndex === index) {
+                editingProductionLineIndex = null;
+                clearEtatProductionEntry();
+            } else if (editingProductionLineIndex !== null && editingProductionLineIndex > index) {
+                editingProductionLineIndex -= 1;
+            }
             renderEtatProductionLignes(false);
             refreshEtatProductionStockField();
         });
 
-        document.getElementById('validerEtatProductionBtn')?.addEventListener('click', () => {
+        document.getElementById('modifierEtatProductionBtn')?.addEventListener('click', () => {
+            if (!currentEtatProductionId) return;
+            editingEtatProductionId = currentEtatProductionId;
+            editingProductionLineIndex = null;
+            setEtatProductionReadOnly(false);
+            updateEtatProductionProductLists();
+            refreshEtatProductionStockField();
+        });
+
+        document.getElementById('validerEtatProductionBtn')?.addEventListener('click', event => {
+            event.preventDefault();
+            event.stopPropagation();
+            if (!commitEtatProductionEntry(false)) return;
             if (!etatProductionLignes.length) {
-                alert('Ajoutez au moins un produit.');
+                alert('Ajoutez au moins un produit (Réf, Désignation, Quantité) avant de valider.');
                 return;
             }
-            loadEtatsProduction();
-            const data = {
-                id: editingEtatProductionId || ('ep-' + Date.now()),
-                date: document.getElementById('ep_date')?.value || todayEtatProduction(),
-                numero: document.getElementById('ep_numero')?.value || nextEtatProductionNumber(),
-                lignes: etatProductionLignes.map(ligne => ({ ...ligne }))
-            };
-            const index = etatsProduction.findIndex(item => String(item.id) === String(editingEtatProductionId));
-            if (index >= 0) etatsProduction[index] = data;
-            else etatsProduction.push(data);
-            saveEtatsProduction();
-            editingEtatProductionId = data.id;
-            currentEtatProductionId = data.id;
-            renderEtatsProductionTable();
-            renderEtatProductionLignes(false);
-            refreshEtatProductionStockField();
-            alert('Etat de production enregistré.');
+            try {
+                loadEtatsProduction();
+                const data = {
+                    id: editingEtatProductionId || ('ep-' + Date.now()),
+                    date: document.getElementById('ep_date')?.value || todayEtatProduction(),
+                    numero: document.getElementById('ep_numero')?.value || nextEtatProductionNumber(),
+                    lignes: etatProductionLignes.map(ligne => ({ ...ligne }))
+                };
+                const index = etatsProduction.findIndex(item => String(item.id) === String(editingEtatProductionId));
+                if (index >= 0) etatsProduction[index] = data;
+                else etatsProduction.push(data);
+                saveEtatsProduction();
+                editingEtatProductionId = null;
+                currentEtatProductionId = null;
+                editingProductionLineIndex = null;
+                etatProductionLignes = [];
+                renderEtatsProductionTable();
+                showEtatProductionMode('consult');
+            } catch (error) {
+                console.error('Validation état production:', error);
+                alert('Impossible d\'enregistrer l\'état de production.');
+            }
         });
 
         document.getElementById('imprimerEtatProductionBtn')?.addEventListener('click', () => {
@@ -425,6 +536,23 @@
             printCurrentEtatProduction();
         });
 
+        document.getElementById('imprimerEtatsProductionBtn')?.addEventListener('click', () => {
+            loadEtatsProduction();
+            if (!etatsProduction.length) {
+                alert('Aucun état de production à imprimer.');
+                return;
+            }
+            showEtatProductionMode('consult');
+            document.body.classList.add('print-etats-production-list');
+            const cleanup = () => {
+                document.body.classList.remove('print-etats-production-list');
+                window.removeEventListener('afterprint', cleanup);
+            };
+            window.addEventListener('afterprint', cleanup);
+            window.print();
+            setTimeout(cleanup, 1500);
+        });
+
         document.getElementById('etatsProductionTableBody')?.addEventListener('click', event => {
             const button = event.target.closest('[data-production-action]');
             if (!button) return;
@@ -432,13 +560,6 @@
             const action = button.dataset.productionAction;
             if (action === 'view') openEtatProduction(id, true);
             if (action === 'edit') openEtatProduction(id, false);
-            if (action === 'delete') {
-                if (!confirm('Supprimer cet état de production ?')) return;
-                loadEtatsProduction();
-                etatsProduction = etatsProduction.filter(item => String(item.id) !== String(id));
-                saveEtatsProduction();
-                renderEtatsProductionTable();
-            }
             if (action === 'print') {
                 openEtatProduction(id, true);
                 setTimeout(printCurrentEtatProduction, 100);

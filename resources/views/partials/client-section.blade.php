@@ -1,4 +1,95 @@
 {{-- Section Client : Fiche / Bon Vente / Réglement Vente / Balance — miroir Fournisseur/Achats --}}
+<style>
+    .ventes-list-print-title,
+    .reglement-vente-list-print-title { display: none; }
+    @media print {
+        body.print-ventes-consult * { visibility: hidden !important; }
+        body.print-ventes-consult #commandesPrintAreaVentes,
+        body.print-ventes-consult #commandesPrintAreaVentes * { visibility: visible !important; }
+        body.print-ventes-consult #commandesPrintAreaVentes {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            padding: 12mm;
+            background: #fff;
+        }
+        body.print-ventes-consult .ventes-list-print-title {
+            display: block !important;
+            visibility: visible !important;
+            margin: 0 0 16px;
+            text-align: center;
+            color: #173f35;
+            font-size: 22px;
+        }
+        body.print-ventes-consult .no-print-cmd,
+        body.print-ventes-consult .list-toolbar { display: none !important; }
+        body.print-ventes-consult #commandesPrintAreaVentes .fournisseur-table-wrap {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+
+        body.print-vente-doc * { visibility: hidden !important; }
+        body.print-vente-doc #ventesPrintArea,
+        body.print-vente-doc #ventesPrintArea * { visibility: visible !important; }
+        body.print-vente-doc #ventesPrintArea {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            padding: 12mm;
+            background: #fff;
+            display: block !important;
+            overflow: visible !important;
+        }
+        body.print-vente-doc .no-print-achats,
+        body.print-vente-doc .ach-row-art { display: none !important; }
+        body.print-vente-doc #ventesSaisieMode {
+            display: block !important;
+            box-shadow: none !important;
+            border: 0 !important;
+        }
+
+        body.print-reglements-vente * { visibility: hidden !important; }
+        body.print-reglements-vente #reglementVentePrintArea,
+        body.print-reglements-vente #reglementVentePrintArea * { visibility: visible !important; }
+        body.print-reglements-vente #reglementVentePrintArea {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            padding: 12mm;
+            background: #fff;
+        }
+        body.print-reglements-vente .reglement-vente-list-print-title {
+            display: block !important;
+            visibility: visible !important;
+            margin: 0 0 16px;
+            text-align: center;
+            color: #173f35;
+            font-size: 22px;
+        }
+        body.print-reglements-vente .no-print-reglement { display: none !important; }
+        body.print-reglements-vente #reglementVentePrintArea .fournisseur-table-wrap {
+            overflow: visible !important;
+            max-height: none !important;
+        }
+
+        body.print-reglement-vente-doc * { visibility: hidden !important; }
+        body.print-reglement-vente-doc #reglementVenteFormPrintArea,
+        body.print-reglement-vente-doc #reglementVenteFormPrintArea * { visibility: visible !important; }
+        body.print-reglement-vente-doc #reglementVenteFormPrintArea {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            padding: 12mm;
+            background: #fff;
+        }
+        body.print-reglement-vente-doc .no-print-reglement { display: none !important; }
+        body.print-reglement-vente-doc #reglementVenteFormPanel {
+            display: block !important;
+            box-shadow: none !important;
+            border: 0 !important;
+        }
+    }
+</style>
 
 {{-- Fiche Client --}}
 <div id="ficheClientView" class="saisie-panel hidden">
@@ -144,6 +235,10 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     Ajouter
                 </button>
+                <button type="button" class="btn-list btn-list-print" id="printCommandesVentesBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Imprimer
+                </button>
                 <button type="button" class="btn-list btn-list-print" id="fermerVentesConsultBtn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     Fermer
@@ -151,6 +246,7 @@
             </div>
         </div>
         <div class="saisie-card" id="commandesPrintAreaVentes">
+            <h1 class="ventes-list-print-title">BONS DE VENTE</h1>
             <div class="fournisseur-table-wrap">
                 <table class="achats-commandes-table" id="commandesListTableVentes">
                     <colgroup>
@@ -286,6 +382,7 @@
                 </div>
             </div>
             <div class="form-actions achats-doc-actions no-print-achats">
+                <button type="button" class="btn-form btn-form-secondary" id="imprimerBonVenteBtn">Imprimer</button>
                 <button type="button" class="btn-form btn-form-secondary" id="fermerVentesBtn">Fermer</button>
                 <button type="button" class="btn-form btn-form-primary" id="enregistrerCommandeVentesBtn">Valider</button>
             </div>
@@ -304,6 +401,7 @@
                 </div>
             </div>
             <form class="saisie-form" id="ficheReglementVenteForm" novalidate>
+                <div id="reglementVenteFormPrintArea">
                 <div class="rg-form-layout">
                     <div>
                         <div class="rg-inline-row rg-inline-row-1">
@@ -380,7 +478,9 @@
                         <input type="hidden" id="rv_montant_bon" value="">
                     </div>
                 </div>
-                <div class="form-actions">
+                </div>
+                <div class="form-actions no-print-reglement">
+                    <button type="button" class="btn-form btn-form-secondary" id="imprimerReglementVenteBtn">Imprimer</button>
                     <button type="button" class="btn-form btn-form-secondary" id="fermerReglementVenteForm">Fermer</button>
                     <button type="submit" class="btn-form btn-form-primary" id="validerReglementVenteBtn">Valider</button>
                 </div>
@@ -395,6 +495,10 @@
                 <button type="button" class="btn-list btn-list-add" id="ajouterReglementVenteBtn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     Ajouter
+                </button>
+                <button type="button" class="btn-list btn-list-print" id="printReglementsVenteBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    Imprimer
                 </button>
                 <button type="button" class="btn-list btn-list-print" id="fermerReglementVenteConsultBtn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -445,6 +549,7 @@
             </div>
         </div>
         <div id="reglementVentePrintArea">
+            <h1 class="reglement-vente-list-print-title">REGLEMENT VENTE</h1>
             <div class="fournisseur-table-wrap">
                 <table class="fournisseur-table" id="reglementsVenteTable">
                     <thead>
@@ -479,6 +584,48 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     Fermer
                 </button>
+            </div>
+        </div>
+        <div class="kpi-grid rg-kpi-grid no-print-balance">
+            <div class="kpi-card blue">
+                <div class="kpi-top">
+                    <div class="kpi-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <span class="kpi-badge kpi-badge-flat" id="bcKpiBadgeCmd">0 cmd</span>
+                </div>
+                <div class="kpi-label">Nbrs Cmd Ventes</div>
+                <div class="kpi-value" id="bcKpiNbrCmd">0</div>
+            </div>
+            <div class="kpi-card teal">
+                <div class="kpi-top">
+                    <div class="kpi-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    </div>
+                    <span class="kpi-badge kpi-badge-flat" id="bcKpiBadgeMontants">0</span>
+                </div>
+                <div class="kpi-label">Total Montants Ventes</div>
+                <div class="kpi-value" id="bcKpiTotalMontants">0,00 MAD</div>
+            </div>
+            <div class="kpi-card green">
+                <div class="kpi-top">
+                    <div class="kpi-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <span class="kpi-badge kpi-badge-flat" id="bcKpiBadgePayes">0 rég</span>
+                </div>
+                <div class="kpi-label">Total Réglements Payés</div>
+                <div class="kpi-value" id="bcKpiTotalPayes">0,00 MAD</div>
+            </div>
+            <div class="kpi-card orange">
+                <div class="kpi-top">
+                    <div class="kpi-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <span class="kpi-badge kpi-badge-flat" id="bcKpiBadgeSolde">solde</span>
+                </div>
+                <div class="kpi-label">Total Solde</div>
+                <div class="kpi-value" id="bcKpiTotalSolde">0,00 MAD</div>
             </div>
         </div>
         <div id="balanceClientsPrintArea">

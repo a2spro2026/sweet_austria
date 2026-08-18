@@ -508,6 +508,9 @@
                             <button type="button" class="btn-icon-row btn-icon-edit" data-ve-mod="${i}" title="Modifier" aria-label="Modifier">
                                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
                             </button>
+                            <button type="button" class="btn-icon-row btn-icon-print" data-ve-print="${i}" title="Imprimer" aria-label="Imprimer">
+                                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                            </button>
                             <button type="button" class="btn-icon-row btn-icon-delete" data-ve-suppr="${i}" title="Supprimer" aria-label="Supprimer">
                                 <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
                             </button>
@@ -521,6 +524,9 @@
             });
             tbody.querySelectorAll('[data-ve-mod]').forEach(btn => {
                 btn.addEventListener('click', () => modifierBonVente(parseInt(btn.dataset.veMod, 10)));
+            });
+            tbody.querySelectorAll('[data-ve-print]').forEach(btn => {
+                btn.addEventListener('click', () => imprimerBonVente(parseInt(btn.dataset.vePrint, 10)));
             });
             tbody.querySelectorAll('[data-ve-suppr]').forEach(btn => {
                 btn.addEventListener('click', () => supprimerBonVente(parseInt(btn.dataset.veSuppr, 10)));
@@ -554,6 +560,40 @@
             set('ve_echeance', c.echeance);
             ventesLignes = (c.lignes || []).map(l => ({ ...l }));
             renderVentesLignesTable();
+        }
+
+        function printWithBodyClass(bodyClass) {
+            document.body.classList.add(bodyClass);
+            const cleanup = () => {
+                document.body.classList.remove(bodyClass);
+                window.removeEventListener('afterprint', cleanup);
+            };
+            window.addEventListener('afterprint', cleanup);
+            window.print();
+            setTimeout(cleanup, 1500);
+        }
+
+        function printCurrentBonVente() {
+            if (!Array.isArray(ventesLignes) || !ventesLignes.length) {
+                alert('Ouvrez ou saisissez un bon de vente avant impression.');
+                return;
+            }
+            printWithBodyClass('print-vente-doc');
+        }
+
+        function imprimerBonVente(index) {
+            voirBonVente(index);
+            setTimeout(printCurrentBonVente, 80);
+        }
+
+        function printCommandesVentesList() {
+            loadCommandesVentesStore();
+            if (!commandesVentes.length) {
+                alert('Aucun bon de vente à imprimer.');
+                return;
+            }
+            showVentesConsult();
+            printWithBodyClass('print-ventes-consult');
         }
 
         function voirBonVente(index) {
@@ -645,6 +685,8 @@
             document.querySelector('.nav-item[data-view="dashboard"]')?.click();
         });
         document.getElementById('fermerVentesBtn')?.addEventListener('click', () => showVentesConsult());
+        document.getElementById('imprimerBonVenteBtn')?.addEventListener('click', printCurrentBonVente);
+        document.getElementById('printCommandesVentesBtn')?.addEventListener('click', printCommandesVentesList);
         document.getElementById('enregistrerCommandeVentesBtn')?.addEventListener('click', enregistrerBonVente);
         document.getElementById('ajouterLigneVentesBtn')?.addEventListener('click', addVentesLigne);
         document.getElementById('ve_nom_client')?.addEventListener('change', lookupVentesClientByNom);
@@ -857,9 +899,10 @@
                     <td>${escHtml(r.type_reg)}</td>
                     <td>${escHtml(r.num_reg)}</td>
                     <td><strong>${escHtml(fmt(r.montant_reg))}</strong></td>
-                    <td class="col-actions">
+                    <td class="col-actions no-print-reglement">
                         <span class="col-actions-wrap">
                             <button type="button" class="btn-icon-row btn-icon-edit btn-rg-action" data-rv-edit="${escHtml(r.id)}" title="Modifier"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                            <button type="button" class="btn-icon-row btn-icon-print btn-rg-action" data-rv-print="${escHtml(r.id)}" title="Imprimer" aria-label="Imprimer"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></button>
                             <button type="button" class="btn-icon-row btn-icon-delete btn-rg-action" data-rv-del="${escHtml(r.id)}" title="Supprimer"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
                         </span>
                     </td>
@@ -870,6 +913,9 @@
                     const item = reglementsVentes.find(x => x.id === btn.dataset.rvEdit);
                     if (item) showReglementVenteForm(item, false);
                 });
+            });
+            reglementsVenteTableBody.querySelectorAll('[data-rv-print]').forEach(btn => {
+                btn.addEventListener('click', () => imprimerReglementVente(btn.dataset.rvPrint));
             });
             reglementsVenteTableBody.querySelectorAll('[data-rv-del]').forEach(btn => {
                 btn.addEventListener('click', () => deleteReglementVente(btn.dataset.rvDel));
@@ -990,6 +1036,33 @@
             if (typeof refreshDashboardAnalytics === 'function') refreshDashboardAnalytics();
         }
 
+        function printCurrentReglementVente() {
+            const client = document.getElementById('rv_client')?.value || '';
+            const ref = document.getElementById('rv_ref')?.value || '';
+            if (!client && !ref) {
+                alert('Ouvrez ou saisissez un réglement avant impression.');
+                return;
+            }
+            printWithBodyClass('print-reglement-vente-doc');
+        }
+
+        function imprimerReglementVente(id) {
+            const item = reglementsVentes.find(x => String(x.id) === String(id));
+            if (!item) return;
+            showReglementVenteForm(item, true);
+            setTimeout(printCurrentReglementVente, 80);
+        }
+
+        function printReglementsVenteList() {
+            loadReglementsVentes();
+            if (!reglementsVentes.length) {
+                alert('Aucun réglement à imprimer.');
+                return;
+            }
+            showReglementVenteConsult();
+            printWithBodyClass('print-reglements-vente');
+        }
+
         function openReglementVentes() {
             loadReglementsVentes();
             loadCommandesVentesStore();
@@ -998,6 +1071,8 @@
 
         document.getElementById('ajouterReglementVenteBtn')?.addEventListener('click', () => showReglementVenteForm(null, false));
         document.getElementById('fermerReglementVenteForm')?.addEventListener('click', () => showReglementVenteConsult());
+        document.getElementById('imprimerReglementVenteBtn')?.addEventListener('click', printCurrentReglementVente);
+        document.getElementById('printReglementsVenteBtn')?.addEventListener('click', printReglementsVenteList);
         document.getElementById('fermerReglementVenteConsultBtn')?.addEventListener('click', () => {
             document.querySelector('.nav-item[data-view="dashboard"]')?.click();
         });
@@ -1101,9 +1176,28 @@
             return (parseFloat(val) || 0).toFixed(2) + ' MAD';
         }
 
+        function refreshBalanceClientsKpis() {
+            const cmds = Array.isArray(commandesVentes) ? commandesVentes : [];
+            const regs = Array.isArray(reglementsVentes) ? reglementsVentes : [];
+            const rows = Array.isArray(balanceClientsRows) ? balanceClientsRows : [];
+            const totalMontants = rows.reduce((s, r) => s + (parseFloat(r.montant) || 0), 0);
+            const totalPayes = rows.reduce((s, r) => s + (parseFloat(r.paye) || 0), 0);
+            const totalSolde = Math.round((totalMontants - totalPayes) * 100) / 100;
+            const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+            const money = (v) => (typeof formatBalanceMoneyClient === 'function' ? formatBalanceMoneyClient(v) : ((parseFloat(v) || 0).toFixed(2) + ' MAD'));
+            setText('bcKpiNbrCmd', String(cmds.length));
+            setText('bcKpiBadgeCmd', cmds.length + ' cmd');
+            setText('bcKpiTotalMontants', money(totalMontants));
+            setText('bcKpiBadgeMontants', cmds.length + ' bon' + (cmds.length > 1 ? 's' : ''));
+            setText('bcKpiTotalPayes', money(totalPayes));
+            setText('bcKpiBadgePayes', regs.length + ' rég');
+            setText('bcKpiTotalSolde', money(totalSolde));
+        }
+
         function renderBalanceClientsTable() {
             if (!balanceClientsTableBody) return;
             buildBalanceClientsRows();
+            refreshBalanceClientsKpis();
             if (!balanceClientsRows.length) {
                 balanceClientsTableBody.innerHTML = '<tr><td colspan="6" class="fournisseur-empty">Aucune balance</td></tr>';
                 return;

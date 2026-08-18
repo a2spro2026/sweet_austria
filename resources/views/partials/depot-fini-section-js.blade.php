@@ -2,35 +2,24 @@
 
         function collectDepotFiniFromSorties() {
             if (typeof loadEtatsSortie === 'function') loadEtatsSortie();
-            if (typeof loadEtatsDepense === 'function') loadEtatsDepense();
             const sorties = Array.isArray(etatsSortie) ? etatsSortie : [];
-            const depenses = Array.isArray(etatsDepense) ? etatsDepense : [];
-
-            const spentBySortie = new Map();
-            depenses.forEach(etat => {
-                (etat.lignes || []).forEach(ligne => {
-                    const numero = String(ligne.numero_sortie || '');
-                    if (!numero) return;
-                    spentBySortie.set(numero,
-                        (spentBySortie.get(numero) || 0) + (Number(ligne.quantite) || 0)
-                    );
-                });
-            });
 
             return sorties.map(sortie => {
                 const entree = Number(sortie.quantite) || 0;
-                const depensee = spentBySortie.get(String(sortie.numero_sortie || '')) || 0;
                 return {
                     id: sortie.id,
                     date: sortie.date || '',
                     numero_sortie: sortie.numero_sortie || '',
                     numero_production: sortie.numero_production || '',
+                    numero_depense: sortie.numero_depense || '',
                     ref: sortie.ref || '',
                     designation: sortie.designation || '',
+                    categorie: sortie.categorie || '',
                     quantite_entree: entree,
-                    quantite_depensee: depensee,
-                    stock: Math.max(0, entree - depensee),
+                    quantite_depensee: 0,
+                    stock: Math.max(0, entree),
                     unite: sortie.unite || '',
+                    prix_vente: sortie.prix_vente != null && sortie.prix_vente !== '' ? Number(sortie.prix_vente) : null,
                     sortie
                 };
             }).sort((a, b) =>

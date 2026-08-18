@@ -2274,7 +2274,7 @@
 
 
 
-            top: calc(var(--header-h) + (100vh - var(--header-h)) / 2);
+            top: calc(var(--header-h) / 2);
 
 
 
@@ -6662,6 +6662,15 @@
             min-width: 0;
         }
 
+        #achatsView #ach_destination {
+            cursor: pointer;
+            padding-right: 26px;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23004236' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important;
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 13px 13px;
+        }
+
         #achatsView .achats-add-article-wrap , #ventesView .achats-add-article-wrap , #etatProductionView .achats-add-article-wrap {
             display: flex;
             align-items: flex-end;
@@ -6742,6 +6751,8 @@
             gap: 10px;
             justify-content: flex-end;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         @media (max-width: 1100px) {
@@ -9151,7 +9162,7 @@
 
 
 
-            min-width: 1100px;
+            min-width: 860px;
 
 
 
@@ -12652,6 +12663,10 @@
 
             .no-print-materiels { display: none !important; }
 
+            body.print-one-produit #produitsTableBody tr:not(.print-produit-active) {
+                display: none !important;
+            }
+
 
 
             #fournisseurPrintArea .fournisseur-table-wrap,
@@ -15235,6 +15250,10 @@
 
         #etatProductionView,
 
+        #etatSortieView,
+
+        #etatDepenseView,
+
 
 
         #utilisateurView {
@@ -15391,7 +15410,19 @@
 
         #etatProductionConsultMode:not(.hidden),
 
-        #etatProductionSaisieMode:not(.hidden) {
+        #etatProductionSaisieMode:not(.hidden),
+
+        #etatSortieView:not(.hidden),
+
+        #etatSortieConsultMode:not(.hidden),
+
+        #etatSortieSaisieMode:not(.hidden),
+
+        #etatDepenseView:not(.hidden),
+
+        #etatDepenseConsultMode:not(.hidden),
+
+        #etatDepenseSaisieMode:not(.hidden) {
 
 
 
@@ -15487,6 +15518,14 @@
 
         #etatProductionListArea,
 
+        #etatSortieConsultMode,
+
+        #etatSortieListArea,
+
+        #etatDepenseConsultMode,
+
+        #etatDepenseListArea,
+
         #commandesPrintAreaAchats {
 
 
@@ -15537,7 +15576,11 @@
 
         #balanceClientsPrintArea,
 
-        #etatProductionListArea {
+        #etatProductionListArea,
+
+        #etatSortieListArea,
+
+        #etatDepenseListArea {
 
 
 
@@ -15837,7 +15880,11 @@
 
         #depotDiversDetailPanel .list-toolbar,
 
-        #etatProductionConsultMode .list-toolbar {
+        #etatProductionConsultMode .list-toolbar,
+
+        #etatSortieConsultMode .list-toolbar,
+
+        #etatDepenseConsultMode .list-toolbar {
 
 
 
@@ -15937,7 +15984,11 @@
 
         #reglementConsultPanel .list-toolbar-title,
 
-        #etatProductionConsultMode .list-toolbar-title {
+        #etatProductionConsultMode .list-toolbar-title,
+
+        #etatSortieConsultMode .list-toolbar-title,
+
+        #etatDepenseConsultMode .list-toolbar-title {
 
 
 
@@ -16001,7 +16052,11 @@
 
         #reglementConsultPanel .list-toolbar-actions,
 
-        #etatProductionConsultMode .list-toolbar-actions {
+        #etatProductionConsultMode .list-toolbar-actions,
+
+        #etatSortieConsultMode .list-toolbar-actions,
+
+        #etatDepenseConsultMode .list-toolbar-actions {
 
 
 
@@ -16253,7 +16308,9 @@
         }
 
         #reglementConsultPanel .rg-kpi-grid,
-        #reglementVenteConsultPanel .rg-kpi-grid {
+        #reglementVenteConsultPanel .rg-kpi-grid,
+        #balanceAchatsConsultPanel .rg-kpi-grid,
+        #balanceClientsConsultPanel .rg-kpi-grid {
             position: static;
             top: auto;
             z-index: 1;
@@ -16267,25 +16324,33 @@
         }
 
         #reglementConsultPanel .rg-kpi-grid .kpi-card,
-        #reglementVenteConsultPanel .rg-kpi-grid .kpi-card {
+        #reglementVenteConsultPanel .rg-kpi-grid .kpi-card,
+        #balanceAchatsConsultPanel .rg-kpi-grid .kpi-card,
+        #balanceClientsConsultPanel .rg-kpi-grid .kpi-card {
             padding: 14px 12px;
         }
 
         #reglementConsultPanel .rg-kpi-grid .kpi-value,
-        #reglementVenteConsultPanel .rg-kpi-grid .kpi-value {
+        #reglementVenteConsultPanel .rg-kpi-grid .kpi-value,
+        #balanceAchatsConsultPanel .rg-kpi-grid .kpi-value,
+        #balanceClientsConsultPanel .rg-kpi-grid .kpi-value {
             font-size: 18px;
         }
 
         @media (max-width: 1100px) {
             #reglementConsultPanel .rg-kpi-grid,
-            #reglementVenteConsultPanel .rg-kpi-grid {
+            #reglementVenteConsultPanel .rg-kpi-grid,
+            #balanceAchatsConsultPanel .rg-kpi-grid,
+            #balanceClientsConsultPanel .rg-kpi-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
 
         @media (max-width: 700px) {
             #reglementConsultPanel .rg-kpi-grid,
-            #reglementVenteConsultPanel .rg-kpi-grid {
+            #reglementVenteConsultPanel .rg-kpi-grid,
+            #balanceAchatsConsultPanel .rg-kpi-grid,
+            #balanceClientsConsultPanel .rg-kpi-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
@@ -17859,7 +17924,7 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Relev? Compte Clt</a></li>
+                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Relevé Compte Client</a></li>
 
 
 
@@ -19172,11 +19237,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="ach_destination">Destination</label>
-                                            <input type="text" id="ach_destination" name="destination" class="form-input" list="ach_destination_list" placeholder="Destination" autocomplete="off">
-                                            <datalist id="ach_destination_list">
-                                                <option value="Depot Pr Cru">Depot Pr Cru</option>
-                                                <option value="Depot Pr Div">Depot Pr Div</option>
-                                            </datalist>
+                                            <select id="ach_destination" name="destination" class="form-input form-select">
+                                                <option value="">Choisir un dépôt</option>
+                                                <option value="Depot produit cru">Dépôt Produits Crus</option>
+                                                <option value="Depot produit divers">Dépôt produits Divers</option>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="ach_type_reglement">Type régl</label>
@@ -19664,63 +19729,17 @@
 
                             <button type="button" class="btn-list btn-list-print" id="printProduitsBtn">
 
-
-
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-
-
 
                                 Imprimer
 
-
-
                             </button>
-
-
-
-                            <button type="button" class="btn-list btn-list-add btn-list-modify" id="modifierProduitToolbarBtn" disabled>
-
-
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-
-
-
-                                Modifier
-
-
-
-                            </button>
-
-
 
                             <button type="button" class="btn-list btn-list-pdf" id="exportProduitsPdfBtn">
 
-
-
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
 
-
-
                                 Exporter PDF
-
-
-
-                            </button>
-
-
-
-                            <button type="button" class="btn-list btn-list-add" id="addProduitBtn">
-
-
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-
-
-
-                                Ajouter Produit
-
-
 
                             </button>
 
@@ -19751,57 +19770,13 @@
 
 
                                     <tr>
-
-
-
                                         <th>Réf</th>
-
-
-
-                                        <th>Photo</th>
-
-
-
-                                        <th>QR code</th>
-
-
-
                                         <th>Désignation</th>
-
-
-
-                                        <th>Type</th>
-
-
-
                                         <th>Catégorie</th>
-
-
-
-                                        <th>Famille</th>
-
-
-
                                         <th>Quantité</th>
-
-
-
                                         <th>U</th>
-
-
-
-                                        <th>Prix Achat</th>
-
-
-
-                                        <th>Prix Vente</th>
-
-
-
+                                        <th>P/V Final</th>
                                         <th class="col-actions no-print-produit">Actions</th>
-
-
-
                                     </tr>
 
 
@@ -19814,7 +19789,7 @@
 
 
 
-                                    <tr><td colspan="12" class="produits-empty">Aucun produit enregistré</td></tr>
+                                    <tr><td colspan="7" class="produits-empty">Aucun produit importé du dépôt produits finis</td></tr>
 
 
 
@@ -21236,6 +21211,49 @@
 
                     </div>
 
+                    <div class="kpi-grid rg-kpi-grid no-print-balance">
+                        <div class="kpi-card blue">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="baKpiBadgeCmd">0 cmd</span>
+                            </div>
+                            <div class="kpi-label">Nbrs Cmd Achats</div>
+                            <div class="kpi-value" id="baKpiNbrCmd">0</div>
+                        </div>
+                        <div class="kpi-card teal">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="baKpiBadgeMontants">0</span>
+                            </div>
+                            <div class="kpi-label">Total Montants Achats</div>
+                            <div class="kpi-value" id="baKpiTotalMontants">0,00 MAD</div>
+                        </div>
+                        <div class="kpi-card green">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="baKpiBadgePayes">0 rég</span>
+                            </div>
+                            <div class="kpi-label">Total Réglements Payés</div>
+                            <div class="kpi-value" id="baKpiTotalPayes">0,00 MAD</div>
+                        </div>
+                        <div class="kpi-card orange">
+                            <div class="kpi-top">
+                                <div class="kpi-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                                <span class="kpi-badge kpi-badge-flat" id="baKpiBadgeSolde">solde</span>
+                            </div>
+                            <div class="kpi-label">Total Solde</div>
+                            <div class="kpi-value" id="baKpiTotalSolde">0,00 MAD</div>
+                        </div>
+                    </div>
+
                     <div id="balanceAchatsPrintArea">
 
                         <div class="fournisseur-table-wrap">
@@ -21345,7 +21363,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="depotCrusTableBody">
-                                    <tr><td colspan="8" class="fournisseur-empty">Aucun article (importer via Destination « Depot Pr Cru » sur les bons d'achat)</td></tr>
+                                    <tr><td colspan="8" class="fournisseur-empty">Aucun article (importer via Destination « Depot produit cru » sur les bons d'achat)</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -21396,7 +21414,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="depotDiversTableBody">
-                                    <tr><td colspan="8" class="fournisseur-empty">Aucun article (importer via Destination « Depot Pr Div » sur les bons d'achat)</td></tr>
+                                    <tr><td colspan="8" class="fournisseur-empty">Aucun article (importer via Destination « Depot produit divers » sur les bons d'achat)</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -21707,6 +21725,7 @@
             @include('partials.sortie-section')
             @include('partials.depense-section')
             @include('partials.depot-fini-section')
+            @include('partials.table-sort')
 
 
 
@@ -24402,15 +24421,16 @@
 
             if (subtitle) subtitle.textContent = 'Barre de saisie';
 
-
-
-            if (saveBtn) saveBtn.textContent = 'Enregistrer';
-
-
+            if (saveBtn) {
+                saveBtn.textContent = 'Enregistrer';
+                saveBtn.classList.remove('hidden');
+            }
+            ficheProduitForm?.querySelectorAll('input, select, textarea').forEach(el => {
+                el.disabled = false;
+                el.readOnly = false;
+            });
 
         }
-
-
 
                 function populateProduitUniteSelect() {
             const el = document.getElementById('pr_unite');
@@ -24492,7 +24512,7 @@
 
         function showProduitList() {
 
-
+            resetProduitFormMode();
 
             if (produitFormPanel) produitFormPanel.classList.add('hidden');
 
@@ -24574,213 +24594,165 @@
 
 
 
-        function renderProduitsTable() {
-
-
-
-            if (!produitsTableBody) return;
-
-
-
-            updateProduitToolbarState();
-
-
-
-            if (produits.length === 0) {
-
-
-
-                produitsTableBody.innerHTML = '<tr><td colspan="12" class="produits-empty">Aucun produit enregistré</td></tr>';
-
-
-
-                return;
-
-
-
-            }
-
-
-
-            produitsTableBody.innerHTML = produits.map(p => {
-
-
-
-                const selected = selectedProduitRef === p.ref ? ' selected' : '';
-
-
-
-                const photoUrl = getProduitPhotoUrl(p);
-
-
-
-                const photoCell = photoUrl
-
-
-
-                    ? `<span class="produit-photo-thumb"><img src="${escHtml(photoUrl)}" alt="${escHtml(p.designation)}" loading="lazy"></span>`
-
-
-
-                    : `<span class="produit-photo-thumb produit-photo-thumb-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></span>`;
-
-
-
-                return `<tr class="${selected}" data-produit-ref="${escHtml(p.ref)}">
-
-
-
-                    <td><strong>${escHtml(p.ref)}</strong></td>
-
-
-
-                    <td class="produit-photo-cell">${photoCell}</td>
-
-
-
-                    <td class="produit-qr-cell" data-qr-ref="${escHtml(p.ref)}"></td>
-
-
-
-                    <td class="col-designation" title="${escHtml(p.designation)}">${escHtml(p.designation)}</td>
-
-
-
-                    <td>${escHtml(p.type) || '?'}</td>
-
-
-
-                    <td>${escHtml(p.categorie) || '?'}</td>
-
-
-
-                    <td>${escHtml(p.famille) || '?'}</td>
-
-
-
-                    <td>${formatQuantiteProduit(p.quantite)}</td>
-
-
-
-                    <td>${escHtml(uniteLibelle(p.unite))}</td>
-
-
-
-                    <td>${formatPrixOptionnel(p.prix_achat)}</td>
-
-
-
-                    <td>${formatPrixOptionnel(p.prix_vente)}</td>
-
-
-
-                    <td class="col-actions no-print-produit" onclick="event.stopPropagation()">
-
-
-
-                        <span class="col-actions-wrap">
-
-
-
-                            <button type="button" class="btn-icon-row btn-icon-edit" data-edit-produit="${escHtml(p.ref)}" title="Modifier" aria-label="Modifier">
-
-
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-
-
-
-                            </button>
-
-
-
-                            <button type="button" class="btn-icon-row btn-icon-delete" data-delete-produit="${escHtml(p.ref)}" title="Supprimer" aria-label="Supprimer">
-
-
-
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-
-
-
-                            </button>
-
-
-
-                        </span>
-
-
-
-                    </td>
-
-
-
-                </tr>`;
-
-
-
-            }).join('');
-
-
-
-            produitsTableBody.querySelectorAll('tr[data-produit-ref]').forEach(row => {
-
-
-
-                row.addEventListener('click', () => {
-
-
-
-                    selectedProduitRef = row.dataset.produitRef;
-
-
-
-                    renderProduitsTable();
-
-
-
-                });
-
-
-
-            });
-
-
-
-            produitsTableBody.querySelectorAll('[data-edit-produit]').forEach(btn => {
-
-
-
-                btn.addEventListener('click', () => editProduit(btn.dataset.editProduit));
-
-
-
-            });
-
-
-
-            produitsTableBody.querySelectorAll('[data-delete-produit]').forEach(btn => {
-
-
-
-                btn.addEventListener('click', () => deleteProduit(btn.dataset.deleteProduit));
-
-
-
-            });
-
-
-
-            renderProduitQrCodes();
-
-
-
+        function ficheProduitKey(ref, designation) {
+            return typeof productionArticleKey === 'function'
+                ? productionArticleKey(ref, designation)
+                : (String(ref || '').trim() || String(designation || '').trim()).toLowerCase();
         }
 
+        function findProduitFicheMatch(ref, designation) {
+            const key = ficheProduitKey(ref, designation);
+            const list = Array.isArray(produits) ? produits : [];
+            return list.find(p => ficheProduitKey(p.ref, p.designation) === key)
+                || list.find(p => String(p.ref || '').trim().toLowerCase() === String(ref || '').trim().toLowerCase() && ref)
+                || list.find(p => String(p.designation || '').trim().toLowerCase() === String(designation || '').trim().toLowerCase() && designation)
+                || null;
+        }
 
+        function getPrixVenteFinal(ref, designation, fiche) {
+            const key = ficheProduitKey(ref, designation);
+            if (typeof loadEtatsSortie === 'function') loadEtatsSortie();
+            let lastSortie = null;
+            (typeof etatsSortie !== 'undefined' && Array.isArray(etatsSortie) ? etatsSortie : []).forEach(sortie => {
+                if (ficheProduitKey(sortie.ref, sortie.designation) === key) lastSortie = sortie;
+            });
+            if (lastSortie && lastSortie.prix_vente != null && lastSortie.prix_vente !== '') {
+                return Number(lastSortie.prix_vente);
+            }
+            if (fiche && fiche.prix_vente != null && fiche.prix_vente !== '') return Number(fiche.prix_vente);
+            return null;
+        }
+
+        function collectFicheProduitsFromDepotFini() {
+            const source = typeof collectDepotFiniFromSorties === 'function' ? collectDepotFiniFromSorties() : [];
+            const grouped = new Map();
+            source.forEach(row => {
+                const key = ficheProduitKey(row.ref, row.designation);
+                if (!key) return;
+                const item = grouped.get(key) || {
+                    key,
+                    ref: row.ref || '',
+                    designation: row.designation || '',
+                    categorie: row.categorie || '',
+                    quantite: 0,
+                    unite: row.unite || ''
+                };
+                item.quantite += Number(row.stock) || 0;
+                if (!item.unite && row.unite) item.unite = row.unite;
+                if (!item.ref && row.ref) item.ref = row.ref;
+                if (!item.designation && row.designation) item.designation = row.designation;
+                if (!item.categorie && row.categorie) item.categorie = row.categorie;
+                grouped.set(key, item);
+            });
+            return [...grouped.values()].map(item => {
+                const fiche = findProduitFicheMatch(item.ref, item.designation);
+                return {
+                    ...item,
+                    categorie: item.categorie || fiche?.categorie || '',
+                    prix_vente: getPrixVenteFinal(item.ref, item.designation, fiche),
+                    fiche
+                };
+            }).sort((a, b) => String(a.ref || a.designation).localeCompare(String(b.ref || b.designation), 'fr'));
+        }
+
+        let ficheProduitsDepotRows = [];
+
+        function renderProduitsTable() {
+            if (!produitsTableBody) return;
+            updateProduitToolbarState();
+            ficheProduitsDepotRows = collectFicheProduitsFromDepotFini();
+            if (!ficheProduitsDepotRows.length) {
+                produitsTableBody.innerHTML = '<tr><td colspan="7" class="produits-empty">Aucun produit importé du dépôt produits finis</td></tr>';
+                return;
+            }
+            produitsTableBody.innerHTML = ficheProduitsDepotRows.map(p => {
+                const selected = selectedProduitRef === p.key ? ' selected' : '';
+                return `<tr class="${selected}" data-produit-key="${escHtml(p.key)}" data-produit-ref="${escHtml(p.ref)}">
+                    <td><strong>${escHtml(p.ref || '—')}</strong></td>
+                    <td class="col-designation" title="${escHtml(p.designation)}">${escHtml(p.designation || '—')}</td>
+                    <td>${escHtml(p.categorie) || '—'}</td>
+                    <td>${formatQuantiteProduit(p.quantite)}</td>
+                    <td>${escHtml(typeof uniteLibelle === 'function' ? uniteLibelle(p.unite) : p.unite) || '—'}</td>
+                    <td>${p.prix_vente != null ? formatPrixOptionnel(p.prix_vente) : '—'}</td>
+                    <td class="col-actions no-print-produit" onclick="event.stopPropagation()">
+                        <span class="col-actions-wrap">
+                            <button type="button" class="btn-icon-row btn-icon-view" data-view-produit="${escHtml(p.key)}" title="Voir" aria-label="Voir">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                            <button type="button" class="btn-icon-row btn-icon-print" data-print-produit="${escHtml(p.key)}" title="Imprimer" aria-label="Imprimer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                            </button>
+                        </span>
+                    </td>
+                </tr>`;
+            }).join('');
+
+            produitsTableBody.querySelectorAll('tr[data-produit-key]').forEach(row => {
+                row.addEventListener('click', () => {
+                    selectedProduitRef = row.dataset.produitKey;
+                    renderProduitsTable();
+                });
+            });
+            produitsTableBody.querySelectorAll('[data-view-produit]').forEach(btn => {
+                btn.addEventListener('click', () => viewProduitFromDepot(btn.dataset.viewProduit));
+            });
+            produitsTableBody.querySelectorAll('[data-print-produit]').forEach(btn => {
+                btn.addEventListener('click', () => printProduitFromDepot(btn.dataset.printProduit));
+            });
+        }
+
+        function viewProduitFromDepot(key) {
+            const row = (ficheProduitsDepotRows || []).find(item => String(item.key) === String(key));
+            if (!row) return;
+            selectedProduitRef = key;
+            showProduitForm(false);
+            populateProduitUniteSelect();
+            refreshLookupSelects({
+                pr_designation: row.designation || '',
+                pr_categorie: row.categorie || '',
+                pr_famille: row.fiche?.famille || '',
+            });
+            if (prRefInput) prRefInput.value = row.ref || '';
+            const setVal = (id, value) => { const el = document.getElementById(id); if (el) el.value = value ?? ''; };
+            setVal('pr_designation', row.designation || '');
+            setVal('pr_type', row.fiche?.type || 'Pro Fini');
+            setVal('pr_categorie', row.categorie || '');
+            setVal('pr_famille', row.fiche?.famille || '');
+            setVal('pr_quantite', row.quantite ?? 0);
+            setVal('pr_unite', row.unite || '');
+            setVal('pr_prix_achat', row.fiche?.prix_achat != null && row.fiche?.prix_achat !== '' ? parseFloat(row.fiche.prix_achat).toFixed(2) : '');
+            setVal('pr_prix_vente', row.prix_vente != null ? parseFloat(row.prix_vente).toFixed(2) : '');
+            const title = document.getElementById('produitFormTitle');
+            const subtitle = document.getElementById('produitFormSubtitle');
+            if (title) title.textContent = 'Fiche Produit';
+            if (subtitle) subtitle.textContent = 'Consultation — Dépôt produits finis';
+            document.getElementById('saveProduitBtn')?.classList.add('hidden');
+            ficheProduitForm?.querySelectorAll('input, select, textarea').forEach(el => {
+                if (el.type === 'hidden') return;
+                if (el.tagName === 'SELECT') el.disabled = true;
+                else el.readOnly = true;
+            });
+        }
+
+        function printProduitFromDepot(key) {
+            renderProduitsTable();
+            const tbody = document.getElementById('produitsTableBody');
+            if (!tbody) return;
+            tbody.querySelectorAll('tr').forEach(tr => {
+                tr.classList.toggle('print-produit-active', tr.dataset.produitKey === String(key));
+            });
+            document.body.classList.add('print-one-produit');
+            const cleanup = () => {
+                document.body.classList.remove('print-one-produit');
+                tbody.querySelectorAll('tr').forEach(tr => tr.classList.remove('print-produit-active'));
+                window.removeEventListener('afterprint', cleanup);
+            };
+            window.addEventListener('afterprint', cleanup);
+            window.print();
+            setTimeout(cleanup, 1500);
+        }
 
         function editProduit(ref) {
-
-
 
             const p = produits.find(x => x.ref === ref);
 
@@ -25362,18 +25334,10 @@
 
 
 
-        const SAISIES_RESET_VERSION = '2026-08-10-v2-full-empty';
-
-
+        const SAISIES_RESET_VERSION = '2026-08-18-empty-retest';
 
         function resetLocalSaisiesIfNeeded() {
-
-
-
             if (localStorage.getItem('saisiesResetVersion') === SAISIES_RESET_VERSION) return;
-
-
-
             const keysToClear = [
                 'commandesAchats',
                 'commandesVentes',
@@ -25390,27 +25354,18 @@
                 'utilisateursApp',
                 'ficheSociete',
                 'tresorerieMateriels',
+                'demoTestDataV1',
             ];
-
             keysToClear.forEach((k) => {
                 try { localStorage.removeItem(k); } catch (e) {}
             });
-
             try { sessionStorage.removeItem('authUser'); } catch (e) {}
-
-
-
             localStorage.setItem('saisiesResetVersion', SAISIES_RESET_VERSION);
-
-
-
         }
-
-
 
         resetLocalSaisiesIfNeeded();
 
-
+        @include('partials.test-data-seed-js')
 
         let achatsBonCounter = parseInt(localStorage.getItem('achatsBonCounter') || '0', 10);
 
@@ -26034,7 +25989,7 @@
 
 
 
-                    document.getElementById('ach_destination').value = c.destination || '';
+                    setAchatsDestination(c.destination);
 
 
 
@@ -26238,7 +26193,7 @@
 
 
 
-                alert('Veuillez choisir la Destination (Depot Pr Cru ou Depot Pr Div).');
+                alert('Veuillez choisir la Destination (Depot produit cru ou Depot produit divers).');
 
 
 
@@ -27120,6 +27075,21 @@
 
 
 
+        function setAchatsDestination(value) {
+            const select = document.getElementById('ach_destination');
+            if (!select) return;
+            const raw = String(value || '');
+            if ([...select.options].some(option => option.value === raw)) {
+                select.value = raw;
+                return;
+            }
+            const kind = typeof normalizeDepotDestination === 'function' ? normalizeDepotDestination(raw) : '';
+            const match = [...select.options].find(option =>
+                kind && typeof normalizeDepotDestination === 'function' && normalizeDepotDestination(option.value) === kind
+            );
+            select.value = match ? match.value : '';
+        }
+
         function getAchatsHeaderInfo() {
 
 
@@ -27378,27 +27348,11 @@
 
         function findFournisseurByNom(nom) {
 
-
-
             const q = (nom || '').trim().toLowerCase();
-
-
 
             if (!q) return null;
 
-
-
-            return fournisseurs.find(f => (f.nom || '').trim().toLowerCase() === q)
-
-
-
-                || fournisseurs.find(f => (f.nom || '').trim().toLowerCase().includes(q))
-
-
-
-                || null;
-
-
+            return fournisseurs.find(f => (f.nom || '').trim().toLowerCase() === q) || null;
 
         }
 
@@ -27434,7 +27388,14 @@
 
             if (dateCmd) dateCmd.value = todayIsoDate();
 
-
+            const codeInput = document.getElementById('ach_code_fournisseur');
+            const nomInput = document.getElementById('ach_nom_fournisseur');
+            if (codeInput) codeInput.value = '';
+            if (nomInput) {
+                nomInput.value = '';
+                nomInput.readOnly = false;
+                nomInput.disabled = false;
+            }
 
             achatsLignes = [];
 
@@ -27486,41 +27447,24 @@
 
         function lookupAchatsFournisseurByNom() {
 
-
-
             if (fillingAchatsFournisseur) return;
 
-
-
             const nom = document.getElementById('ach_nom_fournisseur')?.value || '';
-
-
-
             const f = findFournisseurByNom(nom);
-
-
-
             if (f) fillAchatsFournisseurFields(f);
-
-
+            else {
+                const codeInput = document.getElementById('ach_code_fournisseur');
+                if (codeInput) codeInput.value = '';
+            }
 
         }
 
-
-
         document.getElementById('ach_code_fournisseur')?.addEventListener('input', lookupAchatsFournisseurByCode);
-
-
 
         document.getElementById('ach_code_fournisseur')?.addEventListener('change', lookupAchatsFournisseurByCode);
 
-
-
-        document.getElementById('ach_nom_fournisseur')?.addEventListener('input', lookupAchatsFournisseurByNom);
-
-
-
         document.getElementById('ach_nom_fournisseur')?.addEventListener('change', lookupAchatsFournisseurByNom);
+        document.getElementById('ach_nom_fournisseur')?.addEventListener('blur', lookupAchatsFournisseurByNom);
 
 
 
@@ -28733,7 +28677,7 @@
 
 
 
-            if (produits.length === 0) {
+            if (!collectFicheProduitsFromDepotFini().length) {
 
 
 
@@ -28761,7 +28705,7 @@
 
 
 
-            if (produits.length === 0) {
+            if (!collectFicheProduitsFromDepotFini().length) {
 
 
 
@@ -28833,31 +28777,23 @@
 
 
 
-                head: [['Réf', 'Désignation', 'Type', 'Catégorie', 'Famille', 'Qté', 'U', 'Prix Achat', 'Prix Vente']],
+                head: [['Réf', 'Désignation', 'Catégorie', 'Quantité', 'U', 'P/V Final']],
 
 
 
-                body: produits.map(p => [
+                body: collectFicheProduitsFromDepotFini().map(p => [
 
 
 
-                    p.ref,
+                    p.ref || '—',
 
 
 
-                    p.designation,
+                    p.designation || '—',
 
 
 
-                    p.type || '?',
-
-
-
-                    p.categorie || '?',
-
-
-
-                    p.famille || '?',
+                    p.categorie || '—',
 
 
 
@@ -28865,15 +28801,11 @@
 
 
 
-                    uniteLibelle(p.unite),
+                    typeof uniteLibelle === 'function' ? uniteLibelle(p.unite) : (p.unite || '—'),
 
 
 
-                    p.prix_achat != null ? formatMoney(p.prix_achat) : '?',
-
-
-
-                    p.prix_vente != null ? formatMoney(p.prix_vente) : '?',
+                    p.prix_vente != null ? formatPrixOptionnel(p.prix_vente) : '—',
 
 
 
@@ -31264,7 +31196,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { id: 'client.releve', label: 'Relevé Compte Clt' }
+                    { id: 'client.releve', label: 'Relevé Compte Client' }
 
 
 
@@ -33590,11 +33522,30 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
+        function refreshBalanceAchatsKpis() {
+            const cmds = (typeof commandesAchats !== 'undefined' && Array.isArray(commandesAchats)) ? commandesAchats : [];
+            const regs = (typeof reglementsAchats !== 'undefined' && Array.isArray(reglementsAchats)) ? reglementsAchats : [];
+            const rows = Array.isArray(balanceAchatsRows) ? balanceAchatsRows : [];
+            const totalMontants = rows.reduce((s, r) => s + (parseFloat(r.montant) || 0), 0);
+            const totalPayes = rows.reduce((s, r) => s + (parseFloat(r.paye) || 0), 0);
+            const totalSolde = Math.round((totalMontants - totalPayes) * 100) / 100;
+            const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+            const money = (v) => (typeof formatBalanceMoney === 'function' ? formatBalanceMoney(v) : (Number(v || 0).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD'));
+            setText('baKpiNbrCmd', String(cmds.length));
+            setText('baKpiBadgeCmd', cmds.length + ' cmd');
+            setText('baKpiTotalMontants', money(totalMontants));
+            setText('baKpiBadgeMontants', cmds.length + ' bon' + (cmds.length > 1 ? 's' : ''));
+            setText('baKpiTotalPayes', money(totalPayes));
+            setText('baKpiBadgePayes', regs.length + ' rég');
+            setText('baKpiTotalSolde', money(totalSolde));
+        }
+
         function renderBalanceAchatsTable() {
 
             if (!balanceAchatsTableBody) return;
 
             buildBalanceAchatsRows();
+            refreshBalanceAchatsKpis();
 
             if (!balanceAchatsRows.length) {
 
@@ -34000,9 +33951,9 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         // ——— Dépôts Stock (import bons d'achat via Destination) ———
 
-        const DEPOT_DEST_CRU = 'Depot Pr Cru';
+        const DEPOT_DEST_CRU = 'Depot produit cru';
 
-        const DEPOT_DEST_DIV = 'Depot Pr Div';
+        const DEPOT_DEST_DIV = 'Depot produit divers';
 
         let depotCrusRows = [];
 
@@ -34124,9 +34075,9 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             const emptyMsg = isCru
 
-                ? 'Aucun article (importer via Destination « Depot Pr Cru » sur les bons d\'achat)'
+                ? 'Aucun article (importer via Destination « Depot produit cru » sur les bons d\'achat)'
 
-                : 'Aucun article (importer via Destination « Depot Pr Div » sur les bons d\'achat)';
+                : 'Aucun article (importer via Destination « Depot produit divers » sur les bons d\'achat)';
 
             if (!rows.length) {
 
@@ -35870,6 +35821,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
         @include('partials.sortie-section-js')
         @include('partials.depense-section-js')
         @include('partials.depot-fini-section-js')
+        @include('partials.table-sort-js')
 
         (function initLandingExtras() {
             try {
