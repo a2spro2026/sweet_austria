@@ -92,9 +92,18 @@ class FournisseurController extends Controller
     private function nextCode(): string
     {
         $max = Fournisseur::pluck('code')
-            ->map(fn (string $c) => (int) substr($c, 2))
+            ->map(function (string $c): int {
+                if (preg_match('/^FRNS(\d+)$/', $c, $m)) {
+                    return (int) $m[1];
+                }
+                if (preg_match('/^FR(\d+)$/', $c, $m)) {
+                    return (int) $m[1];
+                }
+
+                return 0;
+            })
             ->max() ?? 0;
 
-        return 'FR' . str_pad((string) ($max + 1), 4, '0', STR_PAD_LEFT);
+        return 'FRNS' . str_pad((string) ($max + 1), 4, '0', STR_PAD_LEFT);
     }
 }

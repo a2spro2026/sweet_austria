@@ -7074,30 +7074,99 @@
             display: none;
         }
 
-        .form-input.readonly {
+        .form-input.readonly,
 
 
+
+        #reglementAchatsView .form-input:disabled {
 
             background: var(--table-header);
 
-
-
             color: var(--text-muted);
 
+            cursor: not-allowed;
 
+            opacity: 0.85;
+
+        }
+
+        .form-input.readonly {
 
             font-weight: 600;
 
-
-
             letter-spacing: 0.04em;
-
-
 
             font-size: 11px;
 
+        }
 
-
+        .releve-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .releve-badge-achat { background: rgba(43, 62, 146, 0.15); color: #2b3e92; }
+        .releve-badge-reg { background: rgba(0, 128, 96, 0.15); color: #008060; }
+        .releve-badge-yes { background: rgba(0, 128, 96, 0.15); color: #008060; }
+        .releve-badge-no { background: rgba(180, 60, 60, 0.12); color: #b43c3c; }
+        .releve-badge-muted { background: rgba(0, 0, 0, 0.06); color: var(--text-muted); }
+        .releve-debit-amount {
+            color: #c62828;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        #releveFournisseurConsultPanel #rfKpiDebit {
+            color: #c62828;
+            text-decoration: underline;
+        }
+        #releveFournisseurView .fournisseur-table tbody td { text-align: center; font-size: 12px; vertical-align: middle; }
+        #releveFournisseurView .fournisseur-table thead th { text-align: center; font-size: 11px; text-transform: uppercase; white-space: nowrap; }
+        #releveFournisseurView .list-toolbar-subtitle { margin: 4px 0 0; font-size: 12px; color: var(--text-muted); }
+        #releveFournisseurConsultPanel .releve-fr-filters {
+            margin: 0 12px 8px;
+            padding: 8px 12px;
+            background: var(--card-bg, #fff);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        #releveFournisseurConsultPanel .releve-fr-filters-row {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 8px;
+            align-items: flex-end;
+        }
+        #releveFournisseurConsultPanel .releve-fr-filters .form-group {
+            margin: 0;
+            min-width: 0;
+        }
+        #releveFournisseurConsultPanel .releve-fr-filters .form-group label {
+            font-size: 10px;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+        #releveFournisseurConsultPanel .releve-fr-filters .form-input {
+            height: 32px;
+            min-height: 32px;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        #releveFournisseurConsultPanel .releve-fr-filter-date { width: 130px; flex-shrink: 0; }
+        #releveFournisseurConsultPanel .releve-fr-filter-fournisseur { flex: 1; min-width: 160px; }
+        #releveFournisseurConsultPanel .releve-fr-filter-actions { flex-shrink: 0; }
+        #releveFournisseurConsultPanel .releve-fr-filter-btns { display: flex; gap: 6px; }
+        #releveFournisseurConsultPanel .releve-fr-filter-btns .btn-list {
+            height: 32px;
+            padding: 0 10px;
+            font-size: 12px;
+        }
+        #releveFrPrintArea #releveFrTable { min-width: 1200px; }
+        @media print {
+            .no-print-releve-fr { display: none !important; }
+            #releveFournisseurView { overflow: visible !important; }
         }
 
 
@@ -14141,23 +14210,8 @@
             position: relative;
             width: 100%;
             aspect-ratio: 16 / 9;
-            border-radius: 10px;
             overflow: hidden;
-            background: rgba(0, 18, 12, 0.75);
-            border: 2px solid rgba(233, 197, 119, 0.75);
-            box-shadow:
-                0 0 0 6px rgba(233, 197, 119, 0.12),
-                0 18px 48px rgba(0, 0, 0, 0.45);
-        }
-
-        .landing-ad-inner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 2;
-            border-radius: inherit;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+            background: transparent;
         }
 
         .landing-ad-inner video,
@@ -15226,6 +15280,10 @@
 
 
 
+        #releveFournisseurView,
+
+
+
         #ficheClientView,
 
 
@@ -15305,6 +15363,10 @@
 
 
         #balanceAchatsView:not(.hidden),
+
+
+
+        #releveFournisseurView:not(.hidden),
 
 
 
@@ -15396,6 +15458,8 @@
 
         #balanceAchatsConsultPanel:not(.hidden),
 
+        #releveFournisseurConsultPanel:not(.hidden),
+
         #balanceAchatsDetailPanel:not(.hidden),
 
         #depotCrusConsultPanel:not(.hidden),
@@ -15486,6 +15550,8 @@
 
         #balanceAchatsPrintArea,
 
+        #releveFrPrintArea,
+
         #depotCrusPrintArea,
 
         #depotDiversPrintArea,
@@ -15497,6 +15563,8 @@
         #reglementConsultPanel,
 
         #balanceAchatsConsultPanel,
+
+        #releveFournisseurConsultPanel,
 
         #clientListPanel,
 
@@ -15576,6 +15644,8 @@
 
         #balanceClientsPrintArea,
 
+        #releveFrPrintArea,
+
         #etatProductionListArea,
 
         #etatSortieListArea,
@@ -15633,6 +15703,8 @@
         #reglementPrintArea .fournisseur-table-wrap,
 
         #balanceAchatsPrintArea .fournisseur-table-wrap,
+
+        #releveFrPrintArea .fournisseur-table-wrap,
 
         #depotCrusPrintArea .fournisseur-table-wrap,
 
@@ -15870,6 +15942,8 @@
 
         #balanceAchatsConsultPanel .list-toolbar,
 
+        #releveFournisseurConsultPanel .list-toolbar,
+
         #balanceAchatsDetailPanel .list-toolbar,
 
         #depotCrusConsultPanel .list-toolbar,
@@ -16093,6 +16167,8 @@
         #reglementPrintArea .fournisseur-table-wrap,
 
         #balanceAchatsPrintArea .fournisseur-table-wrap,
+
+        #releveFrPrintArea .fournisseur-table-wrap,
 
         #depotCrusPrintArea .fournisseur-table-wrap,
 
@@ -16323,11 +16399,33 @@
             flex-shrink: 0;
         }
 
+        #releveFournisseurConsultPanel .rg-kpi-grid {
+            position: static;
+            top: auto;
+            z-index: 1;
+            margin: 0 0 8px;
+            padding: 0 12px;
+            box-shadow: none;
+            background: transparent;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
         #reglementConsultPanel .rg-kpi-grid .kpi-card,
         #reglementVenteConsultPanel .rg-kpi-grid .kpi-card,
         #balanceAchatsConsultPanel .rg-kpi-grid .kpi-card,
         #balanceClientsConsultPanel .rg-kpi-grid .kpi-card {
             padding: 14px 12px;
+        }
+
+        #releveFournisseurConsultPanel .rg-kpi-grid .kpi-card {
+            padding: 8px 10px;
+        }
+
+        #releveFournisseurConsultPanel .rg-kpi-grid .kpi-label {
+            font-size: 10px;
+            margin-bottom: 2px;
         }
 
         #reglementConsultPanel .rg-kpi-grid .kpi-value,
@@ -16337,11 +16435,19 @@
             font-size: 18px;
         }
 
+        #releveFournisseurConsultPanel .rg-kpi-grid .kpi-value {
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
         @media (max-width: 1100px) {
             #reglementConsultPanel .rg-kpi-grid,
             #reglementVenteConsultPanel .rg-kpi-grid,
             #balanceAchatsConsultPanel .rg-kpi-grid,
             #balanceClientsConsultPanel .rg-kpi-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            #releveFournisseurConsultPanel .rg-kpi-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
@@ -16352,6 +16458,12 @@
             #balanceAchatsConsultPanel .rg-kpi-grid,
             #balanceClientsConsultPanel .rg-kpi-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            #releveFournisseurConsultPanel .rg-kpi-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            #releveFournisseurConsultPanel .releve-fr-filters-row {
+                flex-wrap: wrap;
             }
         }
 
@@ -17453,19 +17565,6 @@
                 <p>La plateforme la plus proche des goûts de luxe</p>
             </div>
 
-            <div class="landing-ad-frame" aria-label="Espace publicitaire vidéo">
-                <div class="landing-ad-inner">
-                    <video id="landingAdVideo" class="hidden" controls playsinline preload="metadata" poster="{{ asset('images/a2s-fruits-background.png') }}">
-                        <source type="video/mp4">
-                    </video>
-                    <iframe id="landingAdIframe" class="hidden" title="Publicité vidéo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    <div class="landing-ad-placeholder" id="landingAdPlaceholder">
-                        <strong>Espace publicitaire</strong>
-                        <span>Configurez l’habillage dans <em>Configuration → Fiche Société → Habillage</em> (vidéo ou URL).</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
 
@@ -17768,7 +17867,7 @@
 
 
 
-                    <li><a href="#" class="nav-subitem"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Relevé Compte Fournisseur</a></li>
+                    <li><a href="#" class="nav-subitem" data-view="releve-fournisseur"><span class="nav-subicon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>Relevé Compte Fournisseur</a></li>
 
 
 
@@ -18316,7 +18415,7 @@
                         <span class="kpi-badge kpi-badge-flat" id="kpiBadgeAchats">0 bon</span>
                     </div>
                     <div class="kpi-label">Total Achats</div>
-                    <div class="kpi-value" id="kpiTotalAchats">0,00 MAD</div>
+                    <div class="kpi-value" id="kpiTotalAchats">0,00</div>
                 </div>
 
                 <div class="kpi-card green">
@@ -18327,7 +18426,7 @@
                         <span class="kpi-badge kpi-badge-flat" id="kpiBadgeVentes">0 bon</span>
                     </div>
                     <div class="kpi-label">Total Ventes</div>
-                    <div class="kpi-value" id="kpiTotalVentes">0,00 MAD</div>
+                    <div class="kpi-value" id="kpiTotalVentes">0,00</div>
                 </div>
 
                 <div class="kpi-card teal">
@@ -18338,7 +18437,7 @@
                         <span class="kpi-badge kpi-badge-flat" id="kpiBadgeStock">0 art</span>
                     </div>
                     <div class="kpi-label">Valeurs Stock</div>
-                    <div class="kpi-value" id="kpiValeurStock">0,00 MAD</div>
+                    <div class="kpi-value" id="kpiValeurStock">0,00</div>
                 </div>
 
                 <div class="kpi-card orange">
@@ -18349,7 +18448,7 @@
                         <span class="kpi-badge kpi-badge-flat" id="kpiBadgeCharges">0 ligne</span>
                     </div>
                     <div class="kpi-label">Total Charges</div>
-                    <div class="kpi-value" id="kpiTotalCharges">0,00 MAD</div>
+                    <div class="kpi-value" id="kpiTotalCharges">0,00</div>
                 </div>
 
                 <div class="kpi-card brown">
@@ -18360,7 +18459,7 @@
                         <span class="kpi-badge kpi-badge-flat" id="kpiBadgeSoldeClients">0 clt</span>
                     </div>
                     <div class="kpi-label">Solde Clients</div>
-                    <div class="kpi-value" id="kpiSoldeClients">0,00 MAD</div>
+                    <div class="kpi-value" id="kpiSoldeClients">0,00</div>
                 </div>
             </div>
 
@@ -18468,7 +18567,7 @@
 
 
 
-                                    <input type="text" id="fr_id" name="id" class="form-input">
+                                    <input type="text" id="fr_id" name="id" class="form-input readonly" readonly tabindex="-1">
 
 
 
@@ -18659,7 +18758,7 @@
 
 
 
-                                    <label for="fr_solde">Solde initial (MAD)</label>
+                                    <label for="fr_solde">Solde initial</label>
 
 
 
@@ -19318,7 +19417,7 @@
                                     <div class="achats-articles-summary no-print-achats">
                                         <div class="achats-total-bar" style="margin:0;padding:0;border:none;background:transparent;width:100%;justify-content:flex-end;">
                                             <span>Total général</span>
-                                            <span id="achatsTotalGeneral">0,00 MAD</span>
+                                            <span id="achatsTotalGeneral">0,00</span>
                                         </div>
                                     </div>
 
@@ -21091,7 +21190,7 @@
                                 <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeChq">0</span>
                             </div>
                             <div class="kpi-label">Total Chq</div>
-                            <div class="kpi-value" id="rgKpiTotalChq">0,00 MAD</div>
+                            <div class="kpi-value" id="rgKpiTotalChq">0,00</div>
                         </div>
                         <div class="kpi-card orange">
                             <div class="kpi-top">
@@ -21101,7 +21200,7 @@
                                 <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeEff">0</span>
                             </div>
                             <div class="kpi-label">Total Eff</div>
-                            <div class="kpi-value" id="rgKpiTotalEff">0,00 MAD</div>
+                            <div class="kpi-value" id="rgKpiTotalEff">0,00</div>
                         </div>
                         <div class="kpi-card green">
                             <div class="kpi-top">
@@ -21111,7 +21210,7 @@
                                 <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeEsp">0</span>
                             </div>
                             <div class="kpi-label">Total Esp</div>
-                            <div class="kpi-value" id="rgKpiTotalEsp">0,00 MAD</div>
+                            <div class="kpi-value" id="rgKpiTotalEsp">0,00</div>
                         </div>
                         <div class="kpi-card teal">
                             <div class="kpi-top">
@@ -21121,7 +21220,7 @@
                                 <span class="kpi-badge kpi-badge-flat" id="rgKpiBadgeVir">0</span>
                             </div>
                             <div class="kpi-label">Total Vir</div>
-                            <div class="kpi-value" id="rgKpiTotalVir">0,00 MAD</div>
+                            <div class="kpi-value" id="rgKpiTotalVir">0,00</div>
                         </div>
                     </div>
 
@@ -21230,7 +21329,7 @@
                                 <span class="kpi-badge kpi-badge-flat" id="baKpiBadgeMontants">0</span>
                             </div>
                             <div class="kpi-label">Total Montants Achats</div>
-                            <div class="kpi-value" id="baKpiTotalMontants">0,00 MAD</div>
+                            <div class="kpi-value" id="baKpiTotalMontants">0,00</div>
                         </div>
                         <div class="kpi-card green">
                             <div class="kpi-top">
@@ -21240,7 +21339,7 @@
                                 <span class="kpi-badge kpi-badge-flat" id="baKpiBadgePayes">0 rég</span>
                             </div>
                             <div class="kpi-label">Total Réglements Payés</div>
-                            <div class="kpi-value" id="baKpiTotalPayes">0,00 MAD</div>
+                            <div class="kpi-value" id="baKpiTotalPayes">0,00</div>
                         </div>
                         <div class="kpi-card orange">
                             <div class="kpi-top">
@@ -21250,7 +21349,7 @@
                                 <span class="kpi-badge kpi-badge-flat" id="baKpiBadgeSolde">solde</span>
                             </div>
                             <div class="kpi-label">Total Solde</div>
-                            <div class="kpi-value" id="baKpiTotalSolde">0,00 MAD</div>
+                            <div class="kpi-value" id="baKpiTotalSolde">0,00</div>
                         </div>
                     </div>
 
@@ -21328,6 +21427,98 @@
 
                 </div>
 
+            </div>
+
+
+
+            <div id="releveFournisseurView" class="saisie-panel hidden">
+                <div id="releveFournisseurConsultPanel">
+                    <div class="list-toolbar no-print-releve-fr">
+                        <div>
+                            <h2 class="list-toolbar-title">Relevé de compte fournisseur</h2>
+                            <p class="list-toolbar-subtitle">Achats et règlements consolidés</p>
+                        </div>
+                        <div class="list-toolbar-actions">
+                            <button type="button" class="btn-list btn-list-print" id="releveFrPdfBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                PDF
+                            </button>
+                            <button type="button" class="btn-list btn-list-print" id="releveFrPrintBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                                Imprimer
+                            </button>
+                            <button type="button" class="btn-list btn-list-print" id="fermerReleveFrBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                Fermer
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="kpi-grid rg-kpi-grid no-print-releve-fr">
+                        <div class="kpi-card blue"><div class="kpi-label">Total Débit</div><div class="kpi-value" id="rfKpiDebit">0,00</div></div>
+                        <div class="kpi-card teal"><div class="kpi-label">Total Crédit</div><div class="kpi-value" id="rfKpiCredit">0,00</div></div>
+                        <div class="kpi-card green"><div class="kpi-label">Total Encaissé</div><div class="kpi-value" id="rfKpiEncaisse">0,00</div></div>
+                        <div class="kpi-card orange"><div class="kpi-label">Solde</div><div class="kpi-value" id="rfKpiSolde">0,00</div></div>
+                        <div class="kpi-card blue"><div class="kpi-label">Quantité</div><div class="kpi-value" id="rfKpiQte">0</div></div>
+                        <div class="kpi-card orange"><div class="kpi-label">Impayé</div><div class="kpi-value" id="rfKpiImp">0,00</div></div>
+                    </div>
+
+                    <div class="releve-fr-filters no-print-releve-fr">
+                        <div class="releve-fr-filters-row">
+                            <div class="form-group releve-fr-filter-date">
+                                <label for="rf_date_from">De</label>
+                                <input type="date" id="rf_date_from" class="form-input">
+                            </div>
+                            <div class="form-group releve-fr-filter-date">
+                                <label for="rf_date_to">A</label>
+                                <input type="date" id="rf_date_to" class="form-input">
+                            </div>
+                            <div class="form-group releve-fr-filter-fournisseur">
+                                <label for="rf_fournisseur">Nom Fournisseur</label>
+                                <select id="rf_fournisseur" class="form-input form-select">
+                                    <option value="">Tous les fournisseurs</option>
+                                </select>
+                            </div>
+                            <div class="form-group releve-fr-filter-actions">
+                                <label aria-hidden="true">&nbsp;</label>
+                                <div class="releve-fr-filter-btns">
+                                    <button type="button" class="btn-list" id="rfSearchBtn">Rechercher</button>
+                                    <button type="button" class="btn-list" id="rfResetBtn">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="releveFrPrintArea">
+                        <div class="fournisseur-table-wrap">
+                            <table class="fournisseur-table" id="releveFrTable">
+                                <thead>
+                                    <tr>
+                                        <th>Opération</th>
+                                        <th>Date</th>
+                                        <th>N° Bn</th>
+                                        <th>Nom Fournisseur</th>
+                                        <th>Qte</th>
+                                        <th>Débit</th>
+                                        <th>Crédit</th>
+                                        <th>Solde</th>
+                                        <th>Type Rég</th>
+                                        <th>N° Rég</th>
+                                        <th>Nom Tiré</th>
+                                        <th>Date Encaiss</th>
+                                        <th>Payé</th>
+                                        <th>Dévalidé</th>
+                                        <th>Impayé</th>
+                                        <th>Reporté</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="releveFrTableBody">
+                                    <tr><td colspan="16" class="fournisseur-empty">Aucune opération pour ces critères</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -22211,7 +22402,7 @@
 
 
 
-        let nextFournisseurId = 'FR0001';
+        let nextFournisseurId = 'FRNS0001';
 
 
 
@@ -22419,7 +22610,7 @@
 
 
 
-            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 
 
@@ -22642,9 +22833,11 @@
 
 
 
-                if (frIdInput) frIdInput.value = editingFournisseurId || '';
-
-
+                if (frIdInput) {
+                    frIdInput.value = editingFournisseurId || nextFournisseurId || 'FRNS0001';
+                    frIdInput.readOnly = true;
+                    frIdInput.classList.add('readonly');
+                }
 
                 updateFournisseurSoldeField({ id: '', nom: '' });
 
@@ -23334,7 +23527,7 @@
 
 
 
-            if (['achats', 'fiche-fournisseur', 'fiche-produit', 'fiche-societe', 'tresorerie-materiels', 'utilisateur', 'reglement-achats', 'balance-achats', 'depot-crus', 'depot-divers', 'depot-fini', 'fiche-client', 'ventes', 'reglement-ventes', 'balance-clients', 'etat-production', 'etat-sortie', 'etat-depense'].includes(viewId)) {
+            if (['achats', 'fiche-fournisseur', 'fiche-produit', 'fiche-societe', 'tresorerie-materiels', 'utilisateur', 'reglement-achats', 'balance-achats', 'releve-fournisseur', 'depot-crus', 'depot-divers', 'depot-fini', 'fiche-client', 'ventes', 'reglement-ventes', 'balance-clients', 'etat-production', 'etat-sortie', 'etat-depense'].includes(viewId)) {
 
 
 
@@ -23406,6 +23599,8 @@
             if (reglementAchatsView) reglementAchatsView.classList.toggle('hidden', viewId !== 'reglement-achats');
 
             if (balanceAchatsView) balanceAchatsView.classList.toggle('hidden', viewId !== 'balance-achats');
+
+            document.getElementById('releveFournisseurView')?.classList.toggle('hidden', viewId !== 'releve-fournisseur');
 
             if (depotCrusView) depotCrusView.classList.toggle('hidden', viewId !== 'depot-crus');
 
@@ -23648,6 +23843,11 @@
 
 
 
+            }
+
+            if (viewId === 'releve-fournisseur') {
+                document.body.classList.add('table-list-active');
+                if (typeof initReleveFournisseurView === 'function') initReleveFournisseurView();
             }
 
 
@@ -26449,7 +26649,7 @@
 
 
 
-            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 
 
@@ -27246,7 +27446,7 @@
 
 
 
-            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 
 
@@ -28057,11 +28257,7 @@
 
 
 
-                nextFournisseurId = data.next_id || 'FR0001';
-
-
-
-                if (frIdInput) frIdInput.value = '';
+                nextFournisseurId = data.next_id || 'FRNS0001';
 
 
 
@@ -29537,74 +29733,7 @@
         }
 
         function applyLandingHabillage(data) {
-            const video = document.getElementById('landingAdVideo');
-            const iframe = document.getElementById('landingAdIframe');
-            const placeholder = document.getElementById('landingAdPlaceholder');
-            if (!video || !placeholder) return;
-            const d = data || loadSociete() || {};
-            const type = d.habillage_type || '';
-            const file = d.habillage_file || '';
-            const url = (d.habillage_url || '').trim();
-
-            const showPlaceholder = (on) => {
-                placeholder.classList.toggle('is-hidden', !on);
-            };
-            const hideMedia = () => {
-                video.classList.add('hidden');
-                video.removeAttribute('src');
-                const source = video.querySelector('source');
-                if (source) source.removeAttribute('src');
-                video.load?.();
-                if (iframe) {
-                    iframe.classList.add('hidden');
-                    iframe.removeAttribute('src');
-                }
-            };
-
-            if (type === 'file' && file) {
-                hideMedia();
-                if (iframe) iframe.classList.add('hidden');
-                video.classList.remove('hidden');
-                const source = video.querySelector('source');
-                if (source) {
-                    source.setAttribute('src', file);
-                    source.setAttribute('type', 'video/mp4');
-                }
-                video.src = file;
-                video.load?.();
-                showPlaceholder(false);
-                return;
-            }
-
-            if (url) {
-                const embed = toVideoEmbedUrl(url);
-                if (embed && iframe) {
-                    hideMedia();
-                    video.classList.add('hidden');
-                    iframe.classList.remove('hidden');
-                    iframe.src = embed;
-                    showPlaceholder(false);
-                    return;
-                }
-                if (isDirectVideoUrl(url) || !embed) {
-                    hideMedia();
-                    if (iframe) iframe.classList.add('hidden');
-                    video.classList.remove('hidden');
-                    const source = video.querySelector('source');
-                    if (source) {
-                        source.setAttribute('src', url);
-                        source.setAttribute('type', 'video/mp4');
-                    }
-                    video.src = url;
-                    video.load?.();
-                    showPlaceholder(false);
-                    return;
-                }
-            }
-
-            // Aucun média configuré : afficher le panneau d'information sans requête 404.
-            hideMedia();
-            showPlaceholder(true);
+            // Vidéo retirée de l'interface externe (page d'accueil).
         }
 
 document.getElementById('soPhotoPickBtn')?.addEventListener('click', () => {
@@ -29968,7 +30097,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         function formatKpiMoney(val) {
             const n = fromCents(toCents(val));
-            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         }
 
         function isReglementEsp(type) {
@@ -30098,7 +30227,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
                             <td>${escHtml(typeof formatDateFr === 'function' ? formatDateFr(c.date_cmd) : (c.date_cmd || '—'))}</td>
                             <td>${escHtml(c.nom_fournisseur || c.code_fournisseur || '—')}</td>
                             <td>${escHtml(c.bon || '—')}</td>
-                            <td>${escHtml(formatKpiMoney(commandeMontantExact(c)).replace(' MAD',''))}</td>
+                            <td>${escHtml(formatKpiMoney(commandeMontantExact(c)))}</td>
                         </tr>
                     `).join('');
                 }
@@ -30115,7 +30244,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
                             <td>${escHtml(typeof formatDateFr === 'function' ? formatDateFr(c.date_cmd || c.date) : (c.date_cmd || c.date || '—'))}</td>
                             <td>${escHtml(c.nom_client || c.client || c.code_client || '—')}</td>
                             <td>${escHtml(c.bon || '—')}</td>
-                            <td>${escHtml(formatKpiMoney(commandeMontantExact(c)).replace(' MAD',''))}</td>
+                            <td>${escHtml(formatKpiMoney(commandeMontantExact(c)))}</td>
                         </tr>
                     `).join('');
                 }
@@ -32503,7 +32632,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
             const excludeId = editingReglementId || null;
             const fmt = (typeof formatMoneyFr === 'function')
                 ? formatMoneyFr
-                : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+                : (v) => (parseFloat(v) || 0).toFixed(2);
 
             tbody.querySelectorAll('tr[data-bon]').forEach(tr => {
                 const bon = String(tr.getAttribute('data-bon') || '');
@@ -32612,7 +32741,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
             }
             const fmt = (typeof formatMoneyFr === 'function')
                 ? formatMoneyFr
-                : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+                : (v) => (parseFloat(v) || 0).toFixed(2);
             const excludeId = editingReglementId || null;
             tbody.innerHTML = bons.map((c) => {
                 const payeBase = getMontantPayeBon(c.bon, excludeId);
@@ -32655,6 +32784,36 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
             reglementPhotoDataUrl = dataUrl || '';
             const label = document.getElementById('rgPhotoBtnLabel');
             if (label) label.textContent = dataUrl ? 'Photo importée' : 'Importer';
+        }
+
+
+
+        function syncReglementAchatsEspFields() {
+
+            const esp = isReglementEsp(document.getElementById('rg_type')?.value || '');
+
+            ['rg_num', 'rg_banque', 'rg_tire'].forEach(id => {
+
+                const el = document.getElementById(id);
+
+                if (!el) return;
+
+                if (reglementReadonly) return;
+
+                if (esp) {
+
+                    el.value = '';
+
+                    el.disabled = true;
+
+                } else {
+
+                    el.disabled = false;
+
+                }
+
+            });
+
         }
 
 
@@ -32715,6 +32874,8 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
                 if (subtitle) subtitle.textContent = 'Barre de saisie';
 
             }
+
+            if (!readonly) syncReglementAchatsEspFields();
 
         }
 
@@ -32792,6 +32953,10 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         function collectReglementForm() {
 
+            const typeReg = document.getElementById('rg_type')?.value || '';
+
+            const esp = isReglementEsp(typeReg);
+
             return {
 
                 id: editingReglementId || ('rg_' + Date.now()),
@@ -32806,13 +32971,13 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
                 montant: document.getElementById('rg_montant_bon')?.value || '',
 
-                type_reg: document.getElementById('rg_type')?.value || '',
+                type_reg: typeReg,
 
-                num_reg: (document.getElementById('rg_num')?.value || '').trim(),
+                num_reg: esp ? '' : (document.getElementById('rg_num')?.value || '').trim(),
 
-                banque: document.getElementById('rg_banque')?.value || '',
+                banque: esp ? '' : (document.getElementById('rg_banque')?.value || ''),
 
-                tire: (document.getElementById('rg_tire')?.value || '').trim(),
+                tire: esp ? '' : (document.getElementById('rg_tire')?.value || '').trim(),
 
                 montant_reg: document.getElementById('rg_montant_reg')?.value || '',
 
@@ -33182,6 +33347,10 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         document.getElementById('ajouterAutreReglementBtn')?.addEventListener('click', ajouterAutreReglement);
 
+        document.getElementById('rg_type')?.addEventListener('input', syncReglementAchatsEspFields);
+
+        document.getElementById('rg_type')?.addEventListener('change', syncReglementAchatsEspFields);
+
         document.getElementById('rg_bon')?.addEventListener('change', () => {
             clearSelectedBonOnReglementForm();
             renderRgBonsNonSoldes('');
@@ -33210,6 +33379,351 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
             reader.readAsDataURL(file);
 
+        });
+
+
+
+        // ——— Relevé Compte Fournisseur ———
+
+        let releveFrFilters = { dateFrom: '', dateTo: '', supplierId: '' };
+
+        let releveFrRows = [];
+
+        function releveFrDateInRange(dateStr, from, to) {
+            if (!dateStr) return true;
+            if (from && dateStr < from) return false;
+            if (to && dateStr > to) return false;
+            return true;
+        }
+
+        function releveFrNomFournisseur(c, r) {
+            if (c?.nom_fournisseur) return c.nom_fournisseur;
+            if (r?.fournisseur) return r.fournisseur;
+            const code = c?.code_fournisseur || '';
+            if (code && Array.isArray(fournisseurs)) {
+                const f = fournisseurs.find(x => x.id === code);
+                if (f?.nom) return f.nom;
+            }
+            return '—';
+        }
+
+        function releveFrBonCommande(bon) {
+            if (!bon || bon === '—') return null;
+            return (commandesAchats || []).find(x => x.bon === bon) || null;
+        }
+
+        function releveFrBonDisplayFields(row, commande) {
+            if (commande) {
+                return {
+                    date: commande.date_cmd || row.date || '',
+                    numero_bn: commande.bon || row.numero_bn || '—',
+                    nom_fournisseur: releveFrNomFournisseur(commande, null),
+                    qte: typeof commandeTotalQte === 'function' ? commandeTotalQte(commande) : (row.qte || 0)
+                };
+            }
+            return {
+                date: row.date || '',
+                numero_bn: row.numero_bn || '—',
+                nom_fournisseur: row.nom_fournisseur || '—',
+                qte: row.qte || 0
+            };
+        }
+
+        function releveFrFormatRowCells(row, seenBons, formatters) {
+            const bonKey = row.numero_bn && row.numero_bn !== '—' ? String(row.numero_bn) : '';
+            const showBonHeader = !bonKey || !seenBons.has(bonKey);
+            if (bonKey && showBonHeader) seenBons.add(bonKey);
+
+            const commande = bonKey ? releveFrBonCommande(bonKey) : null;
+            const bonInfo = showBonHeader ? releveFrBonDisplayFields(row, commande) : null;
+            const { dateFr, money, qty, esc } = formatters;
+
+            return {
+                date: bonInfo ? dateFr(bonInfo.date) : '',
+                numero_bn: bonInfo ? esc(bonInfo.numero_bn || '—') : '',
+                nom_fournisseur: bonInfo ? esc(bonInfo.nom_fournisseur || '—') : '',
+                qte: bonInfo ? qty(bonInfo.qte) : '',
+                debit: row.debit ? money(row.debit) : '—',
+                credit: row.credit ? money(row.credit) : '—',
+                solde: money(row.solde),
+                type_reg: esc(row.type_reg || '—'),
+                numero_reg: esc(row.numero_reg || '—'),
+                nom_tire: esc(row.nom_tire || '—'),
+                date_encaiss: dateFr(row.date_encaiss),
+                operation: row.operation,
+                paye: row.paye,
+                devalide: row.devalide,
+                impaye: row.impaye,
+                reporte: row.reporte
+            };
+        }
+
+        function releveFrOpBadge(op) {
+            if (op === 'Règlement') return '<span class="releve-badge releve-badge-reg">Règlement</span>';
+            return '<span class="releve-badge releve-badge-achat">Achat</span>';
+        }
+
+        function releveFrBoolBadge(val, yesLabel, yesClass, noLabel) {
+            if (val === true) return `<span class="releve-badge ${yesClass}">${yesLabel}</span>`;
+            if (val === false && noLabel) return `<span class="releve-badge releve-badge-no">${noLabel}</span>`;
+            return '<span class="releve-badge releve-badge-muted">—</span>';
+        }
+
+        function buildReleveFournisseurRows(filters) {
+            try { if (typeof loadCommandesAchats === 'function') loadCommandesAchats(); } catch (e) {}
+            try { if (typeof loadReglementsAchats === 'function') loadReglementsAchats(); } catch (e) {}
+
+            const rows = [];
+            const supplier = filters.supplierId
+                ? (fournisseurs || []).find(f => f.id === filters.supplierId)
+                : null;
+
+            (commandesAchats || []).forEach(c => {
+                if (supplier && typeof commandeBelongsToFournisseur === 'function' && !commandeBelongsToFournisseur(c, supplier)) return;
+                if (!releveFrDateInRange(c.date_cmd, filters.dateFrom, filters.dateTo)) return;
+
+                const debit = (typeof commandeMontantExact === 'function' ? commandeMontantExact(c) : (parseFloat(c.total) || 0));
+                const paye = typeof isCommandePayee === 'function' ? isCommandePayee(c) : !!c.paye;
+
+                rows.push({
+                    operation: 'Achat',
+                    date: c.date_cmd || '',
+                    numero_bn: c.bon || '—',
+                    nom_fournisseur: releveFrNomFournisseur(c, null),
+                    qte: typeof commandeTotalQte === 'function' ? commandeTotalQte(c) : 0,
+                    debit,
+                    credit: 0,
+                    type_reg: c.type_reglement || '—',
+                    numero_reg: '—',
+                    nom_tire: '—',
+                    date_encaiss: c.echeance || '—',
+                    paye,
+                    devalide: false,
+                    impaye: !paye,
+                    reporte: false,
+                    sortKey: c.date_cmd || '',
+                    sortOrder: 0
+                });
+            });
+
+            (reglementsAchats || []).forEach(r => {
+                const c = (commandesAchats || []).find(x => x.bon === r.bon);
+                if (supplier && typeof reglementBelongsToFournisseur === 'function' && !reglementBelongsToFournisseur(r, supplier)) return;
+                if (!releveFrDateInRange(r.date, filters.dateFrom, filters.dateTo)) return;
+
+                const credit = parseFloat(r.montant_reg) || 0;
+
+                rows.push({
+                    operation: 'Règlement',
+                    date: r.date || '',
+                    numero_bn: r.bon || '—',
+                    nom_fournisseur: releveFrNomFournisseur(c, r),
+                    qte: c && typeof commandeTotalQte === 'function' ? commandeTotalQte(c) : 0,
+                    debit: 0,
+                    credit,
+                    type_reg: r.type_reg || '—',
+                    numero_reg: r.num_reg || '—',
+                    nom_tire: r.tire || '—',
+                    date_encaiss: r.date_decaiss || '—',
+                    paye: true,
+                    devalide: false,
+                    impaye: false,
+                    reporte: false,
+                    sortKey: r.date || '',
+                    sortOrder: 1
+                });
+            });
+
+            rows.sort((a, b) => {
+                const cmdA = releveFrBonCommande(a.numero_bn);
+                const cmdB = releveFrBonCommande(b.numero_bn);
+                const groupA = cmdA?.date_cmd || a.date || '';
+                const groupB = cmdB?.date_cmd || b.date || '';
+                const g = String(groupA).localeCompare(String(groupB));
+                if (g !== 0) return g;
+
+                const bonCmp = String(a.numero_bn || '').localeCompare(String(b.numero_bn || ''));
+                if (bonCmp !== 0) return bonCmp;
+
+                if (a.sortOrder !== b.sortOrder) return a.sortOrder - b.sortOrder;
+
+                return String(a.sortKey || '').localeCompare(String(b.sortKey || ''));
+            });
+
+            let running = 0;
+            rows.forEach(row => {
+                running += (row.debit || 0) - (row.credit || 0);
+                row.solde = running;
+            });
+
+            return rows;
+        }
+
+        function computeReleveFournisseurKpis(rows) {
+            const totalDebit = rows.reduce((s, r) => s + (r.debit || 0), 0);
+            const totalCredit = rows.reduce((s, r) => s + (r.credit || 0), 0);
+            const totalQte = rows.filter(r => r.operation === 'Achat').reduce((s, r) => s + (r.qte || 0), 0);
+            const totalImp = rows.filter(r => r.impaye).reduce((s, r) => s + (r.debit || 0), 0);
+            return {
+                totalDebit,
+                totalCredit,
+                totalEncaisse: totalCredit,
+                totalQte,
+                totalImp,
+                solde: totalDebit - totalCredit
+            };
+        }
+
+        function fillReleveFournisseurSelect() {
+            const sel = document.getElementById('rf_fournisseur');
+            if (!sel) return;
+            const current = sel.value || releveFrFilters.supplierId || '';
+            sel.innerHTML = '<option value="">Tous les fournisseurs</option>' +
+                (fournisseurs || []).map(f => `<option value="${escHtml(f.id)}">${escHtml(f.nom || f.id)}</option>`).join('');
+            sel.value = current;
+        }
+
+        function renderReleveFournisseurKpis(rows) {
+            const k = computeReleveFournisseurKpis(rows);
+            const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+            set('rfKpiDebit', formatBalanceMoney(k.totalDebit));
+            set('rfKpiCredit', formatBalanceMoney(k.totalCredit));
+            set('rfKpiEncaisse', formatBalanceMoney(k.totalEncaisse));
+            set('rfKpiSolde', formatBalanceMoney(k.solde));
+            set('rfKpiQte', (k.totalQte || 0).toLocaleString('fr-FR'));
+            set('rfKpiImp', formatBalanceMoney(k.totalImp));
+        }
+
+        function renderReleveFournisseurTable() {
+            const tbody = document.getElementById('releveFrTableBody');
+            if (!tbody) return;
+
+            if (!releveFrRows.length) {
+                tbody.innerHTML = '<tr><td colspan="16" class="fournisseur-empty">Aucune opération pour ces critères</td></tr>';
+                return;
+            }
+
+            const dateFr = (d) => escHtml(typeof formatDateFr === 'function' ? formatDateFr(d) : (d || '—'));
+            const money = (v) => escHtml(formatBalanceMoney(v));
+            const qty = (v) => escHtml((v || 0).toLocaleString('fr-FR'));
+            const esc = (v) => escHtml(v);
+            const formatters = { dateFr, money, qty, esc };
+            const seenBons = new Set();
+
+            tbody.innerHTML = releveFrRows.map(r => {
+                const cells = releveFrFormatRowCells(r, seenBons, formatters);
+                return `
+                <tr>
+                    <td>${releveFrOpBadge(cells.operation)}</td>
+                    <td>${cells.date}</td>
+                    <td>${cells.numero_bn ? `<strong>${cells.numero_bn}</strong>` : ''}</td>
+                    <td>${cells.nom_fournisseur}</td>
+                    <td>${cells.qte}</td>
+                    <td>${cells.debit !== '—' ? `<span class="releve-debit-amount">${cells.debit}</span>` : '—'}</td>
+                    <td>${cells.credit}</td>
+                    <td><strong>${cells.solde}</strong></td>
+                    <td>${cells.type_reg}</td>
+                    <td>${cells.numero_reg}</td>
+                    <td>${cells.nom_tire}</td>
+                    <td>${cells.date_encaiss}</td>
+                    <td>${releveFrBoolBadge(cells.paye, 'Oui', 'releve-badge-yes')}</td>
+                    <td>${releveFrBoolBadge(cells.devalide, 'Oui', 'releve-badge-no')}</td>
+                    <td>${releveFrBoolBadge(cells.impaye, 'Oui', 'releve-badge-no')}</td>
+                    <td>${releveFrBoolBadge(cells.reporte, 'Oui', 'releve-badge-muted')}</td>
+                </tr>
+            `;
+            }).join('');
+        }
+
+        function applyReleveFournisseurFilters() {
+            releveFrFilters = {
+                dateFrom: document.getElementById('rf_date_from')?.value || '',
+                dateTo: document.getElementById('rf_date_to')?.value || '',
+                supplierId: document.getElementById('rf_fournisseur')?.value || ''
+            };
+            releveFrRows = buildReleveFournisseurRows(releveFrFilters);
+            renderReleveFournisseurKpis(releveFrRows);
+            renderReleveFournisseurTable();
+        }
+
+        function resetReleveFournisseurFilters() {
+            ['rf_date_from', 'rf_date_to'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '';
+            });
+            const sel = document.getElementById('rf_fournisseur');
+            if (sel) sel.value = '';
+            applyReleveFournisseurFilters();
+        }
+
+        function initReleveFournisseurView() {
+            const loadFr = typeof loadFournisseurs === 'function' ? loadFournisseurs() : Promise.resolve();
+            Promise.resolve(loadFr).then(() => {
+                fillReleveFournisseurSelect();
+                applyReleveFournisseurFilters();
+            }).catch(() => {
+                fillReleveFournisseurSelect();
+                applyReleveFournisseurFilters();
+            });
+        }
+
+        function printReleveFournisseur() {
+            window.print();
+        }
+
+        function exportReleveFournisseurPdf() {
+            if (!window.jspdf) { alert('jsPDF non disponible'); return; }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+            doc.setFontSize(14);
+            doc.text('Relevé de compte fournisseur', 40, 36);
+            doc.setFontSize(9);
+            const f = releveFrFilters;
+            doc.text(`Période : ${f.dateFrom || '—'} → ${f.dateTo || '—'}`, 40, 52);
+            const k = computeReleveFournisseurKpis(releveFrRows);
+            doc.text(`Débit: ${formatBalanceMoney(k.totalDebit)}  Crédit: ${formatBalanceMoney(k.totalCredit)}  Solde: ${formatBalanceMoney(k.solde)}`, 40, 66);
+            const dateFr = (d) => (typeof formatDateFr === 'function' ? formatDateFr(d) : (d || '—'));
+            const pdfFormatters = {
+                dateFr: (d) => dateFr(d),
+                money: (v) => formatBalanceMoney(v),
+                qty: (v) => String(v || 0),
+                esc: (v) => String(v ?? '')
+            };
+            const pdfSeenBons = new Set();
+            if (doc.autoTable) {
+                doc.autoTable({
+                    startY: 82,
+                    head: [['Opération', 'Date', 'N° Bn', 'Nom Fournisseur', 'Qte', 'Débit', 'Crédit', 'Solde', 'Type Rég', 'N° Rég', 'Nom Tiré', 'Date Encaiss']],
+                    body: releveFrRows.map(r => {
+                        const cells = releveFrFormatRowCells(r, pdfSeenBons, pdfFormatters);
+                        return [
+                            cells.operation,
+                            cells.date,
+                            cells.numero_bn,
+                            cells.nom_fournisseur,
+                            cells.qte,
+                            cells.debit,
+                            cells.credit,
+                            cells.solde,
+                            cells.type_reg,
+                            cells.numero_reg,
+                            cells.nom_tire,
+                            cells.date_encaiss
+                        ];
+                    }),
+                    styles: { fontSize: 7, cellPadding: 2 },
+                    headStyles: { fillColor: [0, 51, 38] }
+                });
+            }
+            doc.save('releve-compte-fournisseur.pdf');
+        }
+
+        document.getElementById('rfSearchBtn')?.addEventListener('click', applyReleveFournisseurFilters);
+        document.getElementById('rfResetBtn')?.addEventListener('click', resetReleveFournisseurFilters);
+        document.getElementById('releveFrPrintBtn')?.addEventListener('click', printReleveFournisseur);
+        document.getElementById('releveFrPdfBtn')?.addEventListener('click', exportReleveFournisseurPdf);
+        document.getElementById('fermerReleveFrBtn')?.addEventListener('click', () => {
+            document.querySelector('.nav-item[data-view="dashboard"]')?.click();
         });
 
 
@@ -33412,19 +33926,13 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         function formatBalanceMoney(val) {
 
-            if (typeof formatKpiMoney === 'function') return formatKpiMoney(val).replace(' MAD', '') + ' MAD';
+            if (typeof formatKpiMoney === 'function') return formatKpiMoney(val);
 
-            if (typeof formatMoneyFr === 'function') {
-
-                const t = formatMoneyFr(val);
-
-                return t.includes('MAD') ? t : t + ' MAD';
-
-            }
+            if (typeof formatMoneyFr === 'function') return formatMoneyFr(val);
 
             const n = Math.round((parseFloat(val) || 0) * 100) / 100;
 
-            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+            return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
         }
 
@@ -33530,7 +34038,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
             const totalPayes = rows.reduce((s, r) => s + (parseFloat(r.paye) || 0), 0);
             const totalSolde = Math.round((totalMontants - totalPayes) * 100) / 100;
             const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
-            const money = (v) => (typeof formatBalanceMoney === 'function' ? formatBalanceMoney(v) : (Number(v || 0).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD'));
+            const money = (v) => (typeof formatBalanceMoney === 'function' ? formatBalanceMoney(v) : (Number(v || 0).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })));
             setText('baKpiNbrCmd', String(cmds.length));
             setText('baKpiBadgeCmd', cmds.length + ' cmd');
             setText('baKpiTotalMontants', money(totalMontants));
@@ -33627,8 +34135,6 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
         function buildBalanceDetailHtml(row) {
 
-            const achats = getBalanceAchatsForRow(row);
-
             const regs = getBalanceRegsForRow(row);
 
             const fmt = (v) => escHtml(formatBalanceMoney(v));
@@ -33657,59 +34163,13 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
                 </div>
 
-                <h3 style="margin:12px 0 8px;font-size:15px;">Bons d'achat</h3>
+                <h3 style="margin:12px 0 8px;font-size:15px;">Règlements</h3>
 
                 <div class="fournisseur-table-wrap">
 
                     <table class="fournisseur-table">
 
-                        <thead><tr><th>Date</th><th>Bon</th><th>Montant</th><th>Payé</th></tr></thead>
-
-                        <tbody>
-
-            `;
-
-            if (!achats.length) {
-
-                html += '<tr><td colspan="4" class="fournisseur-empty">Aucun bon d\'achat</td></tr>';
-
-            } else {
-
-                const cmdAmt = (c) => (typeof commandeMontantExact === 'function' ? commandeMontantExact(c) : (parseFloat(c.total) || 0));
-
-                html += achats.map(c => `
-
-                    <tr>
-
-                        <td>${dateFr(c.date_cmd)}</td>
-
-                        <td>${escHtml(c.bon || '—')}</td>
-
-                        <td>${fmt(cmdAmt(c))}</td>
-
-                        <td>${escHtml(c.paye === true || (typeof isCommandePayee === 'function' && isCommandePayee(c)) ? 'Oui' : 'Non')}</td>
-
-                    </tr>
-
-                `).join('');
-
-            }
-
-            html += `
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-                <h3 style="margin:16px 0 8px;font-size:15px;">Règlements</h3>
-
-                <div class="fournisseur-table-wrap">
-
-                    <table class="fournisseur-table">
-
-                        <thead><tr><th>Date</th><th>Réf</th><th>Bon</th><th>Type</th><th>Montant Rég</th></tr></thead>
+                        <thead><tr><th>Réf</th><th>N° Rég</th><th>Banque</th><th>Nom Tiré</th><th>Date Échéance</th></tr></thead>
 
                         <tbody>
 
@@ -33725,15 +34185,15 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
                     <tr>
 
-                        <td>${dateFr(r.date)}</td>
-
                         <td>${escHtml(r.ref || '—')}</td>
 
-                        <td>${escHtml(r.bon || '—')}</td>
+                        <td>${escHtml(r.num_reg || '—')}</td>
 
-                        <td>${escHtml(r.type_reg || '—')}</td>
+                        <td>${escHtml(r.banque || '—')}</td>
 
-                        <td>${fmt(r.montant_reg)}</td>
+                        <td>${escHtml(r.tire || '—')}</td>
+
+                        <td>${dateFr(r.date_decaiss)}</td>
 
                     </tr>
 
@@ -33849,11 +34309,7 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-            const achats = getBalanceAchatsForRow(row);
-
             const regs = getBalanceRegsForRow(row);
-
-            const cmdAmt = (c) => (typeof commandeMontantExact === 'function' ? commandeMontantExact(c) : (parseFloat(c.total) || 0));
 
             const dateFr = (d) => (typeof formatDateFr === 'function' ? formatDateFr(d) : (d || '—'));
 
@@ -33865,43 +34321,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
                     startY: 150,
 
-                    head: [['Date', 'Bon', 'Montant', 'Payé']],
-
-                    body: achats.map(c => [
-
-                        dateFr(c.date_cmd),
-
-                        c.bon || '—',
-
-                        formatBalanceMoney(cmdAmt(c)),
-
-                        (c.paye === true || (typeof isCommandePayee === 'function' && isCommandePayee(c))) ? 'Oui' : 'Non'
-
-                    ]),
-
-                    styles: { fontSize: 8 },
-
-                    headStyles: { fillColor: [0, 51, 38] }
-
-                });
-
-                doc.autoTable({
-
-                    startY: (doc.lastAutoTable?.finalY || 200) + 16,
-
-                    head: [['Date', 'Réf', 'Bon', 'Type', 'Montant Rég']],
+                    head: [['Réf', 'N° Rég', 'Banque', 'Nom Tiré', 'Date Échéance']],
 
                     body: regs.map(r => [
 
-                        dateFr(r.date),
-
                         r.ref || '—',
 
-                        r.bon || '—',
+                        r.num_reg || '—',
 
-                        r.type_reg || '—',
+                        r.banque || '—',
 
-                        formatBalanceMoney(r.montant_reg)
+                        r.tire || '—',
+
+                        dateFr(r.date_decaiss)
 
                     ]),
 
@@ -34289,19 +34721,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Amandes Premium Californie', image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=500&q=80', price: '185 MAD/kg', desc: 'Amandes entières sélectionnées, croquantes et riches en nutriments. Idéales en snack ou pâtisserie fine.' },
+                    { name: 'Amandes Premium Californie', image: 'https://images.unsplash.com/photo-1508747703725-719777637510?w=500&q=80', price: '185/kg', desc: 'Amandes entières sélectionnées, croquantes et riches en nutriments. Idéales en snack ou pâtisserie fine.' },
 
 
 
-                    { name: 'Noix de Cajou W320', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '220 MAD/kg', desc: 'Noix de cajou entières de grade supérieur, saveur douce et texture onctueuse.' },
+                    { name: 'Noix de Cajou W320', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '220/kg', desc: 'Noix de cajou entières de grade supérieur, saveur douce et texture onctueuse.' },
 
 
 
-                    { name: 'Noix de Grenoble AOP', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '195 MAD/kg', desc: 'Noix décortiquées, chair ferme et goût authentique des terroirs montagnards.' },
+                    { name: 'Noix de Grenoble AOP', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '195/kg', desc: 'Noix décortiquées, chair ferme et goût authentique des terroirs montagnards.' },
 
 
 
-                    { name: 'Pistaches de Sicile', image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=500&q=80', price: '280 MAD/kg', desc: 'Pistaches naturellement ouvertes, arôme intense et qualité gastronomique.' },
+                    { name: 'Pistaches de Sicile', image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=500&q=80', price: '280/kg', desc: 'Pistaches naturellement ouvertes, arôme intense et qualité gastronomique.' },
 
 
 
@@ -34325,19 +34757,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Abricots secs de Turquie', image: 'https://images.unsplash.com/photo-1587049352846-83a3988c6791?w=500&q=80', price: '95 MAD/kg', desc: 'Abricots moelleux, légèrement acidulés, séchés au soleil sans conservateurs.' },
+                    { name: 'Abricots secs de Turquie', image: 'https://images.unsplash.com/photo-1587049352846-83a3988c6791?w=500&q=80', price: '95/kg', desc: 'Abricots moelleux, légèrement acidulés, séchés au soleil sans conservateurs.' },
 
 
 
-                    { name: 'Dattes Medjool Premium', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '145 MAD/kg', desc: 'Dattes extra moelleuses, caramel naturel, parfaites pour le Ramadan et le petit-déjeuner.' },
+                    { name: 'Dattes Medjool Premium', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '145/kg', desc: 'Dattes extra moelleuses, caramel naturel, parfaites pour le Ramadan et le petit-déjeuner.' },
 
 
 
-                    { name: 'Figues séchées Izmir', image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652765?w=500&q=80', price: '110 MAD/kg', desc: 'Figues blanches tendres, saveur miellée, source naturelle de fibres.' },
+                    { name: 'Figues séchées Izmir', image: 'https://images.unsplash.com/photo-1606312619070-d48b4c652765?w=500&q=80', price: '110/kg', desc: 'Figues blanches tendres, saveur miellée, source naturelle de fibres.' },
 
 
 
-                    { name: 'Raisins secs Golden', image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=500&q=80', price: '75 MAD/kg', desc: 'Raisins dorés juteux, douceur naturelle pour muesli, salades et desserts.' },
+                    { name: 'Raisins secs Golden', image: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=500&q=80', price: '75/kg', desc: 'Raisins dorés juteux, douceur naturelle pour muesli, salades et desserts.' },
 
 
 
@@ -34361,15 +34793,15 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Cacahuètes grillées salées', image: 'https://images.unsplash.com/photo-1553627862-fbb7dd4c7102?w=500&q=80', price: '55 MAD/kg', desc: 'Cacahuètes croustillantes, légèrement salées, parfaites pour l\'apéritif.' },
+                    { name: 'Cacahuètes grillées salées', image: 'https://images.unsplash.com/photo-1553627862-fbb7dd4c7102?w=500&q=80', price: '55/kg', desc: 'Cacahuètes croustillantes, légèrement salées, parfaites pour l\'apéritif.' },
 
 
 
-                    { name: 'Cacahuètes nature bio', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&q=80', price: '65 MAD/kg', desc: 'Cacahuètes décortiquées, sans sel, certifiées agriculture biologique.' },
+                    { name: 'Cacahuètes nature bio', image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&q=80', price: '65/kg', desc: 'Cacahuètes décortiquées, sans sel, certifiées agriculture biologique.' },
 
 
 
-                    { name: 'Beurre de cacahuète crémeux', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '89 MAD/pot', desc: 'Purée 100% cacahuètes, texture onctueuse, sans huile de palme ajoutée.' },
+                    { name: 'Beurre de cacahuète crémeux', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '89/pot', desc: 'Purée 100% cacahuètes, texture onctueuse, sans huile de palme ajoutée.' },
 
 
 
@@ -34393,19 +34825,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Graines de tournesol décortiquées', image: 'https://images.unsplash.com/photo-1518843875459-f738682238c6?w=500&q=80', price: '45 MAD/kg', desc: 'Graines fraîches, riches en vitamine E, idéales en salade ou snack.' },
+                    { name: 'Graines de tournesol décortiquées', image: 'https://images.unsplash.com/photo-1518843875459-f738682238c6?w=500&q=80', price: '45/kg', desc: 'Graines fraîches, riches en vitamine E, idéales en salade ou snack.' },
 
 
 
-                    { name: 'Graines de courge', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '120 MAD/kg', desc: 'Graines de courge premium, goût de noisette, source de zinc et magnésium.' },
+                    { name: 'Graines de courge', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '120/kg', desc: 'Graines de courge premium, goût de noisette, source de zinc et magnésium.' },
 
 
 
-                    { name: 'Graines de chia bio', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80', price: '95 MAD/kg', desc: 'Graines noires de chia, super-aliment pour smoothies et bowls healthy.' },
+                    { name: 'Graines de chia bio', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80', price: '95/kg', desc: 'Graines noires de chia, super-aliment pour smoothies et bowls healthy.' },
 
 
 
-                    { name: 'Mélange de graines gourmet', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '85 MAD/kg', desc: 'Assortiment tournesol, lin et sésame pour une nutrition complète.' },
+                    { name: 'Mélange de graines gourmet', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '85/kg', desc: 'Assortiment tournesol, lin et sésame pour une nutrition complète.' },
 
 
 
@@ -34429,19 +34861,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Amandes enrobées chocolat noir', image: 'https://images.unsplash.com/photo-1548365328-0f4e0977132a?w=500&q=80', price: '165 MAD/kg', desc: 'Amandes entières enrobées de chocolat noir 70%, alliance croquante et intense.' },
+                    { name: 'Amandes enrobées chocolat noir', image: 'https://images.unsplash.com/photo-1548365328-0f4e0977132a?w=500&q=80', price: '165/kg', desc: 'Amandes entières enrobées de chocolat noir 70%, alliance croquante et intense.' },
 
 
 
-                    { name: 'Raisins secs enrobés chocolat au lait', image: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=500&q=80', price: '135 MAD/kg', desc: 'Raisins moelleux nappés de chocolat au lait belge, douceur gourmande.' },
+                    { name: 'Raisins secs enrobés chocolat au lait', image: 'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=500&q=80', price: '135/kg', desc: 'Raisins moelleux nappés de chocolat au lait belge, douceur gourmande.' },
 
 
 
-                    { name: 'Dattes fourrées amandes', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '175 MAD/kg', desc: 'Dattes Medjool farcies d\'amandes entières, création artisanale de luxe.' },
+                    { name: 'Dattes fourrées amandes', image: 'https://images.unsplash.com/photo-1585335208606-c7c710a45d9d?w=500&q=80', price: '175/kg', desc: 'Dattes Medjool farcies d\'amandes entières, création artisanale de luxe.' },
 
 
 
-                    { name: 'Orangettes au chocolat', image: 'https://images.unsplash.com/photo-1607922267115-ed5d32ecbc2c?w=500&q=80', price: '155 MAD/kg', desc: 'Écorces d\'orange confites enrobées de chocolat noir, saveur raffinée.' },
+                    { name: 'Orangettes au chocolat', image: 'https://images.unsplash.com/photo-1607922267115-ed5d32ecbc2c?w=500&q=80', price: '155/kg', desc: 'Écorces d\'orange confites enrobées de chocolat noir, saveur raffinée.' },
 
 
 
@@ -34465,19 +34897,19 @@ ficheSocieteForm?.addEventListener('submit', validerSociete);
 
 
 
-                    { name: 'Coffret Ramadan Prestige', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '450 MAD', desc: 'Coffret assortiment dattes, noix et fruits secs, présentation élégante pour l\'Iftar.' },
+                    { name: 'Coffret Ramadan Prestige', image: 'https://images.unsplash.com/photo-1608797178972-15b33a581138?w=500&q=80', price: '450', desc: 'Coffret assortiment dattes, noix et fruits secs, présentation élégante pour l\'Iftar.' },
 
 
 
-                    { name: 'Chebakia artisanale (500g)', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80', price: '85 MAD', desc: 'Chebakia traditionnelle au miel et sésame, préparée selon recette marocaine.' },
+                    { name: 'Chebakia artisanale (500g)', image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=500&q=80', price: '85', desc: 'Chebakia traditionnelle au miel et sésame, préparée selon recette marocaine.' },
 
 
 
-                    { name: 'Sellou aux amandes', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '120 MAD/kg', desc: 'Sellou maison grillé, mélange énergétique de farine, amandes et miel.' },
+                    { name: 'Sellou aux amandes', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=500&q=80', price: '120/kg', desc: 'Sellou maison grillé, mélange énergétique de farine, amandes et miel.' },
 
 
 
-                    { name: 'Panier Fêtes Sweet Austria', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '680 MAD', desc: 'Panier cadeau premium : fruits secs, confiseries et spécialités de fête.' },
+                    { name: 'Panier Fêtes Sweet Austria', image: 'https://images.unsplash.com/photo-1599599810769-bda6a6a30469?w=500&q=80', price: '680', desc: 'Panier cadeau premium : fruits secs, confiseries et spécialités de fête.' },
 
 
 

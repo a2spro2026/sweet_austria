@@ -166,7 +166,7 @@
                             </datalist>
                         </div>
                         <div class="form-group">
-                            <label for="cl_solde">Solde initial (MAD)</label>
+                            <label for="cl_solde">Solde initial</label>
                             <input type="number" id="cl_solde" name="solde" class="form-input money-input" step="0.01" placeholder="0.00">
                         </div>
                         <div class="form-group">
@@ -375,7 +375,7 @@
                         <div class="achats-articles-summary no-print-achats">
                             <div class="achats-total-bar" style="margin:0;padding:0;border:none;background:transparent;width:100%;justify-content:flex-end;">
                                 <span>Total général</span>
-                                <span id="ventesTotalGeneral">0,00 MAD</span>
+                                <span id="ventesTotalGeneral">0,00</span>
                             </div>
                         </div>
                     </div>
@@ -515,7 +515,7 @@
                     <span class="kpi-badge kpi-badge-flat" id="rvKpiBadgeChq">0</span>
                 </div>
                 <div class="kpi-label">Total Chq</div>
-                <div class="kpi-value" id="rvKpiTotalChq">0,00 MAD</div>
+                <div class="kpi-value" id="rvKpiTotalChq">0,00</div>
             </div>
             <div class="kpi-card orange">
                 <div class="kpi-top">
@@ -525,7 +525,7 @@
                     <span class="kpi-badge kpi-badge-flat" id="rvKpiBadgeEff">0</span>
                 </div>
                 <div class="kpi-label">Total Eff</div>
-                <div class="kpi-value" id="rvKpiTotalEff">0,00 MAD</div>
+                <div class="kpi-value" id="rvKpiTotalEff">0,00</div>
             </div>
             <div class="kpi-card green">
                 <div class="kpi-top">
@@ -535,7 +535,7 @@
                     <span class="kpi-badge kpi-badge-flat" id="rvKpiBadgeEsp">0</span>
                 </div>
                 <div class="kpi-label">Total Esp</div>
-                <div class="kpi-value" id="rvKpiTotalEsp">0,00 MAD</div>
+                <div class="kpi-value" id="rvKpiTotalEsp">0,00</div>
             </div>
             <div class="kpi-card teal">
                 <div class="kpi-top">
@@ -545,7 +545,7 @@
                     <span class="kpi-badge kpi-badge-flat" id="rvKpiBadgeVir">0</span>
                 </div>
                 <div class="kpi-label">Total Vir</div>
-                <div class="kpi-value" id="rvKpiTotalVir">0,00 MAD</div>
+                <div class="kpi-value" id="rvKpiTotalVir">0,00</div>
             </div>
         </div>
         <div id="reglementVentePrintArea">
@@ -605,7 +605,7 @@
                     <span class="kpi-badge kpi-badge-flat" id="bcKpiBadgeMontants">0</span>
                 </div>
                 <div class="kpi-label">Total Montants Ventes</div>
-                <div class="kpi-value" id="bcKpiTotalMontants">0,00 MAD</div>
+                <div class="kpi-value" id="bcKpiTotalMontants">0,00</div>
             </div>
             <div class="kpi-card green">
                 <div class="kpi-top">
@@ -615,7 +615,7 @@
                     <span class="kpi-badge kpi-badge-flat" id="bcKpiBadgePayes">0 rég</span>
                 </div>
                 <div class="kpi-label">Total Réglements Payés</div>
-                <div class="kpi-value" id="bcKpiTotalPayes">0,00 MAD</div>
+                <div class="kpi-value" id="bcKpiTotalPayes">0,00</div>
             </div>
             <div class="kpi-card orange">
                 <div class="kpi-top">
@@ -625,7 +625,7 @@
                     <span class="kpi-badge kpi-badge-flat" id="bcKpiBadgeSolde">solde</span>
                 </div>
                 <div class="kpi-label">Total Solde</div>
-                <div class="kpi-value" id="bcKpiTotalSolde">0,00 MAD</div>
+                <div class="kpi-value" id="bcKpiTotalSolde">0,00</div>
             </div>
         </div>
         <div id="balanceClientsPrintArea">

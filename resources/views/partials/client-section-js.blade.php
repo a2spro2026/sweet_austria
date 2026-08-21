@@ -368,7 +368,7 @@
         function updateVentesTotalGeneral() {
             const total = ventesLignes.reduce((s, l) => s + (parseFloat(l.sous_total) || 0), 0);
             const el = document.getElementById('ventesTotalGeneral');
-            if (el) el.textContent = (typeof formatMoney === 'function' ? formatMoney(total) : (total.toFixed(2) + ' MAD'));
+            if (el) el.textContent = (typeof formatMoney === 'function' ? formatMoney(total) : total.toFixed(2));
         }
 
         function renderVentesLignesTable() {
@@ -485,7 +485,7 @@
                 tbody.innerHTML = '<tr><td colspan="8" class="achats-commandes-empty">Aucun bon de vente</td></tr>';
                 return;
             }
-            const fmt = (typeof formatMoney === 'function') ? formatMoney : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+            const fmt = (typeof formatMoney === 'function') ? formatMoney : (v) => (parseFloat(v) || 0).toFixed(2);
             tbody.innerHTML = commandesVentes.map((c, i) => {
                 const qte = (c.lignes || []).reduce((s, l) => s + (parseFloat(l.quantite) || 0), 0);
                 const paye = c.paye === true || (typeof isCommandePayee === 'function' && isCommandePayee(c));
@@ -786,7 +786,7 @@
                 || document.getElementById('rv_bon_num')?.value || '';
             const saisi = parseFloat(document.getElementById('rv_montant_reg')?.value || 0) || 0;
             const excludeId = editingReglementVenteId || null;
-            const fmt = (typeof formatMoneyFr === 'function') ? formatMoneyFr : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+            const fmt = (typeof formatMoneyFr === 'function') ? formatMoneyFr : (v) => (parseFloat(v) || 0).toFixed(2);
             tbody.querySelectorAll('tr[data-bon]').forEach(tr => {
                 const bon = String(tr.getAttribute('data-bon') || '');
                 const total = parseFloat(tr.getAttribute('data-montant') || 0) || 0;
@@ -808,7 +808,7 @@
                 tbody.innerHTML = '<tr><td colspan="6" class="fournisseur-empty">' + (nomClient ? 'Aucun bon non soldé' : 'Sélectionnez un client') + '</td></tr>';
                 return;
             }
-            const fmt = (typeof formatMoneyFr === 'function') ? formatMoneyFr : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+            const fmt = (typeof formatMoneyFr === 'function') ? formatMoneyFr : (v) => (parseFloat(v) || 0).toFixed(2);
             const selected = document.getElementById('rv_bon_num')?.value || includeBon || '';
             tbody.innerHTML = bons.map(c => {
                 const paye = getMontantPayeBonVente(c.bon, editingReglementVenteId);
@@ -867,7 +867,7 @@
             const sumType = (prefix) => regs
                 .filter(r => typeof isReglementType === 'function' ? isReglementType(r.type_reg, prefix) : String(r.type_reg || '').toLowerCase().startsWith(prefix.toLowerCase()))
                 .reduce((s, r) => s + (parseFloat(r.montant_reg) || 0), 0);
-            const fmt = (typeof formatKpiMoney === 'function') ? formatKpiMoney : (v) => (parseFloat(v) || 0).toFixed(2) + ' MAD';
+            const fmt = (typeof formatKpiMoney === 'function') ? formatKpiMoney : (v) => (parseFloat(v) || 0).toFixed(2);
             const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = fmt(v); };
             const setBadge = (id, n) => { const el = document.getElementById(id); if (el) el.textContent = String(n); };
             set('rvKpiTotalChq', sumType('Chq'));
@@ -1173,7 +1173,7 @@
         function formatBalanceMoneyClient(val) {
             if (typeof formatMoneyFr === 'function') return formatMoneyFr(val);
             if (typeof formatMoney === 'function') return formatMoney(val);
-            return (parseFloat(val) || 0).toFixed(2) + ' MAD';
+            return (parseFloat(val) || 0).toFixed(2);
         }
 
         function refreshBalanceClientsKpis() {
@@ -1184,7 +1184,7 @@
             const totalPayes = rows.reduce((s, r) => s + (parseFloat(r.paye) || 0), 0);
             const totalSolde = Math.round((totalMontants - totalPayes) * 100) / 100;
             const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
-            const money = (v) => (typeof formatBalanceMoneyClient === 'function' ? formatBalanceMoneyClient(v) : ((parseFloat(v) || 0).toFixed(2) + ' MAD'));
+            const money = (v) => (typeof formatBalanceMoneyClient === 'function' ? formatBalanceMoneyClient(v) : ((parseFloat(v) || 0).toFixed(2)));
             setText('bcKpiNbrCmd', String(cmds.length));
             setText('bcKpiBadgeCmd', cmds.length + ' cmd');
             setText('bcKpiTotalMontants', money(totalMontants));
